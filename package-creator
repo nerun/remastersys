@@ -1,0 +1,31 @@
+#!/bin/bash
+
+gzip remastersys/usr/share/man/man1/remastersys.1
+gzip remastersys/usr/share/doc/remastersys/changelog
+gzip remastersys/usr/share/doc/remastersys/changelog.Debian
+
+# Rename remastersys folder for packaging
+name="remastersys_3.0.0-1_all"
+namegui="remastersys-gui_3.0.0-1_all"
+
+mv remastersys $name
+mv remastersys-gui $namegui
+
+# Packaging
+dpkg-deb -b --root-owner-group $name
+dpkg-deb -b --root-owner-group $namegui
+
+# RESTORATION ==================================================================
+
+# folders names
+mv $name remastersys
+mv $namegui remastersys-gui
+
+# changelogs
+gzip -d remastersys/usr/share/doc/remastersys/changelog.gz
+gzip -d remastersys/usr/share/doc/remastersys/changelog.Debian.gz
+
+# manpages
+gzip -d remastersys/usr/share/man/man1/remastersys.1.gz
+
+
