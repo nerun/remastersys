@@ -1,6 +1,6 @@
 # Welcome to Remastersys
 
-<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 6 (Squeeze)" src="https://img.shields.io/badge/System-Debian%206%20(Squeeze)-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 3.0.0-1" src="https://img.shields.io/badge/Version-3.0.0--1-orange" /></a>
+<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 7 (Wheezy)" src="https://img.shields.io/badge/System-Debian%207%20(Wheezy)-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 3.0.0-1" src="https://img.shields.io/badge/Version-3.0.0--1-orange" /></a>
 
 **A Unique Linux Backup to Live Media Tool for Debian and Ubuntu**
 
@@ -31,10 +31,10 @@ If you try to compile this code with the **package-creator** script provided her
 
 The debian packages provided in the [releases](https://github.com/nerun/remastersys/releases) page are the original ones packaged by T. Brijeski.
 
-Do not try to install or run this program on current Debian, it will not work. Version 3.0.0-1 was developed for Debian 6 (Squeeze). The purpose of this fork will be precisely to bring the program to the current versions of the Debian system.
+Do not try to install or run this program on current Debian, it will not work. [Version 3.0.0-1 was developed for Debian 7 (Wheezy)](https://web.archive.org/web/20131120070407/http://www.remastersys.com/forums/index.php?topic=3009.0). The purpose of this fork will be precisely to bring the program to the current versions of the Debian system.
 
 ## About me
 
 Daniel Dias Rodrigues, a.k.a. "Nerun"
 
-You have downlaoded this from https://github.com/nerun/remastersys.
+You have downloaded this from https://github.com/nerun/remastersys.

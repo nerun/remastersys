@@ -1,0 +1,29 @@
+This is a changelog that was never added to:
+    remastersys/usr/share/doc/remastersys/changelog
+
+I have found this at:
+    https://ubuntuforums.org/showthread.php?t=1903213
+
+For Ubuntu, unfortunately.
+
+================================================================================
+
+remastersys (3.0.0-1) unstable; urgency=low
+
+    * 3.0.0
+    * Added remastersys-gtk gui into the main remastersys package - changes and fixes as well
+    * Added plymouth theme generation
+    * Added grub background changing option
+    * Added live system menu background changing option
+    * Added option for Backup mode Install Icon
+    * Optimized stage 1 procedure
+    * Fixed vesamenu.32 call
+    * Removed ubiquity-frontend* from desktop manifest so it is removed after install and off original system so it doesn't have a bad menu item
+    * Added /etc/shadow and /etc/gshadow to fix the rescue boot mode issue with root access
+    * Added remastersys-skelcopy script
+    * Prevent unimportant failures from showing to the user
+    * Added more information to the remastersys.log
+    * Properly spaced the script out to make it easier to read for scripters
+    * Added check for working folder filesystem type as it has to be a valid linux filesystem
+
+ -- Tony Brijeski <tb6517@yahoo.com>  Sat, 02 Jan 2012 05:11:00 -0500
