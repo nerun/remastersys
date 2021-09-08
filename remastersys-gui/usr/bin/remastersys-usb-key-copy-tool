@@ -1,0 +1,98 @@
+#!/bin/bash
+
+#Copy to USB Key Tool Copyright 2009,2011 by Tony Brijeski under the GPL V2
+#Using yad for gui calls
+
+DIALOG="`which yad` --width 400"
+TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/remastersys.png --image=/usr/share/icons/remastersys.png --title="
+TITLETEXT="Remastersys USB Startup Disk Tool"
+TEXT="--text="
+ENTRY="--entry "
+ENTRYTEXT="--entry-text "
+FILESELECTION="--file-selection "
+MENU="--list --column=Pick --column=Info"
+PASSWORD="--entry --hide-text "
+
+
+testroot="`whoami`"
+
+if [ "$testroot" != "root" ]; then
+remsu $0 &
+exit
+fi
+
+copymenu () {
+if [ "$1" = "(null)" ]; then
+  $DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nYou must select a usb key to use.  Click OK to return to main menu.\n"
+mainmenu
+fi
+if [ "$2" = "(null)" ]; then
+  $DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nYou must select a source to use.  Click OK to return to main menu.\n"
+mainmenu
+fi
+
+$DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nThis will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue?\n"
+
+if [ $? != 0 ]; then
+mainmenu
+fi
+
+umount `mount | grep $1 | awk '{print $1}'`
+
+#do the copy
+dd if=$2 of=/dev/$1 bs=1M 2>/tmp/remusbprog & pid=$!
+
+PROGTOT=`ls -l $2 | cut -d " " -f 5`
+PROGPERCENT=""
+
+while [ "$PROGPERCENT" != "100" ]; do
+sleep 1
+kill -USR1 $pid
+PROGCNT=`tail -n 1 /tmp/remusbprog | grep "(" | cut -d " " -f 1`
+if [ "$PROGCNT" = "" ]; then
+PROGPERCENT="1"
+else
+PROGPERCENT=$((100 * $PROGCNT / $PROGTOT))
+fi
+echo $PROGPERCENT
+echo "#$PROGPERCENT %"
+done | $DIALOG $TITLE"$TITLETEXT" $TEXT"Copying to USB Key Now \n\nPlease Wait \n" --no-buttons --progress --auto-close --auto-kill
+rm -f /tmp/remusbprog
+sync
+#killall -KILL tail
+
+$DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nCopy to USB key completed. \nClick OK to return to main menu.\n"
+mainmenu
+}
+
+
+mainmenu () {
+DEVS=""
+DEVS=`ls -l /dev/disk/by-path/*usb* | grep -v "part" | awk '{print $NF}' | awk -F "/" '{print $NF}'`
+if [ "$DEVS" != "" ]; then
+for i in $DEVS; do
+USBDRIVESIZE=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
+USBDRIVES="$USBDRIVES!$i-$USBDRIVESIZE"
+done
+else
+  $DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nNo USB Keys found.\n\nPlease insert a USB Key and then\nclick OK to return to main menu\nor Cancel to quit.\n"
+if [ "$?" = "0" ]; then
+mainmenu
+else
+exit
+fi
+fi
+
+CHOICES=`$DIALOG $TITLE"$TITLETEXT" --form --field="Choose a USB Key:CB" $USBDRIVES --field="Choose a Source Image:FL" --button="Quit:2" --button="Copy to USB Key:1"`
+retval="$?"
+
+if [ "$retval" = "1" ]; then
+USBDRIVE=`echo $CHOICES | cut -d "|" -f 1 | cut -d "-" -f 1`
+PICKSOURCE=`echo $CHOICES | cut -d "|" -f 2`
+copymenu $USBDRIVE $PICKSOURCE
+else
+exit
+fi
+}
+
+mainmenu

@@ -1,0 +1,26 @@
+Package: remastersys
+Priority: optional
+Section: system
+Installed-Size: 1160
+Maintainer: Tony Brijeski <tb6517@yahoo.com>
+Architecture: all
+Version: 3.0.0-1
+Depends: coreutils, dialog, memtest86+, mkisofs | genisoimage, findutils, grub-pc, syslinux| xorriso, os-prober, bash, passwd, sed, squashfs-tools, live-boot, live-config, live-config-sysvinit, live-boot-initramfs-tools, rsync, mount, laptop-detect, util-linux, hwdata
+Conffiles:
+ /etc/remastersys/remastersys.version bfd5de7cfc9d37ade0d9eb9c7d7ecc4f
+ /etc/remastersys/preseed/custom.seed 7e3aa6d1958baf72d369392fdb175486
+ /etc/remastersys/isolinux/vesamenu.c32 5a25bff3b63f5fa50b31c1f21c9981f8
+ /etc/remastersys/isolinux/stdmenu.cfg f696493117e3a9af9cec7f95dbd0be71
+ /etc/remastersys/isolinux/isolinux.cfg 8d469fa4d3549469fbd91c198f0183b6
+ /etc/remastersys/isolinux/menu.cfg 1c846e8adf9a4ba87a056938819c3ba2
+ /etc/remastersys/isolinux/isolinux.bin d8076c2646464d9a6e6210a0d8e1508e
+ /etc/remastersys/isolinux/live.cfg d49732338cb8eff95381e0464a0ced7e
+ /etc/remastersys/isolinux/memtest.bin 95f689bd6c9842be2e1d9991b991abfe
+ /etc/remastersys/isolinux/splash.png 1457efc9b2499eec7d6bada6bcf076b7
+ /etc/remastersys/remastersys-installer.conf 76c6ce8b530a1becada796118809e603
+ /etc/remastersys.conf a83866f51309187f8b0ea8c2b4507e26
+Description: Debian system remaster
+ This script creates a livecd of the installed system.
+ You can either make a distributable livecd or backup of your system.
+ If you want the gui frontend install remastersys-gui as well.
+ For more information, please visit http://www.remastersys.com

@@ -1,0 +1,12 @@
+#!/bin/sh
+# prerm script for remastersys
+#
+# see: dh_installdeb(1)
+
+set -e
+
+#do nothing for now
+
+exit 0
+
+

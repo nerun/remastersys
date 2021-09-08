@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Live Installer
+GenericName=Live Installer
+Comment=Install live system to hard drive
+Exec=remsu /usr/bin/remastersys-installer gui
+Icon=/usr/share/pixmaps/remastersys-installer.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=GTK;System
+NotShowIn=KDE
+X-KDE-SubstituteUID=true
+GenericName[en_US]=System Backup

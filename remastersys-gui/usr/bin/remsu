@@ -1,0 +1,11 @@
+#!/bin/bash
+
+testmode=`grep "1000" /etc/passwd | grep -v "Live"`
+
+if [ "$testmode" = "" ]; then
+gksudo "$@"
+else
+gksu "$@"
+fi
+
+

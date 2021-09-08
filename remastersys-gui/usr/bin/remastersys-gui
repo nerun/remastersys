@@ -1,0 +1,558 @@
+#!/bin/bash
+
+# remastersys-gui script to make an installable livecd/dvd from a Debian installed 
+# and customized system
+#
+#
+#  Created by Tony "Fragadelic" Brijeski
+#
+#  Copyright 2007-2012 Under the GNU GPL2 License
+#
+#  Created October 28th, 2007,2008
+#  Updated July 2012
+#
+#  keeping version number in sync with main remastersys script
+#
+#
+#  This script requires yad to run
+#
+testyad=`which yad`
+
+if [ "$testyad" = "" ]; then
+apt-get -y -q install yad
+fi
+
+if [ "$testyad" != "" ]; then
+DIALOGMENU="`which yad` --window-icon=/usr/share/icons/remastersys.png --width=750 --height=400 --center"
+DIALOG="`which yad` --window-icon=/usr/share/icons/remastersys.png --center"
+TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/remastersys.png --title="
+TEXT="--text="
+ENTRY="--entry "
+ENTRYTEXT="--entry-text "
+FILESELECTION="--file "
+MENU="--list --column=Pick --column=Info"
+YESNO=" --button=Yes:0 --button=No:1 "
+MSGBOX=" --button=Ok:0 "
+TITLETEXT="Remastersys Backup"
+fi
+
+testroot="`whoami`"
+
+if [ "$testroot" != "root" ]; then
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"This must be run with root privileges."
+exit 1
+fi
+
+mainmenu () {
+
+CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --button=Ok:0 --button=Exit:1 $MENU $TEXT"Please Select which option you would like?" \
+Backup "Backup Complete System including User Data" \
+Dist "Make a Distributable copy to share with friends - both cdfs and iso will be created" \
+Distcdfs "Make a Distributable copy cd filesystem only - good if you want to add files to the cd" \
+Distiso "Make a Distributable iso file only - cd filesystem must have been completed already" \
+DistBoot "Select your own picture to be the default ISOLINUX boot menu background" \
+DistGrub "Select your own picture to be the default GRUB boot loader background" \
+DistSkel "Make your user customized settings the default configuration for the system" \
+DistPlymouth "Select your own picture to be the background for a simple custom plymouth theme" \
+Modify "Modify the remastersys config file to customize options" \
+Skelclean "Clear out config files from /etc/skel to remove all customizations" \
+Clear "Clear out the remastersys working folder" \
+Viewlog "View the remastersys.log" \
+Info "About Remastersys Backup"`
+
+if [ "$?" = "0" ]; then
+CHOICE=`echo $CHOICES | cut -d "|" -f 1`
+else
+exit 0
+fi
+
+if [ "$CHOICE" = "Backup" ]; then
+backupmenu
+elif [ "$CHOICE" = "Dist" ]; then
+distmenu
+elif [ "$CHOICE" = "Distcdfs" ]; then
+distcdfsmenu
+elif [ "$CHOICE" = "Distiso" ]; then
+distisomenu
+elif [ "$CHOICE" = "DistBoot" ]; then
+distbootmenu
+elif [ "$CHOICE" = "DistGrub" ]; then
+distgrubmenu
+elif [ "$CHOICE" = "DistSkel" ]; then
+distskelmenu
+elif [ "$CHOICE" = "DistPlymouth" ]; then
+distplymouthmenu
+elif [ "$CHOICE" = "Modify" ]; then
+modifymenu
+elif [ "$CHOICE" = "Skelclean" ]; then
+find /etc/skel/ -type f -exec rm -f '{}' \;
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The /etc/skel/ config files have been cleared out."
+mainmenu
+elif [ "$CHOICE" = "Clear" ]; then
+cleanmenu
+elif [ "$CHOICE" = "Viewlog" ]; then
+. /etc/remastersys.conf
+if [ -f "$WORKDIR/remastersys/remastersys.log" ]; then
+$DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 --text-info --filename="$WORKDIR/remastersys/remastersys.log"
+else
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The remastersys.log file does not exist"
+fi
+mainmenu
+elif [ "$CHOICE" = "Info" ]; then
+. /etc/remastersys/remastersys.version
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Remastersys Backup is the Graphical Frontend \n\
+to remastersys which is the command line utility \n\
+that can take a Debian or variant installed system \n\
+and turn it back into a distributable livecd/dvd \n\
+or make a complete system backup including \n\
+the /home directory and all user files contained within.\n\n\
+This is version $REMASTERSYSVERSION.\n\n\
+Remastersys Backup and remastersys were created by Tony Brijeski."
+mainmenu
+else
+exit 0
+fi
+
+}
+
+backupmenu () {
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Backup Mode.\n\nDo not interrupt this process.\n\nClick OK to Start the Backup LiveCD/DVD process."
+xterm -fn 9x15 -e "remastersys backup"
+
+. /etc/remastersys.conf
+
+SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The compressed filesystem is larger than the \niso9660 specification allows for a single file.\n\nYou must try to reduce the amount of data you \nare backing up and try again."
+exit 1
+fi
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready \nin $WORKDIR/remastersys.\nIt is recommended to test it in a virtual machine or \non a rewritable cd/dvd to ensure it works as desired.\n\nClick on OK to return to the main menu."
+mainmenu
+
+}
+
+distmenu () {
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Dist Mode.\n\nClick OK to Start the Distributable LiveCD/DVD process."
+xterm -fn 9x15 -e "remastersys dist"
+
+. /etc/remastersys.conf
+
+SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The compressed filesystem is larger than the \niso9660 specification allows for a single file.\n\nYou must try to reduce the amount of data you \nare backing up and try again."
+exit 1
+fi
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready \nin $WORKDIR/remastersys.\nIt is recommended to test it in a virtual machine or \non a rewritable cd/dvd to ensure it works as desired.\n\nClick on OK to return to the main menu."
+mainmenu
+
+}
+
+distcdfsmenu () {
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Dist CDFS Mode.  Click OK to Start the Distributable LiveCD/DVD filesystem build process."
+xterm -fn 9x15 -e "remastersys dist cdfs"
+
+. /etc/remastersys.conf
+
+SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The compressed filesystem is larger than the \niso9660 specification allows for a single file.\n\nYou must try to reduce the amount of data you \nare backing up and try again."
+exit 1
+fi
+
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Your livecd filesystem is ready in $WORKDIR/remastersys.\nYou can now add files to the cd and \nthen run the iso only option when you are done.\n\nClick on OK to return to the main menu."
+mainmenu
+
+}
+
+distisomenu () {
+. /etc/remastersys.conf
+if [ -f "$WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs" ]; then
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Dist ISO Mode.\n\nClick OK to create the iso file."
+xterm -fn 9x15 -e "remastersys dist iso"
+
+. /etc/remastersys.conf
+
+SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The compressed filesystem is larger than the \niso9660 specification allows for a single file.\n\nYou must try to reduce the amount of data you are backing up and try again."
+exit 1
+fi
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR/remastersys.\n\nIt is recommended to test it in a virtual machine or \non a rewritable cd/dvd to ensure it works as desired.\nClick on OK to return to the main menu."
+mainmenu
+
+else
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The livecd filesystem does not exist.\n\nClick OK to go back to the main menu and\ntry the normal Dist mode or the Dist CDFS again."
+mainmenu
+exit0
+fi
+}
+
+
+distbootmenu () {
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"This will allow you to choose \
+your own picture to \nbe the background for the LIVE boot menu. \n\
+Please note that it MUST be a 640x480 pixel png file.  \nYou must create \
+this picture or resize it with a proper \ngraphics editor as this tool does \
+not have the ability to change the size \nor type of picture. \
+\n\
+\n\
+Click OK to continue."
+
+BOOTPIC=`$DIALOG $TITLE"Remastersys Backup" --width=750 --height=400 $FILESELECTION`
+if [ "$BOOTPIC" != "" ]; then
+mv /etc/remastersys/isolinux/splash.png \
+/etc/remastersys/isolinux/splash.png.`date +%F%T | sed -e "s/-//g" | sed -e "s/://g"`
+
+cp $BOOTPIC /etc/remastersys/isolinux/splash.png
+
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"$BOOTPIC has been copied \
+to \n/etc/remastersys/isolinux/splash.png becoming \nthe default background \
+for the LIVE menu. \nClick OK to continue."
+
+else
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"You didn't select any file. \n\nClick OK to continue."
+fi
+
+
+mainmenu
+}
+
+distgrubmenu () {
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"This will allow you to choose \
+your own png picture \nto be the background for the GRUB boot loader. \
+Click OK to continue."
+
+GRUBPIC=`$DIALOG $TITLE"Remastersys Backup" --width=750 --height=400 $FILESELECTION`
+if [ "$GRUBPIC" != "" ]; then
+
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"$GRUBPIC has been \ncopied \
+to /etc/remastersys/grub.png \nand is the default background for grub. \nClick \
+OK to update grub with the new settings \nso you can see your picture on the next boot."
+if [ "$?" = "0" ]; then
+
+$DIALOG $TITLE"Remastersys Backup" --no-buttons --progress --pulsate $TEXT"Updating grub now. \n\
+Please wait." &
+PICFILE=`echo $GRUBPIC | awk -F"/" '{print $NF}'`
+cp $GRUBPIC /etc/remastersys/grub.png
+NEWGRUBPIC="/etc/remastersys/grub.png"
+
+sed -i -e "/GRUB_BACKGROUND/d" /etc/default/grub
+
+cat >> /etc/default/grub <<FOO
+#Grub Background
+GRUB_BACKGROUND="$NEWGRUBPIC"
+
+FOO
+
+
+update-grub
+killall -KILL yad
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"GRUB has been updated. Click OK to continue."
+fi
+else
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"You didn't select any file. \n\nClick OK to continue."
+fi
+mainmenu
+}
+
+distskelmenu () {
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"This will put your user desktop \
+and application settings \nin /etc/skel so they become the default for the live system. \n\
+This includes desktop background and other personalized \napplication settings that \
+aren't hardcoded to the current \nusers home folder. \
+\n\
+Need to compile a list of valid users. \n\
+It may take a few seconds to complete so be patient. \n\
+Click OK to prepare the list."
+
+
+j="0"
+i="1000"
+while [ "`cat /etc/passwd | awk -F ":" '{print $3}' | grep $i`" != "" ]; do
+for i in $(seq 1000 1 1010); do
+
+if [ "`cat /etc/passwd | awk -F ":" '{print $3}' | grep $i`" != "" ]; then
+  userchoice[$j]="`grep $i /etc/passwd | awk -F ":" '{print $1}'`"
+  
+  j=`expr $j + 1`
+fi
+
+done
+done
+
+
+SKELUSER=`$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"\nPlease select a user whose \
+settings \nyou would like to make the default." \
+${userchoice[0]} ${userchoice[0]} \
+${userchoice[1]} ${userchoice[1]} \
+${userchoice[2]} ${userchoice[2]} \
+${userchoice[3]} ${userchoice[3]} \
+${userchoice[4]} ${userchoice[4]} \
+${userchoice[5]} ${userchoice[5]} \
+${userchoice[6]} ${userchoice[6]} \
+${userchoice[7]} ${userchoice[7]} \
+${userchoice[8]} ${userchoice[8]} \
+${userchoice[9]} ${userchoice[9]}`
+
+
+
+SKELUSER=`echo $SKELUSER | cut -d "|" -f 1`
+
+if [ "$SKELUSER" != "" ]; then
+
+cd `grep "^$SKELUSER:" /etc/passwd | awk -F ":" '{print $6}'`
+
+PWD=`pwd`
+
+TESTUSER=`grep "$PWD" /etc/passwd | awk -F ":" '{print $1}'`
+
+if [ "$TESTUSER" != "$SKELUSER" ]; then
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"The user you chose does not have \
+a proper home directory.  \nClick OK to return to the main menu."
+echo need to be in the user directory....exiting
+mainmenu
+fi
+
+
+$DIALOG $TITLE"Remastersys Backup" --no-buttons --progress --pulsate $TEXT"Copying your $SKELUSER user settings to /etc/skel now. \n\
+Please wait." &
+
+remastersys-skelcopy $SKELUSER
+
+killall -KILL yad
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"The settings for $SKELUSER have \
+been copied to /etc/skel.  \nIn order to test it out you need to create a new user \
+and see \nif your settings have been applied.  \n\
+Click OK to return to the main menu."
+
+else
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"You didn't select any user. \n\nClick OK to continue."
+
+fi
+mainmenu
+
+}
+
+distplymouthmenu () {
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"This will allow you to create \
+your own \nsimple plymouth theme using a png picture of your own. \
+Click OK to continue."
+
+THEMENAME=`$DIALOG $TITLE"Remastersys Backup" $ENTRY $TEXT"Enter your plymouth theme name. eg. Remastersys Theme"`
+THEMEDIR=`echo $THEMENAME | sed -e 's/ //g' | awk '{print tolower ($0)}'`
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"This will allow you to choose \
+your own picture \nto be the background for the plymouth theme. \n\
+It should be a 1920x1080 png file that you have already created. \n\
+Click OK to continue."
+
+
+THEMEPICFULL=`$DIALOG $TITLE"Remastersys Backup" --width=750 --height=400 $FILESELECTION`
+if [ "$THEMEPICFULL" != "" ]; then
+
+THEMEPIC=`echo $THEMEPICFULL | awk -F "/" '{print $NF}'`
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"Your plymouth theme name is $THEMENAME \n\
+and the picture you chose was $THEMEPIC.  \nIf this is what you want, \
+click OK to create \nthe new plymouth theme and set it as default. \n\
+This may take a while so please be patient."
+if [ "$?" = "0" ]; then
+
+$DIALOG $TITLE"Remastersys Backup" --no-buttons --progress --pulsate $TEXT"Creating your plymouth theme $THEMENAME now. \n\
+Please wait." &
+
+mkdir -p /usr/share/plymouth/themes/$THEMEDIR
+
+sed -e 's/__THEMENAME__/'"$THEMENAME"'/g' -e 's/__THEMEDIR__/'"$THEMEDIR"'/g' \
+/etc/remastersys/plymouth/remastersys-theme/remastersys-theme.plymouth \
+> /usr/share/plymouth/themes/$THEMEDIR/$THEMEDIR.plymouth
+
+sed -e 's/__THEMEPIC__/'"$THEMEPIC"'/g' \
+/etc/remastersys/plymouth/remastersys-theme/remastersys-theme.script \
+> /usr/share/plymouth/themes/$THEMEDIR/$THEMEDIR.script
+
+cp "$THEMEPICFULL" /usr/share/plymouth/themes/$THEMEDIR/
+
+cp /etc/remastersys/plymouth/remastersys-theme/*.png \
+/usr/share/plymouth/themes/$THEMEDIR/
+
+sed -i -e '/Theme/d' /etc/plymouth/plymouthd.conf
+
+cat >> /etc/plymouth/plymouthd.conf <<FOO
+Theme=$THEMEDIR
+FOO
+
+#update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth \
+#/usr/share/plymouth/themes/$THEMEDIR/$THEMEDIR.plymouth 80
+#update-alternatives --auto default.plymouth
+
+update-initramfs -t -c -k $(uname -r)
+
+killall -KILL yad
+
+sleep 1
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"Your plymouth theme named $THEMENAME \n\
+with the picture $THEMEPIC has been created \nand set as the default. \n\
+Click OK to return to the main menu."
+
+fi
+
+
+else
+
+$DIALOG $TITLE"Remastersys Backup" $MSGBOX $TEXT"You didn't select any file. \n\nClick OK to continue."
+
+fi
+
+mainmenu
+}
+
+
+modifymenu () {
+
+if [ -f /etc/remastersys.conf ]; then
+. /etc/remastersys.conf
+fi
+
+if [ "$SQUASHFSOPTS" = "" ]; then
+SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M"
+fi
+
+
+CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --button=Save:0 --button=Back:1 --form \
+--field="Live Username" "$LIVEUSER" \
+--field="Live System Name" "$LIVECDLABEL" \
+--field="Live ISO Filename" "$CUSTOMISO" \
+--field="Live Boot using GRUB or ISOLINUX" "$ISOBOOT" \
+--field="Working Directory for Remastersys" "$WORKDIR" \
+--field="Options for mksquashfs" " $SQUASHFSOPTS" \
+--field="Show install icon on desktop" "$SHOWICON" \
+--field="Excluded files and folders" " $EXCLUDES"`
+
+
+if [ "$?" = "0" ]; then
+LIVEUSER=`echo $CHOICES | cut -d "|" -f 1`
+LIVECDLABEL=`echo $CHOICES | cut -d "|" -f 2`
+CUSTOMISO=`echo $CHOICES | cut -d "|" -f 3`
+ISOBOOT=`echo $CHOICES | cut -d "|" -f 4`
+WORKDIR=`echo $CHOICES | cut -d "|" -f 5`
+SQUASHFSOPTS=`echo $CHOICES | cut -d "|" -f 6`
+SHOWICON=`echo $CHOICES | cut -d "|" -f 7`
+EXCLUDES=`echo $CHOICES | cut -d "|" -f 8`
+else 
+mainmenu
+fi
+
+if [ "$LIVEUSER" = "" ]; then
+LIVEUSER="custom"
+fi
+#make sure live user is all lowercase
+LIVEUSER="`echo $LIVEUSER | awk '{print tolower ($0)}'`"
+
+if [ "$LIVECDLABEL" = "" ]; then
+LIVECDLABEL="Custom Live CD"
+fi
+
+if [ "$CUSTOMISO" = "" ]; then
+CUSTOMISO="custom-live.iso"
+fi
+
+if [ "$ISOBOOT" = "grub" -o "$ISOBOOT" = "GRUB" ]; then
+ISOBOOT="GRUB"
+else
+ISOBOOT="ISOLINUX"
+fi
+
+
+if [ "$WORKDIR" = "" ]; then
+WORKDIR="/home/remastersys"
+fi
+
+if [ "$SQUASHFSOPTS" = "" ]; then
+SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M"
+fi
+
+SHOWICON="`echo $SHOWICON | awk '{print tolower ($0)}'`"
+
+if [ "$SHOWICON" = "1" ]; then
+SHOWICON="1"
+elif [ "$SHOWICON" = "yes" ]; then
+SHOWICON="1"
+elif [ "$SHOWICON" = "true" ]; then
+SHOWICON="1"
+else
+SHOWICON="0"
+fi
+
+
+cat > /etc/remastersys.conf <<FOO
+#Remastersys Global Configuration File
+
+
+# This is the temporary working directory and won't be included on the cd/dvd
+WORKDIR="$WORKDIR"
+
+
+# Here you can add any other files or directories to be excluded from the live filesystem
+# Separate each entry with a space
+EXCLUDES="$EXCLUDES"
+
+
+# Here you can change the livecd/dvd username
+LIVEUSER="$LIVEUSER"
+
+
+# Here you can change the name of the livecd/dvd label
+LIVECDLABEL="$LIVECDLABEL"
+
+
+# Here you can change the name of the ISO file that is created
+CUSTOMISO="$CUSTOMISO"
+
+
+# Here you can change the boot method for the live - GRUB or ISOLINUX
+ISOBOOT="$ISOBOOT"
+
+
+# Options for mksquashfs
+#Default is -no-recovery -always-use-fragments -b 1M
+SQUASHFSOPTS="$SQUASHFSOPTS"
+
+
+#Option to show install icon on live desktop in dist mode 1=yes or true, 0=no or false
+SHOWICON="$SHOWICON"
+
+
+FOO
+
+if [ "$?" = "0" ]; then
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Configuration Saved. Click OK to return to the modify menu."
+else
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Configuration Save Error. Click OK to return to the modify menu."
+fi
+modifymenu
+
+}
+
+cleanmenu () {
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"This will remove all the files from the temporary directory. Click OK to proceed."
+xterm -fn 9x15 -e "remastersys clean"
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Completed. Click OK to return to the main menu."
+mainmenu
+
+}
+
+
+
+
+mainmenu

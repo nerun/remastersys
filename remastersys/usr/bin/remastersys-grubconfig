@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# remastersys-grubconfig
+# by Tony Brijeski (c)2009 GPLv2
+
+if [ "$1" = "" ]; then
+echo
+echo "Usage is remastersys-grubconfig /mountedlocation [root|rootmbr]"
+echo
+echo "/mountedlocation                  You must specify the full path"
+echo "root                       Install grub to root partition"
+echo "                           MBR will be used if no option present"
+echo
+echo
+echo "eg. to install to root partition of the current install"
+echo
+echo "    remastersys-grubconfig / root"
+echo
+echo
+echo "eg. to install to mbr on a mounted drive - if running from livecd"
+echo
+echo "    remastersys-grubconfig /mnt/sda1"
+echo
+exit 1
+fi
+
+testroot="`whoami`"
+
+if [ "$testroot" != "root" ]; then
+echo "remastersys-grubconfig must be run with root privileges."
+exit 1
+fi
+
+ROOTMOUNT="$1"
+if [ "$ROOTMOUNT" = "" ]; then
+ROOTMOUNT="/"
+fi
+
+ROOTPART=`mount | grep " $ROOTMOUNT " | awk '{print $1}'`
+ROOTMBR=`echo $ROOTPART | sed -e 's/[1-9]//g'`
+GRUBLOCTEST="$2"
+if [ "$GRUBLOCTEST" = "root" ]; then
+GRUBLOC="$ROOTPART"
+echo $GRUBLOC
+elif [ "$GRUBLOCTEST" = "rootmbr" ]; then
+GRUBLOC="$ROOTMBR"
+echo $GRUBLOC
+else
+GRUBLOC="/dev/sda"
+echo $GRUBLOC
+fi
+
+
+
+if [ "$ROOTMOUNT" != "/" ]; then
+
+if [ ! -e $ROOTMOUNT/proc/cpuinfo ]; then
+STANDALONE="yes"
+mount -o bind /proc $ROOTMOUNT/proc
+mount -o bind /dev $ROOTMOUNT/dev
+mount -o bind /sys $ROOTMOUNT/sys
+fi
+chroot $ROOTMOUNT grub-install --no-floppy $GRUBLOC
+chroot $ROOTMOUNT update-grub
+sync
+if [ "$STANDALONE" = "yes" ]; then
+sleep 1
+umount $ROOTMOUNT/proc
+sleep 1
+umount $ROOTMOUNT/dev
+sleep 1
+umount $ROOTMOUNT/sys
+sleep 1
+fi
+else
+grub-install --no-floppy $GRUBLOC
+update-grub
+sync
+fi
+
+
+
+

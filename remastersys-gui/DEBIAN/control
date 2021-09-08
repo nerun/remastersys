@@ -1,0 +1,11 @@
+Package: remastersys-gui
+Priority: optional
+Section: system
+Installed-Size: 308
+Maintainer: Tony Brijeski <tb6517@yahoo.com>
+Architecture: all
+Version: 3.0.0-1
+Depends: gparted, xterm, yad, read-edid, xresprobe, remastersys (>= 3.0.0)
+Description: Debian system remaster
+ This is the gui frontend for remastersys
+ For more information, please visit http://www.remastersys.com

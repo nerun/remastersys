@@ -1,0 +1,188 @@
+#!/bin/bash
+#
+#
+#  remastersys-grub-restore is a utility to restore grub on a PC
+#
+#
+#  Created by Tony "Fragadelic" Brijeski
+#
+#  Copyright 2008,2009,2010 Under the GNU GPL2 License
+#
+#  Originally Created September 12th,2008
+#
+#
+#
+#
+
+#  This script requires either yad or dialog to run
+#
+
+# checking to make sure script is running with root privileges
+
+testroot="`whoami`"
+
+if [ "$testroot" != "root" ]; then
+echo " Must be run as root - exiting"
+exit 1
+fi
+
+
+DIALOGMENU="`which yad` --window-icon=/usr/share/icons/remastersys.png --width=700 --height=400 --center"
+DIALOG="`which yad` --window-icon=/usr/share/icons/remastersys.png --center"
+TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/remastersys.png --title="
+TEXT="--text="
+ENTRY="--entry "
+ENTRYTEXT="--entry-text "
+MENU="--list --column=Pick --column=Info"
+YESNO=" --button=Yes:0 --button=No:1 "
+MSGBOX=" --button=Ok:0 "
+
+TITLETEXT="Remastersys Grub Restore"
+
+
+if [ "$DIALOG" = "" ]; then
+echo "Cannot find dialog or yad.  Exiting."
+exit 1
+fi
+
+
+
+
+#
+#GUI MODE
+#
+#inform them what this is and ask if they want to continue
+
+$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"\n\nThis is a grub restore utility.\n\n\n\nDo you want to continue?"
+
+if [ $? != 0 ]; then
+exit 0
+fi
+
+os-prober > /tmp/os-prober.remastersys
+
+PARTITIONS=`cat /tmp/os-prober.remastersys | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
+
+if [ ! -d /live ]; then
+
+partitiontext="current The_Partition_this_install_is_on"
+
+else
+
+for i in `echo $PARTITIONS`; do
+LINE=`cat /tmp/os-prober.remastersys | grep "$i"`
+DEV=`echo $LINE | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
+OSTITLE=`echo $LINE | awk -F ":" '{print $2}'`
+OSTITLE=`echo $OSTITLE | sed -r "s/ /_/g"`
+OSTYPE=`echo $LINE | awk -F ":" '{print $4}'`
+if [ "$OSTYPE" = "linux" ]; then
+partitiontext="$partitiontext $DEV $OSTITLE"
+fi
+done
+
+fi
+
+rm /tmp/os-prober.remastersys
+
+TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found." Exit "Quit" $partitiontext`
+
+if [ "$?" = "0" ]; then
+TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
+else
+exit 1
+fi
+
+if [ "$TARGETPART" = "Exit" ]; then
+  $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nQuiting now."
+  exit 1
+elif [ "$TARGETPART" = "current" ]; then
+TARGETPART=`mount | grep " / " | awk '{print $1}' | awk -F "/" '{print $3}'`
+fi
+
+
+#grub location
+GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nPlease select where to install grub to.\n" mbr "Master Boot Record of first drive" root "Root partition of $TARGETPART" rootmbr "Master Boot Record of the root drive"`
+
+if [ "$?" = "0" ]; then
+GRUBLOCTEST=`echo $GRUBLOCTEST | cut -d "|" -f 1`
+else
+exit 1
+fi
+
+if [ "$GRUBLOCTEST" = "root" ]; then
+GRUBLOCTEXT="root partition of $TARGETPART"
+GRUBLOC="root"
+elif [ "$GRUBLOCTEST" = "rootmbr" ]; then
+GRUBLOCTEXT="mbr of root partition of $TARGETPART"
+GRUBLOC="rootmbr"
+else
+GRUBLOCTEXT="master boot record"
+GRUBLOC=""
+fi
+
+
+tail -f /usr/bin/remastersys-grub-restore |  $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --width 400 --pulsate $TEXT"Installing grub now.  Please wait..." &
+
+
+
+
+#
+#
+#
+#do the actual grub install/restore
+#
+#
+#
+
+GRUBDIR=`mount | grep $TARGETPART | awk '{print$3}'`
+if [ "$GRUBDIR" != "/" ]; then
+GRUBDIR="/tmp/remmnt/TARGET"
+#unmount and remount the partition on /tmp/remmnt/TARGET rw
+if [ "`mount | grep $TARGETPART`" ]; then
+umount /dev/$TARGETPART
+fi
+sleep 2
+if [ ! -d $GRUBDIR ]; then
+mkdir -p $GRUBDIR
+fi
+mount /dev/$TARGETPART $GRUBDIR -o rw
+sleep 2
+
+mount -o bind /proc $GRUBDIR/proc
+mount -o bind /dev $GRUBDIR/dev
+mount -o bind /sys $GRUBDIR/sys
+
+else
+
+GRUBDIR="/"
+
+fi
+
+echo "Installing and setting up grub."
+# Setup grub
+remastersys-grubconfig $GRUBDIR $GRUBLOC
+
+if [ "$GRUBDIR" != "" ]; then 
+umount $GRUBDIR/proc
+sleep 1
+umount $GRUBDIR/dev
+sleep 1
+umount $GRUBDIR/sys
+sleep 1
+umount $GRUBDIR
+sleep 1
+
+fi
+
+
+killall -KILL tail
+killall -KILL yad
+
+
+
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nGrub has been installed/restored on $TARGETPART."
+
+
+exit 0
+
+

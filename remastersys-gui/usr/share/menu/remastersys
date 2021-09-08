@@ -1,0 +1,16 @@
+?package(remastersys):needs="x11" section="Applications/System/Administration" \
+	title="Remastersys Backup" \
+	icon="/usr/share/icons/remastersys.png" \
+	command="remsu /usr/bin/remastersys-gui"
+?package(remastersys):needs="x11" section="Applications/System/Administration" \
+	title="Remastersys Grub Restore" \
+	icon="/usr/share/icons/remastersys.png" \
+	command="remsu /usr/bin/remastersys-grub-restore gui"
+?package(remastersys):needs="x11" section="Applications/System/Administration" \
+	title="Live Installer" \
+	icon="/usr/share/pixmaps/remastersys-installer.png" \
+	command="remsu /usr/bin/remastersys-installer gui"
+?package(remastersys):needs="x11" section="Applications/System/Administration" \
+	title="Remastersys USB Startup Tool" \
+	icon="/usr/share/icons/remastersys.png" \
+	command="remsu /usr/bin/remastersys-usb-key-copy-tool"

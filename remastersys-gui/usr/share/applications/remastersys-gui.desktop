@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Remastersys Backup
+GenericName=System Backup
+Comment=Backup the system to LiveCD/DVD
+Exec=remsu /usr/bin/remastersys-gui
+Icon=/usr/share/icons/remastersys.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=GTK;System
+NotShowIn=KDE
+X-KDE-SubstituteUID=true
+GenericName[en_US]=System Backup

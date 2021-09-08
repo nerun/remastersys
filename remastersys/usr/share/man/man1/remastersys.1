@@ -1,0 +1,39 @@
+.TH REMASTERSYS 1 "February 12, 2007" 
+.SH NAME
+remastersys \- script to make a bootable and installable live cd or dvd
+.SH SYNOPSIS
+remastersys backup|clean|dist [cdfs|iso] [filename.iso]
+.br
+remastersys backup
+.br
+remastersys clean
+.br
+remastersys dist
+.br
+.br
+ 
+.SH DESCRIPTION
+Remastersys is a script used to make a bootable live cd or dvd from an
+installed Ubuntu system or derivative.
+.PP
+This manual page documents
+.BR remastersys .
+.B remastersys
+Makes a live cd or dvd iso file from and installed system
+.SS OPTIONS
+.TP
+.I backup
+Makes a complete system backup including the user folders.
+.TP
+.I clean
+Cleans the temporary build directory.
+.TP
+.I dist
+Makes system backup minus the user folders.
+.SH AUTHOR
+Tony Brijeski - Copyright (c) 2007,2008
+.SH BUG REPORT
+Report bugs to tb6517@yahoo.com
+.SH URL
+http://www.remastersys.klikit-linux.com
+

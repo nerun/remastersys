@@ -1,0 +1,100 @@
+#!/bin/bash
+
+# remastersys-skelcopy script to copy user data to /etc/skel 
+# 
+#
+#
+#  Created by Tony "Fragadelic" Brijeski
+#
+#  Copyright 2011,2012 Under the GNU GPL2 License
+#
+#  Created November 23, 2011
+#
+testroot="`whoami`"
+
+if [ "$testroot" != "root" ]; then
+    echo "Must be root"
+    exit 1
+fi
+
+SKELUSER="$1"
+if [ "$SKELUSER" = "" ]; then
+    echo "Usage is: remastersys-skelcopy username"
+    echo "Where username is a valid user on the system"
+    exit 1
+fi
+
+SKELFOLDER=`grep "^$SKELUSER:" /etc/passwd | awk -F ":" '{print $6}'`
+
+if [ -d "$SKELFOLDER" ]; then
+    cd $SKELFOLDER
+    echo "Cleaning up /etc/skel of the files we will copy over"
+    rm -rf /etc/skel/.bacon
+    rm -rf /etc/skel/.xscreensaver
+    rm -rf /etc/skel/.gconf
+    rm -rf /etc/skel/.bashrc
+    rm -rf /etc/skel/.profile
+    rm -rf /etc/skel/.gconf
+    rm -rf /etc/skel/.gnome2
+    rm -rf /etc/skel/.config
+    rm -rf /etc/skel/.local
+    rm -rf /etc/skel/.icewm*
+    rm -rf /etc/skel/.fvwm*
+    rm -rf /etc/skel/.afterstep*
+    rm -rf /etc/skel/.gtkrc*
+    rm -rf /etc/skel/.mate*
+    rm -rf /etc/skel/.qt*
+    rm -rf /etc/skel/.kde*
+    rm -rf /etc/skel/.pekwm
+    rm -rf /etc/skel/.razor
+    rm -rf /etc/skel/.wbar
+    rm -rf /etc/skel/.mplayer
+    echo "Copying config files to /etc/skel"
+    rsync -a .bacon /etc/skel/
+    rsync -a .xscreensaver /etc/skel
+    sed -i -e "s/$SKELUSER//g" /etc/skel/.xscreensaver
+    rsync -a .gconf /etc/skel/
+    rsync -a .bashrc /etc/skel/
+    rsync -a .profile /etc/skel/
+    rsync -a .gnome2 /etc/skel/
+    rsync -a .config /etc/skel/
+    rsync -a .local /etc/skel/
+    rsync -a .icewm* /etc/skel/
+    rsync -a .fvwm* /etc/skel/
+    rsync -a .afterstep* /etc/skel/
+    rsync -a .mate* /etc/skel/
+    rsync -a .gtkrc* /etc/skel/
+    rsync -a .qt* /etc/skel/
+    rsync -a .kde* /etc/skel/
+    rsync -a .pekwm /etc/skel/
+    rsync -a .razor /etc/skel/
+    rsync -a .wbar /etc/skel/
+    rsync -a .mplayer /etc/skel/
+    rm -rf /etc/skel/.config/chromium
+    rm -rf /etc/skel/.config/midori/cookies.*
+    rm -rf /etc/skel/.config/midori/history.*
+    rm -rf /etc/skel/.config/midori/tabtrash.*
+    rm -rf /etc/skel/.config/midori/running*
+    rm -rf /etc/skel/.config/midori/bookmarks.*
+    rm -rf /etc/skel/.config/user-dirs.*
+    rm -rf /etc/skel/.gconf/system/networking
+    rm -rf /etc/skel/.local/gvfs-metadata
+    rm -rf /etc/skel/.local/share/gvfs-metadata
+    rm -rf /etc/skel/.local/share/applications/wine-*
+    rm -rf /etc/skel/.local/share/Trash
+    rm -rf /etc/skel/.local/share/akonadi
+    rm -rf /etc/skel/.local/share/webkit
+    rm -rf /etc/skel/.kde/share/apps/klipper
+    rm -rf /etc/skel/.kde/share/apps/nepomuk
+    rm -rf /etc/skel/.kde/share/apps/RecentDocuments/*
+    for i in /etc/skel/.gnome2/keyrings/*; do rm $i; done
+    find /etc/skel/ | grep "$SKELUSER" | xargs rm -rf '{}'
+    find /etc/skel/ -name "*socket*" | xargs rm -rf '{}'
+    find /etc/skel/ -name "*cache*" | xargs rm -rf '{}'
+    grep -Rl "$SKELUSER" /etc/skel | xargs rm -rf '{}'
+    chown -R root:root /etc/skel
+
+else
+    echo "$1 either not found or doesn't have a proper home folder - exiting."
+    exit 1
+fi

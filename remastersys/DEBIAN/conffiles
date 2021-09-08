@@ -1,0 +1,11 @@
+/etc/remastersys/remastersys.version
+/etc/remastersys/preseed/custom.seed
+/etc/remastersys/isolinux/vesamenu.c32
+/etc/remastersys/isolinux/stdmenu.cfg
+/etc/remastersys/isolinux/isolinux.cfg
+/etc/remastersys/isolinux/menu.cfg
+/etc/remastersys/isolinux/isolinux.bin
+/etc/remastersys/isolinux/live.cfg
+/etc/remastersys/isolinux/memtest.bin
+/etc/remastersys/remastersys-installer.conf
+/etc/remastersys.conf

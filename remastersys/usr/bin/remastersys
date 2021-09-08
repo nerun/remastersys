@@ -1,0 +1,685 @@
+#!/bin/bash
+
+# remastersys script to make an installable livecd/dvd from a Debian installed 
+# and customized system
+#
+#
+#  Created by Tony "Fragadelic" Brijeski
+#
+#  Copyright 2007-2012 Under the GNU GPL2 License
+#
+#  Originally Created February 12th, 2007
+#
+#
+#
+#
+#
+
+# checking to make sure script is running with root privileges
+. /etc/remastersys/remastersys.version
+
+testroot="`whoami`"
+
+if [ "$testroot" != "root" ]; then
+     echo "Usage of remastersys $REMASTERSYSVERSION is as follows:"
+     echo " "
+     echo "   sudo remastersys backup|clean|dist [cdfs|iso] [filename.iso]"
+     echo " "
+     echo " "
+     echo "Examples:"
+     echo " "
+     echo "   sudo remastersys backup   (to make a livecd/dvd backup of your system)"
+     echo " "
+     echo "   sudo remastersys backup custom.iso"
+     echo "                             (to make a livecd/dvd backup and call the iso custom.iso)" 
+     echo " "
+     echo "   sudo remastersys clean    (to clean up temporary files of remastersys)"
+     echo " "
+     echo "   sudo remastersys dist     (to make a distributable livecd/dvd of your system)"
+     echo " "
+     echo "   sudo remastersys dist cdfs"
+     echo "                             (to make a distributable livecd/dvd filesystem only)"
+     echo " "
+     echo "   sudo remastersys dist iso custom.iso"
+     echo "                             (to make a distributable iso named custom.iso but only"
+     echo "                              if the cdfs is already present)"
+     echo " "
+     echo "   cdfs and iso options should only be used if you wish to modify something on the"
+     echo "   cd before the iso is created.  An example of this would be to modify the isolinux"
+     echo "   portion of the livecd/dvd"
+     echo " "
+
+     exit 1
+fi
+
+# load the remastersys.conf file 
+
+. /etc/remastersys.conf
+
+# if the remastersys.conf file is incorrect or missing, make sure to set defaults
+
+if [ "$LIVEUSER" = "" ]; then
+#Somebody must have removed the username from the configuration file
+#echo 
+#this is a custom live user
+LIVEUSER="custom"
+fi
+
+#make sure live user is all lowercase
+LIVEUSER="`echo $LIVEUSER | awk '{print tolower ($0)}'`"
+
+SHOWICON="`echo $SHOWICON | awk '{print tolower ($0)}'`"
+
+if [ "$SHOWICON" = "1" ]; then
+SHOWICON="1"
+elif [ "$SHOWICON" = "yes" ]; then
+SHOWICON="1"
+elif [ "$SHOWICON" = "true" ]; then
+SHOWICON="1"
+else
+SHOWICON="0"
+fi
+
+
+if [ "$WORKDIR" = "" ]; then
+WORKDIR="/home/remastersys/remastersys"
+BASEWORKDIR="/home/remastersys"
+else
+BASEWORKDIR="$WORKDIR"
+WORKDIR="$WORKDIR/remastersys"
+fi
+
+if [ "$LIVECDLABEL" = "" ]; then
+LIVECDLABEL="Custom Live CD"
+fi
+
+if [ "$ISOBOOT" != "GRUB" ]; then
+ISOBOOT="ISOLINUX"
+fi
+
+if [ "$2" = "cdfs" ]; then
+echo "Creating the cd filesystem only"
+elif [ "$2" = "iso" ]; then
+echo "Creating the iso file only"
+elif [ "$2" = "" ]; then
+echo " "
+else
+CUSTOMISO="$2"
+fi
+
+if [ "$3" != "" ]; then
+CUSTOMISO="$3"
+fi
+
+if [ "$CUSTOMISO" = "" ]; then
+CUSTOMISO="custom$1.iso"
+fi
+
+case $1  in
+
+  backup)
+     echo "System Backup Mode Selected"
+     ;;
+
+  clean)
+     echo "Removing the build directory now..."
+     rm -rf $WORKDIR
+     echo "Done...Exiting"
+     exit 0
+     ;;
+
+  dist)
+     echo "Distribution Mode Selected"
+     ;;
+
+
+  *)
+     echo "Usage of remastersys $REMASTERSYSVERSION is as follows:"
+     echo " "
+     echo "   sudo remastersys backup|clean|dist [cdfs|iso] [filename.iso]"
+     echo " "
+     echo " "
+     echo "Examples:"
+     echo " "
+     echo "   sudo remastersys backup   (to make a livecd/dvd backup of your system)"
+     echo " "
+     echo "   sudo remastersys backup custom.iso"
+     echo "                             (to make a livecd/dvd backup and call the iso custom.iso)" 
+     echo " "
+     echo "   sudo remastersys clean    (to clean up temporary files of remastersys)"
+     echo " "
+     echo "   sudo remastersys dist     (to make a distributable livecd/dvd of your system)"
+     echo " "
+     echo "   sudo remastersys dist cdfs"
+     echo "                             (to make a distributable livecd/dvd filesystem only)"
+     echo " "
+     echo "   sudo remastersys dist iso custom.iso"
+     echo "                             (to make a distributable iso named custom.iso but only"
+     echo "                              if the cdfs is already present)"
+     echo " "
+     echo "   cdfs and iso options should only be used if you wish to modify something on the"
+     echo "   cd before the iso is created.  An example of this would be to modify the isolinux"
+     echo "   portion of the livecd/dvd"
+     echo " "
+     exit 1
+     ;;
+
+esac
+
+
+cdfs (){
+
+# Step 3 - Create the CD tree in $WORKDIR/ISOTMP
+echo "Checking if the $WORKDIR folder has been created"
+if [ -d "$WORKDIR" ]; then
+rm -rf $WORKDIR/dummysys/var/*
+rm -rf $WORKDIR/dummysys/etc/*
+else
+mkdir -p $WORKDIR/ISOTMP/live
+mkdir -p $WORKDIR/ISOTMP/install
+mkdir -p $WORKDIR/ISOTMP/preseed
+mkdir -p $WORKDIR/dummysys/dev
+mkdir -p $WORKDIR/dummysys/etc/live
+mkdir -p $WORKDIR/dummysys/proc
+mkdir -p $WORKDIR/dummysys/tmp
+mkdir -p $WORKDIR/dummysys/sys
+mkdir -p $WORKDIR/dummysys/mnt
+#mkdir -p $WORKDIR/dummysys/media/cdrom
+mkdir -p $WORKDIR/dummysys/media
+mkdir -p $WORKDIR/dummysys/run
+mkdir -p $WORKDIR/dummysys/var
+chmod ug+rwx,o+rwt $WORKDIR/dummysys/tmp
+
+fi
+
+
+
+
+echo "Copying /var and /etc to temp area and excluding extra files"
+
+if [ "$EXCLUDES" != "" ]; then
+for addvar in $EXCLUDES ; do
+VAREXCLUDES="$VAREXCLUDES --exclude='$addvar' "
+done
+fi
+
+# if this is kde, copy the adept_notifier_auto.desktop to /etc/remastersys so the installer can put it back as live-initramfs removes it altogether
+if [ -f /usr/share/autostart/adept_notifier_auto.desktop ]; then
+cp /usr/share/autostart/adept_notifier_auto.desktop /etc/remastersys/
+fi
+
+# copy trackerd stuff as live-initramfs disables it
+if [ -f /etc/xdg/autostart/tracker-applet.desktop ]; then
+cp /etc/xdg/autostart/tracker-applet.desktop /etc/remastersys
+fi
+if [ -f /etc/xdg/autostart/trackerd.desktop ]; then
+cp /etc/xdg/autostart/trackerd.desktop.xdg /etc/remastersys
+fi
+if [ -f /usr/share/autostart/trackerd.desktop ]; then
+cp /usr/share/autostart/trackerd.desktop.share /etc/remastersys
+fi
+
+#cleanup leftover live script if it exists
+if [ -f /etc/profile.d/zz-live.sh ]; then
+rm -f /etc/profile.d/zz-live.sh
+fi
+
+rsync --exclude='*.log.*' --exclude='*.pid' --exclude='*.bak' --exclude='*.[0-9].gz' --exclude='*.deb' $VAREXCLUDES-a /var/. $WORKDIR/dummysys/var/.
+rsync $VAREXCLUDES-a /etc/. $WORKDIR/dummysys/etc/.
+
+if [ "$1" = "dist" ]; then
+rm -f $WORKDIR/dummysys/etc/X11/xorg.conf
+rm -f $WORKDIR/dummysys/etc/resolv.conf
+rm -f $WORKDIR/dummysys/etc/hosts
+rm -f $WORKDIR/dummysys/etc/hostname
+fi
+
+rm -f $WORKDIR/dummysys/etc/mtab
+rm -f $WORKDIR/dummysys/etc/fstab
+rm -f $WORKDIR/dummysys/etc/udev/rules.d/70-persistent*
+ls $WORKDIR/dummysys/var/lib/apt/lists | grep -v ".gpg" | grep -v "lock" | grep -v "partial" | xargs -i rm $WORKDIR/dummysys/var/lib/apt/lists/{} ; 
+
+if [ "$1" = "dist" ]; then
+#fix for buggy debian live setup of gdm and gdm3
+if [ -f $WORKDIR/dummysys/etc/gdm/gdm.conf ]; then
+sed -i -e '/AutomaticLoginEnable/d' $WORKDIR/dummysys/etc/gdm/gdm.conf
+fi
+if [ -f $WORKDIR/dummysys/etc/gdm3/daemon.conf ]; then
+sed -i -e '/AutomaticLoginEnable/d' $WORKDIR/dummysys/etc/gdm3/daemon.conf
+fi
+if [ -f $WORKDIR/dummysys/etc/gdm/gdm.conf-custom ]; then
+echo "  " > $WORKDIR/dummysys/etc/gdm/gdm.conf-custom
+fi
+
+if [ -f /etc/X11/default-display-manager ]; then
+
+if [ "$SHOWICON" = "1" ]; then
+echo "Copying Install Icon to Desktop for live user"
+
+if [ ! -d $WORKDIR/dummysys/etc/skel/Desktop ]; then
+mkdir -p $WORKDIR/dummysys/etc/skel/Desktop
+fi
+
+if [ "`grep kdm /etc/X11/default-display-manager`" = "" ]; then
+cp /usr/share/applications/remastersys-installer.desktop $WORKDIR/dummysys/etc/skel/Desktop/
+chmod +x $WORKDIR/dummysys/etc/skel/Desktop/remastersys-installer.desktop
+else
+cp /usr/share/applications/remastersys-installer-kde.desktop $WORKDIR/dummysys/etc/skel/Desktop/
+chmod +x $WORKDIR/dummysys/etc/skel/Desktop/remastersys-installer-kde.desktop
+fi
+
+fi
+
+fi
+
+
+rm -f $WORKDIR/dummysys/etc/group
+rm -f $WORKDIR/dummysys/etc/group-
+rm -f $WORKDIR/dummysys/etc/passwd
+rm -f $WORKDIR/dummysys/etc/passwd-
+rm -f $WORKDIR/dummysys/etc/shadow
+rm -f $WORKDIR/dummysys/etc/shadow-
+rm -f $WORKDIR/dummysys/etc/gshadow
+rm -f $WORKDIR/dummysys/etc/gshadow-
+rm -f $WORKDIR/dummysys/etc/wicd/wired-settings.conf
+rm -f $WORKDIR/dummysys/etc/wicd/wireless-settings.conf
+rm -rf $WORKDIR/dummysys/etc/NetworkManager/system-connections/*
+rm -f $WORKDIR/dummysys/etc/printcap
+rm -f $WORKDIR/dummysys/etc/cups/printers.conf
+touch $WORKDIR/dummysys/etc/printcap
+touch $WORKDIR/dummysys/etc/cups/printers.conf
+rm -rf $WORKDIR/dummysys/var/cache/gdm/*
+rm -rf $WORKDIR/dummysys/var/lib/sudo/*
+rm -rf $WORKDIR/dummysys/var/run/console/*
+rm -f $WORKDIR/dummysys/var/lib/kdm/kdmsts
+rm -f $WORKDIR/dummysys/var/lib/AccountsService/users/*
+rm -f $WORKDIR/dummysys/etc/gdm/gdm.conf-custom
+rm -f $WORKDIR/dummysys/etc/gdm/custom.conf
+rm -f $WORKDIR/dummysys/etc/cups/ssl/server.crt
+rm -f $WORKDIR/dummysys/etc/cups/ssl/server.key
+rm -f $WORKDIR/dummysys/etc/ssh/ssh_host_rsa_key
+rm -f $WORKDIR/dummysys/etc/ssh/ssh_host_dsa_key.pub
+rm -f $WORKDIR/dummysys/etc/ssh/ssh_host_dsa_key
+rm -f $WORKDIR/dummysys/etc/ssh/ssh_host_rsa_key.pub
+
+
+find $WORKDIR/dummysys/var/run $WORKDIR/dummysys/var/log $WORKDIR/dummysys/var/mail $WORKDIR/dummysys/var/spool $WORKDIR/dummysys/var/lock $WORKDIR/dummysys/var/backups $WORKDIR/dummysys/var/tmp -type f -exec rm '{}' \;
+
+#further cleanup
+rm -rf $WORKDIR/dummysys/var/cache/gdm/*
+rm -rf $WORKDIR/dummysys/var/tmp/kdecache*
+rm -rf $WORKDIR/dummysys/var/spool/gfax/*
+rm -rf $WORKDIR/dummysys/var/run/gdm3/*
+rm -rf $WORKDIR/dummysys/var/lib/sudo/*
+rm -rf $WORKDIR/dummysys/var/lib/polkit-1/localauthority/10-vendor.d/10-live-cd.pkla
+
+
+#fix for live scripts setup Contributed by AnthLee of SalineOS
+rm -rf $WORKDIR/dummysys/var/lib/live/config/*
+
+for i in dpkg.log lastlog mail.log syslog auth.log daemon.log faillog lpr.log mail.warn user.log boot debug mail.err messages wtmp bootstrap.log dmesg kern.log mail.info
+do
+        touch $WORKDIR/dummysys/var/log/${i}
+done
+
+# remove the non system users on the passwd and group files and copy them to dummysys
+
+# see if any temp users left over from previous versions of remastersys as the process has now changed
+
+grep '^[^:]*:[^:]*:[5-9][0-9][0-9]:' /etc/passwd | awk -F ":" '{print "/usr/sbin/userdel -f",$1}'> $WORKDIR/cleantmpusers
+. $WORKDIR/cleantmpusers
+
+grep '^[^:]*:[^:]*:[0-9]:' /etc/passwd >> $WORKDIR/dummysys/etc/passwd
+grep '^[^:]*:[^:]*:[0-9][0-9]:' /etc/passwd >> $WORKDIR/dummysys/etc/passwd
+grep '^[^:]*:[^:]*:[0-9][0-9][0-9]:' /etc/passwd >> $WORKDIR/dummysys/etc/passwd
+grep '^[^:]*:[^:]*:[3-9][0-9][0-9][0-9][0-9]:' /etc/passwd >> $WORKDIR/dummysys/etc/passwd
+
+grep '^[^:]*:[^:]*:[0-9]:' /etc/group >> $WORKDIR/dummysys/etc/group
+grep '^[^:]*:[^:]*:[0-9][0-9]:' /etc/group >> $WORKDIR/dummysys/etc/group
+grep '^[^:]*:[^:]*:[0-9][0-9][0-9]:' /etc/group >> $WORKDIR/dummysys/etc/group
+grep '^[^:]*:[^:]*:[3-9][0-9][0-9][0-9][0-9]:' /etc/group >> $WORKDIR/dummysys/etc/group
+
+grep '^[^:]*:[^:]*:[5-9][0-9][0-9]:' /etc/passwd | awk -F ":" '{print $1}'> $WORKDIR/tmpusers1
+grep '^[^:]*:[^:]*:[1-9][0-9][0-9][0-9]:' /etc/passwd | awk -F ":" '{print $1}'> $WORKDIR/tmpusers2
+grep '^[^:]*:[^:]*:[1-2][0-9][0-9][0-9][0-9]:' /etc/passwd | awk -F ":" '{print $1}'> $WORKDIR/tmpusers3
+
+cat $WORKDIR/tmpusers1 $WORKDIR/tmpusers2 $WORKDIR/tmpusers3 > $WORKDIR/tmpusers
+
+cat $WORKDIR/tmpusers | while read LINE ;do
+
+echo $LINE | xargs -i sed -e 's/,{}//g' $WORKDIR/dummysys/etc/group > $WORKDIR/dummysys/etc/group.new1
+echo $LINE | xargs -i sed -e 's/{},//g' $WORKDIR/dummysys/etc/group.new1 > $WORKDIR/dummysys/etc/group.new2
+echo $LINE | xargs -i sed -e 's/{}//g' $WORKDIR/dummysys/etc/group.new2 > $WORKDIR/dummysys/etc/group
+
+rm -rf $WORKDIR/dummysys/etc/group.new1 $WORKDIR/dummysys/etc/group.new2
+
+done
+
+fi
+
+# copy over some of the necessary stuff for the livecd
+
+if [ -f /etc/remastersys/preseed/*.seed ]; then
+cp /etc/remastersys/preseed/* $WORKDIR/ISOTMP/preseed/
+fi
+
+#BOOT Type selected is GRUB
+if [ "$ISOBOOT" = "GRUB" ]; then
+
+cp /etc/remastersys/isolinux/memtest.bin $WORKDIR/ISOTMP/memtest.bin
+
+mkdir -p $WORKDIR/ISOTMP/boot/grub
+mkdir -p $WORKDIR/ISOTMP/usr/share/grub
+cp -a /boot/grub/* $WORKDIR/ISOTMP/boot/grub/
+cp -a /usr/share/grub/* $WORKDIR/ISOTMP/usr/share/grub/
+cp /etc/remastersys/grub/grub.cfg $WORKDIR/ISOTMP/boot/grub/grub.cfg
+cp /etc/remastersys/grub.png $WORKDIR/ISOTMP/boot/grub/grub.png
+
+sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/boot/grub/grub.cfg
+
+if [ ! -d /etc/plymouth ]; then
+
+sed -i -e 's/splash//g' $WORKDIR/ISOTMP/boot/grub/grub.cfg
+
+fi
+
+
+
+else
+#BOOT Type selected is ISOLINUX
+
+mkdir -p $WORKDIR/ISOTMP/isolinux
+
+if [ `ls /etc/remastersys/customisolinux` ]; then
+
+cp /etc/remastersys/customisolinux/* $WORKDIR/ISOTMP/isolinux/
+
+else
+
+cp /etc/remastersys/isolinux/* $WORKDIR/ISOTMP/isolinux/
+
+sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/isolinux/menu.cfg
+
+if [ ! -d /etc/plymouth ]; then
+
+sed -i -e 's/splash//g' $WORKDIR/ISOTMP/isolinux/live.cfg
+
+fi
+
+fi
+
+fi
+
+sleep 1
+
+
+# Step 4 - Prepare live.conf depending on whether this is a backup or dist
+
+if [ "$1" = "backup" ]; then
+LIVEUSER="`grep '^[^:]*:[^:]*:1000:' /etc/passwd | awk -F ":" '{ print $1 }'`"
+
+#fix Thunar volmanrc for live
+for i in `ls -d /home/*`; do
+
+if [ /$i/.config/Thunar/volmanrc ]; then
+  sed -i -e 's/TRUE/FALSE/g' /$i/.config/Thunar/volmanrc
+  cp -f /$i/.config/volmanrc /root/.config/Thunar/volmanrc
+fi
+
+done
+
+fi
+if [ ! -d /etc/live ]; then
+mkdir -p /etc/live
+fi
+
+echo "export LIVE_USERNAME=\"$LIVEUSER\"" > /etc/live/config.conf
+echo "export LIVE_USER_FULLNAME=\"Live session user\"" >> /etc/live/config.conf
+echo "export LIVE_HOSTNAME=\"$LIVEUSER\"" >> /etc/live/config.conf
+if [ "$1" = "backup" ]; then
+echo "export LIVE_NOCONFIGS=\"user-setup,sudo,locales,locales-all,tzdata,gdm,gdm3,kdm,lightdm,lxdm,nodm,slim,xinit,keyboard-configuration,gnome-panel-data,gnome-power-manager,gnome-screensaver,kde-services,debian-installer-launcher,login\"" >> /etc/live/config.conf
+fi
+
+#fix for a bug in the debian live boot scripts that starts a second X server
+if [ "$1" = "dist" ] && [ -f /etc/X11/default-display-manager ]; then
+echo "export LIVE_NOCONFIGS=\"xinit\"" >> /etc/live/config.conf
+fi
+
+cp /etc/live/config.conf $WORKDIR/dummysys/etc/live/
+
+sleep 1
+
+#fix for policy kit in live
+sed -i -e 's/ResultAny=no/ResultAny=yes/g' /lib/live/config/1100-policykit
+sed -i -e 's/ResultInactive=no/ResultInactive=yes/g' /lib/live/config/1100-policykit
+
+
+
+echo "Setting up live options for $1 mode"
+
+# make a new initial ramdisk including the live scripts
+update-initramfs -t -c -k $(uname -r)
+
+echo "Copying your kernel and initrd for the livecd"
+cp /boot/vmlinuz-$(uname -r) $WORKDIR/ISOTMP/live/vmlinuz
+cp /boot/initrd.img-$(uname -r) $WORKDIR/ISOTMP/live/initrd.img
+
+# Step 5 - Make filesystem.squashfs
+
+if [ -f $WORKDIR/remastersys.log ]; then
+rm -f $WORKDIR/remastersys.log
+touch $WORKDIR/remastersys.log
+fi
+
+
+if [ -f $WORKDIR/ISOTMP/live/filesystem.squashfs ]; then
+rm -f $WORKDIR/ISOTMP/live/filesystem.squashfs
+fi
+
+echo "Creating filesystem.squashfs   ... this will take a while so be patient"
+
+if [ "$SQUASHFSOPTS" = "" ]; then
+SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M"
+fi
+
+REALFOLDERS=""
+
+for d in `ls -d $WORKDIR/dummysys/*`; do
+REALFOLDERS="$REALFOLDERS $d"
+done
+
+if [ "$1" = "backup" ]; then
+
+for d in `ls / | grep -v etc | grep -v run | grep -v tmp | grep -v sys | grep -v var \
+| grep -v dev | grep -v media | grep -v mnt | grep -v lost+found | grep -v proc`; do
+REALFOLDERS="$REALFOLDERS /$d"
+done
+
+else
+
+for d in `ls / | grep -v etc | grep -v run | grep -v tmp | grep -v sys | grep -v var \
+| grep -v dev | grep -v media | grep -v mnt | grep -v lost+found | grep -v proc \
+| grep -v home`; do
+REALFOLDERS="$REALFOLDERS /$d"
+done
+
+fi
+
+mksquashfs $REALFOLDERS $WORKDIR/ISOTMP/live/filesystem.squashfs -no-duplicates $SQUASHFSOPTS -e \
+root/.thumbnails \
+root/.cache \
+root/.bash_history \
+root/.lesshst \
+root/.nano_history \
+boot/grub \
+$BASEWORKDIR $EXCLUDES 2>>$WORKDIR/remastersys.log
+
+
+if [ "$1" = "backup" ]; then
+#return Thunar volmanrc back to normal
+for i in `ls -d /home/*`; do
+
+if [ /$i/.config/Thunar/volmanrc ]; then
+  sed -i -e 's/FALSE/TRUE/g' /$i/.config/Thunar/volmanrc
+  cp -f /$i/.config/volmanrc /root/.config/Thunar/volmanrc
+fi
+
+done
+
+fi
+
+
+sleep 1
+
+
+
+#add some stuff the log in case of problems so I can troubleshoot it easier
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "Mount information" >>$WORKDIR/remastersys.log
+mount >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "df information" >>$WORKDIR/remastersys.log
+df -h >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "/etc/remastersys.conf info" >>$WORKDIR/remastersys.log
+cat /etc/remastersys.conf >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "/etc/live/config.conf info" >>$WORKDIR/remastersys.log
+cat /etc/live/config.conf >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "/etc/passwd info" >>$WORKDIR/remastersys.log
+cat $WORKDIR/dummysys/etc/passwd >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "/etc/group info" >>$WORKDIR/remastersys.log
+cat $WORKDIR/dummysys/etc/group >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "/etc/skel info" >>$WORKDIR/remastersys.log
+find /etc/skel/ >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "/etc/X11/default-display-manager info" >>$WORKDIR/remastersys.log
+cat /etc/X11/default-display-manager >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "Remastersys Version info" >>$WORKDIR/remastersys.log
+cat /etc/remastersys/remastersys.version >>$WORKDIR/remastersys.log
+echo "-----------------------------------------------------" >>$WORKDIR/remastersys.log
+echo "Command-line options = $@" >>$WORKDIR/remastersys.log
+echo "------------------------------------------------------" >>$WORKDIR/remastersys.log
+
+
+sleep 1
+
+#checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file" 
+SQUASHFSSIZE=`ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
+echo " The compressed filesystem is larger than the iso9660 specification allows for a single file. You must try to reduce the amount of data you are backing up and try again."
+echo " The compressed filesystem is larger than the iso9660 specification allows for a single file. You must try to reduce the amount of data you are backing up and try again.">>$WORKDIR/remastersys.log
+
+exit 1
+fi
+
+
+}
+
+iso (){
+
+CREATEISO="`which mkisofs`"
+if [ "$CREATEISO" = "" ]; then
+CREATEISO="`which genisoimage`"
+fi
+
+# check to see if the cd filesystem exists
+
+if [ ! -f "$WORKDIR/ISOTMP/live/filesystem.squashfs" ]; then
+echo "The cd filesystem is missing.  Either there was a problem creating the compressed filesystem or you are trying to run sudo remastersys dist iso before sudo remastersys dist cdfs"
+echo "The cd filesystem is missing.  Either there was a problem creating the compressed filesystem or you are trying to run sudo remastersys dist iso before sudo remastersys dist cdfs" >>$WORKDIR/remastersys.log
+
+exit 1
+fi
+
+#checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file" 
+SQUASHFSSIZE=`ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
+echo " The compressed filesystem is larger than the iso9660 specification allows for a single file. You must try to reduce the amount of data you are backing up and try again."
+echo " The compressed filesystem is larger than the iso9660 specification allows for a single file. You must try to reduce the amount of data you are backing up and try again.">>$WORKDIR/remastersys.log
+
+exit 1
+fi
+
+
+
+#isolinux mode
+
+sleep 1
+
+# Step 6 - Make the ISO file
+
+if [ "$ISOBOOT" = "GRUB" ]; then
+
+echo "Creating $CUSTOMISO in $WORKDIR using grub-mkrescue"
+echo "Creating $CUSTOMISO in $WORKDIR using grub-mkrescue" >>$WORKDIR/remastersys.log
+grub-mkrescue -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+
+
+else
+echo "Creating $CUSTOMISO in $WORKDIR using $CREATEISO"
+echo "Creating $CUSTOMISO in $WORKDIR using $CREATEISO" >>$WORKDIR/remastersys.log
+$CREATEISO    \
+ -quiet \
+ -r    \
+ -V "$LIVECDLABEL"    \
+ -cache-inodes    \
+ -J    \
+ -l    \
+ -b isolinux/isolinux.bin    \
+ -c isolinux/boot.cat    \
+ -no-emul-boot    \
+ -boot-load-size 4    \
+ -boot-info-table    \
+ -o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+
+# create hybrid iso so it can be dd installed to a usb flash drive
+
+echo "Making the iso into a hybrid image so it can be imaged to a usb key or burned to optical media"
+
+isohybrid $WORKDIR/$CUSTOMISO
+fi
+# create the md5 sum file so the user doesn't have to - this is good so the iso file can later be tested to ensure it hasn't become corrupted
+
+
+echo "Creating $CUSTOMISO.md5 in $WORKDIR"
+echo "Creating $CUSTOMISO.md5 in $WORKDIR" >>$WORKDIR/remastersys.log
+
+cd $WORKDIR
+md5sum $CUSTOMISO > $CUSTOMISO.md5
+
+sleep 1
+
+
+echo "$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
+echo " "
+echo "Check the size and if it is larger than 700MB you will need to burn it to a dvd"
+echo " "
+ls -hs $WORKDIR/$CUSTOMISO
+ls -hs $WORKDIR/$CUSTOMISO >> $WORKDIR/remastersys.log
+echo " " 
+echo "It is recommended to run 'sudo remastersys clean' once you have burned and tested the $CUSTOMISO"
+echo " "
+
+
+}
+
+# check to see if either iso or cdfs options have been invoked and proceed accordingly
+
+if [ "$2" = "iso" ]; then
+iso $@
+elif [ "$2" = "cdfs" ]; then
+cdfs $@
+else
+cdfs $@
+iso $@
+fi
+
+
+
+
+exit 0

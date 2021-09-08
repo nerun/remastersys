@@ -1,0 +1,15 @@
+
+[Desktop Entry]
+Name=Remastersys USB Startup Disk Tool
+GenericName=USB Startup Disk Tool
+Comment=USB Startup Disk Tool
+Exec=kdesu /usr/bin/remastersys-usb-key-copy-tool
+Icon=/usr/share/icons/remastersys.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Encoding=UTF-8
+Categories=System
+OnlyShowIn=KDE
+X-KDE-SubstituteUID=true
+

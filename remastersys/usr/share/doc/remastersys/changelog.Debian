@@ -1,0 +1,45 @@
+remastersys (2.0.24-1) unstable; urgency=low
+
+    * 2.0.24
+    * fixed some code anomalies and leftovers
+    * changed fstab mounting to be by dev instead of uuid due to uuid bugs
+    * fixed some code for omissions
+    * added localization setup in the installer
+
+    * 2.0.23
+    * Fixed the installer list dialogs so users have to choose an option since not choosing an option is pointless
+    * Changed the installer dialogs to be dynamically sized for all but the list dialogs
+    * Fixed the issue with fstab when installing from usb as the cdrom was not correctly identified
+    * Added a noformat option for /home partition setup as requested
+    * Added a config file /etc/remastersys/remastersys-installer.conf where the DEFAULTGROUPS for the installer's user creation can be customized
+    * Added the usb creator tool
+    * Added the nomodeset radeon.modeset=0 nouveau.modeset=0 to the failsafe boot option for live.cfg
+    * Changed the default timeout to 10 seconds for live auto start
+
+    * 2.0.22
+    * Fixed isohybrid code to actually make the iso a hybrid one
+    * Added Extra question for the Time Setting in the installer for setting UTC in /etc/default/rcS
+
+    * 2.0.21
+    * Fixed leftover live config issue with thanks to AnthLee of SalineOS for the fix
+    * Fixed installer home partition issue
+    * Fixed grub restore issue and grub install issue
+    * Added slim.conf cleanup for installer
+    * Added lxdm config cleanup for installer
+    * Fixed gdm and gdm live issue and cleanup for live with thanks to Gmaq of AVLinux for the request
+    * Added a fix for a Thunar volmanrc problem for backup mode with thanks to AnthLee of SalineOS for the request
+    * Added better information to the remastersys.log output
+    * Added code to make the iso file a hybrid iso that can used as an image for usb or normal iso for optical media
+    * Created Timezone config within the installer so it doesn't just use a dpkg-reconfigure tzdata which makes it better for gui    
+
+    * 2.0.20
+    * New Version for Squeeze
+    * Updated the installer to include an option for ext3 or ext4 filesystems
+    * updated remastersys-grubconfig for grub-pc
+    * updated isolinux boot config
+    * modified deps due to new live packages in squeeze
+
+    * First release.
+
+ -- Tony Brijeski <tb6517@yahoo.com>  Sat, 03 Jan 2009 02:33:53 -0500
+
