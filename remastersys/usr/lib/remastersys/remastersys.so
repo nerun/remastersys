@@ -1,0 +1,10 @@
+# Color codes
+colorLRed="\e[91m"
+colorLGreen="\e[92m"
+colorLYellow="\e[93m"
+colorLBlue="\e[94m"
+colorLMagenta="\e[95m"
+colorLCyan="\e[96m"
+colorOrange="\e[38;5;214m"
+colorEND="\e[0m"
+

@@ -1,9 +1,8 @@
- Remastersys
+REMASTERSYS
 
-- a tool to create a livecd/dvd from a working Debian install
+A tool to create a Live CD/DVD from a working Debian install.
 
-For more information, please visit http://www.remastersys.com
-
+For more information, please visit <https://github.com/Nerun/remastersys>.
 
 Regards,
-Tony Brijeski aka Fragadelic
+Daniel Dias Rodrigues, a.k.a. "Nerun".

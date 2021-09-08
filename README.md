@@ -1,40 +1,35 @@
-# Welcome to Remastersys
+# REMASTERSYS
 
-<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 7 (Wheezy)" src="https://img.shields.io/badge/System-Debian%207%20(Wheezy)-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 3.0.0-1" src="https://img.shields.io/badge/Version-3.0.0--1-orange" /></a>
+<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0.0 alpha" src="https://img.shields.io/badge/Version-4.0.0%20alpha-orange" /></a>
 
-**A Unique Linux Backup to Live Media Tool for Debian and Ubuntu**
+**Remastersys** is a tool that can be used to do two things with an existing Linux Debian installation:
 
-*Contrary to some rumours floating around the internet, Remastersys is alive and well*
+* A full system backup, including personal data, to a Live CD/DVD that you can use anywhere and install.
+* A distributable copy you can share with friends. This will not have any of your personal user data in it.
 
-## What is remastersys?
+This is a fork of the famous [Remastersys (ver. 3.0.0-1)](https://web.archive.org/web/20110628083055/http://www.remastersys.com/), developed by Tony "Fragadelic" Brijeski and discontinued in early 2013.
 
-Remastersys is a tool that can be used to do 2 things with an existing Debian, Ubuntu or derivative installation.
+Just burn your Distro or Backup image onto a CD/DVD media or a USB stick (with programs like [Balena Etcher](https://www.balena.io/etcher/)), then insert the media/pendrive into the PC and reboot.
 
-1. It can make a full system backup including personal data to a live cd or dvd that you can use anywhere and install.
-2. It can make a distributable copy you can share with friends. This will not have any of your personal user data in it.
+## Current state
 
-The resulting iso file can be used on any other PC that still meets the original minimum requirements of Ubuntu or Debian. Things like the graphics card and other hardware will be configured and setup automatically and you do not have to use identical hardware. Ubuntu's live boot tool, casper, currently blacklists Nvidia and AMD proprietary drivers so they will not be available on the live system and will need to be reinstalled after installation of your custom system.
+The program is still **under development, with many bugs**. However, it is already possible to see many new features compared to the original **remastersys**:
 
-Currently there is a size limitation imposed by the genisomage tool in Ubuntu and Debian. This tool is used to create the iso file. This limits the maximum single file size for the iso to be set at 4GB which means the entire compressed filesystem.squashfs file (your complete compressed system) must fall under this size. If it does not then the iso file will not be created. It is recommended to remove most media files and any virtual machine hard drives like the ones used by qemu, Virtual Box, etc off the system while you run the backup mode or make sure you add these files to the excludes in the /etc/remastersys.conf file either manually or through the gui. Due to the size restriction it is best to think of Remastersys Backup as a tool to backup your applications and your personal config files while leaving your media files, etc out of it as they can be easily backed up to a dvd or external portable drive and copied back afterwards.
+* Internationalization (scripts, menu entries and desktop files): default language is English, but it is possible to create locales for other languages, such as pt_BR, which is already available.
+* All scripts have been revised, improving source code formatting and several minor performance improvements.
+* Updated Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7).
+* Improved terminal messages, with removal of many small errors and visual improvements. Many improvements are being made to the GUI as well.
+* Updated icons and images.
+* Improved man pages.
+* Removed plymouth. I don't know what it's for, I can reinsert it in the future.
+* Removed gksu/gksudo support, using sudo by default.
+* Updated dependencies:
+  * syslinux-utils : included to fix bug using isohybrid.
+  * live-config-systemd : included to work with systemd.
+  * xresprobe : removed since is no longer used.
 
-I personally use remastersys to make numerous backups of the computers I have at home running Ubuntu and Debian and also use it to create custom installs for the different needs of the PC's in my home.
+## Useful links
 
-# About this repository
+Not related to Remastersys or Debian, but usefull for GitHub:
 
-All of the above text (except for the GitHub badges) is an extract from the [www.remastersys.com](https://web.archive.org/web/20130423105647/http://www.remastersys.com/) website as it was on April 23, 2013. The website no longer exists and the provided link will redirect to a page archived by the "Internet Archive".
-
-**Remastersys** was developed by Tony "Fragadelic" Brijeski and discontinued in early 2013.
-
-**This is the begining of a fork**. The legacy version has been posted here for historical purposes, and to make it available both in the original debian package format and in it's source code (see [releases](https://github.com/nerun/remastersys/releases)).
-
-If you try to compile this code with the **package-creator** script provided here, you will notice that the size of the debian packages created are different from the size of the debian packages created by T. Brijeski. This is because in 2013 **dpkg-deb** still used **gzip** to compress debs, and today it uses **xzip**.
-
-The debian packages provided in the [releases](https://github.com/nerun/remastersys/releases) page are the original ones packaged by T. Brijeski.
-
-Do not try to install or run this program on current Debian, it will not work. [Version 3.0.0-1 was developed for Debian 7 (Wheezy)](https://web.archive.org/web/20131120070407/http://www.remastersys.com/forums/index.php?topic=3009.0). The purpose of this fork will be precisely to bring the program to the current versions of the Debian system.
-
-## About me
-
-Daniel Dias Rodrigues, a.k.a. "Nerun"
-
-You have downloaded this from https://github.com/nerun/remastersys.
+* [Shields IO](https://shields.io/) - create and add badges to your project

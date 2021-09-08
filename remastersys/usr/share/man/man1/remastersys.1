@@ -1,39 +1,110 @@
-.TH REMASTERSYS 1 "February 12, 2007" 
+.TH REMASTERSYS 1 "2021-09-04" "4.0" "Remastersys manual pages"
+
 .SH NAME
-remastersys \- script to make a bootable and installable live cd or dvd
+remastersys - script to make a bootable and installable Live CD/DVD
+
 .SH SYNOPSIS
-remastersys backup|clean|dist [cdfs|iso] [filename.iso]
-.br
-remastersys backup
-.br
-remastersys clean
-.br
-remastersys dist
-.br
-.br
- 
+\fBremastersys\fP [\fIcommand\fP] [\fIargs\fP] [\fIfile\fP]
+
 .SH DESCRIPTION
-Remastersys is a script used to make a bootable live cd or dvd from an
-installed Ubuntu system or derivative.
-.PP
-This manual page documents
-.BR remastersys .
-.B remastersys
-Makes a live cd or dvd iso file from and installed system
-.SS OPTIONS
+This man page documents \fBremastersys\fP, a script used to create, from an
+installed Debian system, a bootable and installable Live CD/DVD, which may
+contain either a Linux distribution based on your system, or a full backup copy
+of it.
+
+.SH OPTIONS
+There are \fIcommands\fP, there are (or not) \fIarguments\fP and there is (or
+not) a \fIfilename\fP.
+
+.SS Commands
+Entering one command, and only one, is mandatory:
+
 .TP
-.I backup
-Makes a complete system backup including the user folders.
+.B backup
+.br
+Makes a complete system backup \fIincluding\fP the users folders.
+
 .TP
-.I clean
-Cleans the temporary build directory.
+.B clean
+.br
+Deletes the temporary working directory.
+
 .TP
-.I dist
-Makes system backup minus the user folders.
-.SH AUTHOR
-Tony Brijeski - Copyright (c) 2007,2008
-.SH BUG REPORT
-Report bugs to tb6517@yahoo.com
+.B dist
+.br
+Makes a complete system backup \fIbut don't includes\fP the users folders.
+
+.SS Arguments
+Arguments are always optional. The CDFS and ISO arguments should only be used if
+you want to modify something on the CD before creating the ISO. An example would
+be modifying the isolinux portion of Live CD/DVD. If arguments are omitted, both
+CDFS and ISO will be created.
+
+.TP
+.I cdfs
+.br
+Creates the CD File System only. ISO will not be created.
+
+.TP
+.I iso
+.br
+Creates an ISO image as long as the CD File System has already been created.
+
+.SS Filename
+This is the output filename for the ISO to be created.
+
+.TP
+.I file
+.br
+It must end with the ".iso" extension. If this parameter is not provided, the
+ISO will be saved with the default name "remastersys.iso".
+
+.SH EXAMPLES
+.TP
+.B remastersys backup
+.br
+Creates a Live CD/DVD containing a backup of your system.
+
+.TP
+.B remastersys backup \fIcustom.iso\fP
+.br
+Creates a Live CD/DVD backup, and names the ISO as "custom.iso".
+
+.TP
+.B remastersys clean
+.br
+Deletes the working folder "/home/remastersys".
+
+.TP
+.B remastersys dist
+.br
+Creates a Live CD/DVD containing a distributable copy of your system.
+
+.TP
+.B remastersys dist \fIcdfs\fP
+.br
+Creates only the CD File System of yours Live CD/DVD distribution.
+
+.TP
+.B remastersys dist \fIiso custom.iso\fP
+.br
+Creates an ISO of the distribution with the name "custom.iso", as long as the
+CD File System has already been created.
+
+.SH AUTHORS
+Daniel Dias Rodrigues (from 2013 onwards)
+.br
+Tony "Fragadelic" Brijeski (from 2007 to 2012)
+
+.SH BUGS
+Please, report bugs to
+.MT danieldiasr@\:gmail.com
+Daniel Dias Rodrigues
+.ME .
+
 .SH URL
-http://www.remastersys.klikit-linux.com
+The remastersys development page can be found on GitHub:
+.br
+.UR https://github.com/nerun/remastersys
+.UE
 

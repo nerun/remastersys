@@ -1,35 +1,32 @@
 #!/bin/bash
-#
-#
-#  remastersys-grub-restore is a utility to restore grub on a PC
-#
-#
-#  Created by Tony "Fragadelic" Brijeski
-#
-#  Copyright 2008,2009,2010 Under the GNU GPL2 License
-#
-#  Originally Created September 12th,2008
-#
-#
-#
-#
+######################################################
+#                                                    #
+#  ReFiSeFuQui                                       #
+#    Copyright 2013 Under the GNU GPL2 License       #
+#    Fork of Remastersys                             #
+#    by Daniel "Nerun" Rodrigues                     #
+#                                                    #
+#  Remastersys                                       #
+#    Copyright 2007-2012 Under the GNU GPL2 License  #
+#    Originally Created February 12th, 2007          #
+#    by Tony "Fragadelic" Brijeski                   #
+#                                                    #
+######################################################
 
 #  This script requires either yad or dialog to run
-#
 
 # checking to make sure script is running with root privileges
 
 testroot="`whoami`"
 
 if [ "$testroot" != "root" ]; then
-echo " Must be run as root - exiting"
-exit 1
+	echo " Deve ser executado como superusuário. Saindo."
+	exit 1
 fi
 
-
-DIALOGMENU="`which yad` --window-icon=/usr/share/icons/remastersys.png --width=700 --height=400 --center"
-DIALOG="`which yad` --window-icon=/usr/share/icons/remastersys.png --center"
-TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/remastersys.png --title="
+DIALOGMENU="`which yad` --window-icon=/usr/share/icons/refisefuqui.png --width=700 --height=400 --center"
+DIALOG="`which yad` --window-icon=/usr/share/icons/refisefuqui.png --center --fixed"
+TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/refisefuqui.png --title="
 TEXT="--text="
 ENTRY="--entry "
 ENTRYTEXT="--entry-text "
@@ -37,152 +34,128 @@ MENU="--list --column=Pick --column=Info"
 YESNO=" --button=Yes:0 --button=No:1 "
 MSGBOX=" --button=Ok:0 "
 
-TITLETEXT="Remastersys Grub Restore"
-
+TITLETEXT="ReFiSeFuQui Restaurador Grub"
 
 if [ "$DIALOG" = "" ]; then
-echo "Cannot find dialog or yad.  Exiting."
-exit 1
+	echo "Não foi possível encontrar o dialog ou o yad. Saindo."
+	exit 1
 fi
 
-
-
-
-#
 #GUI MODE
-#
 #inform them what this is and ask if they want to continue
 
-$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"\n\nThis is a grub restore utility.\n\n\n\nDo you want to continue?"
+$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"\n\nEsta é uma ferramenta para restaurar o GRUB.\n\n\n\nDeseja continuar?"
 
 if [ $? != 0 ]; then
-exit 0
+	exit 0
 fi
 
-os-prober > /tmp/os-prober.remastersys
+os-prober > /tmp/os-prober.refisefuqui
 
-PARTITIONS=`cat /tmp/os-prober.remastersys | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
+PARTITIONS=`cat /tmp/os-prober.refisefuqui | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
 
 if [ ! -d /live ]; then
-
-partitiontext="current The_Partition_this_install_is_on"
-
+	partitiontext="current The_Partition_this_install_is_on"
 else
+	for i in `echo $PARTITIONS`; do
+		LINE=`cat /tmp/os-prober.refisefuqui | grep "$i"`
+		DEV=`echo $LINE | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
+		OSTITLE=`echo $LINE | awk -F ":" '{print $2}'`
+		OSTITLE=`echo $OSTITLE | sed -r "s/ /_/g"`
+		OSTYPE=`echo $LINE | awk -F ":" '{print $4}'`
 
-for i in `echo $PARTITIONS`; do
-LINE=`cat /tmp/os-prober.remastersys | grep "$i"`
-DEV=`echo $LINE | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
-OSTITLE=`echo $LINE | awk -F ":" '{print $2}'`
-OSTITLE=`echo $OSTITLE | sed -r "s/ /_/g"`
-OSTYPE=`echo $LINE | awk -F ":" '{print $4}'`
-if [ "$OSTYPE" = "linux" ]; then
-partitiontext="$partitiontext $DEV $OSTITLE"
+		if [ "$OSTYPE" = "linux" ]; then
+			partitiontext="$partitiontext $DEV $OSTITLE"
+		fi
+	done
 fi
-done
 
-fi
+rm /tmp/os-prober.refisefuqui
 
-rm /tmp/os-prober.remastersys
-
-TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found." Exit "Quit" $partitiontext`
+TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nSelecione uma partição na qual instalar ou restaurar o grub. Se a única opção que você vê é Sair, é porque nenhuma partição válida foi encontrada." Exit "Sair" $partitiontext`
 
 if [ "$?" = "0" ]; then
-TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
+	TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
 else
-exit 1
+	exit 1
 fi
 
 if [ "$TARGETPART" = "Exit" ]; then
-  $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nQuiting now."
-  exit 1
+	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nSaindo agora."
+	exit 1
 elif [ "$TARGETPART" = "current" ]; then
-TARGETPART=`mount | grep " / " | awk '{print $1}' | awk -F "/" '{print $3}'`
+	TARGETPART=`mount | grep " / " | awk '{print $1}' | awk -F "/" '{print $3}'`
 fi
 
-
 #grub location
-GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nPlease select where to install grub to.\n" mbr "Master Boot Record of first drive" root "Root partition of $TARGETPART" rootmbr "Master Boot Record of the root drive"`
+GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nSelecione onde instalar o GRUB.\n" mbr "Master Boot Record do primeiro disco" root "Partição raiz de $TARGETPART" rootmbr "Master Boot Record do drive raiz"`
 
 if [ "$?" = "0" ]; then
-GRUBLOCTEST=`echo $GRUBLOCTEST | cut -d "|" -f 1`
+	GRUBLOCTEST=`echo $GRUBLOCTEST | cut -d "|" -f 1`
 else
-exit 1
+	exit 1
 fi
 
 if [ "$GRUBLOCTEST" = "root" ]; then
-GRUBLOCTEXT="root partition of $TARGETPART"
-GRUBLOC="root"
+	GRUBLOCTEXT="partição raiz de $TARGETPART"
+	GRUBLOC="root"
 elif [ "$GRUBLOCTEST" = "rootmbr" ]; then
-GRUBLOCTEXT="mbr of root partition of $TARGETPART"
-GRUBLOC="rootmbr"
+	GRUBLOCTEXT="mbr da partição raiz de $TARGETPART"
+	GRUBLOC="rootmbr"
 else
-GRUBLOCTEXT="master boot record"
-GRUBLOC=""
+	GRUBLOCTEXT="master boot record"
+	GRUBLOC=""
 fi
 
+tail -f /usr/bin/refisefuqui-grub-restore |  $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --width 400 --pulsate $TEXT"Instalando o grub agora. Por favor aguarde..." &
 
-tail -f /usr/bin/remastersys-grub-restore |  $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --width 400 --pulsate $TEXT"Installing grub now.  Please wait..." &
-
-
-
-
-#
-#
-#
 #do the actual grub install/restore
-#
-#
-#
 
 GRUBDIR=`mount | grep $TARGETPART | awk '{print$3}'`
+
 if [ "$GRUBDIR" != "/" ]; then
-GRUBDIR="/tmp/remmnt/TARGET"
-#unmount and remount the partition on /tmp/remmnt/TARGET rw
-if [ "`mount | grep $TARGETPART`" ]; then
-umount /dev/$TARGETPART
-fi
-sleep 2
-if [ ! -d $GRUBDIR ]; then
-mkdir -p $GRUBDIR
-fi
-mount /dev/$TARGETPART $GRUBDIR -o rw
-sleep 2
+	GRUBDIR="/tmp/remmnt/TARGET"
+	#unmount and remount the partition on /tmp/remmnt/TARGET rw
 
-mount -o bind /proc $GRUBDIR/proc
-mount -o bind /dev $GRUBDIR/dev
-mount -o bind /sys $GRUBDIR/sys
+	if [ "`mount | grep $TARGETPART`" ]; then
+		umount /dev/$TARGETPART
+	fi
 
+	sleep 2
+
+	if [ ! -d $GRUBDIR ]; then
+		mkdir -p $GRUBDIR
+	fi
+
+	mount /dev/$TARGETPART $GRUBDIR -o rw
+	sleep 2
+
+	mount -o bind /proc $GRUBDIR/proc
+	mount -o bind /dev $GRUBDIR/dev
+	mount -o bind /sys $GRUBDIR/sys
 else
-
-GRUBDIR="/"
-
+	GRUBDIR="/"
 fi
 
-echo "Installing and setting up grub."
+echo "Instalando e configurando o GRUB."
+
 # Setup grub
-remastersys-grubconfig $GRUBDIR $GRUBLOC
+refisefuqui-grubconfig $GRUBDIR $GRUBLOC
 
-if [ "$GRUBDIR" != "" ]; then 
-umount $GRUBDIR/proc
-sleep 1
-umount $GRUBDIR/dev
-sleep 1
-umount $GRUBDIR/sys
-sleep 1
-umount $GRUBDIR
-sleep 1
-
+if [ "$GRUBDIR" != "" ]; then
+	umount $GRUBDIR/proc
+	sleep 1
+	umount $GRUBDIR/dev
+	sleep 1
+	umount $GRUBDIR/sys
+	sleep 1
+	umount $GRUBDIR
+	sleep 1
 fi
-
 
 killall -KILL tail
 killall -KILL yad
 
-
-
-$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nGrub has been installed/restored on $TARGETPART."
-
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nO GRUB foi instalado/restaurado em $TARGETPART."
 
 exit 0
-
-

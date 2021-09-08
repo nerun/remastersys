@@ -1,3 +1,201 @@
+refisefuqui (1.24) stable; urgency=low
+
+  * Inúmeras correções textuais na GUI e no terminal.
+  * Finalização da revisão da formatação do código.
+  * Atualização das imagens para ficarem menores.
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 04 Aug 2021 14:00:02 -0300
+
+refisefuqui (1.23) stable; urgency=low
+
+  * Revisões e melhorias na interface gráfica.
+  * Remoção completa do comando "remsu" (troca pelo "sudo").
+  * Renomeado o arquivo de versão e sua variável.
+
+ -- Nerun <nerunblogs@gmail.com>  Tue, 03 Aug 2021 13:38:34 -0300
+
+refisefuqui (1.22) stable; urgency=low
+
+  * Correção das permissões do arquivo de menu
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 20 Nov 2019 15:25:21 -0300
+
+refisefuqui (1.21) stable; urgency=low
+
+  * Melhorias no instalador
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 20 Nov 2019 10:14:41 -0300
+
+refisefuqui (1.20) stable; urgency=low
+
+  * Diversas correções e melhorias no script de instalação
+  * Melhorias no compilador
+
+ -- Nerun <nerunblogs@gmail.com>  Fri, 15 Nov 2019 12:06:27 -0300
+
+refisefuqui (1.19) stable; urgency=low
+
+  * Finalmente corrigido o bug do REMSU
+  * Limpeza de código, pra finalizar
+
+ -- Nerun <nerunblogs@gmail.com>  Fri, 01 Nov 2019 23:05:19 -0300
+
+refisefuqui (1.18) stable; urgency=low
+
+  * Correção do uso do pkexec
+
+ -- Nerun <nerunblogs@gmail.com>  Sat, 16 Feb 2019 23:09:35 -0300
+
+refisefuqui (1.17) stable; urgency=low
+
+  * Substituição do gksu pelo pkexec
+
+ -- Nerun <nerunblogs@gmail.com>  Sat, 16 Feb 2019 23:49:04 -0200
+
+refisefuqui (1.16) stable; urgency=low
+
+  * Corrigido bug no backup sobre o thunar e volmanrc
+
+ -- Nerun <nerunblogs@gmail.com>  Sat, 30 Sep 2017 21:16:57 -0300
+
+refisefuqui (1.15) stable; urgency=low
+
+  * Correção de bug no script da GUI.
+
+ -- Nerun <nerunblogs@gmail.com>  Fri, 21 Jul 2017 17:01:43 -0300
+
+refisefuqui (1.14) stable; urgency=low
+
+  * Atualização da imagem do GRUB
+  * Revisão de scripts: adicionando identação
+  * Correção de pequenos bugs
+
+ -- Nerun <nerunblogs@gmail.com>  Fri, 21 Jul 2017 16:31:11 -0300
+
+refisefuqui (1.13) stable; urgency=low
+
+  * Correção de bug no pacote da GUI que causava erro na instalação e na desinstalação.
+
+ -- Nerun <nerunblogs@gmail.com>  Thu, 20 Jul 2017 20:06:07 -0300
+
+refisefuqui (1.12) stable; urgency=low
+
+  * Separação da interface gráfica em outro pacote
+  * Atualização do copyright nos scripts
+
+ -- Nerun <nerunblogs@gmail.com>  Thu, 20 Jul 2017 19:47:45 -0300
+
+refisefuqui (1.11) stable; urgency=low
+
+  * Correção de janelas no script de instalação
+  * Adicionado "gksu" entre as dependências
+
+ -- Nerun <nerunblogs@gmail.com>  Tue, 04 Jul 2017 11:41:48 -0300
+
+refisefuqui (1.1.0) stable; urgency=low
+
+  * Mais correções no tamanho das janelas
+  * Remoção da dependência "xresprobe"
+
+ -- Nerun <nerunblogs@gmail.com>  Sun, 02 Jul 2017 22:35:36 -0300
+
+refisefuqui (1.0.9) stable; urgency=low
+
+  * Pequenas correções em textos
+  * Correção no tamanho das janelas de diálogo
+
+ -- Nerun <nerunblogs@gmail.com>  Sun, 02 Jul 2017 15:00:00 -0300
+
+refisefuqui (1.0.8) stable; urgency=low
+
+  * Mudança de dependências para funcionar com systemd
+
+ -- Nerun <nerunblogs@gmail.com>  Mon, 16 Feb 2015 15:10:00 -0300
+
+refisefuqui (1.0.7) stable; urgency=low
+
+  * Mudança da pasta de trabalho ("workdir")
+  * Tradução de algumas coisas que havia esquecido
+  * Pequena correção no tipo (DistCDFS/ISO em vez de Distcdfs/iso)
+
+ -- Nerun <nerunblogs@gmail.com>  Mon, 12 Jan 2015 00:35:00 -0300
+
+refisefuqui (1.0.6) stable; urgency=low
+
+  * Removido suporte ao Plymouth
+  * Fusão dos pacotes refisefuqui e refisefuqui-gui
+  * Pequena correção de texto na GUI
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 31 Dec 2014 00:01:00 -0300
+
+refisefuqui (1.0.5) stable; urgency=low
+
+  * Tradução dos botões Save/Back para Salvar/Voltar
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 13 Nov 2013 15:00:00 -0300
+
+refisefuqui (1.0.4) stable; urgency=low
+
+  * Tradução dos botões Yes/No para Sim/Não
+  * Remoção da pasta /etc/live após instalação
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 06 Nov 2013 17:04:00 -0300
+
+refisefuqui (1.0.3) stable; urgency=low
+
+  * Correção de bug na criação de usuário em Dist Mode
+
+ -- Nerun <nerunblogs@gmail.com>  Mon, 04 Nov 2013 00:01:00 -0300
+
+refisefuqui (1.0.2) stable; urgency=low
+
+  * Ajustes nos diálogos da interface (quebra de parágrafo etc)
+  * Adicionado site do programa ao diálogo "Sobre"
+
+ -- Nerun <nerunblogs@gmail.com>  Mon, 21 Oct 2013 14:05:00 -0300
+
+refisefuqui (1.0.1) stable; urgency=low
+
+  * Removida pasta /lib/live após instalação do Live CD
+  * Mais traduções de comandos da GUI
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 9 Oct 2013 15:30:00 -0300
+
+refisefuqui (1.0.0) stable; urgency=low
+
+  * <<Primeira versão>>
+  * <<Fork do Remastersys 3.0.0-1>>
+  * Adoção do nome "Criador de ReFiSeFuQui"
+  * Tradução de toda interface para português do Brasil
+  * Adicionados novos ícone e tela de início
+  * Adição do grupo sudo aos grupos padrões de usuário
+  * Língua pt_BR definida como padrão do Live CD
+  * Timezone America/Sao_Paulo definida como padrão do Live CD
+	
+  * First release
+
+ -- Nerun <nerunblogs@gmail.com>  Wed, 09 Oct 2013 15:00:00 -0300
+
+remastersys (3.0.0-1) unstable; urgency=low
+
+    * 3.0.0
+    * Added remastersys-gtk gui into the main remastersys package - changes and fixes as well
+    * Added plymouth theme generation
+    * Added grub background changing option
+    * Added live system menu background changing option
+    * Added option for Backup mode Install Icon
+    * Optimized stage 1 procedure
+    * Fixed vesamenu.32 call
+    * Removed ubiquity-frontend* from desktop manifest so it is removed after install and off original system so it doesn't have a bad menu item
+    * Added /etc/shadow and /etc/gshadow to fix the rescue boot mode issue with root access
+    * Added remastersys-skelcopy script
+    * Prevent unimportant failures from showing to the user
+    * Added more information to the remastersys.log
+    * Properly spaced the script out to make it easier to read for scripters
+    * Added check for working folder filesystem type as it has to be a valid linux filesystem
+
+ -- Tony Brijeski <tb6517@yahoo.com>  Sat, 02 Jan 2012 05:11:00 -0500
+
 remastersys (2.0.24-1) unstable; urgency=low
 
     * 2.0.24

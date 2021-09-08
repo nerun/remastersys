@@ -1,0 +1,21 @@
+#: remastersys-skelcopy:20
+msgid "USAGE:"
+msgstr ""
+#: remastersys-skelcopy:22
+msgid "   remastersys-skelcopy [username]"
+msgstr ""
+#: remastersys-skelcopy:23
+msgid "      (username is a valid user on the system)"
+msgstr ""
+#: remastersys-skelcopy:30
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
+#: remastersys-skelcopy:44
+msgid "Cleaning up /etc/skel of the files we will copy over."
+msgstr ""
+#: remastersys-skelcopy:65
+msgid "Copying config files to /etc/skel."
+msgstr ""
+#: remastersys-skelcopy:110
+msgid "$1 either not found or doesn't have a proper home folder. Exiting."
+msgstr ""

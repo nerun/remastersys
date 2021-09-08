@@ -1,10 +1,12 @@
 [Desktop Entry]
-Version=1.0
 Encoding=UTF-8
-Name=Live Installer
-GenericName=Live Installer
+Name=Remastersys Installer
+Name[pt_BR]=Remastersys - Instalador
+GenericName=System Backup
+GenericName[pt_BR]=Backup de Sistema
 Comment=Install live system to hard drive
-Exec=remsu /usr/bin/remastersys-installer gui
+Comment[pt_BR]=Instala um sistema de Live CD no disco rígido
+Exec=sudo /usr/bin/remastersys-installer gui
 Icon=/usr/share/pixmaps/remastersys-installer.png
 Terminal=false
 MultipleArgs=false
@@ -12,4 +14,3 @@ Type=Application
 Categories=GTK;System
 NotShowIn=KDE
 X-KDE-SubstituteUID=true
-GenericName[en_US]=System Backup

@@ -1,0 +1,421 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: remastersys-installer:20
+msgid "USAGE:"
+msgstr "USO:"
+
+#: remastersys-installer:22
+msgid "   remastersys-installer [OPTIONS]"
+msgstr "   remastersys-installer [OPÇÕES]"
+
+#: remastersys-installer:23
+msgid "      (must run as superuser)"
+msgstr "      (deve ser executado como superusuário)"
+
+#: remastersys-installer:25
+msgid "OPTIONS:"
+msgstr "OPÇÕES:"
+
+#: remastersys-installer:27
+msgid ""
+"   -g, --gui      - runs installer with a Graphical User Interface (GUI) "
+"using\\n\\t\\t    \\\"yad\\\"."
+msgstr ""
+"   -g, --gui      - executa o instalador com uma Interface Gráfica de\\n\\t"
+"\\t    Usuário (GUI) através do \\\"yad\\\"."
+
+#: remastersys-installer:28
+msgid "   -h, -?, --help - shows this help."
+msgstr "   -h, -?, --help - exibe esta ajuda."
+
+#: remastersys-installer:29
+msgid ""
+"\\t\\t  - if no option is provided installer will run in a terminal, but\\n"
+"\\t\\t    using \\\"dialog\\\" instead."
+msgstr ""
+"\\t\\t  - se nenhuma opção for fornecida o instalador será executado\\n\\t"
+"\\t    em um terminal, mas através do \\\"dialog\\\"."
+
+#: remastersys-installer:36
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
+"ERRO: Este script deve ser executado como superusuário. Tente com \\\"sudo\\"
+"\"."
+
+#: remastersys-installer:57
+msgid "Remastersys Installer"
+msgstr "Instalador do Remastersys"
+
+#: remastersys-installer:60
+msgid "Yes"
+msgstr "Sim"
+
+#: remastersys-installer:61
+msgid "No"
+msgstr "Não"
+
+#: remastersys-installer:62
+msgid "Pick"
+msgstr "Escolha"
+
+#: remastersys-installer:63
+msgid "Info"
+msgstr "Informação"
+
+#: remastersys-installer:72
+msgid "not found. Will be installed now."
+msgstr "não encontrado. Será instalado agora."
+
+#: remastersys-installer:108
+msgid "Could not find \\\"dialog\\\" or \\\"yad\\\". Exiting."
+msgstr "Não foi possível encontrar o \\\"dialog\\\" ou o \\\"yad\\\". Saindo."
+
+#: remastersys-installer:120
+msgid "$LIVECDLABEL Installer"
+msgstr "Instalador do $LIVECDLABEL"
+
+#: remastersys-installer:125
+msgid "Exit"
+msgstr "Sair"
+
+#: remastersys-installer:126
+msgid "Exit Installer"
+msgstr "Sair do Instalador"
+
+#: remastersys-installer:127
+msgid "Exiting installer now."
+msgstr "Saindo do instalador agora."
+
+#: remastersys-installer:128
+msgid ""
+"Select a drive to partition.\\nIf the only option you see is \\"
+"\"$ExitInstaller\\\" then no drive was found."
+msgstr ""
+"Selecione um drive para particionar.\\nSe a única opção que você vê é \\"
+"\"$ExitInstaller\\\" é porque nenhum drive foi encontrado."
+
+#: remastersys-installer:129
+msgid ""
+"Select a swap partition to use.\\nIf the only option you see is \\"
+"\"$ExitInstaller\\\" then no swap partition was found."
+msgstr ""
+"Selecione uma partição swap para usar.\\nSe a única opção que você vê é \\"
+"\"$ExitInstaller\\\" é porque nenhuma partição swap foi encontrada."
+
+#: remastersys-installer:130
+msgid ""
+"Select a partition to install the system on.\\nIf the only option you see is "
+"\\\"$ExitInstaller\\\" then no partition was found."
+msgstr ""
+"Selecione uma partição onde instalar o sistema.\\nSe a única opção que você "
+"vê é \\\"$ExitInstaller\\\" é porque nenhuma partição foi encontrada."
+
+#: remastersys-installer:131
+msgid "Select the file system type of the root partition."
+msgstr "Selecione o tipo de sistema de arquivos da partição raiz."
+
+#: remastersys-installer:132
+msgid "Passwords do not match. Try again."
+msgstr "As senhas não conferem. Tente de novo."
+
+#: remastersys-installer:133
+msgid ""
+"The current system language as well as the current keyboard layout will "
+"continue to be used by the installer until the end. However, you can change "
+"the language and keyboard layout that will be installed.\\n\\nDo you want to "
+"change?"
+msgstr ""
+"O idioma do sistema, bem como o layout do teclado atuais, continuarão a ser "
+"usados pelo instalador até o final. No entanto, você pode alterar o idioma e "
+"o layout do teclado que serão instalados.\\n\\nVocê deseja alterar?"
+
+#: remastersys-installer:134
+msgid "This is the Live CD installer.\\n\\nDo you want to continue?"
+msgstr "Este é o instalador do Live CD.\\n\\nVocê deseja continuar?"
+
+#: remastersys-installer:135
+msgid ""
+"Select a partition to install the /home folder on.\\nIf the only option you "
+"see is the root partition, then no other partitions were found."
+msgstr ""
+"Selecione uma partição para instalar a pasta /home.\\nSe a única opção que "
+"você vê é a partição raiz é porque nenhuma outra partição foi encontrada."
+
+#: remastersys-installer:136
+msgid "put /home on the root partition"
+msgstr "coloque /home na partição raiz"
+
+#: remastersys-installer:137
+msgid "Select the home partition file system type"
+msgstr "Selecione o tipo de sistema de arquivos da partição home"
+
+#: remastersys-installer:138
+msgid ""
+"Don't format the home partition - not recommended unless you know what "
+"you're doing"
+msgstr ""
+"Não formate a partição home - não recomendado a não ser que você saiba o que "
+"está fazendo"
+
+#: remastersys-installer:139
+msgid ""
+"We need to prepare the swap and install the partition now.\\n\\n"
+"$PARTITIONPROG will allow you to create the new partitions.\\n\\nYou must "
+"create or already have at least 1 system partition and 1 swap partition.\\n"
+"\\nIf you already have the partitions set up, just exit $PARTITIONPROG and "
+"the installation will continue.\\n\\nClick OK to continue."
+msgstr ""
+"Precisamos preparar o swap e instalar a partição agora.\\n\\n$PARTITIONPROG "
+"permitirá que você crie as novas partições.\\n\\nVocê deve criar ou já ter "
+"pelo menos 1 partição de sistema e 1 partição de troca.\\n\\nSe você já tem "
+"as partições configuradas, apenas saia de $PARTITIONPROG e a instalação "
+"continuará.\\n\\nClique em OK para continuar."
+
+#: remastersys-installer:140
+msgid ""
+"Please confirm if this information is correct:\\n\\nThe new user $TARGETUSER "
+"will be created in the partition $TARGETPART; the file system will be "
+"$FSTYPE; swap will be installed on the $SWAP partition; and,\\ngrub will be "
+"installed in $GRUBLOCTEXT.\\n\\nDo you want to proceed?"
+msgstr ""
+"Confirme se esta informação está correta:\\n\\nO novo usuário $TARGETUSER "
+"será criado na partição $TARGETPART; o sistema de arquivos será $FSTYPE; a "
+"swap será instalada na partição $SWAP; e,\\no grub será instalado em "
+"$GRUBLOCTEXT.\\n\\nDeseja prosseguir?"
+
+#: remastersys-installer:141
+msgid ""
+"Please confirm if this information is correct:\\n\\nYour backup will be "
+"installed on the $TARGETPART partition; the file system will be $FSTYPE; "
+"and, grub will be installed in $GRUBLOCTEXT.\\n\\nDo you want to proceed?"
+msgstr ""
+"Confirme se esta informação está correta:\\n\\nSeu backup será instalado na "
+"partição $TARGETPART; o sistema de arquivos será $FSTYPE; e o grub será "
+"instalado em $GRUBLOCTEXT.\\n\\nDeseja prosseguir?"
+
+#: remastersys-installer:142
+msgid "Root partition - safe choice if you use a different boot loader"
+msgstr ""
+"Partição raiz - escolha segura se você usa um gerenciador de boot diferente"
+
+#: remastersys-installer:143
+msgid ""
+"Root partition MBR - this is what you want for a pendrive/USB installation"
+msgstr ""
+"MBR da partição raiz - isso é o que você quer para uma instalação via "
+"pendrive/USB"
+
+#: remastersys-installer:144
+msgid ""
+"Is your system clock set to local time?\\n\\nResponding \\\"no\\\" will "
+"indicate that it is set to UTC."
+msgstr ""
+"O relógio do seu sistema está configurado para hora local?\\n\\nRespondendo "
+"\\\"não\\\" indicará que está configurado para UTC."
+
+#: remastersys-installer:145
+msgid "Select where to install grub.\\n"
+msgstr "Selecione onde instalar o grub.\\n"
+
+#: remastersys-installer:146
+msgid "Master Boot Record (MBR) of the disk"
+msgstr "Master Boot Record (MBR) do disco"
+
+#: remastersys-installer:147
+msgid "Select a time zone for your system"
+msgstr "Selecione um fuso horário para seu sistema"
+
+#: remastersys-installer:154
+msgid "$HOMEPART will be formatted in $HFSTYPE for use as /home"
+msgstr "$HOMEPART será formatada em $HFSTYPE para uso como /home"
+
+#: remastersys-installer:158
+msgid "$HOMEPART will not be formatted, but will be used as /home"
+msgstr "$HOMEPART não será formatada, mas será usada como /home"
+
+#: remastersys-installer:168
+msgid "root partition of $TARGETPART"
+msgstr "partição raiz de $TARGETPART"
+
+#: remastersys-installer:171
+msgid "root partition mbr of $TARGETPART"
+msgstr "mbr da partição raiz de $TARGETPART"
+
+#: remastersys-installer:174
+msgid "mbr of $GRUBLOCTEST"
+msgstr "mbr de $GRUBLOCTEST"
+
+#: remastersys-installer:178
+msgid "Unmounting and formatting the partition we are going to use."
+msgstr "Desmontando e formatando a partição que iremos usar."
+
+#: remastersys-installer:179
+msgid "Mounting the TARGET partition now."
+msgstr "Montando a partição TARGET agora."
+
+#: remastersys-installer:180
+msgid "Configuring SWAP... Please wait.\\n"
+msgstr "Configurando o SWAP... Por favor aguarde.\\n"
+
+#: remastersys-installer:181
+msgid "Formatting $TARGETPART... Please wait.\\n"
+msgstr "Formatando $TARGETPART... Por favor aguarde.\\n"
+
+#: remastersys-installer:182
+msgid "Formatting $HOME... Please wait.\\n"
+msgstr "Formatando $HOME... Por favor aguarde.\\n"
+
+#: remastersys-installer:183
+msgid "Copying files to disk... Please wait.\\n"
+msgstr "Copiando arquivos para o disco... Por favor aguarde.\\n"
+
+#: remastersys-installer:184
+msgid "Performing post-installation steps... Please wait.\\n"
+msgstr "Executando passos pós-instalação... Por favor aguarde.\\n"
+
+#: remastersys-installer:185
+msgid "Installing and configuring grub... Please wait.\\n"
+msgstr "Instalando e configurando o grub... Por favor aguarde.\\n"
+
+#: remastersys-installer:344
+msgid "Enter the root password."
+msgstr "Digite a senha do root."
+
+#: remastersys-installer:354
+msgid "Enter the root password again."
+msgstr "Redigite a senha do root."
+
+#: remastersys-installer:373
+msgid ""
+"Enter the full name of the new user to be configured on the installed system."
+msgstr ""
+"Digite o nome completo do novo usuário a ser configurado no sistema "
+"instalado."
+
+#: remastersys-installer:383
+msgid ""
+"Enter the username of the new user to be configured on the installed system."
+"\\nLowercase letters only."
+msgstr ""
+"Digite o nome de login do novo usuário a ser configurado no sistema "
+"instalado.\\nLetras minúsculas apenas."
+
+#: remastersys-installer:402
+msgid "Enter a password for $TARGETUSER."
+msgstr "Digite a senha para $TARGETUSER."
+
+#: remastersys-installer:412
+msgid "Retype the password of $TARGETUSER."
+msgstr "Redigite a senha para $TARGETUSER."
+
+#: remastersys-installer:432
+msgid "Enter the hostname of the system to be installed"
+msgstr "Digite o nome do host do sistema a ser instalado"
+
+#: remastersys-installer:549
+msgid ""
+"Yad not found. You can still use the installer in text-mode by typing \\"
+"\"sudo remastersys-installer\\\" in a terminal."
+msgstr ""
+"O yad não foi encontrado. Você ainda pode usar o instalador em modo texto "
+"digitando \\\"sudo remastersys-installer\\\" em um terminal."
+
+#: remastersys-installer:691
+msgid "Password for root"
+msgstr "Senha para o root"
+
+#: remastersys-installer:692
+msgid "Password for root (retype)"
+msgstr "Senha para o root (redigite)"
+
+#: remastersys-installer:693
+msgid "New user's full name"
+msgstr "Nome completo do novo usuário"
+
+#: remastersys-installer:694
+msgid "New user's username"
+msgstr "Nome de login do novo usuário"
+
+#: remastersys-installer:695
+msgid "Password for new user"
+msgstr "Senha para novo usuário"
+
+#: remastersys-installer:696
+msgid "Password for new user (retype)"
+msgstr "Senha para novo usuário (redigite)"
+
+#: remastersys-installer:697
+msgid "Hostname for the computer"
+msgstr "Nome do host para o computador"
+
+#: remastersys-installer:732
+msgid "Root password in blank."
+msgstr "Senha do root em branco."
+
+#: remastersys-installer:734
+msgid "Passwords entered for Root do not match."
+msgstr "As senhas digitadas para o root não conferem."
+
+#: remastersys-installer:736
+msgid "User's full name in blank."
+msgstr "Nome completo do usuário em branco."
+
+#: remastersys-installer:738
+msgid "Blank username."
+msgstr "Nome de usuário em branco."
+
+#: remastersys-installer:740
+msgid "Username cannot be the same as the Live CD username."
+msgstr "O nome de usuário não pode ser o mesmo do usuário do Live CD."
+
+#: remastersys-installer:742
+msgid "Blank user password."
+msgstr "Senha de usuário em branco."
+
+#: remastersys-installer:744
+msgid "Passwords entered for the user do not match."
+msgstr "As senhas digitadas para o usuário não conferem."
+
+#: remastersys-installer:746
+msgid "Root and user passwords are the same.\\n\\nUse different passwords."
+msgstr "As senhas do root e do usuário são iguais.\\n\\nUse senhas diferentes."
+
+#: remastersys-installer:748
+msgid "Blank hostname."
+msgstr "Nome do host em branco."
+
+#: remastersys-installer:906
+msgid "Using tune2fs to prevent forced checks on boot."
+msgstr ""
+"Usando tune2fs para prevenir verificações forçadas durante a inicialização."
+
+#: remastersys-installer:1012
+msgid "File copy completed."
+msgstr "Cópia de arquivos completada."
+
+#: remastersys-installer:1235
+msgid ""
+"Post-installation steps completed.\\n\\nUnmounting the TARGET partition."
+msgstr "Passos pós-instalação completados.\\n\\nDesmontando a partição TARGET."
+
+#: remastersys-installer:1252
+msgid ""
+"Installation is complete.\\n\\nIf all went well you should have your new "
+"system installed and ready to use.\\n\\nDo you want to reboot now to test "
+"the new system?"
+msgstr ""
+"A instalação acabou.\\n\\nSe tudo correu bem, seu novo sistema deve estar "
+"instalado e pronto para uso.\\n\\nVocê quer reiniciar agora para testar o "
+"novo sistema?"

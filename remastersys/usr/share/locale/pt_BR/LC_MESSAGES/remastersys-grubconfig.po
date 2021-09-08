@@ -1,0 +1,64 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: remastersys-grubconfig:20
+msgid "USAGE:"
+msgstr "USO:"
+
+#: remastersys-grubconfig:22
+msgid "   remastersys-grubconfig [/mounted/location] [root|rootmbr]"
+msgstr "   remastersys-grubconfig [/ponto/de/montagem] [root|rootmbr]"
+
+#: remastersys-grubconfig:23
+msgid "      (must run as superuser)"
+msgstr "      (deve ser executado como superusuário)"
+
+#: remastersys-grubconfig:25
+msgid "   /mounted/location - You must specify the full path"
+msgstr "   /ponto/de/montagem - Você deve especificar o caminho completo"
+
+#: remastersys-grubconfig:26
+msgid "   root              - Install grub to root partition"
+msgstr "   root              - Instala o grub na partição raiz"
+
+#: remastersys-grubconfig:27
+msgid "   rootmbr           - Default. MBR will be used if no option present"
+msgstr ""
+"   rootmbr           - Padrão. A MBR será usada se nenhuma opção for dada"
+
+#: remastersys-grubconfig:29
+msgid "EXAMPLES:"
+msgstr "EXEMPLOS:"
+
+#: remastersys-grubconfig:32
+msgid "      (install to root partition of the current install)"
+msgstr "      (instala na partição raiz da instalação atual)"
+
+#: remastersys-grubconfig:35
+msgid "      (install to mbr on a mounted drive, if running from Live CD)"
+msgstr ""
+"      (instala na mbr de uma unidade montada, se estiver rodando de um Live "
+"CD)"
+
+#: remastersys-grubconfig:42
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
+"ERRO: Este script deve ser executado como superusuário. Tente com \\\"sudo\\"
+"\"."
+
+#~ msgid "   remastersys-grubconfig / root"
+#~ msgstr "   remastersys-grubconfig / root"
+
+#~ msgid "   remastersys-grubconfig /mnt/sda1"
+#~ msgstr "   remastersys-grubconfig /mnt/sda1"

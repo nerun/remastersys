@@ -1,0 +1,41 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: remastersys-skelcopy:20
+msgid "USAGE:"
+msgstr "USO:"
+
+#: remastersys-skelcopy:22
+msgid "   remastersys-skelcopy [username]"
+msgstr "   remastersys-skelcopy [nomedeusuario]"
+
+#: remastersys-skelcopy:23
+msgid "      (username is a valid user on the system)"
+msgstr "      (nomedeusuario é um usuário válido no sistema)"
+
+#: remastersys-skelcopy:30
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr "ERRO: Este script deve ser executado como superusuário. Tente com \\\"sudo\\\"."
+
+#: remastersys-skelcopy:44
+msgid "Cleaning up /etc/skel of the files we will copy over."
+msgstr "Limpando /etc/skel dos arquivos que iremos copiar."
+
+#: remastersys-skelcopy:65
+msgid "Copying config files to /etc/skel."
+msgstr "Copiando arquivos de configuração para /etc/skel."
+
+#: remastersys-skelcopy:110
+msgid "$1 either not found or doesn't have a proper home folder. Exiting."
+msgstr "$1 não foi encontrado ou não possui uma pasta home. Saindo."

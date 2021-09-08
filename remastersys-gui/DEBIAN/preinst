@@ -20,8 +20,4 @@ then
 mv /etc/remastersys/isolinux/splash.png /etc/remastersys/isolinux/splash.png.saved
 fi
 
-
-
 exit 0
-
-

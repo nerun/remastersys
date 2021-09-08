@@ -1,0 +1,255 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Remastersys 4.0.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Daniel Dias Rodrigues\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: remastersys:19
+msgid ""
+"Remastersys allows you to remaster your system, creating a backup image or a "
+"new\\ndistribution that can be burned and run as a Live CD/DVD."
+msgstr ""
+"Remastersys permite remasterizar o seu sistema, criando uma imagem de backup"
+"\\nou uma nova distribuição que pode ser gravada e rodada em um Live CD/DVD."
+
+#: remastersys:21
+msgid "USAGE:"
+msgstr "USO:"
+
+#: remastersys:23
+msgid "   remastersys [MODE] [OPTION] [FILE]"
+msgstr "   remastersys [MODO] [OPÇÃO] [ARQUIVO]"
+
+#: remastersys:24
+msgid "      (must run as superuser)"
+msgstr "      (deve ser executado como superusuário)"
+
+#: remastersys:26
+msgid "MODES:"
+msgstr "MODOS:"
+
+#: remastersys:28
+msgid "   backup - creates a backup of your system in a Live CD/DVD"
+msgstr "   backup - cria um backup de seu sistema em um Live CD/DVD"
+
+#: remastersys:29
+msgid "   clean  - cleans the temporary files created by remastersys"
+msgstr "   clean  - limpa os arquivos temporários criados pelo remastersys"
+
+#: remastersys:30
+msgid "   dist   - creates a distribution of your system in a Live CD/DVD"
+msgstr "   dist   - criam uma distribuição do seu sistema em um Live CD/DVD"
+
+#: remastersys:32
+msgid "OPTIONS:"
+msgstr "OPÇÕES:"
+
+#: remastersys:34
+msgid "   cdfs   - creates the CD file system only"
+msgstr "   cdfs   - cria somente o sistema de arquivos do CD"
+
+#: remastersys:35
+msgid ""
+"   iso    - creates an ISO image as long as the file system has already been"
+"\\n\\t    created"
+msgstr ""
+"   iso    - cria uma imagem ISO desde que o sistema de arquivos já tenha\\n"
+"\\t    sido criado"
+
+#: remastersys:37
+msgid "FILE:"
+msgstr "ARQUIVO:"
+
+#: remastersys:39
+msgid ""
+"   Optional. It is the name of the ISO image file to be created. It must end"
+"\\n   with the \\\".iso\\\" extension. If this parameter is not provided, "
+"the ISO will be\\n   saved with the name \\\"remastersys-livecd.iso\\\"."
+msgstr ""
+"   Opcional. É o nome do arquivo da imagem ISO a ser criada. Deve terminar "
+"com\\n   a extensão \\\".iso\\\". Caso esse parâmetro não seja fornecido, a "
+"ISO será salva\\n   com o nome \\\"remastersys-livecd.iso\\\"."
+
+#: remastersys:41
+msgid "EXAMPLES:"
+msgstr "EXEMPLOS:"
+
+#: remastersys:44
+msgid "     (creates a Live CD/DVD containing a backup of your system)"
+msgstr "     (cria um Live CD/DVD contendo um backup do seu sistema)"
+
+#: remastersys:47
+msgid ""
+"     (creates a Live CD/DVD backup, and names the ISO as \\\"custom.iso\\\")"
+msgstr ""
+"     (cria um backup em Live CD/DVD, e nomeia o arquivo ISO como \\\"custom."
+"iso\\\")"
+
+#: remastersys:50
+msgid "     (deletes the working folder \\\"/home/remastersys\\\")"
+msgstr "     (apaga a pasta de trabalho \\\"/home/remastersys\\\")"
+
+#: remastersys:53
+msgid "     (creates a Live CD/DVD containing a distribution of your system)"
+msgstr "     (cria um Live CD/DVD contendo uma distribuição do seu sistema)"
+
+#: remastersys:56
+msgid "     (creates only the file system of yours Live CD/DVD distribution)"
+msgstr ""
+"     (cria somente o sistema de arquivos da sua distribuição Live CD/DVD)"
+
+#: remastersys:59
+msgid ""
+"     (creates an ISO of the distribution with the name custom.iso, as long"
+"\\n     as the file system has already been created)"
+msgstr ""
+"     (cria uma ISO da distribuição com o nome \\\"custom.iso\\\", desde que"
+"\\n     o sistema de arquivos já tenha sido criado)"
+
+#: remastersys:61
+msgid ""
+"   The CDFS and ISO options should only be used if you want to modify "
+"something\\n   on the CD before creating the ISO. An example would be "
+"modifying the isolinux\\n   portion of Live CD/DVD."
+msgstr ""
+"   As opções CDFS e ISO só devem ser usadas se você desejar modificar alguma"
+"\\n   coisa no CD antes de criar a ISO. Um exemplo seria modificar a seção "
+"isolinux\\n   do Live CD/DVD."
+
+#: remastersys:68
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\".\\n"
+msgstr ""
+"ERRO: Este script deve ser executado como superusuário. Tente com \\\"sudo\\"
+"\".\\n"
+
+#: remastersys:118
+msgid "Version"
+msgstr "Versão"
+
+#: remastersys:122
+msgid "\\nCreating the CD file system only.\\n"
+msgstr "\\nCriando somente o sistema de arquivos do CD.\\n"
+
+#: remastersys:124
+msgid "\\nCreating the ISO file only.\\n"
+msgstr "\\nCriando somente o arquivo ISO.\\n"
+
+#: remastersys:142
+msgid "$colorOrange>> BACKUP MODE SELECTED\\n$colorEND"
+msgstr "$colorOrange>> MODO BACKUP SELECIONADO\\n$colorEND"
+
+#: remastersys:146
+msgid "$colorOrange>> CLEANING MODE SELECTED\\n$colorEND"
+msgstr "$colorOrange>> MODO CLEAN SELECIONADO\\n$colorEND"
+
+#: remastersys:147
+msgid "Deleting work directory..."
+msgstr "Apagando diretório de trabalho..."
+
+#: remastersys:149
+msgid "Done. Exiting...\\n"
+msgstr "Feito. Saindo...\\n"
+
+#: remastersys:154
+msgid "$colorOrange>> DIST MODE SELECTED\\n$colorEND"
+msgstr "$colorOrange>> MODO DIST SELECIONADO\\n$colorEND"
+
+#: remastersys:164
+msgid ""
+"The compressed file system is larger than the ISO 9660 specification for a "
+"single file allows. You should reduce the amount of files you are trying to "
+"backup and try again."
+msgstr ""
+"O sistema de arquivos compactado é maior do que a especificação ISO 9660 "
+"permite a um único arquivo. Você deve reduzir a quantidade de arquivos que "
+"você está tentando gravar e tentar de novo."
+
+#: remastersys:170
+msgid "Checking if the $WORKDIR folder has already been created."
+msgstr "Verificando se a pasta $WORKDIR já foi criada."
+
+#: remastersys:190
+msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
+msgstr ""
+"\\nCopiando /var e /etc para área temporária e deletando arquivos extras."
+
+#: remastersys:253
+msgid "\\nCopying installation icon to the Live CD user desktop."
+msgstr ""
+"\\nCopiando o ícone de instalação para a Área de Trabalho do usuário do Live "
+"CD."
+
+#: remastersys:421
+msgid "\\nSetting up Live CD options for mode $1."
+msgstr "\\nConfigurando as opções do Live CD para modo $1."
+
+#: remastersys:426
+msgid "\\nCopying your kernel and initrd to the Live CD."
+msgstr "\\nCopiando seu kernel e o initrd para o Live CD."
+
+#: remastersys:441
+msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
+msgstr ""
+"\\nCriando filesystem.squashfs... Isso pode demorar um pouco, então seja "
+"paciente."
+
+#: remastersys:528
+msgid ""
+"The CD file system is missing. Either there was a problem creating the "
+"compressed file system, or you are trying to run the command \\\"remastersys "
+"dist iso\\\" before \\\"remastersys dist cdfs\\\"."
+msgstr ""
+"Não foi localizado um sistema de arquivos de CD. Ou há um problema ao criar "
+"um sistema de arquivos compactado, ou você está tentando executar o comando "
+"\\\"remastersys dist iso\\\" antes de \\\"remastersys dist cdfs\\\"."
+
+#: remastersys:551
+msgid "Creating"
+msgstr "Criando"
+
+#: remastersys:552
+msgid "in"
+msgstr "em"
+
+#: remastersys:553
+msgid "using"
+msgstr "usando"
+
+#: remastersys:579
+msgid ""
+"\\nMaking the ISO into a hybrid image so it can be imaged to a usb key or "
+"burned to optical media."
+msgstr ""
+"\\nTornando a ISO em uma imagem híbrida de modo a poder ser gravada em um "
+"pendrive ou em uma mídia óptica."
+
+#: remastersys:593
+msgid ""
+"\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
+msgstr ""
+"\\n$WORKDIR/$CUSTOMISO está pronto para ser gravado ou testado em uma "
+"máquina virtual."
+
+#: remastersys:594
+msgid ""
+"\\nCheck the size and if it is larger than 700MB you will need to burn it to "
+"a DVD:"
+msgstr ""
+"\\nVerifique o tamanho, se for maior que 700MB você precisará gravar em um "
+"DVD:"
+
+#: remastersys:597
+msgid ""
+"\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have "
+"burned and tested the image $CUSTOMISO.\\n"
+msgstr ""
+"\\nÉ recomendável executar \\\"sudo remastersys clean\\\" uma vez que você "
+"tenha gravado e testado a imagem $CUSTOMISO.\\n"

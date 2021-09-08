@@ -1,10 +1,12 @@
 [Desktop Entry]
-Version=1.0
 Encoding=UTF-8
-Name=Remastersys Backup
+Name=Remastersys Creator
+Name[pt_BR]=Remastersys - Criador
 GenericName=System Backup
-Comment=Backup the system to LiveCD/DVD
-Exec=remsu /usr/bin/remastersys-gui
+GenericName[pt_BR]=Backup de Sistema
+Comment=Create a backup or distro on a Live CD/DVD
+Comment[pt_BR]=Cria um back ou distro em um Live CD/DVD
+Exec=sudo /usr/bin/remastersys-gui
 Icon=/usr/share/icons/remastersys.png
 Terminal=false
 MultipleArgs=false
@@ -12,4 +14,3 @@ Type=Application
 Categories=GTK;System
 NotShowIn=KDE
 X-KDE-SubstituteUID=true
-GenericName[en_US]=System Backup

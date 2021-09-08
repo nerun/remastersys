@@ -8,5 +8,3 @@ set -e
 #do nothing for now
 
 exit 0
-
-

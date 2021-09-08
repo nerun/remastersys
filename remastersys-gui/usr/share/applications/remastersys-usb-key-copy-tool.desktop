@@ -1,15 +1,16 @@
-
 [Desktop Entry]
+Encoding=UTF-8
 Name=Remastersys USB Startup Disk Tool
+Name[pt_BR]=Remastersys - Inicializador de Disco USB
 GenericName=USB Startup Disk Tool
+GenericName[pt_BR]=Inicializador de Disco USB
 Comment=USB Startup Disk Tool
-Exec=remsu /usr/bin/remastersys-usb-key-copy-tool
+Comment[pt_BR]=Inicializador de Disco USB
+Exec=sudo /usr/bin/remastersys-usb-key-copy-tool
 Icon=/usr/share/icons/remastersys.png
 Terminal=false
 MultipleArgs=false
 Type=Application
-Encoding=UTF-8
 Categories=GTK;System
 NotShowIn=KDE
 X-KDE-SubstituteUID=true
-

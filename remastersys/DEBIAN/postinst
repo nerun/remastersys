@@ -17,5 +17,3 @@ mv /etc/remastersys.conf.old /etc/remastersys.conf
 fi
 
 exit 0
-
-

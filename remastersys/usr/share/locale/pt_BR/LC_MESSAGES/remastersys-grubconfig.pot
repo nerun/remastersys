@@ -1,0 +1,30 @@
+#: remastersys-grubconfig:20
+msgid "USAGE:"
+msgstr ""
+#: remastersys-grubconfig:22
+msgid "   remastersys-grubconfig [/mounted/location] [root|rootmbr]"
+msgstr ""
+#: remastersys-grubconfig:23
+msgid "      (must run as superuser)"
+msgstr ""
+#: remastersys-grubconfig:25
+msgid "   /mounted/location - You must specify the full path"
+msgstr ""
+#: remastersys-grubconfig:26
+msgid "   root              - Install grub to root partition"
+msgstr ""
+#: remastersys-grubconfig:27
+msgid "   rootmbr           - Default. MBR will be used if no option present"
+msgstr ""
+#: remastersys-grubconfig:29
+msgid "EXAMPLES:"
+msgstr ""
+#: remastersys-grubconfig:32
+msgid "      (install to root partition of the current install)"
+msgstr ""
+#: remastersys-grubconfig:35
+msgid "      (install to mbr on a mounted drive, if running from Live CD)"
+msgstr ""
+#: remastersys-grubconfig:42
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
