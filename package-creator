@@ -1,6 +1,10 @@
 #!/bin/bash
 
+# manpages
 gzip remastersys/usr/share/man/man1/remastersys.1
+
+# changelog
+cp remastersys/usr/share/doc/remastersys/changelog remastersys/usr/share/doc/remastersys/changelog.Debian
 gzip remastersys/usr/share/doc/remastersys/changelog
 gzip remastersys/usr/share/doc/remastersys/changelog.Debian
 
@@ -23,7 +27,7 @@ mv $namegui remastersys-gui
 
 # changelogs
 gzip -d remastersys/usr/share/doc/remastersys/changelog.gz
-gzip -d remastersys/usr/share/doc/remastersys/changelog.Debian.gz
+rm remastersys/usr/share/doc/remastersys/changelog.Debian.gz
 
 # manpages
 gzip -d remastersys/usr/share/man/man1/remastersys.1.gz
