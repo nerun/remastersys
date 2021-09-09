@@ -68,16 +68,16 @@ msgstr ""
 msgid "Version"
 msgstr ""
 #: remastersys:122
-msgid "\\nCreating the CD file system only.\\n"
+msgid " - Creating the CD File System only."
 msgstr ""
 #: remastersys:124
-msgid "\\nCreating the ISO file only.\\n"
+msgid " - Creating the ISO file only."
 msgstr ""
 #: remastersys:142
-msgid "$colorOrange>> BACKUP MODE SELECTED\\n$colorEND"
+msgid "$colorOrange\\n>> BACKUP MODE SELECTED$options\\n$colorEND"
 msgstr ""
 #: remastersys:146
-msgid "$colorOrange>> CLEANING MODE SELECTED\\n$colorEND"
+msgid "$colorOrange\\n>> CLEANING MODE SELECTED\\n$colorEND"
 msgstr ""
 #: remastersys:147
 msgid "Deleting work directory..."
@@ -86,7 +86,7 @@ msgstr ""
 msgid "Done. Exiting...\\n"
 msgstr ""
 #: remastersys:154
-msgid "$colorOrange>> DIST MODE SELECTED\\n$colorEND"
+msgid "$colorOrange\\n>> DIST MODE SELECTED$options\\n$colorEND"
 msgstr ""
 #: remastersys:164
 msgid "The compressed file system is larger than the ISO 9660 specification for a single file allows. You should reduce the amount of files you are trying to backup and try again."

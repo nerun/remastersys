@@ -135,20 +135,20 @@ msgid "Version"
 msgstr "Versão"
 
 #: remastersys:122
-msgid "\\nCreating the CD file system only.\\n"
-msgstr "\\nCriando somente o sistema de arquivos do CD.\\n"
+msgid " - Creating the CD File System only."
+msgstr " - Criando somente o sistema de arquivos do CD."
 
 #: remastersys:124
-msgid "\\nCreating the ISO file only.\\n"
-msgstr "\\nCriando somente o arquivo ISO.\\n"
+msgid " - Creating the ISO file only."
+msgstr " - Criando somente o arquivo ISO."
 
 #: remastersys:142
-msgid "$colorOrange>> BACKUP MODE SELECTED\\n$colorEND"
-msgstr "$colorOrange>> MODO BACKUP SELECIONADO\\n$colorEND"
+msgid "$colorOrange\\n>> BACKUP MODE SELECTED$options\\n$colorEND"
+msgstr "$colorOrange\\n>> MODO BACKUP SELECIONADO$options\\n$colorEND"
 
 #: remastersys:146
-msgid "$colorOrange>> CLEANING MODE SELECTED\\n$colorEND"
-msgstr "$colorOrange>> MODO CLEAN SELECIONADO\\n$colorEND"
+msgid "$colorOrange\\n>> CLEANING MODE SELECTED\\n$colorEND"
+msgstr "$colorOrange\\n>> MODO CLEAN SELECIONADO\\n$colorEND"
 
 #: remastersys:147
 msgid "Deleting work directory..."
@@ -159,8 +159,8 @@ msgid "Done. Exiting...\\n"
 msgstr "Feito. Saindo...\\n"
 
 #: remastersys:154
-msgid "$colorOrange>> DIST MODE SELECTED\\n$colorEND"
-msgstr "$colorOrange>> MODO DIST SELECIONADO\\n$colorEND"
+msgid "$colorOrange\\n>> DIST MODE SELECTED$options\\n$colorEND"
+msgstr "$colorOrange\\n>> MODO DIST SELECIONADO$options\\n$colorEND"
 
 #: remastersys:164
 msgid ""
