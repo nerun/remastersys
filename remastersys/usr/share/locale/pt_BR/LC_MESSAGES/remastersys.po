@@ -187,21 +187,41 @@ msgstr ""
 "\\nCopiando o ícone de instalação para a Área de Trabalho do usuário do Live "
 "CD."
 
-#: remastersys:421
+#: remastersys:373
+msgid "Press ENTER to choose or TAB to edit a menu entry"
+msgstr "Pressione ENTER para escolher ou TAB para editar uma entrada do menu"
+
+#: remastersys:374
+msgid "Live CD"
+msgstr "Live CD"
+
+#: remastersys:375
+msgid "Live CD (fail safe)"
+msgstr "Live CD (modo seguro)"
+
+#: remastersys:376
+msgid "Chain Bootup on First HDD"
+msgstr "Inicializar pelo HD"
+
+#: remastersys:377
+msgid "Memory Test (Memtest86)"
+msgstr "Testar Memória RAM"
+
+#: remastersys:435
 msgid "\\nSetting up Live CD options for mode $1."
 msgstr "\\nConfigurando as opções do Live CD para modo $1."
 
-#: remastersys:426
+#: remastersys:440
 msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr "\\nCopiando seu kernel e o initrd para o Live CD."
 
-#: remastersys:441
+#: remastersys:455
 msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
 msgstr ""
 "\\nCriando filesystem.squashfs... Isso pode demorar um pouco, então seja "
 "paciente."
 
-#: remastersys:528
+#: remastersys:542
 msgid ""
 "The CD file system is missing. Either there was a problem creating the "
 "compressed file system, or you are trying to run the command \\\"remastersys "
@@ -211,19 +231,19 @@ msgstr ""
 "um sistema de arquivos compactado, ou você está tentando executar o comando "
 "\\\"remastersys dist iso\\\" antes de \\\"remastersys dist cdfs\\\"."
 
-#: remastersys:551
+#: remastersys:565
 msgid "Creating"
 msgstr "Criando"
 
-#: remastersys:552
+#: remastersys:566
 msgid "in"
 msgstr "em"
 
-#: remastersys:553
+#: remastersys:567
 msgid "using"
 msgstr "usando"
 
-#: remastersys:579
+#: remastersys:593
 msgid ""
 "\\nMaking the ISO into a hybrid image so it can be imaged to a usb key or "
 "burned to optical media."
@@ -231,14 +251,14 @@ msgstr ""
 "\\nTornando a ISO em uma imagem híbrida de modo a poder ser gravada em um "
 "pendrive ou em uma mídia óptica."
 
-#: remastersys:593
+#: remastersys:607
 msgid ""
 "\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
 msgstr ""
 "\\n$WORKDIR/$CUSTOMISO está pronto para ser gravado ou testado em uma "
 "máquina virtual."
 
-#: remastersys:594
+#: remastersys:608
 msgid ""
 "\\nCheck the size and if it is larger than 700MB you will need to burn it to "
 "a DVD:"
@@ -246,7 +266,7 @@ msgstr ""
 "\\nVerifique o tamanho, se for maior que 700MB você precisará gravar em um "
 "DVD:"
 
-#: remastersys:597
+#: remastersys:611
 msgid ""
 "\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have "
 "burned and tested the image $CUSTOMISO.\\n"

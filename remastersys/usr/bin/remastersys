@@ -360,15 +360,29 @@ cdfs(){
 		if [ ! -d /etc/plymouth ]; then
 			sed -i -e 's/splash//g' $WORKDIR/ISOTMP/boot/grub/grub.cfg
 		fi
+	#BOOT Type selected is ISOLINUX
 	else
-		#BOOT Type selected is ISOLINUX
 		mkdir -p $WORKDIR/ISOTMP/isolinux
 
 		if [ -d "/etc/remastersys/customisolinux" ]; then
 			cp /etc/remastersys/customisolinux/* $WORKDIR/ISOTMP/isolinux/
 		else
 			cp /etc/remastersys/isolinux/* $WORKDIR/ISOTMP/isolinux/
-			sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
+
+			# isolinux.cfg localization
+			local EnterOrTab=$"Press ENTER to choose or TAB to edit a menu entry"
+			local LiveCD=$"Live CD"
+			local LiveCDFailSafe=$"Live CD (fail safe)"
+			local ChainBoot=$"Chain Bootup on First HDD"
+			local MemTest=$"Memory Test (Memtest86)"
+
+			# isolinux.cfg translation
+			sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg		
+			sed -i -e 's/__ENTERORTAB__/'"$EnterOrTab"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
+			sed -i -e 's/__LIVECD__/'"$LiveCD"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
+			sed -i -e 's/__LIVECDFAILSAFE__/'"$LiveCDFailSafe"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
+			sed -i -e 's/__CHAINBOOT__/'"$ChainBoot"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
+			sed -i -e 's/__MEMTEST__/'"$MemTest"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
 
 			if [ ! -d /etc/plymouth ]; then
 				sed -i -e 's/splash//g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
