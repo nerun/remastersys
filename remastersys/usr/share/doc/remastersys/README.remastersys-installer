@@ -1,15 +1,18 @@
-Remastersys Installer Information
-=================================
+REMASTERSYS INSTALLER
+=====================
 
 No Warranty is provided with this installer or remastersys in general.
 
-It is a GUI or TEXT MODE installer that only uses up to 3 partitions: 1 for the root filesystem, 1 optional for /home and 1 for swap.
+It is a GUI or TEXT MODE installer that only uses up to 3 partitions: 1 for the
+root filesystem, 1 optional for /home and 1 for swap.
 
-The swap partition will be automatically formatted and the root filesystem and /home filesystem will be formatted ext3 or ext4 based on selection.
+The swap partition will be automatically formatted and the root filesystem and
+/home filesystem will be formatted ext3 or ext4 based on selection.
 
-A single user will be created on the new system unless installing a backup, which may contain more users.
+A single user will be created on the new system unless installing a backup,
+which may contain more users.
 
-It runs cfdisk for partitioning unless you run GUI in which case it uses gparted so it is highly recommended to create your partition or resize them BEFORE running the installer.
-
-The installer has been able to install a small system based on Openbox / PCManFM / xcompmgr / cairo-dock on a laptop with only 128MB of RAM that was booted with the text only mode. The installed system ran fine.
+It runs cfdisk for partitioning unless you run GUI in which case it uses gparted
+so it is highly recommended to create your partition or resize them BEFORE
+running the installer.
 
