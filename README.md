@@ -18,14 +18,16 @@ The program is still **under development, with many bugs**. However, it is alrea
 * Internationalization (scripts, menu entries and desktop files): default language is English, but it is possible to create locales for other languages, such as pt_BR, which is already available.
 * All scripts have been revised, improving source code formatting and several minor performance improvements.
 * Updated Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7).
+* Updated makesquashfs' compression method from gzip to zstd: generates systems 8% smaller in half the time.
 * Improved terminal messages, with removal of many small errors and visual improvements. Many improvements are being made to the GUI as well.
 * Updated icons and images.
 * Improved man pages.
 * Removed plymouth. I don't know what it's for, I can reinsert it in the future.
 * Removed gksu/gksudo support, using sudo by default.
 * Updated dependencies:
-  * syslinux-utils : included to fix bug using isohybrid.
   * live-config-systemd : included to work with systemd.
+  * memtest86+ : it is not used by system, isolinux has its own binary.
+  * syslinux-utils : included to fix bug using isohybrid.
   * xresprobe : removed since is no longer used.
 
 ## Useful links
