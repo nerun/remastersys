@@ -205,7 +205,7 @@ msgstr "Inicializar pelo HD"
 
 #: remastersys:377
 msgid "Memory Test (Memtest86)"
-msgstr "Testar Memória RAM"
+msgstr "Testar Memoria RAM"
 
 #: remastersys:435
 msgid "\\nSetting up Live CD options for mode $1."

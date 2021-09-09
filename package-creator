@@ -98,7 +98,7 @@ Installed-Size: $size
 Maintainer: $author
 Architecture: all
 Version: $version
-Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-sysvinit | live-config-systemd, live-config, memtest86+, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux
+Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-sysvinit | live-config-systemd, live-config, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux
 Conffiles:
  /etc/remastersys.conf $a
  /etc/remastersys/isolinux/isolinux.bin $b
@@ -157,11 +157,6 @@ cd ../..
 # ==============================================================================
 # PACKAGING ====================================================================
 # ==============================================================================
-
-# Permissions
-#sudo chmod -R 755 remastersys
-#sudo chmod -R 755 remastersys-gui
-#sudo chmod -x remastersys-gui/usr/share/menu/remastersys
 
 # Rename remastersys folder for packaging
 name="remastersys_"$version"_all"
