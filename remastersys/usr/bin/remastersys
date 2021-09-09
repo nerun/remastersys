@@ -116,7 +116,7 @@ fi
 clear
 # Remastersys terminal logo
 vers=$"Version"
-echo -e "$colorLCyan  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION\n$colorEND";
+echo -e "$colorLBlue  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION\n$colorEND";
 
 if [ "$2" = "cdfs" ]; then
 	echo -e $"\nCreating the CD file system only.\n"
