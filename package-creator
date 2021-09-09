@@ -76,16 +76,13 @@ c=$(md5run ./etc/remastersys/isolinux/isolinux.cfg)
 d=$(md5run ./etc/remastersys/isolinux/ldlinux.c32)
 e=$(md5run ./etc/remastersys/isolinux/libcom32.c32)
 f=$(md5run ./etc/remastersys/isolinux/libutil.c32)
-g=$(md5run ./etc/remastersys/isolinux/live.cfg)
-h=$(md5run ./etc/remastersys/isolinux/memtest86.bin)
-i=$(md5run ./etc/remastersys/isolinux/menu.cfg)
-j=$(md5run ./etc/remastersys/isolinux/splash-default.png)
-k=$(md5run ./etc/remastersys/isolinux/splash.png)
-l=$(md5run ./etc/remastersys/isolinux/stdmenu.cfg)
-m=$(md5run ./etc/remastersys/isolinux/vesamenu.c32)
-n=$(md5run ./etc/remastersys/preseed/custom.seed)
-o=$(md5run ./etc/remastersys/remastersys-installer.conf)
-p=$(md5run ./etc/remastersys/remastersys.version)
+g=$(md5run ./etc/remastersys/isolinux/memtest86.bin)
+h=$(md5run ./etc/remastersys/isolinux/splash-default.png)
+i=$(md5run ./etc/remastersys/isolinux/splash.png)
+j=$(md5run ./etc/remastersys/isolinux/vesamenu.c32)
+k=$(md5run ./etc/remastersys/preseed/custom.seed)
+l=$(md5run ./etc/remastersys/remastersys-installer.conf)
+m=$(md5run ./etc/remastersys/remastersys.version)
 
 
 # Move down to ./remastersys/DEBIAN
@@ -109,16 +106,13 @@ Conffiles:
  /etc/remastersys/isolinux/ldlinux.c32 $d
  /etc/remastersys/isolinux/libcom32.c32 $e
  /etc/remastersys/isolinux/libutil.c32 $f
- /etc/remastersys/isolinux/live.cfg $g
- /etc/remastersys/isolinux/memtest86.bin $h
- /etc/remastersys/isolinux/menu.cfg $i
- /etc/remastersys/isolinux/splash.png $j
- /etc/remastersys/isolinux/splash-default.png $k
- /etc/remastersys/isolinux/stdmenu.cfg $l
- /etc/remastersys/isolinux/vesamenu.c32 $m
- /etc/remastersys/preseed/custom.seed $n
- /etc/remastersys/remastersys-installer.conf $o
- /etc/remastersys/remastersys.version $p
+ /etc/remastersys/isolinux/memtest86.bin $g
+ /etc/remastersys/isolinux/splash.png $h
+ /etc/remastersys/isolinux/splash-default.png $i
+ /etc/remastersys/isolinux/vesamenu.c32 $j
+ /etc/remastersys/preseed/custom.seed $k
+ /etc/remastersys/remastersys-installer.conf $l
+ /etc/remastersys/remastersys.version $m
 Homepage: $url
 Description: Remaster and create backups of the Debian system
  Remastersys allows you to create a Live CD/DVD distribution or make a backup

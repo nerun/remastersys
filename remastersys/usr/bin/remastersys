@@ -116,14 +116,14 @@ fi
 clear
 # Remastersys terminal logo
 vers=$"Version"
-echo -e "$colorLBlue  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION\n$colorEND";
+echo -e "$colorLBlue  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION $colorEND";
 
 if [ "$2" = "cdfs" ]; then
-	echo -e $"\nCreating the CD file system only.\n"
+	options=$" - Creating the CD File System only."
 elif [ "$2" = "iso" ]; then
-	echo -e $"\nCreating the ISO file only.\n"
+	options=$" - Creating the ISO file only."
 elif [ "$2" = "" ]; then
-	echo " "
+	options=""
 else
 	CUSTOMISO="$2"
 fi
@@ -139,11 +139,11 @@ fi
 case $1 in
 
 	backup)
-		echo -e $"$colorOrange>> BACKUP MODE SELECTED\n$colorEND"
+		echo -e $"$colorOrange\n>> BACKUP MODE SELECTED$options\n$colorEND"
 	;;
 
 	clean)
-		echo -e $"$colorOrange>> CLEANING MODE SELECTED\n$colorEND"
+		echo -e $"$colorOrange\n>> CLEANING MODE SELECTED\n$colorEND"
 		echo $"Deleting work directory..."
 		rm -rf $WORKDIR
 		echo -e $"Done. Exiting...\n"
@@ -151,7 +151,7 @@ case $1 in
 	;;
 
 	dist)
-		echo -e $"$colorOrange>> DIST MODE SELECTED\n$colorEND"
+		echo -e $"$colorOrange\n>> DIST MODE SELECTED$options\n$colorEND"
 	;;
 
 	*)
@@ -368,10 +368,10 @@ cdfs(){
 			cp /etc/remastersys/customisolinux/* $WORKDIR/ISOTMP/isolinux/
 		else
 			cp /etc/remastersys/isolinux/* $WORKDIR/ISOTMP/isolinux/
-			sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/isolinux/menu.cfg
+			sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
 
 			if [ ! -d /etc/plymouth ]; then
-				sed -i -e 's/splash//g' $WORKDIR/ISOTMP/isolinux/live.cfg
+				sed -i -e 's/splash//g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
 			fi
 		fi
 	fi
@@ -554,12 +554,12 @@ iso(){
 
 	if [ "$ISOBOOT" = "GRUB" ]; then
 		phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
-		echo -e "\n$phrase1"
+		echo -e "$phrase1"
 		echo "$phrase1" >>$WORKDIR/remastersys.log
 		grub-mkrescue -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
 	else
 		phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
-		echo -e "\n$phrase2"
+		echo -e "$phrase2"
 		echo "$phrase2" >>$WORKDIR/remastersys.log
 		$CREATEISO    \
 		-quiet \
