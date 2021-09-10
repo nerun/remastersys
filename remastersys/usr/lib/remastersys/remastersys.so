@@ -1,10 +1,23 @@
-# Color codes
-colorLRed="\e[91m"
-colorLGreen="\e[92m"
-colorLYellow="\e[93m"
-colorLBlue="\e[94m"
-colorLMagenta="\e[95m"
-colorLCyan="\e[96m"
-colorOrange="\e[38;5;214m"
-colorEND="\e[0m"
+# "f" means "font"
 
+# Color codes
+fLightRed="\e[91m"
+fLightGreen="\e[92m"
+fLightYellow="\e[93m"
+fLightBlue="\e[94m"
+fLightMagenta="\e[95m"
+fLightCyan="\e[96m"
+fRed="\e[31m"
+fGreen="\e[32m"
+fYellow="\e[33m"
+fBlue="\e[34m"
+fMagenta="\e[35m"
+fCyan="\e[36m"
+fOrange="\e[38;5;214m"
+
+# Style codes
+fB="\e[1m" # bold
+fI="\e[3m" # italic
+
+# ENDING: Reset all attributes
+fEND="\e[0m"

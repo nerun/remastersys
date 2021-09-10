@@ -64,87 +64,87 @@ msgstr ""
 #: remastersys:68
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\".\\n"
 msgstr ""
-#: remastersys:118
+#: remastersys:119
 msgid "Version"
 msgstr ""
-#: remastersys:122
+#: remastersys:124
 msgid " - Creating the CD File System only."
 msgstr ""
-#: remastersys:124
+#: remastersys:126
 msgid " - Creating the ISO file only."
 msgstr ""
-#: remastersys:142
-msgid "$colorOrange\\n>> BACKUP MODE SELECTED$options\\n$colorEND"
+#: remastersys:145
+msgid "$fB$fOrange\\n>> BACKUP MODE SELECTED$options\\n$fEND"
 msgstr ""
-#: remastersys:146
-msgid "$colorOrange\\n>> CLEANING MODE SELECTED\\n$colorEND"
+#: remastersys:150
+msgid "$fB$fOrange\\n>> CLEANING MODE SELECTED\\n$fEND"
 msgstr ""
-#: remastersys:147
+#: remastersys:151
 msgid "Deleting work directory..."
 msgstr ""
-#: remastersys:149
+#: remastersys:153
 msgid "Done. Exiting...\\n"
 msgstr ""
-#: remastersys:154
-msgid "$colorOrange\\n>> DIST MODE SELECTED$options\\n$colorEND"
+#: remastersys:159
+msgid "$fB$fOrange\\n>> DIST MODE SELECTED$options\\n$fEND"
 msgstr ""
-#: remastersys:164
+#: remastersys:169
 msgid "The compressed file system is larger than the ISO 9660 specification for a single file allows. You should reduce the amount of files you are trying to backup and try again."
 msgstr ""
-#: remastersys:170
+#: remastersys:175
 msgid "Checking if the $WORKDIR folder has already been created."
 msgstr ""
-#: remastersys:190
+#: remastersys:195
 msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
 msgstr ""
-#: remastersys:253
+#: remastersys:258
 msgid "\\nCopying installation icon to the Live CD user desktop."
 msgstr ""
-#: remastersys:373
+#: remastersys:378
 msgid "Press ENTER to choose or TAB to edit a menu entry"
 msgstr ""
-#: remastersys:374
+#: remastersys:379
 msgid "Live CD"
 msgstr ""
-#: remastersys:375
+#: remastersys:380
 msgid "Live CD (fail safe)"
 msgstr ""
-#: remastersys:376
+#: remastersys:381
 msgid "Chain Bootup on First HDD"
 msgstr ""
-#: remastersys:377
+#: remastersys:382
 msgid "Memory Test (Memtest86)"
 msgstr ""
-#: remastersys:435
+#: remastersys:440
 msgid "\\nSetting up Live CD options for mode $1."
 msgstr ""
-#: remastersys:440
+#: remastersys:445
 msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr ""
-#: remastersys:455
+#: remastersys:460
 msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
 msgstr ""
-#: remastersys:542
+#: remastersys:547
 msgid "The CD file system is missing. Either there was a problem creating the compressed file system, or you are trying to run the command \\\"remastersys dist iso\\\" before \\\"remastersys dist cdfs\\\"."
 msgstr ""
-#: remastersys:565
+#: remastersys:570
 msgid "Creating"
 msgstr ""
-#: remastersys:566
+#: remastersys:571
 msgid "in"
 msgstr ""
-#: remastersys:567
+#: remastersys:572
 msgid "using"
 msgstr ""
-#: remastersys:593
+#: remastersys:598
 msgid "\\nMaking the ISO into a hybrid image so it can be imaged to a usb key or burned to optical media."
 msgstr ""
-#: remastersys:607
+#: remastersys:612
 msgid "\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
 msgstr ""
-#: remastersys:608
+#: remastersys:613
 msgid "\\nCheck the size and if it is larger than 700MB you will need to burn it to a DVD:"
 msgstr ""
-#: remastersys:611
+#: remastersys:616
 msgid "\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have burned and tested the image $CUSTOMISO.\\n"
 msgstr ""

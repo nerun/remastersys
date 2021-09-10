@@ -115,8 +115,10 @@ fi
 #Clear screen
 clear
 # Remastersys terminal logo
-vers=$"Version"
-echo -e "$colorLBlue  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION $colorEND";
+remastersyslogo(){
+    vers=$"Version"
+    echo -e "$fB$fLightBlue  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION $fEND";
+}
 
 if [ "$2" = "cdfs" ]; then
 	options=$" - Creating the CD File System only."
@@ -139,11 +141,13 @@ fi
 case $1 in
 
 	backup)
-		echo -e $"$colorOrange\n>> BACKUP MODE SELECTED$options\n$colorEND"
+	    remastersyslogo
+		echo -e $"$fB$fOrange\n>> BACKUP MODE SELECTED$options\n$fEND"
 	;;
 
 	clean)
-		echo -e $"$colorOrange\n>> CLEANING MODE SELECTED\n$colorEND"
+	    remastersyslogo
+		echo -e $"$fB$fOrange\n>> CLEANING MODE SELECTED\n$fEND"
 		echo $"Deleting work directory..."
 		rm -rf $WORKDIR
 		echo -e $"Done. Exiting...\n"
@@ -151,11 +155,12 @@ case $1 in
 	;;
 
 	dist)
-		echo -e $"$colorOrange\n>> DIST MODE SELECTED$options\n$colorEND"
+	    remastersyslogo
+		echo -e $"$fB$fOrange\n>> DIST MODE SELECTED$options\n$fEND"
 	;;
 
 	*)
-	usagehelp # call function
+    	usagehelp # call function
 	;;
 
 esac
