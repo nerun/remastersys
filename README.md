@@ -29,9 +29,3 @@ The program is still **under development, with many bugs**. However, it is alrea
   * memtest86+ : it is not used by system, isolinux has its own binary.
   * syslinux-utils : included to fix bug using isohybrid.
   * xresprobe : removed since is no longer used.
-
-## Useful links
-
-Not related to Remastersys or Debian, but usefull for GitHub:
-
-* [Shields IO](https://shields.io/) - create and add badges to your project
