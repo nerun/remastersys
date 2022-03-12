@@ -65,7 +65,7 @@ usagehelp(){
 
 # check if running with root privileges
 if [ $(whoami) != "root" ]; then
-    echo -e $"$fB$fLightBlue\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
+    echo -e $"$fB$fLightRed\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
     usagehelp
 fi
 
@@ -73,14 +73,37 @@ fi
 . /etc/remastersys.conf
 
 # if remastersys.conf is incorrect or missing, set standards
+if [ "$WORKDIR" = "" ]; then
+	WORKDIR="/home/remastersys"
+	BASEWORKDIR="/home"
+else
+	WORKDIR="$WORKDIR/remastersys"
+	BASEWORKDIR="$WORKDIR"
+fi
 
 if [ "$LIVEUSER" = "" ]; then
-	# If there's no username in configuration files
 	LIVEUSER="live"
 fi
 
 # live username in lowercase
 LIVEUSER="`echo $LIVEUSER | awk '{print tolower ($0)}'`"
+
+if [ "$LIVECDLABEL" = "" ]; then
+	LIVECDLABEL="Debian Remaster"
+fi
+
+if [ "$CUSTOMISO" = "" ]; then
+	CUSTOMISO="remastersys-livecd.iso"
+fi
+
+if [ "$ISOBOOT" != "GRUB" ]; then
+	ISOBOOT="ISOLINUX"
+fi
+
+if [ "$SQUASHFSOPTS" = "" ]; then
+	SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
+fi
+
 SHOWICON="`echo $SHOWICON | awk '{print tolower ($0)}'`"
 
 if [ "$SHOWICON" = "1" ]; then
@@ -93,31 +116,15 @@ else
 	SHOWICON="0"
 fi
 
-if [ "$WORKDIR" = "" ]; then
-	WORKDIR="/home/remastersys"
-	BASEWORKDIR="/home"
-else
-	BASEWORKDIR="$WORKDIR"
-	WORKDIR="$WORKDIR/remastersys"
-fi
-
-if [ "$LIVECDLABEL" = "" ]; then
-	LIVECDLABEL="Debian Remaster"
-fi
-
-if [ "$ISOBOOT" != "GRUB" ]; then
-	ISOBOOT="ISOLINUX"
-fi
-
 # load file
 . /etc/remastersys/remastersys.version
 
-#Clear screen
-clear
 # Remastersys terminal logo
 remastersyslogo(){
-    vers=$"Version"
-    echo -e "$fB$fLightBlue  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION $fEND";
+	#Clear screen
+	clear
+	vers=$"Version"
+	echo -e "$fB$fLightBlue  ___ ___ __  __   _   ___ _____ ___ ___  _____   _____ \n | _ \ __|  \/  | /_\ / __|_   _| __| _ \/ __\ \ / / __| \n |   / _|| |\/| |/ _ \\\\\__ \ | | | _||   /\__ \\\\\ V /\__ \\ \n |_|_\___|_|  |_/_/ \_\___/ |_| |___|_|_\|___/ |_| |___/ \n  $vers $VERSION $fEND";
 }
 
 if [ "$2" = "cdfs" ]; then
@@ -132,10 +139,6 @@ fi
 
 if [ "$3" != "" ]; then
 	CUSTOMISO="$3"
-fi
-
-if [ "$CUSTOMISO" = "" ]; then
-	CUSTOMISO="remastersys-livecd.iso"
 fi
 
 case $1 in
@@ -459,10 +462,6 @@ cdfs(){
 	fi
 
 	echo -e $"\nCreating filesystem.squashfs... It will take a while, so be patient."
-
-	if [ "$SQUASHFSOPTS" = "" ]; then
-		SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M"
-	fi
 
 	REALFOLDERS=""
 
