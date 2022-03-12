@@ -65,7 +65,7 @@ usagehelp(){
 
 # check if running with root privileges
 if [ $(whoami) != "root" ]; then
-    echo -e $"ERROR: This script must run as superuser. Try with \"sudo\".\n"
+    echo -e $"$fB$fLightBlue\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
     usagehelp
 fi
 
@@ -127,7 +127,7 @@ elif [ "$2" = "iso" ]; then
 elif [ "$2" = "" ]; then
 	options=""
 else
-	CUSTOMISO="$2"
+	CUSTOMISO="$2" # In this case $2 work as $3 (CUSTOMISO)
 fi
 
 if [ "$3" != "" ]; then
@@ -135,7 +135,7 @@ if [ "$3" != "" ]; then
 fi
 
 if [ "$CUSTOMISO" = "" ]; then
-	CUSTOMISO="custom$1.iso"
+	CUSTOMISO="remastersys-livecd.iso"
 fi
 
 case $1 in
@@ -160,7 +160,8 @@ case $1 in
 	;;
 
 	*)
-    	usagehelp # call function
+		echo ""
+		usagehelp # call function
 	;;
 
 esac
