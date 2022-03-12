@@ -25,7 +25,8 @@ The program is still **under development, with many bugs**. However, it is alrea
 * Removed plymouth. I don't know what it's for, I can reinsert it in the future.
 * Removed gksu/gksudo support, using sudo by default.
 * Updated dependencies:
-  * live-config-systemd : included to work with systemd.
-  * memtest86+ : it is not used by system, isolinux has its own binary.
-  * syslinux-utils : included to fix bug using isohybrid.
-  * xresprobe : removed since is no longer used.
+  * live-config-systemd: included to work with systemd.
+  * syslinux-utils: included to fix bug using isohybrid.
+  * zstd: included because of new makesquashfs’ compression method.
+  * memtest86+: removed since it is not used by system, isolinux has its own binary.
+  * xresprobe: removed since is no longer used.
