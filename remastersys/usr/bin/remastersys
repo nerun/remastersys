@@ -133,8 +133,12 @@ elif [ "$2" = "iso" ]; then
 	options=$" - Creating the ISO file only."
 elif [ "$2" = "" ]; then
 	options=""
-else
-	CUSTOMISO="$2" # In this case $2 work as $3 (CUSTOMISO)
+else  # In this case $2 work as $3 (CUSTOMISO)
+	if [ ${2:-4} != ".iso" ]; then
+		CUSTOMISO="$2.iso"
+	else
+		CUSTOMISO="$2"
+	fi
 fi
 
 if [ "$3" != "" ]; then
