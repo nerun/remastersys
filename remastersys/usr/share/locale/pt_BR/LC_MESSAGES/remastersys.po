@@ -46,7 +46,7 @@ msgstr "   clean  - limpa os arquivos temporários criados pelo remastersys"
 
 #: remastersys:30
 msgid "   dist   - creates a distribution of your system in a Live CD/DVD"
-msgstr "   dist   - criam uma distribuição do seu sistema em um Live CD/DVD"
+msgstr "   dist   - cria uma distribuição do seu sistema em um Live CD/DVD"
 
 #: remastersys:32
 msgid "OPTIONS:"

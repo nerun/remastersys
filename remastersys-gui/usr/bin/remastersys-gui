@@ -304,7 +304,7 @@ modifymenu() {
 	fi
 
 	if [ "$SQUASHFSOPTS" = "" ]; then
-		SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M"
+		SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
 	fi
 
 	CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=330 --button=Salvar:0 --button=Voltar:1 --form \
