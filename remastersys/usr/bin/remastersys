@@ -134,7 +134,7 @@ elif [ "$2" = "iso" ]; then
 elif [ "$2" = "" ]; then
 	options=""
 else  # In this case $2 work as $3 (CUSTOMISO)
-	if [ ${2:-4} != ".iso" ]; then
+	if [ ${2: -4} != ".iso" ]; then
 		CUSTOMISO="$2.iso"
 	else
 		CUSTOMISO="$2"
