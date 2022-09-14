@@ -2,7 +2,7 @@
 ###################################################################
 #  REMASTERSYS                                                    #
 #    Under the GNU GPL2 License                                   #
-#    Copyright (C) 2013-2021 Daniel "Nerun" Rodrigues             #
+#    Copyright (C) 2013-2022 Daniel "Nerun" Rodrigues             #
 #    Copyright (C) 2007-2012 Tony "Fragadelic" Brijeski           #
 #    Full copyright notice: /usr/share/doc/remastersys/copyright  #
 ###################################################################
@@ -130,7 +130,7 @@ SelectSwapPartition=$"Select a swap partition to use.\nIf the only option you se
 SelectInstallationPartition=$"Select a partition to install the system on.\nIf the only option you see is \"$ExitInstaller\" then no partition was found."
 SelectRootFileSystem=$"Select the file system type of the root partition."
 PasswordsDontMatch=$"Passwords do not match. Try again."
-IdiomKeyboardLayout=$"The current system language as well as the current keyboard layout will continue to be used by the installer until the end. However, you can change the language and keyboard layout that will be installed.\n\nDo you want to change?"
+IdiomKeyboardLayout=$"The current system language as well as the current keyboard layout will\ncontinue to be used by the installer until the end. However, you can change\nthe language and keyboard layout that will be installed.\n\nDo you want to change?"
 ThisIsTheInstaller=$"This is the Live CD installer.\n\nDo you want to continue?"
 SelectHomePartition=$"Select a partition to install the /home folder on.\nIf the only option you see is the root partition, then no other partitions were found."
 PutHomeInRootPartition=$"put /home on the root partition"
@@ -188,13 +188,13 @@ RUNsetupGRUB=$"Installing and configuring grub... Please wait.\n"
 if [ "$GUI" = "" ]; then
 	#inform them what this is and ask if they want to continue
 
-	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$ThisIsTheInstaller $HEIGHT $WIDTH
+	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ThisIsTheInstaller" $HEIGHT $WIDTH
 
 	if [ $? != 0 ]; then
 		exit 0
 	fi
 
-	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$IdiomKeyboardLayout $HEIGHT $WIDTH
+	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$IdiomKeyboardLayout" $HEIGHT $WIDTH
 
 	if [ $? = 0 ]; then
 		dpkg-reconfigure locales
@@ -203,7 +203,7 @@ if [ "$GUI" = "" ]; then
 		dpkg-reconfigure keyboard-configuration
 	fi
 
-	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$CreatePartitions $HEIGHT $WIDTH
+	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$CreatePartitions" $HEIGHT $WIDTH
 
 	#choose the drive to partition
 	DRIVES=`cat /proc/partitions | grep -v loop | grep -v major | grep -v "^$" | awk '{print $4}' | grep -v "[0-9]"`
@@ -214,7 +214,7 @@ if [ "$GUI" = "" ]; then
 		partdrivemenu="$partdrivemenu $partdrive $partdrivesize"
 	done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectDriveToPartition $HEIGHT $WIDTH $MENUHEIGHT Exit $ExitInstaller $partdrivemenu 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectDriveToPartition" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $partdrivemenu 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		PARTDRIVE=`cat /tmp/choice.$$`
@@ -225,7 +225,7 @@ if [ "$GUI" = "" ]; then
 	rm /tmp/choice.$$
 
 	if [ "$PARTDRIVE" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller $HEIGHT $WIDTH
+		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
 		exit 1
 	fi
 
@@ -241,7 +241,7 @@ if [ "$GUI" = "" ]; then
 		swappartmenu="$swappartmenu $swappart $swappartsize"
 	done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectSwapPartition $HEIGHT $WIDTH $MENUHEIGHT Exit $ExitInstaller $swappartmenu 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $swappartmenu 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		SWAP=`cat /tmp/choice.$$`
@@ -252,7 +252,7 @@ if [ "$GUI" = "" ]; then
 	rm /tmp/choice.$$
 
 	if [ "$SWAP" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller $HEIGHT $WIDTH
+		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
 		exit 1
 	fi
 
@@ -275,7 +275,7 @@ if [ "$GUI" = "" ]; then
 		partmenu="$partmenu $part $partsize"
 	done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectInstallationPartition $HEIGHT $WIDTH $MENUHEIGHT Exit $ExitInstaller $partmenu 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $partmenu 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		TARGETPART=`cat /tmp/choice.$$`
@@ -286,12 +286,12 @@ if [ "$GUI" = "" ]; then
 	rm /tmp/choice.$$
 
 	if [ "$TARGETPART" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller $HEIGHT $WIDTH
+		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
 		exit 1
 	fi
 
 	#choose filesystem type
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectRootFileSystem $HEIGHT $WIDTH $MENUHEIGHT ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" $HEIGHT $WIDTH $MENUHEIGHT ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		FSTYPE=`cat /tmp/choice.$$`
@@ -309,7 +309,7 @@ if [ "$GUI" = "" ]; then
 		homepartmenu="$homepartmenu $homepart $homepartsize"
 	done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectHomePartition $HEIGHT $WIDTH $MENUHEIGHT root $PutHomeInRootPartition $homepartmenu 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomePartition" $HEIGHT $WIDTH $MENUHEIGHT root "$PutHomeInRootPartition" $homepartmenu 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		HOMEPART=`cat /tmp/choice.$$`
@@ -321,7 +321,7 @@ if [ "$GUI" = "" ]; then
 
 	if [ "$HOMEPART" != "root" ]; then
 		#choose filesystem type
-		$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectHomeFileSystem $HEIGHT $WIDTH $MENUHEIGHT noformat $DontFormatHomePartition ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
+		$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" $HEIGHT $WIDTH $MENUHEIGHT noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
 
 		if [ "$?" = "0" ]; then
 			HFSTYPE=`cat /tmp/choice.$$`
@@ -362,7 +362,7 @@ if [ "$GUI" = "" ]; then
 			rm /tmp/choice.$$
 
 			if [ "$TARGETROOTPASS" != "$TARGETROOTPASS2" ]; then
-				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$PasswordsDontMatch $HEIGHT $WIDTH
+				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$PasswordsDontMatch" $HEIGHT $WIDTH
 			fi
 		done
 
@@ -420,7 +420,7 @@ if [ "$GUI" = "" ]; then
 			rm /tmp/choice.$$
 
 			if [ "$TARGETPASS" != "$TARGETPASS2" ]; then
-				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$PasswordsDontMatch $HEIGHT $WIDTH
+				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$PasswordsDontMatch" $HEIGHT $WIDTH
 			fi
 		done
 
@@ -452,14 +452,14 @@ if [ "$GUI" = "" ]; then
 			PartDrive="$i"
 
 			if [ "$(echo "$PartDrive" | grep [0-9] )" = "" ]; then
-				GrubMenu=("${GrubMenu[@]}" "$PartDrive" $DiskMBR)
+				GrubMenu=("${GrubMenu[@]}" "$PartDrive" "$DiskMBR")
 			fi
 		done
 
-		GrubMenu=( "${GrubMenu[@]}" "root" $RootPartition "rootmbr" $RootMBRPartition )
+		GrubMenu=( "${GrubMenu[@]}" "root" "$RootPartition" "rootmbr" "$RootMBRPartition" )
 
 		#grub location
-		$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectWhereInstallGrub $HEIGHT $WIDTH $MENUHEIGHT "${GrubMenu[@]}" 2>/tmp/choice.$$
+		$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectWhereInstallGrub" $HEIGHT $WIDTH $MENUHEIGHT "${GrubMenu[@]}" 2>/tmp/choice.$$
 
 		if [ "$?" = "0" ]; then
 			GRUBLOCTEST=`cat /tmp/choice.$$`
@@ -478,7 +478,7 @@ if [ "$GUI" = "" ]; then
 	#dpkg-reconfigure tzdata
 	#Timezone setting
 
-	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$SystemClockSetup $HEIGHT $WIDTH
+	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$SystemClockSetup" $HEIGHT $WIDTH
 
 	if [ $? = 0 ]; then
 		if [ "$(grep "UTC" /etc/adjtime)" != "" ]; then
@@ -498,7 +498,7 @@ if [ "$GUI" = "" ]; then
 
 	rm /tmp/remastersys.zoneinfo
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT$SelectTimeZone $HEIGHT $WIDTH $MENUHEIGHT Exit $ExitInstaller $ZONES 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectTimeZone" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $ZONES 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		ZONESINFO=`cat /tmp/choice.$$`
@@ -509,7 +509,7 @@ if [ "$GUI" = "" ]; then
 	rm /tmp/choice.$$
 
 	if [ "$ZONESINFO" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller $HEIGHT $WIDTH
+		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
 		exit 1
 	fi
 
@@ -524,13 +524,13 @@ if [ "$GUI" = "" ]; then
     HomeText "$HOMEPART" "$HFSTYPE"
 
     if [ "$testmode" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$ConfirmInstallChoices $HEIGHT $WIDTH
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoices" $HEIGHT $WIDTH
 
         if [ $? != 0 ]; then
             exit 0
         fi
     else
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$ConfirmInstallChoicesBackup $HEIGHT $WIDTH
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoicesBackup" $HEIGHT $WIDTH
 
         if [ $? != 0 ]; then
             exit 0
@@ -550,7 +550,7 @@ else
         exit 1
     fi
 
-    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$ThisIsTheInstaller
+    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ThisIsTheInstaller"
 
     if [ $? != 0 ]; then
         exit 0
@@ -564,7 +564,7 @@ else
         FRONTEND="kde"
     fi
 
-    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$IdiomKeyboardLayout
+    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$IdiomKeyboardLayout"
 
     if [ $? = 0 ]; then
         dpkg-reconfigure -f $FRONTEND locales
@@ -576,7 +576,7 @@ else
     #fix for gparted being inhibited by udisks-daemon
     killall -KILL udisks-daemon
 
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$CreatePartitions
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$CreatePartitions"
 
     #choose the drive to partition
     DRIVES=`cat /proc/partitions | grep -v loop | grep -v major | grep -v "^$" | awk '{print $4}' | grep -v "[0-9]"`
@@ -589,13 +589,13 @@ else
 
     PARTDRIVE=""
     while [ "$PARTDRIVE" = "" ]; do
-        PARTDRIVE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT$SelectDriveToPartition Exit $ExitInstaller $partdrivemenu`
+        PARTDRIVE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectDriveToPartition" Exit "$ExitInstaller" $partdrivemenu`
     done
 
     PARTDRIVE=`echo $PARTDRIVE | cut -d "|" -f 1`
 
     if [ "$PARTDRIVE" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
         exit 1
     fi
 
@@ -612,13 +612,13 @@ else
 
     SWAP=""
     while [ "$SWAP" = "" ]; do
-        SWAP=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT$SelectSwapPartition Exit $ExitInstaller $swappartmenu`
+        SWAP=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectSwapPartition" Exit "$ExitInstaller" $swappartmenu`
     done
 
     SWAP=`echo $SWAP | cut -d "|" -f 1`
 
     if [ "$SWAP" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
         exit 1
     fi
 
@@ -641,19 +641,19 @@ else
 
     TARGETPART=""
     while [ "$TARGETPART" = "" ]; do
-        TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT$SelectInstallationPartition Exit $ExitInstaller $partmenu`
+        TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" Exit "$ExitInstaller" $partmenu`
     done
 
     TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
 
     if [ "$TARGETPART" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
         exit 1
     fi
 
     FSTYPE=""
     while [ "$FSTYPE" = "" ]; do
-        FSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT$SelectRootFileSystem ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
+        FSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectRootFileSystem" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
     done
 
     FSTYPE=`echo $FSTYPE | cut -d "|" -f 1`
@@ -667,7 +667,7 @@ else
 
     HOMEPART=""
     while [ "$HOMEPART" = "" ]; do
-        HOMEPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT$SelectHomePartition root $PutHomeInRootPartition $homepartmenu`
+        HOMEPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectHomePartition" root "$PutHomeInRootPartition" $homepartmenu`
     done
 
     HOMEPART=`echo $HOMEPART | cut -d "|" -f 1`
@@ -675,7 +675,7 @@ else
     if [ "$HOMEPART" != "root" ]; then
         HFSTYPE=""
         while [ "$HFSTYPE" = "" ]; do
-            HFSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT$SelectHomeFileSystem noformat $DontFormatHomePartition ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
+            HFSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectHomeFileSystem" noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
         done
     fi
 
@@ -714,7 +714,7 @@ else
                 TARGETPASS2=`echo $CHOICES | cut -d "|" -f 6`
                 TARGETHOSTNAME=`echo $CHOICES | cut -d "|" -f 7`
             else
-                $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller
+                $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
                 exit 1
             fi
 
@@ -763,14 +763,14 @@ else
             PartDrive="$i"
 
             if [ "$(echo "$PartDrive" | grep [0-9] )" = "" ]; then
-                GrubMenu=("${GrubMenu[@]}" "$PartDrive" $DiskMBR)
+                GrubMenu=("${GrubMenu[@]}" "$PartDrive" "$DiskMBR")
             fi
         done
 
-        GrubMenu=( "${GrubMenu[@]}" "root" $RootPartition "rootmbr" $RootMBRPartition )
+        GrubMenu=( "${GrubMenu[@]}" "root" "$RootPartition" "rootmbr" "$RootMBRPartition" )
 
         #grub location
-        GRUBLOCTEST=$($DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT$SelectWhereInstallGrub "${GrubMenu[@]}")
+        GRUBLOCTEST=$($DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectWhereInstallGrub" "${GrubMenu[@]}")
 
         ret="$?"
 
@@ -791,7 +791,7 @@ else
 
     #Timezone setting
 
-    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$SystemClockSetup
+    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$SystemClockSetup"
 
     if [ $? = 0 ]; then
         if [ "$(grep "UTC" /etc/adjtime)" != "" ]; then
@@ -814,13 +814,13 @@ else
     ZONESINFO=""
 
     while [ "$ZONESINFO" = "" ]; do
-        ZONESINFO=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT$SelectTimeZone Exit $ExitInstaller $ZONES`
+        ZONESINFO=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectTimeZone" Exit "$ExitInstaller" $ZONES`
     done
 
     ZONESINFO=`echo $ZONESINFO | cut -d "|" -f 1`
 
     if [ "$ZONESINFO" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
         exit 1
     fi
 
@@ -838,17 +838,17 @@ else
     HomeText "$HOMEPART" "$HFSTYPE"
 
     if [ "$testmode" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$ConfirmInstallChoices
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoices"
 
         if [ $? != 0 ]; then
-            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller
+            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
             exit 1
         fi
     else
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$ConfirmInstallChoicesBackup
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoicesBackup"
 
         if [ $? != 0 ]; then
-            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$ExitingInstaller
+            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
             exit 1
         fi
     fi
