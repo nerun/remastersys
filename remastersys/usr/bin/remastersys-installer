@@ -130,7 +130,7 @@ SelectSwapPartition=$"Select a swap partition to use.\nIf the only option you se
 SelectInstallationPartition=$"Select a partition to install the system on.\nIf the only option you see is \"$ExitInstaller\" then no partition was found."
 SelectRootFileSystem=$"Select the file system type of the root partition."
 PasswordsDontMatch=$"Passwords do not match. Try again."
-IdiomKeyboardLayout=$"The current system language as well as the current keyboard layout will\ncontinue to be used by the installer until the end. However, you can change\nthe language and keyboard layout that will be installed.\n\nDo you want to change?"
+IdiomKeyboardLayout=$"The current system language as well as\nthe current keyboard layout will continue to\nbe used by the installer until the end.\nHowever, you can change the language and\nkeyboard layout that will be installed.\n\nDo you want to change?"
 ThisIsTheInstaller=$"This is the Live CD installer.\n\nDo you want to continue?"
 SelectHomePartition=$"Select a partition to install the /home folder on.\nIf the only option you see is the root partition, then no other partitions were found."
 PutHomeInRootPartition=$"put /home on the root partition"
@@ -175,14 +175,6 @@ GrubLoc(){
         GRUBLOC="/dev/$GRUBLOCTEST"
     fi
 }
-UmountingFormatingTARGETPART=$"Unmounting and formatting the partition we are going to use."
-MountingTARGET=$"Mounting the TARGET partition now."
-RUNsetupSWAP=$"Configuring SWAP... Please wait.\n"
-RUNformatTARGET=$"Formatting $TARGETPART... Please wait.\n"
-RUNformatHOME=$"Formatting $HOME... Please wait.\n"
-RUNcopyToDISK=$"Copying files to disk... Please wait.\n"
-RUNpostINSTALL=$"Performing post-installation steps... Please wait.\n"
-RUNsetupGRUB=$"Installing and configuring grub... Please wait.\n"
 
 # TEXT MODE START ##############################################################
 if [ "$GUI" = "" ]; then
@@ -615,7 +607,7 @@ else
 
     SWAP=""
     while [ "$SWAP" = "" ]; do
-        SWAP=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectSwapPartition" Exit "$ExitInstaller" $swappartmenu`
+        SWAP=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" Exit "$ExitInstaller" $swappartmenu`
     done
 
     SWAP=`echo $SWAP | cut -d "|" -f 1`
@@ -870,6 +862,15 @@ fi
 #
 #
 
+UmountingFormatingTARGETPART=$"Unmounting and formatting the partition we are going to use."
+MountingTARGET=$"Mounting the TARGET partition now."
+RUNsetupSWAP=$"Configuring SWAP... Please wait.\n"
+RUNformatTARGET=$"Formatting $TARGETPART... Please wait.\n"
+RUNformatHOME=$"Formatting $HOME... Please wait.\n"
+RUNcopyToDISK=$"Copying files to disk... Please wait.\n"
+RUNpostINSTALL=$"Performing post-installation steps... Please wait.\n"
+RUNsetupGRUB=$"Installing and configuring grub... Please wait.\n"
+
 if [ "$GUI" != "" ]; then
     progressbar $RUNsetupSWAP &
 fi
@@ -903,7 +904,7 @@ if [ "`mount | grep $TARGETPART`" ]; then
     umount /dev/$TARGETPART
 fi
 
-mke2fs -t $FSTYPE /dev/$TARGETPART
+mke2fs -Ft $FSTYPE /dev/$TARGETPART
 mkdir -p /TARGET
 sleep 2
 echo $MountingTARGET
@@ -930,7 +931,7 @@ if [ "$HOMEPART" != "root" ]; then
             umount /dev/$HOMEPART
         fi
 
-        mke2fs -t $HFSTYPE /dev/$HOMEPART
+        mke2fs -Ft $HFSTYPE /dev/$HOMEPART
     fi
 
     echo $MountingTARGET

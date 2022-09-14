@@ -132,14 +132,14 @@ msgstr "As senhas não conferem. Tente de novo."
 
 #: remastersys-installer:133
 msgid ""
-"The current system language as well as the current keyboard layout will"
-"\\ncontinue to be used by the installer until the end. However, you can "
-"change\\nthe language and keyboard layout that will be installed.\\n\\nDo "
+"The current system language as well as\\nthe current keyboard layout will "
+"continue to\\nbe used by the installer until the end.\\nHowever, you can "
+"change the language and\\nkeyboard layout that will be installed.\\n\\nDo "
 "you want to change?"
 msgstr ""
-"O idioma do sistema, bem como o layout do teclado atuais, continuarão a"
-"\\nser usados pelo instalador até o final. No entanto, você pode alterar o"
-"\\nidioma e o layout do teclado que serão instalados.\\n\\nVocê deseja "
+"O idioma do sistema, bem como o layout do teclado\\natuais, continuarão a "
+"ser usados pelo instalador até\\no final. No entanto, você pode alterar o "
+"idioma e o\\nlayout do teclado que serão instalados.\\n\\nVocê deseja "
 "alterar?"
 
 #: remastersys-installer:134
@@ -200,9 +200,7 @@ msgstr ""
 #: remastersys-installer:143
 msgid ""
 "Root partition MBR - this is what you want for a pendrive/USB installation"
-msgstr ""
-"MBR da partição raiz - isso é o que você quer para uma instalação via "
-"pendrive/USB"
+msgstr "MBR da partição raiz - selecione para uma instalação via pendrive/USB"
 
 #: remastersys-installer:144
 msgid ""
@@ -244,54 +242,22 @@ msgstr "mbr da partição raiz de $TARGETPART"
 msgid "mbr of $GRUBLOCTEST"
 msgstr "mbr de $GRUBLOCTEST"
 
-#: remastersys-installer:178
-msgid "Unmounting and formatting the partition we are going to use."
-msgstr "Desmontando e formatando a partição que iremos usar."
-
-#: remastersys-installer:179
-msgid "Mounting the TARGET partition now."
-msgstr "Montando a partição TARGET agora."
-
-#: remastersys-installer:180
-msgid "Configuring SWAP... Please wait.\\n"
-msgstr "Configurando o SWAP... Por favor aguarde.\\n"
-
-#: remastersys-installer:181
-msgid "Formatting $TARGETPART... Please wait.\\n"
-msgstr "Formatando $TARGETPART... Por favor aguarde.\\n"
-
-#: remastersys-installer:182
-msgid "Formatting $HOME... Please wait.\\n"
-msgstr "Formatando $HOME... Por favor aguarde.\\n"
-
-#: remastersys-installer:183
-msgid "Copying files to disk... Please wait.\\n"
-msgstr "Copiando arquivos para o disco... Por favor aguarde.\\n"
-
-#: remastersys-installer:184
-msgid "Performing post-installation steps... Please wait.\\n"
-msgstr "Executando passos pós-instalação... Por favor aguarde.\\n"
-
-#: remastersys-installer:185
-msgid "Installing and configuring grub... Please wait.\\n"
-msgstr "Instalando e configurando o grub... Por favor aguarde.\\n"
-
-#: remastersys-installer:344
+#: remastersys-installer:336
 msgid "Enter the root password."
 msgstr "Digite a senha do root."
 
-#: remastersys-installer:354
+#: remastersys-installer:346
 msgid "Enter the root password again."
 msgstr "Redigite a senha do root."
 
-#: remastersys-installer:373
+#: remastersys-installer:365
 msgid ""
 "Enter the full name of the new user to be configured on the installed system."
 msgstr ""
 "Digite o nome completo do novo usuário a ser configurado no sistema "
 "instalado."
 
-#: remastersys-installer:383
+#: remastersys-installer:375
 msgid ""
 "Enter the username of the new user to be configured on the installed system."
 "\\nLowercase letters only."
@@ -299,19 +265,19 @@ msgstr ""
 "Digite o nome de login do novo usuário a ser configurado no sistema "
 "instalado.\\nLetras minúsculas apenas."
 
-#: remastersys-installer:402
+#: remastersys-installer:394
 msgid "Enter a password for $TARGETUSER."
 msgstr "Digite a senha para $TARGETUSER."
 
-#: remastersys-installer:412
+#: remastersys-installer:404
 msgid "Retype the password of $TARGETUSER."
 msgstr "Redigite a senha para $TARGETUSER."
 
-#: remastersys-installer:432
+#: remastersys-installer:424
 msgid "Enter the hostname of the system to be installed"
 msgstr "Digite o nome do host do sistema a ser instalado"
 
-#: remastersys-installer:526
+#: remastersys-installer:518
 msgid ""
 "New user: $TARGETUSER\\nPartition: $TARGETPART\\nFile System: $FSTYPE\\nSwap "
 "Partition: $SWAP\\nInstall GRUB on the: $GRUBLOCTEXT"
@@ -319,7 +285,7 @@ msgstr ""
 "Novo Usuário: $TARGETUSER\\nPartição: $TARGETPART\\nSistema de Arquivo: "
 "$FSTYPE\\nPartição Swap: $SWAP\\nInstalar GRUB em: $GRUBLOCTEXT"
 
-#: remastersys-installer:527
+#: remastersys-installer:519
 msgid ""
 "Backup Installation Partition: $TARGETPART\\nFile System: $FSTYPE\\nInstall "
 "GRUB on the: $GRUBLOCTEXT"
@@ -327,7 +293,7 @@ msgstr ""
 "Partição de Instalação do Backup: $TARGETPART\\nSistema de Arquivo: $FSTYPE"
 "\\nInstalar GRUB em: $GRUBLOCTEXT"
 
-#: remastersys-installer:552
+#: remastersys-installer:544
 msgid ""
 "Yad not found. You can still use the installer in text-mode by typing \\"
 "\"sudo remastersys-installer\\\" in a terminal."
@@ -335,71 +301,71 @@ msgstr ""
 "O yad não foi encontrado. Você ainda pode usar o instalador em modo texto "
 "digitando \\\"sudo remastersys-installer\\\" em um terminal."
 
-#: remastersys-installer:694
+#: remastersys-installer:686
 msgid "Password for root"
 msgstr "Senha para o root"
 
-#: remastersys-installer:695
+#: remastersys-installer:687
 msgid "Password for root (retype)"
 msgstr "Senha para o root (redigite)"
 
-#: remastersys-installer:696
+#: remastersys-installer:688
 msgid "New user's full name"
 msgstr "Nome completo do novo usuário"
 
-#: remastersys-installer:697
+#: remastersys-installer:689
 msgid "New user's username"
 msgstr "Nome de login do novo usuário"
 
-#: remastersys-installer:698
+#: remastersys-installer:690
 msgid "Password for new user"
 msgstr "Senha para novo usuário"
 
-#: remastersys-installer:699
+#: remastersys-installer:691
 msgid "Password for new user (retype)"
 msgstr "Senha para novo usuário (redigite)"
 
-#: remastersys-installer:700
+#: remastersys-installer:692
 msgid "Hostname for the computer"
 msgstr "Nome do host para o computador"
 
-#: remastersys-installer:735
+#: remastersys-installer:727
 msgid "Root password in blank."
 msgstr "Senha do root em branco."
 
-#: remastersys-installer:737
+#: remastersys-installer:729
 msgid "Passwords entered for Root do not match."
 msgstr "As senhas digitadas para o root não conferem."
 
-#: remastersys-installer:739
+#: remastersys-installer:731
 msgid "User's full name in blank."
 msgstr "Nome completo do usuário em branco."
 
-#: remastersys-installer:741
+#: remastersys-installer:733
 msgid "Blank username."
 msgstr "Nome de usuário em branco."
 
-#: remastersys-installer:743
+#: remastersys-installer:735
 msgid "Username cannot be the same as the Live CD username."
 msgstr "O nome de usuário não pode ser o mesmo do usuário do Live CD."
 
-#: remastersys-installer:745
+#: remastersys-installer:737
 msgid "Blank user password."
 msgstr "Senha de usuário em branco."
 
-#: remastersys-installer:747
+#: remastersys-installer:739
 msgid "Passwords entered for the user do not match."
 msgstr "As senhas digitadas para o usuário não conferem."
 
-#: remastersys-installer:749
+#: remastersys-installer:741
 msgid "Root and user passwords are the same.\\n\\nUse different passwords."
 msgstr "As senhas do root e do usuário são iguais.\\n\\nUse senhas diferentes."
 
-#: remastersys-installer:751
+#: remastersys-installer:743
 msgid "Blank hostname."
 msgstr "Nome do host em branco."
 
-#: remastersys-installer:843
+#: remastersys-installer:835
 msgid ""
 "New user is: $TARGETUSER\\nPartition: $TARGETPART\\nFile System: $FSTYPE"
 "\\nSwap Partition: $SWAP\\nInstall GRUB on the: $GRUBLOCTEXT"
@@ -407,7 +373,7 @@ msgstr ""
 "Novo Usuário: $TARGETUSER\\nPartição: $TARGETPART\\nSistema de Arquivo: "
 "$FSTYPE\\nPartição Swap: $SWAP\\nInstalar GRUB em: $GRUBLOCTEXT"
 
-#: remastersys-installer:844
+#: remastersys-installer:836
 msgid ""
 "Backup Installation Partition: $TARGETPART\\nFile System is: $FSTYPE"
 "\\nInstall GRUB on the: $GRUBLOCTEXT"
@@ -415,21 +381,53 @@ msgstr ""
 "Partição de Instalação do Backup: $TARGETPART\\nSistema de Arquivo: $FSTYPE"
 "\\nInstalar GRUB em: $GRUBLOCTEXT"
 
-#: remastersys-installer:912
+#: remastersys-installer:865
+msgid "Unmounting and formatting the partition we are going to use."
+msgstr "Desmontando e formatando a partição que iremos usar."
+
+#: remastersys-installer:866
+msgid "Mounting the TARGET partition now."
+msgstr "Montando a partição TARGET agora."
+
+#: remastersys-installer:867
+msgid "Configuring SWAP... Please wait.\\n"
+msgstr "Configurando o SWAP... Por favor aguarde.\\n"
+
+#: remastersys-installer:868
+msgid "Formatting $TARGETPART... Please wait.\\n"
+msgstr "Formatando $TARGETPART... Por favor aguarde.\\n"
+
+#: remastersys-installer:869
+msgid "Formatting $HOME... Please wait.\\n"
+msgstr "Formatando $HOME... Por favor aguarde.\\n"
+
+#: remastersys-installer:870
+msgid "Copying files to disk... Please wait.\\n"
+msgstr "Copiando arquivos para o disco... Por favor aguarde.\\n"
+
+#: remastersys-installer:871
+msgid "Performing post-installation steps... Please wait.\\n"
+msgstr "Executando passos pós-instalação... Por favor aguarde.\\n"
+
+#: remastersys-installer:872
+msgid "Installing and configuring grub... Please wait.\\n"
+msgstr "Instalando e configurando o grub... Por favor aguarde.\\n"
+
+#: remastersys-installer:913
 msgid "Using tune2fs to prevent forced checks on boot."
 msgstr ""
 "Usando tune2fs para prevenir verificações forçadas durante a inicialização."
 
-#: remastersys-installer:1018
+#: remastersys-installer:1019
 msgid "File copy completed."
 msgstr "Cópia de arquivos completada."
 
-#: remastersys-installer:1241
+#: remastersys-installer:1242
 msgid ""
 "Post-installation steps completed.\\n\\nUnmounting the TARGET partition."
 msgstr "Passos pós-instalação completados.\\n\\nDesmontando a partição TARGET."
 
-#: remastersys-installer:1258
+#: remastersys-installer:1259
 msgid ""
 "Installation is complete.\\n\\nIf all went well you should have your new "
 "system installed and ready to use.\\n\\nDo you want to reboot now to test "
