@@ -137,8 +137,8 @@ PutHomeInRootPartition=$"put /home on the root partition"
 SelectHomeFileSystem=$"Select the home partition file system type"
 DontFormatHomePartition=$"Don't format the home partition - not recommended unless you know what you're doing"
 CreatePartitions=$"We need to prepare the swap and install the partition now.\n\n$PARTITIONPROG will allow you to create the new partitions.\n\nYou must create or already have at least 1 system partition and 1 swap partition.\n\nIf you already have the partitions set up, just exit $PARTITIONPROG and the installation will continue.\n\nClick OK to continue."
-ConfirmInstallChoices=$"Please confirm if this information is correct:\n\nThe new user $TARGETUSER will be created in the partition $TARGETPART; the file system will be $FSTYPE; swap will be installed on the $SWAP partition; and,\ngrub will be installed in $GRUBLOCTEXT.\n\nDo you want to proceed?"
-ConfirmInstallChoicesBackup=$"Please confirm if this information is correct:\n\nYour backup will be installed on the $TARGETPART partition; the file system will be $FSTYPE; and, grub will be installed in $GRUBLOCTEXT.\n\nDo you want to proceed?"
+PleaseConfirm=$"Please confirm if this information is correct:\n\n"
+Proceed=$"\n\nDo you want to proceed?"
 RootPartition=$"Root partition - safe choice if you use a different boot loader"
 RootMBRPartition=$"Root partition MBR - this is what you want for a pendrive/USB installation"
 SystemClockSetup=$"Is your system clock set to local time?\n\nResponding \"no\" will indicate that it is set to UTC."
@@ -522,15 +522,18 @@ if [ "$GUI" = "" ]; then
 	#$SETXSERVER
 
     HomeText "$HOMEPART" "$HFSTYPE"
+    
+    ConfirmDist=$"New user: $TARGETUSER\nPartition: $TARGETPART\nFile System: $FSTYPE\nSwap Partition: $SWAP\nInstall GRUB on the: $GRUBLOCTEXT"
+    ConfirmBackup=$"Backup Installation Partition: $TARGETPART\nFile System: $FSTYPE\nInstall GRUB on the: $GRUBLOCTEXT"
 
     if [ "$testmode" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoices" $HEIGHT $WIDTH
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$PleaseConfirm""$ConfirmDist""$Proceed" $HEIGHT $WIDTH
 
         if [ $? != 0 ]; then
             exit 0
         fi
     else
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoicesBackup" $HEIGHT $WIDTH
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$PleaseConfirm""$ConfirmBackup""$Proceed" $HEIGHT $WIDTH
 
         if [ $? != 0 ]; then
             exit 0
@@ -836,16 +839,19 @@ else
     #fi
 
     HomeText "$HOMEPART" "$HFSTYPE"
+    
+    ConfirmDist=$"New user is: $TARGETUSER\nPartition: $TARGETPART\nFile System: $FSTYPE\nSwap Partition: $SWAP\nInstall GRUB on the: $GRUBLOCTEXT"
+    ConfirmBackup=$"Backup Installation Partition: $TARGETPART\nFile System is: $FSTYPE\nInstall GRUB on the: $GRUBLOCTEXT"
 
     if [ "$testmode" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoices"
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$PleaseConfirm""$ConfirmDist""$Proceed"
 
         if [ $? != 0 ]; then
             $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
             exit 1
         fi
     else
-        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ConfirmInstallChoicesBackup"
+        $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$PleaseConfirm""$ConfirmBackup""$Proceed"
 
         if [ $? != 0 ]; then
             $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
