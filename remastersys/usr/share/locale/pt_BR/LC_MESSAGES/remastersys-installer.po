@@ -132,14 +132,15 @@ msgstr "As senhas não conferem. Tente de novo."
 
 #: remastersys-installer:133
 msgid ""
-"The current system language as well as the current keyboard layout will "
-"continue to be used by the installer until the end. However, you can change "
-"the language and keyboard layout that will be installed.\\n\\nDo you want to "
-"change?"
+"The current system language as well as the current keyboard layout will"
+"\\ncontinue to be used by the installer until the end. However, you can "
+"change\\nthe language and keyboard layout that will be installed.\\n\\nDo "
+"you want to change?"
 msgstr ""
-"O idioma do sistema, bem como o layout do teclado atuais, continuarão a ser "
-"usados pelo instalador até o final. No entanto, você pode alterar o idioma e "
-"o layout do teclado que serão instalados.\\n\\nVocê deseja alterar?"
+"O idioma do sistema, bem como o layout do teclado atuais, continuarão a"
+"\\nser usados pelo instalador até o final. No entanto, você pode alterar o"
+"\\nidioma e o layout do teclado que serão instalados.\\n\\nVocê deseja "
+"alterar?"
 
 #: remastersys-installer:134
 msgid "This is the Live CD installer.\\n\\nDo you want to continue?"
