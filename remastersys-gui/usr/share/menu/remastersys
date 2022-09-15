@@ -9,7 +9,7 @@
 ?package(remastersys):needs="x11" section="Applications/System/Administration" \
 	title="Remastersys Installer" \
 	icon="/usr/share/pixmaps/remastersys-installer.png" \
-	command="sudo /usr/bin/remastersys-installer gui"
+	command="sudo /usr/bin/remastersys-installer --gui"
 ?package(remastersys):needs="x11" section="Applications/System/Administration" \
 	title="Remastersys USB Startup Disk Tool" \
 	icon="/usr/share/icons/remastersys.png" \
