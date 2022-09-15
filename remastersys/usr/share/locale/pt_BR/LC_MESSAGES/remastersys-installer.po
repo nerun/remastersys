@@ -137,9 +137,9 @@ msgid ""
 "change the language and\\nkeyboard layout that will be installed.\\n\\nDo "
 "you want to change?"
 msgstr ""
-"O idioma do sistema, bem como o layout do teclado\\natuais, continuarão a "
-"ser usados pelo instalador até\\no final. No entanto, você pode alterar o "
-"idioma e o\\nlayout do teclado que serão instalados.\\n\\nVocê deseja "
+"O idioma do sistema, bem como o layout do\\nteclado atuais, continuarão a "
+"ser usados pelo\\ninstalador até o final. No entanto, você pode\\nalterar o "
+"idioma e o layout do teclado que\\nserão instalados.\\n\\nVocê deseja "
 "alterar?"
 
 #: remastersys-installer:134

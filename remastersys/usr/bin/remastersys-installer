@@ -692,13 +692,13 @@ else
             PSWD7=$"Hostname for the computer"
 
             CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --form \
-            --field=$PSWD1:H \
-            --field=$PSWD2:H \
-            --field=$PSWD3 \
-            --field=$PSWD4 \
-            --field=$PSWD5:H \
-            --field=$PSWD6:H \
-            --field=$PSWD7`
+            --field="$PSWD1":H \
+            --field="$PSWD2":H \
+            --field="$PSWD3" \
+            --field="$PSWD4" \
+            --field="$PSWD5":H \
+            --field="$PSWD6":H \
+            --field="$PSWD7"`
 
             if [ "$?" = "0" ]; then
                 TARGETROOTPASS=`echo $CHOICES | cut -d "|" -f 1`
