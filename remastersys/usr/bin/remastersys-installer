@@ -85,9 +85,9 @@ if [ "$GUI" != "" ]; then
 	fi
 
 	if [ "$testyad" != "" ]; then
-		DIALOGMENU="`which yad` --window-icon=/usr/share/pixmaps/remastersys-installer.png --width=600 --height=400 --center"
-		DIALOG="`which yad` --window-icon=/usr/share/pixmaps/remastersys-installer.png --center --fixed"
-		TITLE="--always-print-result --dialog-sep --image=/usr/share/pixmaps/remastersys-installer.png --title="
+		DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/48x48/apps/remastersys-installer.png --width=600 --height=400 --center"
+		DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/48x48/apps/remastersys-installer.png --center --fixed"
+		TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys-installer.png --title="
 		TEXT="--text="
 		ENTRY="--entry "
 		ENTRYTEXT="--entry-text "
