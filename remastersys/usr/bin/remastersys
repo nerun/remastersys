@@ -142,7 +142,11 @@ else  # In this case $2 work as $3 (CUSTOMISO)
 fi
 
 if [ "$3" != "" ]; then
-	CUSTOMISO="$3"
+	if [ ${3: -4} != ".iso" ]; then
+		CUSTOMISO="$3.iso"
+	else
+		CUSTOMISO="$3"
+	fi
 fi
 
 case $1 in
@@ -173,12 +177,22 @@ case $1 in
 
 esac
 
-# Used inside both cdfs() and iso(), around lines 510-550
+# Used inside both cdfs() and iso(), around lines 550-570
 SpecIso9660=$"The compressed file system is larger than the ISO 9660 specification for a single file allows. You should reduce the amount of files you are trying to backup and try again."
+
+CheckFileSystemSize(){
+	#checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file"
+	SQUASHFSSIZE=`ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+	if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
+		echo $SpecIso9660
+		echo $SpecIso9660 >> $WORKDIR/remastersys.log
+		exit 1
+	fi
+}
 
 cdfs(){
 
-	# STEP 3 - Create the CD tree in $WORKDIR/ISOTMP
+	# STEP 1 - Create the CD tree in $WORKDIR/ISOTMP
 
 	echo $"Checking if the $WORKDIR folder has already been created."
 	if [ -d "$WORKDIR" ]; then
@@ -407,7 +421,7 @@ cdfs(){
 
 	sleep 1
 
-	# STEP 4 - Prepare live.conf depending on whether this is a backup or dist
+	# STEP 2 - Prepare live.conf depending on whether this is a backup or dist
 
 	if [ "$1" = "backup" ]; then
 		LIVEUSER="`grep '^[^:]*:[^:]*:1000:' /etc/passwd | awk -F ":" '{ print $1 }'`"
@@ -456,7 +470,7 @@ cdfs(){
 	cp /boot/vmlinuz-$(uname -r) $WORKDIR/ISOTMP/live/vmlinuz
 	cp /boot/initrd.img-$(uname -r) $WORKDIR/ISOTMP/live/initrd.img
 
-	# STEP 5 - Make filesystem.squashfs
+	# STEP 3 - Make filesystem.squashfs
 
 	if [ -f $WORKDIR/remastersys.log ]; then
 		rm -f $WORKDIR/remastersys.log
@@ -534,13 +548,7 @@ cdfs(){
 
 	sleep 1
 
-	#checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file" 
-	SQUASHFSSIZE=`ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
-	if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
-		echo $SpecIso9660
-		echo $SpecIso9660 >> $WORKDIR/remastersys.log
-		exit 1
-	fi
+	CheckFileSystemSize # call function at line 180
 }
 
 iso(){
@@ -550,27 +558,19 @@ iso(){
 		CREATEISO="`which genisoimage`"
 	fi
 
-	MissingFiles=$"The CD file system is missing. Either there was a problem creating the compressed file system, or you are trying to run the command \"remastersys dist iso\" before \"remastersys dist cdfs\"."
-
 	# check to see if the cd filesystem exists
 	if [ ! -f "$WORKDIR/ISOTMP/live/filesystem.squashfs" ]; then
-		echo $MissingFiles
+		echo -e $"The CD file system is missing. Either there was a problem creating the compressed file system, or you are trying to run the command \"remastersys dist iso\" before \"remastersys dist cdfs\"."
 		exit 1
 	fi
 
-	#checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file" 
-	SQUASHFSSIZE=`ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
-	if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
-		echo $SpecIso9660
-		echo $SpecIso9660 >> $WORKDIR/remastersys.log
-		exit 1
-	fi
+	CheckFileSystemSize # call function at line 180
 
 	#isolinux mode
 
 	sleep 1
 
-	# STEP 6 - Make the ISO file
+	# STEP 4 - Make the ISO file
 	
 	# Internationalization efforts
 	Creating=$"Creating"
@@ -586,18 +586,18 @@ iso(){
 		phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
 		echo -e "$phrase2"
 		echo "$phrase2" >>$WORKDIR/remastersys.log
-		$CREATEISO    \
+		$CREATEISO \
 		-quiet \
-		-r    \
-		-V "$LIVECDLABEL"    \
-		-cache-inodes    \
-		-J    \
-		-l    \
-		-b isolinux/isolinux.bin    \
-		-c isolinux/boot.cat    \
-		-no-emul-boot    \
-		-boot-load-size 4    \
-		-boot-info-table    \
+		-r \
+		-V "$LIVECDLABEL" \
+		-cache-inodes \
+		-J \
+		-l \
+		-b isolinux/isolinux.bin \
+		-c isolinux/boot.cat \
+		-no-emul-boot \
+		-boot-load-size 4 \
+		-boot-info-table \
 		-o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
 
 		# create hybrid iso so it can be dd installed to a usb flash drive
