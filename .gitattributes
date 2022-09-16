@@ -5,4 +5,4 @@
 .gitattributes                  export-ignore
 remastersys-128.xcf             export-ignore
 remastersys-installer-128.xcf   export-ignore
-mksquashfs benchmarks.ods       export-ignore
+mksquashfs\ benchmarks.ods       export-ignore
