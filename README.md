@@ -15,18 +15,18 @@ Just burn your Distro or Backup image onto a CD/DVD media or a USB stick (with p
 
 The program is still **under development, with many bugs**. However, it is already possible to see many new features compared to the original **remastersys**:
 
-* Internationalization (scripts, menu entries and desktop files): default language is English, but it is possible to create locales for other languages, such as pt_BR, which is already available.
+* Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
 * All scripts have been revised, improving source code formatting and several minor performance improvements.
-* Updated Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7).
-* Updated makesquashfs' compression method from gzip to zstd: generates images up to 9% smaller in almost half the time.
-* Improved terminal messages, with removal of many small errors and visual improvements. Many improvements are being made to the GUI as well.
+* Improved terminal messages, fixed many small errors and added a few visual improvements. Many improvements are being made to the GUI as well.
+* Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7).
+* Changed makesquashfs' compression method from gzip to zstd. Zstd generates images up to 10% smaller in almost half the time.
 * Updated icons and images.
 * Improved man pages.
-* Removed plymouth. I don't know what it's for, I can reinsert it in the future.
-* Removed gksu/gksudo support, using sudo by default.
+* Removed plymouth, but can be reinserted it in the future.
+* Changed gksu/gksudo to sudo.
 * Updated dependencies:
-  * live-config-systemd: included to work with systemd.
-  * syslinux-utils: included to fix bug using isohybrid.
-  * zstd: included because of new makesquashfs’ compression method.
-  * memtest86+: removed since it is not used by system, isolinux has its own binary.
-  * xresprobe: removed since is no longer used.
+  * live-config-systemd (included because of systemd).
+  * syslinux-utils (included to fix bug when using isohybrid).
+  * zstd (included because of makesquashfs’ new compression method).
+  * memtest86+ (excluded since it is not used by system, isolinux has its own binary).
+  * xresprobe (excluded since is no longer used).

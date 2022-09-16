@@ -388,6 +388,7 @@ cdfs(){
 			local LiveCDFailSafe=$"Live CD (fail safe)"
 			local ChainBoot=$"Chain Bootup on First HDD"
 			local MemTest=$"Memory Test (Memtest86)"
+			local MemTestPlus=$"Memory Test (Memtest86+)"
 
 			# isolinux.cfg translation
 			sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg		
@@ -396,6 +397,7 @@ cdfs(){
 			sed -i -e 's/__LIVECDFAILSAFE__/'"$LiveCDFailSafe"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
 			sed -i -e 's/__CHAINBOOT__/'"$ChainBoot"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
 			sed -i -e 's/__MEMTEST__/'"$MemTest"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
+			sed -i -e 's/__MEMTESTPLUS__/'"$MemTestPlus"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
 
 			if [ ! -d /etc/plymouth ]; then
 				sed -i -e 's/splash//g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg

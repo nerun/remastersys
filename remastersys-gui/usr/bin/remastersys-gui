@@ -24,9 +24,9 @@ if [ "$testyad" = "" ]; then
 fi
 
 if [ "$testyad" != "" ]; then
-	DIALOGMENU="`which yad` --window-icon=/usr/share/icons/refisefuqui.png --width=750 --center"
-	DIALOG="`which yad` --window-icon=/usr/share/icons/refisefuqui.png --center --fixed"
-	TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/refisefuqui.png --title="
+	DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/refisefuqui.png --width=750 --center"
+	DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/refisefuqui.png --center --fixed"
+	TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/refisefuqui.png --title="
 	TEXT="--text="
 	ENTRY="--entry "
 	ENTRYTEXT="--entry-text "

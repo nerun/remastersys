@@ -16,7 +16,7 @@
 # Using yad for gui calls
 
 DIALOG="`which yad` --width 400 --fixed"
-TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/refisefuqui.png --image=/usr/share/icons/refisefuqui.png --title="
+TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/hicolor/16x16/apps/refisefuqui.png --image=/usr/share/icons/hicolor/48x48/apps/refisefuqui.png --title="
 TITLETEXT="ReFiSeFuQui Ferramenta de Inicialização por USB"
 TEXT="--text="
 ENTRY="--entry "
