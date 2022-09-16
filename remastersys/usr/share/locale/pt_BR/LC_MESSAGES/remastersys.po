@@ -144,27 +144,27 @@ msgstr " - Criando somente o sistema de arquivos do CD."
 msgid " - Creating the ISO file only."
 msgstr " - Criando somente o arquivo ISO."
 
-#: remastersys:152
+#: remastersys:156
 msgid "$fB$fOrange\\n>> BACKUP MODE SELECTED$options\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO BACKUP SELECIONADO$options\\n$fEND"
 
-#: remastersys:157
+#: remastersys:161
 msgid "$fB$fOrange\\n>> CLEANING MODE SELECTED\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO CLEAN SELECIONADO\\n$fEND"
 
-#: remastersys:158
+#: remastersys:162
 msgid "Deleting work directory..."
 msgstr "Apagando diretório de trabalho..."
 
-#: remastersys:160
+#: remastersys:164
 msgid "Done. Exiting...\\n"
 msgstr "Feito. Saindo...\\n"
 
-#: remastersys:166
+#: remastersys:170
 msgid "$fB$fOrange\\n>> DIST MODE SELECTED$options\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO DIST SELECIONADO$options\\n$fEND"
 
-#: remastersys:177
+#: remastersys:181
 msgid ""
 "The compressed file system is larger than the ISO 9660 specification for a "
 "single file allows. You should reduce the amount of files you are trying to "
@@ -174,60 +174,60 @@ msgstr ""
 "permite a um único arquivo. Você deve reduzir a quantidade de arquivos que "
 "você está tentando gravar e tentar de novo."
 
-#: remastersys:183
+#: remastersys:197
 msgid "Checking if the $WORKDIR folder has already been created."
 msgstr "Verificando se a pasta $WORKDIR já foi criada."
 
-#: remastersys:203
+#: remastersys:217
 msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
 msgstr ""
 "\\nCopiando /var e /etc para área temporária e deletando arquivos extras."
 
-#: remastersys:266
+#: remastersys:280
 msgid "\\nCopying installation icon to the Live CD user desktop."
 msgstr ""
 "\\nCopiando o ícone de instalação para a Área de Trabalho do usuário do Live "
 "CD."
 
-#: remastersys:386
+#: remastersys:400
 msgid "Press ENTER to choose or TAB to edit a menu entry"
 msgstr "Pressione ENTER para escolher ou TAB para editar uma entrada do menu"
 
-#: remastersys:387
+#: remastersys:401
 msgid "Live CD"
 msgstr "Live CD"
 
-#: remastersys:388
+#: remastersys:402
 msgid "Live CD (fail safe)"
 msgstr "Live CD (modo seguro)"
 
-#: remastersys:389
+#: remastersys:403
 msgid "Chain Bootup on First HDD"
 msgstr "Inicializar pelo HD"
 
-#: remastersys:390
+#: remastersys:404
 msgid "Memory Test (Memtest86)"
 msgstr "Testar RAM (Memtest86)"
 
-#: remastersys:391
+#: remastersys:405
 msgid "Memory Test (Memtest86+)"
 msgstr "Testar RAM (Memtest86+)"
 
-#: remastersys:450
+#: remastersys:464
 msgid "\\nSetting up Live CD options for mode $1."
 msgstr "\\nConfigurando as opções do Live CD para modo $1."
 
-#: remastersys:455
+#: remastersys:469
 msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr "\\nCopiando seu kernel e o initrd para o Live CD."
 
-#: remastersys:470
+#: remastersys:484
 msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
 msgstr ""
 "\\nCriando filesystem.squashfs... Isso pode demorar um pouco, então seja "
 "paciente."
 
-#: remastersys:553
+#: remastersys:563
 msgid ""
 "The CD file system is missing. Either there was a problem creating the "
 "compressed file system, or you are trying to run the command \\\"remastersys "
