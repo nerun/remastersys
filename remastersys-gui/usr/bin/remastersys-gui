@@ -1,20 +1,14 @@
 #!/bin/bash
-######################################################
-#                                                    #
-#  ReFiSeFuQui                                       #
-#    Copyright 2013 Under the GNU GPL2 License       #
-#    Fork of Remastersys                             #
-#    by Daniel "Nerun" Rodrigues                     #
-#                                                    #
-#  Remastersys                                       #
-#    Copyright 2007-2012 Under the GNU GPL2 License  #
-#    Originally Created February 12th, 2007          #
-#    by Tony "Fragadelic" Brijeski                   #
-#                                                    #
-######################################################
+###################################################################
+#  REMASTERSYS                                                    #
+#    Under the GNU GPL2 License                                   #
+#    Copyright (C) 2013-2022 Daniel "Nerun" Rodrigues             #
+#    Copyright (C) 2007-2012 Tony "Fragadelic" Brijeski           #
+#    Full copyright notice: /usr/share/doc/remastersys/copyright  #
+###################################################################
 
 # carrega arquivo de versão
-. /etc/refisefuqui/refisefuqui.version
+. /etc/remastersys/remastersys.version
 
 #  This script requires yad to run
 testyad=`which yad`
@@ -24,9 +18,9 @@ if [ "$testyad" = "" ]; then
 fi
 
 if [ "$testyad" != "" ]; then
-	DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/refisefuqui.png --width=750 --center"
-	DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/refisefuqui.png --center --fixed"
-	TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/refisefuqui.png --title="
+	DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
+	DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
+	TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
 	TEXT="--text="
 	ENTRY="--entry "
 	ENTRYTEXT="--entry-text "
@@ -34,7 +28,7 @@ if [ "$testyad" != "" ]; then
 	MENU="--list --column=Opções --column=Explicações"
 	YESNO=" --button=Sim:0 --button=Não:1 "
 	MSGBOX=" --button=Ok:0 "
-	TITLETEXT="Criador de ReFiSeFuQui"
+	TITLETEXT="Remastersys"
 fi
 
 testroot="`whoami`"
@@ -57,11 +51,11 @@ anteriormente." \
 	DistGrub "Seleciona uma imagem de fundo para o carregador de inicialização GRUB." \
 	DistSkel "Torna as configurações personalizadas do usuário atual nas configurações padrões do
 sistema do Live CD/DVD." \
-	Configurar "Modificar as configurações do ReFiSeFuQui." \
-	Limpar "Limpar a pasta de trabalho do ReFiSeFuQui." \
+	Configurar "Modificar as configurações do Remastersys." \
+	Limpar "Limpar a pasta de trabalho do Remastersys." \
 	LimparSkel "Limpar as configurações de /etc/skel para remover todas as personalizações." \
-	Log "Visualizar o arquivo de log do ReFiSeFuQui." \
-	Sobre "Sobre o Criador de ReFiSeFuQui."`
+	Log "Visualizar o arquivo de log do Remastersys." \
+	Sobre "Sobre o Remastersys."`
 
 	if [ "$?" = "0" ]; then
 		CHOICE=`echo $CHOICES | cut -d "|" -f 1`
@@ -92,18 +86,18 @@ sistema do Live CD/DVD." \
 		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Os arquivos de configuração em /etc/skel/ foram apagados."
 		mainmenu
 	elif [ "$CHOICE" = "Log" ]; then
-		. /etc/refisefuqui.conf
+		. /etc/remastersys.conf
 
-		if [ -f "$WORKDIR/refisefuqui/refisefuqui.log" ]; then
-			$DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 --text-info --filename="$WORKDIR/refisefuqui/refisefuqui.log"
+		if [ -f "$WORKDIR/remastersys/remastersys.log" ]; then
+			$DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 --text-info --filename="$WORKDIR/remastersys/remastersys.log"
 		else
-			$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O arquivo refisefuqui.log não existe. "
+			$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O arquivo remastersys.log não existe. "
 		fi
 
 		mainmenu
 
 	elif [ "$CHOICE" = "Sobre" ]; then
-		$DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT"O Criador de ReFiSeFuQui é uma interface visual para o\nrefisefuqui, que é uma ferramenta em linha de comando que\ntransforma um sistema Debian instalado (ou derivado) em\numa distribuição em Live CD ou DVD. Podendo ser usado\ntambém como uma ferramenta de backup completo, incluindo\na pasta /home e todos os dados de usuários.\n\nEsta é a versão $VERSION.\n\nCriador de ReFiSeFuQui por Daniel 'Nerun' Rodrigues.\n\nFork do Remastersys, de Tony Brijeski (descontinuado).\n\nVisite linuxernoob.blogspot.com.br para obter mais\ninformações."
+		$DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT"O Criador de Remastersys é uma interface visual para o\nremastersys, que é uma ferramenta em linha de comando que\ntransforma um sistema Debian instalado (ou derivado) em\numa distribuição em Live CD ou DVD. Podendo ser usado\ntambém como uma ferramenta de backup completo, incluindo\na pasta /home e todos os dados de usuários.\n\nEsta é a versão $VERSION.\n\nCriador de Remastersys por Daniel 'Nerun' Rodrigues.\n\nFork do Remastersys, de Tony Brijeski (descontinuado).\n\nVisite linuxernoob.blogspot.com.br para obter mais\ninformações."
 		mainmenu
 	else
 		exit 0
@@ -112,71 +106,71 @@ sistema do Live CD/DVD." \
 
 backupmenu() {
 	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Você escolheu o Modo de Backup.\n\nNão interrompa este processo.\n\nClique em OK para iniciar o processo de criação do LiveCD/DVD de Backup. "
-	xterm -fn 9x15 -e "refisefuqui backup"
+	xterm -fn 9x15 -e "remastersys backup"
 
-	. /etc/refisefuqui.conf
+	. /etc/remastersys.conf
 
-	SQUASHFSSIZE=`ls -s $WORKDIR/refisefuqui/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+	SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
 
 	if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
 		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
 		exit 1
 	fi
 
-	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\nem $WORKDIR/refisefuqui.\n\nÉ recomendável testá-los em uma máquina virtual ou em um CD/DVD\nregravável para se certificar que ele funciona conforme desejado.\n\nClique em OK para retornar ao menu principal."
+	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\nem $WORKDIR/remastersys.\n\nÉ recomendável testá-los em uma máquina virtual ou em um CD/DVD\nregravável para se certificar que ele funciona conforme desejado.\n\nClique em OK para retornar ao menu principal."
 	mainmenu
 }
 
 distmenu() {
 	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Você escolheu o Modo Dist.\n\nClique em OK para iniciar o processo de criação da Distribuição LiveCD/DVD."
-	xterm -fn 9x15 -e "refisefuqui dist"
+	xterm -fn 9x15 -e "remastersys dist"
 
-	. /etc/refisefuqui.conf
+	. /etc/remastersys.conf
 
-	SQUASHFSSIZE=`ls -s $WORKDIR/refisefuqui/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+	SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
 
 	if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
 		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
 		exit 1
 	fi
 
-	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\nem $WORKDIR/refisefuqui.\n\nÉ recomendável testá-los em uma máquina virtual ou em um CD/DVD\nregravável para se certificar que ele funciona conforme desejado.\n\nClique em OK para retornar ao menu principal."
+	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\nem $WORKDIR/remastersys.\n\nÉ recomendável testá-los em uma máquina virtual ou em um CD/DVD\nregravável para se certificar que ele funciona conforme desejado.\n\nClique em OK para retornar ao menu principal."
 	mainmenu
 }
 
 distcdfsmenu() {
 	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Você escolheu o Modo Dist CDFS. Clique em OK para iniciar o processo de criação do sistema de arquivos da Distribuição LiveCD/DVD."
-	xterm -fn 9x15 -e "refisefuqui dist cdfs"
+	xterm -fn 9x15 -e "remastersys dist cdfs"
 
-	. /etc/refisefuqui.conf
+	. /etc/remastersys.conf
 
-	SQUASHFSSIZE=`ls -s $WORKDIR/refisefuqui/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+	SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
 
 	if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
 		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
 		exit 1
 	fi
 
-	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seu sistema de arquivos do Live CD/DVD está pronto em $WORKDIR/refisefuqui.\nVocê pode agora adicionar arquivos ao CD \ne então executar a opção Dist ISO quando você estiver pronto.\n\nClique em OK para retornar ao menu principal."
+	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seu sistema de arquivos do Live CD/DVD está pronto em $WORKDIR/remastersys.\nVocê pode agora adicionar arquivos ao CD \ne então executar a opção Dist ISO quando você estiver pronto.\n\nClique em OK para retornar ao menu principal."
 
 	mainmenu
 }
 
 distisomenu() {
-	. /etc/refisefuqui.conf
+	. /etc/remastersys.conf
 
-	if [ -f "$WORKDIR/refisefuqui/ISOTMP/live/filesystem.squashfs" ]; then
+	if [ -f "$WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs" ]; then
 		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Você escolheu o Modo Dist ISO.\n\nClique em OK para criar o arquivo ISO."
-		xterm -fn 9x15 -e "refisefuqui dist iso"
-		. /etc/refisefuqui.conf
-		SQUASHFSSIZE=`ls -s $WORKDIR/refisefuqui/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+		xterm -fn 9x15 -e "remastersys dist iso"
+		. /etc/remastersys.conf
+		SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
 
 		if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
 			$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
 		exit 1
 		fi
 
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\nem $WORKDIR/refisefuqui.\n\nÉ recomendável testá-los em uma máquina virtual ou em um CD/DVD\nregravável para se certificar que ele funciona conforme desejado.\n\nClique em OK para retornar ao menu principal."
+		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\nem $WORKDIR/remastersys.\n\nÉ recomendável testá-los em uma máquina virtual ou em um CD/DVD\nregravável para se certificar que ele funciona conforme desejado.\n\nClique em OK para retornar ao menu principal."
 		mainmenu
 	else
 		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos do Live CD/DVD não existe.\n\nClique OK para voltar ao menu principal e\ntentar o Modo Dist ou o Modo Dist CDFS novamente."
@@ -195,9 +189,9 @@ distbootmenu() {
 
 	if [ "${BOOTPICext,,}" == ".png" ]; then # Extension lowercase
 
-		cp $BOOTPIC /etc/refisefuqui/isolinux/splash.png
+		cp $BOOTPIC /etc/remastersys/isolinux/splash.png
 
-		$DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"A imagem:\n$BOOTPIC\n\nFoi copiada para:\n/etc/refisefuqui/isolinux/splash.png\n\nSendo agora a nova imagem de fundo padrão para o\nmenu do Live CD/DVD.\n\nClique em OK para continuar."
+		$DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"A imagem:\n$BOOTPIC\n\nFoi copiada para:\n/etc/remastersys/isolinux/splash.png\n\nSendo agora a nova imagem de fundo padrão para o\nmenu do Live CD/DVD.\n\nClique em OK para continuar."
 	else
 		$DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"Nenhuma imagem foi selecionada.\n\nClique em OK para retornar ao menu principal."
 	fi
@@ -214,13 +208,13 @@ distgrubmenu() {
 	GRUBPICext="${GRUBPIC: -4}"
 
 	if [ "${GRUBPICext,,}" == ".png" ]; then # Extension lowercase
-		$DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"A imagem:\n$GRUBPIC\n\nFoi copiada para:\n/etc/refisefuqui/grub.png\n\nSendo agora a nova imagem de fundo padrão para o\nGRUB.\n\nClique OK para atualizar o GRUB."
+		$DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"A imagem:\n$GRUBPIC\n\nFoi copiada para:\n/etc/remastersys/grub.png\n\nSendo agora a nova imagem de fundo padrão para o\nGRUB.\n\nClique OK para atualizar o GRUB."
 
 		if [ "$?" = "0" ]; then
 			$DIALOG $TITLE"$TITLETEXT" --width=300 --no-buttons --progress --pulsate $TEXT"Atualizando GRUB agora.\nPor favor aguarde." &
 			PICFILE=`echo $GRUBPIC | awk -F"/" '{print $NF}'`
-			cp $GRUBPIC /etc/refisefuqui/grub.png
-			NEWGRUBPIC="/etc/refisefuqui/grub.png"
+			cp $GRUBPIC /etc/remastersys/grub.png
+			NEWGRUBPIC="/etc/remastersys/grub.png"
 
             sed -i -e "/#Grub Background/d" /etc/default/grub
 			sed -i -e "/GRUB_BACKGROUND/d" /etc/default/grub
@@ -284,7 +278,7 @@ distskelmenu() {
 
 		$DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --pulsate $TEXT"Copiando as configurações de $SKELUSER para /etc/skel agora.\nPor favor aguarde." &
 
-		refisefuqui-skelcopy $SKELUSER
+		remastersys-skelcopy $SKELUSER
 
 		killall -KILL yad
 
@@ -299,8 +293,8 @@ distskelmenu() {
 
 modifymenu() {
 
-	if [ -f /etc/refisefuqui.conf ]; then
-		. /etc/refisefuqui.conf
+	if [ -f /etc/remastersys.conf ]; then
+		. /etc/remastersys.conf
 	fi
 
 	if [ "$SQUASHFSOPTS" = "" ]; then
@@ -312,7 +306,7 @@ modifymenu() {
 --field="Nome do Sistema do Live CD/DVD" "$LIVECDLABEL" \
 --field="Nome da ISO do Live CD/DVD" "$CUSTOMISO" \
 --field="Inicialização com GRUB ou com ISOLINUX" "$ISOBOOT" \
---field="Pasta de trabalho do ReFiSeFuQui" "$WORKDIR" \
+--field="Pasta de trabalho do Remastersys" "$WORKDIR" \
 --field="Opções para mksquashfs" " $SQUASHFSOPTS" \
 --field="Exibir ícone de instalação na área de trabalho" "$SHOWICON" \
 --field="Arquivos e pastas não inclusos" " $EXCLUDES"`
@@ -352,7 +346,7 @@ modifymenu() {
 	fi
 
 	if [ "$WORKDIR" = "" ]; then
-		WORKDIR="/home/refisefuqui"
+		WORKDIR="/home/remastersys"
 	fi
 
 	if [ "$SQUASHFSOPTS" = "" ]; then
@@ -371,7 +365,7 @@ modifymenu() {
 		SHOWICON="0"
 	fi
 
-	cat > /etc/refisefuqui.conf <<FOO
+	cat > /etc/remastersys.conf <<FOO
 #Remastersys Global Configuration File
 
 # This is the temporary working directory and won't be included on the cd/dvd
@@ -412,7 +406,7 @@ FOO
 
 cleanmenu() {
 	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Todos os arquivos da pasta temporária serão apagados.\n\nClique em OK para continuar."
-	xterm -fn 9x15 -e "refisefuqui clean"
+	xterm -fn 9x15 -e "remastersys clean"
 	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Completado. Clique em OK para retornar ao menu principal."
 	mainmenu
 }

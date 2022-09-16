@@ -1,23 +1,17 @@
 #!/bin/bash
-######################################################
-#                                                    #
-#  ReFiSeFuQui                                       #
-#    Copyright 2013 Under the GNU GPL2 License       #
-#    Fork of Remastersys                             #
-#    by Daniel "Nerun" Rodrigues                     #
-#                                                    #
-#  Remastersys                                       #
-#    Copyright 2007-2012 Under the GNU GPL2 License  #
-#    Originally Created February 12th, 2007          #
-#    by Tony "Fragadelic" Brijeski                   #
-#                                                    #
-######################################################
+###################################################################
+#  REMASTERSYS                                                    #
+#    Under the GNU GPL2 License                                   #
+#    Copyright (C) 2013-2022 Daniel "Nerun" Rodrigues             #
+#    Copyright (C) 2007-2012 Tony "Fragadelic" Brijeski           #
+#    Full copyright notice: /usr/share/doc/remastersys/copyright  #
+###################################################################
 
 # Using yad for gui calls
 
 DIALOG="`which yad` --width 400 --fixed"
-TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/hicolor/16x16/apps/refisefuqui.png --image=/usr/share/icons/hicolor/48x48/apps/refisefuqui.png --title="
-TITLETEXT="ReFiSeFuQui Ferramenta de Inicialização por USB"
+TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
+TITLETEXT="Remastersys - Ferramenta de Inicialização por USB"
 TEXT="--text="
 ENTRY="--entry "
 ENTRYTEXT="--entry-text "

@@ -1,9 +1,11 @@
 DEVELOPER NOTES means notes to developer!
+=========================================
 
 KNOWN BUGS:
 - Barra de % não se altera (formatando e copiando).
 - Particionamento:
-    - "Exit - Sair do Instalador" não sai do instalador...
+    - "Exit - Sair do Instalador" não sai do instalador, mas deveria!
 
 THINGS TO DO:
-- 
+- remastersys-gui - nenhum dos scripts foi internacionalizado, ainda está tudo
+                    em pt_BR.
