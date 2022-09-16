@@ -1,0 +1,9 @@
+DEVELOPER NOTES means notes to developer!
+
+KNOWN BUGS:
+- Barra de % não se altera (formatando e copiando).
+- Particionamento:
+    - "Exit - Sair do Instalador" não sai do instalador...
+
+THINGS TO DO:
+- 

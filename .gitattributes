@@ -1,5 +1,8 @@
 # Export Ignore
-/.git           export-ignore
-/.github        export-ignore
-.gitignore      export-ignore
-.gitattributes  export-ignore
+/.git                           export-ignore
+/.github                        export-ignore
+.gitignore                      export-ignore
+.gitattributes                  export-ignore
+remastersys-128.xcf             export-ignore
+remastersys-installer-128.xcf   export-ignore
+mksquashfs benchmarks.ods       export-ignore
