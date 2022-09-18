@@ -42,7 +42,7 @@ fi
 #GUI MODE
 #inform them what this is and ask if they want to continue
 
-$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$"\n\nThis is a GRUB restore utility.\n\n\n\nDo you want to continue?"
+$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$"\nThis is a GRUB restore utility.\n\n\nDo you want to continue?"
 
 if [ $? != 0 ]; then
 	exit 0
@@ -154,6 +154,6 @@ fi
 killall -KILL tail
 killall -KILL yad
 
-$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"\n\nGRUB has been installed/restored on $TARGETPART."
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"\nGRUB has been installed/restored on $TARGETPART."
 
 exit 0

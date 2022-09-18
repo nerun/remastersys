@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.4.2\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language: pt_BR\n"
 
 #: remastersys-grub-restore:15
 msgid "Pick"
@@ -34,11 +34,14 @@ msgstr "Remastersys - Retaurador do GRUB"
 
 #: remastersys-grub-restore:33
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
-msgstr "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\\"."
+msgstr ""
+"ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
+"\"."
 
 #: remastersys-grub-restore:45
-msgid "\\n\\nThis is a GRUB restore utility.\\n\\n\\n\\nDo you want to continue?"
-msgstr "\\n\\nEssa é uma ferramenta de restauração do GRUB.\\n\\n\\n\\nDeseja prosseguir?"
+msgid "\\nThis is a GRUB restore utility.\\n\\n\\nDo you want to continue?"
+msgstr ""
+"\\nEssa é uma ferramenta de restauração do GRUB.\\n\\n\\nDeseja prosseguir?"
 
 #: remastersys-grub-restore:56
 msgid "current The_Partition_this_install_is_on"
@@ -73,5 +76,5 @@ msgid "Installing and setting up GRUB."
 msgstr "Instalando e configurando o GRUB."
 
 #: remastersys-grub-restore:157
-msgid "\\n\\nGRUB has been installed/restored on $TARGETPART."
-msgstr "\\n\\nO GRUB foi instalado (ou restaurado) em $TARGETPART."
+msgid "\\nGRUB has been installed/restored on $TARGETPART."
+msgstr "\\nO GRUB foi instalado (ou restaurado) em $TARGETPART."

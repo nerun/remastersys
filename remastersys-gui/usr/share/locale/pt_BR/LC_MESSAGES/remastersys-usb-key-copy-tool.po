@@ -32,43 +32,43 @@ msgstr ""
 
 #: remastersys-usb-key-copy-tool:41
 msgid ""
-"\\n\\nYou must select a usb key to use. Click OK to return to main menu.\\n"
+"\\nYou must select a usb key to use. Click OK to return to main menu.\\n"
 msgstr ""
-"\\n\\nVocê deve escolher uma unidade USB para usar. Clique em OK para "
-"retornar ao menu principal.\\n"
+"\\nVocê deve escolher uma unidade USB para usar. Clique em OK para retornar "
+"ao menu principal.\\n"
 
 #: remastersys-usb-key-copy-tool:46
 msgid ""
-"\\n\\nYou must select a source to use. Click OK to return to main menu.\\n"
+"\\nYou must select a source to use. Click OK to return to main menu.\\n"
 msgstr ""
-"\\n\\nVocê deve escolher uma fonte para usar. Clique em OK para retornar ao "
+"\\nVocê deve escolher uma fonte para usar. Clique em OK para retornar ao "
 "menu principal.\\n"
 
 #: remastersys-usb-key-copy-tool:50
 msgid ""
-"\\n\\nThis will completely replace the contents of your usb drive\\nwith the "
+"\\nThis will completely replace the contents of your usb drive\\nwith the "
 "Bootable Live System.\\n\\nYou will not be able to undo this operation once "
 "it starts.\\n\\nClick OK to continue?\\n"
 msgstr ""
-"\\n\\nO conteúdo da unidade USB será completamente apagado e\\nsubstituído "
-"com o Sistema Live Bootável.\\n\\nVocê não será capaz de desfazer esta "
-"operação uma vez iniciada.\\n\\nDeseja continuar?\\n"
+"\\nO conteúdo da unidade USB será completamente apagado e\\nsubstituído com "
+"o Sistema Live Bootável.\\n\\nVocê não será capaz de desfazer esta operação "
+"uma vez iniciada.\\n\\nDeseja continuar?\\n"
 
 #: remastersys-usb-key-copy-tool:78
-msgid "Copying to USB Key Now \\n\\nPlease Wait \\n"
+msgid "Copying to USB Key Now. \\n\\nPlease Wait.\\n"
 msgstr "Copiando para a unidade USB agora.\\n\\nPor favor aguarde.\\n"
 
 #: remastersys-usb-key-copy-tool:85
-msgid "\\n\\nCopy to USB key completed. \\nClick OK to return to main menu.\\n"
+msgid "\\nCopy to USB key completed.\\nClick OK to return to main menu.\\n"
 msgstr ""
-"\\n\\nCópia para USB completada.\\nClique em OK para retornar ao menu "
+"\\nCópia para USB completada.\\nClique em OK para retornar ao menu "
 "principal.\\n"
 
 #: remastersys-usb-key-copy-tool:99
 msgid ""
-"\\n\\nNo USB Keys found.\\n\\nPlease insert a USB Key and then\\nclick OK to "
+"\\nNo USB Keys found.\\n\\nPlease insert a USB Key and then\\nclick OK to "
 "return to main menu\\nor Cancel to quit.\\n"
 msgstr ""
-"\\n\\nNenhuma unidade USB encontrada.\\n\\nInsira uma unidade USB e então"
-"\\nclique em OK para retornar ao menu principal\\nou em Cancelar para sair."
+"\\nNenhuma unidade USB encontrada.\\n\\nInsira uma unidade USB e então "
+"clique em\\nOK para retornar ao menu principal ou em\\nCancelar para sair."
 "\\n"

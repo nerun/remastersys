@@ -17,7 +17,7 @@ msgstr ""
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
 #: remastersys-grub-restore:45
-msgid "\\n\\nThis is a GRUB restore utility.\\n\\n\\n\\nDo you want to continue?"
+msgid "\\nThis is a GRUB restore utility.\\n\\n\\nDo you want to continue?"
 msgstr ""
 #: remastersys-grub-restore:56
 msgid "current The_Partition_this_install_is_on"
@@ -44,5 +44,5 @@ msgstr ""
 msgid "Installing and setting up GRUB."
 msgstr ""
 #: remastersys-grub-restore:157
-msgid "\\n\\nGRUB has been installed/restored on $TARGETPART."
+msgid "\\nGRUB has been installed/restored on $TARGETPART."
 msgstr ""

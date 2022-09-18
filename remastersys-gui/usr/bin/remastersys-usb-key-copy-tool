@@ -38,16 +38,16 @@ fi
 
 copymenu() {
 	if [ "$1" = "(null)" ]; then
-		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nYou must select a usb key to use. Click OK to return to main menu.\n"
+		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\nYou must select a usb key to use. Click OK to return to main menu.\n"
 		mainmenu
 	fi
 
 	if [ "$2" = "(null)" ]; then
-		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nYou must select a source to use. Click OK to return to main menu.\n"
+		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\nYou must select a source to use. Click OK to return to main menu.\n"
 		mainmenu
 	fi
 
-	$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nThis will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue?\n"
+	$DIALOG $TITLE"$TITLETEXT" $TEXT$"\nThis will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue?\n"
 
 	if [ $? != 0 ]; then
 		mainmenu
@@ -75,14 +75,14 @@ copymenu() {
 		echo $PROGPERCENT
 		echo "#$PROGPERCENT %"
 
-	done | $DIALOG $TITLE"$TITLETEXT" $TEXT$"Copying to USB Key Now \n\nPlease Wait \n" --no-buttons --progress --auto-close --auto-kill
+	done | $DIALOG $TITLE"$TITLETEXT" $TEXT$"Copying to USB Key Now. \n\nPlease Wait.\n" --no-buttons --progress --auto-close --auto-kill
 
 	rm -f /tmp/remusbprog
 	sync
 
 	#killall -KILL tail
 
-	$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nCopy to USB key completed. \nClick OK to return to main menu.\n"
+	$DIALOG $TITLE"$TITLETEXT" $TEXT$"\nCopy to USB key completed.\nClick OK to return to main menu.\n"
 	mainmenu
 }
 
@@ -96,7 +96,7 @@ mainmenu() {
 			USBDRIVES="$USBDRIVES!$i-$USBDRIVESIZE"
 		done
 	else
-		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nNo USB Keys found.\n\nPlease insert a USB Key and then\nclick OK to return to main menu\nor Cancel to quit.\n"
+		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\nNo USB Keys found.\n\nPlease insert a USB Key and then\nclick OK to return to main menu\nor Cancel to quit.\n"
 
 		if [ "$?" = "0" ]; then
 			mainmenu
