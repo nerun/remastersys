@@ -38,43 +38,68 @@ msgstr ""
 "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
 "\"."
 
-#: remastersys-grub-restore:45
+#: remastersys-grub-restore:40
 msgid "\\nThis is a GRUB restore utility.\\n\\n\\nDo you want to continue?"
 msgstr ""
 "\\nEssa é uma ferramenta de restauração do GRUB.\\n\\n\\nDeseja prosseguir?"
 
-#: remastersys-grub-restore:56
+#: remastersys-grub-restore:51
 msgid "current The_Partition_this_install_is_on"
 msgstr "atual A_partição_em_que_esta_instalação_está"
 
-#: remastersys-grub-restore:81
+#: remastersys-grub-restore:68
+msgid ""
+"\\nPlease select a partition to install or restore grub to. If the only "
+"option you see is to Quit then no valid partitions were found."
+msgstr ""
+"\\nPor favor selecione uma partição na qual instalar ou restaurar o GRUB. "
+"Caso a única opção seja Sair, significa que nenhuma partição válida foi "
+"encontrada."
+
+#: remastersys-grub-restore:69
 msgid "Exit"
 msgstr "Sair"
 
-#: remastersys-grub-restore:82
+#: remastersys-grub-restore:80
 msgid "\\n\\nQuiting now."
 msgstr "\\n\\nSaindo agora."
 
-#: remastersys-grub-restore:84
+#: remastersys-grub-restore:82
 msgid "current"
 msgstr "atual"
 
-#: remastersys-grub-restore:98
+#: remastersys-grub-restore:87
+msgid "\\nPlease select where to install grub to.\\n"
+msgstr "\\nPor favor selecione onde instalar o GRUB.\\n"
+
+#: remastersys-grub-restore:88
+msgid "Master Boot Record of first drive"
+msgstr "Master Boot Record do primeiro disco"
+
+#: remastersys-grub-restore:89
+msgid "Root partition of $TARGETPART"
+msgstr "Partição raiz de $TARGETPART"
+
+#: remastersys-grub-restore:90
+msgid "Master Boot Record of the root drive"
+msgstr "Master Boot Record do disco raiz"
+
+#: remastersys-grub-restore:101
 msgid "root partition of $TARGETPART"
 msgstr "partição raiz de $TARGETPART"
 
-#: remastersys-grub-restore:101
+#: remastersys-grub-restore:104
 msgid "mbr of root partition of $TARGETPART"
 msgstr "mbr da partição raiz de $TARGETPART"
 
-#: remastersys-grub-restore:108
+#: remastersys-grub-restore:111
 msgid "Installing grub now. Please wait..."
 msgstr "Instalando o GRUB agora. Por favor aguarde..."
 
-#: remastersys-grub-restore:138
+#: remastersys-grub-restore:141
 msgid "Installing and setting up GRUB."
 msgstr "Instalando e configurando o GRUB."
 
-#: remastersys-grub-restore:157
+#: remastersys-grub-restore:160
 msgid "\\nGRUB has been installed/restored on $TARGETPART."
 msgstr "\\nO GRUB foi instalado (ou restaurado) em $TARGETPART."

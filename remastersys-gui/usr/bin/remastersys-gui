@@ -20,29 +20,22 @@ Info=$"Info"
 Yes=$"Yes"
 No=$"No"
 
-if [ "$testyad" != "" ]; then
-	DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
-	DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
-	TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
-	TEXT="--text="
-	ENTRY="--entry "
-	ENTRYTEXT="--entry-text "
-	FILESELECTION="--file "
-	MENU="--list --column=$Pick --column=$Info"
-	YESNO=" --button=$Yes:0 --button=$No:1 "
-	MSGBOX=" --button=Ok:0 "
-	TITLETEXT="Remastersys"
-fi
+DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
+DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
+TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
+TEXT="--text="
+ENTRY="--entry "
+ENTRYTEXT="--entry-text "
+FILESELECTION="--file "
+MENU="--list --column=$Pick --column=$Info"
+YESNO=" --button=$Yes:0 --button=$No:1 "
+MSGBOX=" --button=Ok:0 "
+TITLETEXT="Remastersys"
 
 # check if running with root privileges
 if [ $(whoami) != "root" ]; then
     $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
     exit 1
-fi
-
-#  This script requires yad to run
-if [ $(which yad) = "" ]; then
-	apt-get -y -q install yad
 fi
 
 mainmenu() {
@@ -65,7 +58,7 @@ sistema do Live CD/DVD." \
 	Sobre "Sobre o Remastersys."`
 
 	if [ "$?" = "0" ]; then
-		CHOICE=`echo $CHOICES | cut -d "|" -f 1`
+		CHOICE=$(echo $CHOICES | cut -d "|" -f 1)
 	else
 		exit 0
 	fi

@@ -15,7 +15,7 @@ TEXTDOMAIN=remastersys-usb-key-copy-tool
 Pick=$"Pick"
 Info=$"Info"
 
-DIALOG="`which yad` --width 400 --fixed"
+DIALOG="`which yad` --width 400 --center --fixed"
 TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
 TITLETEXT=$"Remastersys USB Startup Disk Tool"
 TEXT="--text="
@@ -29,11 +29,6 @@ PASSWORD="--entry --hide-text "
 if [ $(whoami) != "root" ]; then
     $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
     exit 1
-fi
-
-#  This script requires yad to run
-if [ $(which yad) = "" ]; then
-	apt-get -y -q install yad
 fi
 
 copymenu() {
@@ -104,8 +99,13 @@ mainmenu() {
 			exit
 		fi
 	fi
+	
+	ChooseUSB=$"Choose a USB Key:CB"
+	ChooseSource=$"Choose a Source Image:FL"
+	Quit=$"Quit:2"
+	CopyToUSB=$"Copy to USB Key:1"
 
-	CHOICES=`$DIALOG $TITLE"$TITLETEXT" --form --field=$"Choose a USB Key:CB" $USBDRIVES --field=$"Choose a Source Image:FL" --button=$"Quit:2" --button=$"Copy to USB Key:1"`
+	CHOICES=`$DIALOG $TITLE"$TITLETEXT" --form --field="$ChooseUSB" $USBDRIVES --field="$ChooseSource" --button="$Quit" --button="$CopyToUSB"`
 	retval="$?"
 
 	if [ "$retval" = "1" ]; then

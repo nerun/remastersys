@@ -34,11 +34,6 @@ if [ $(whoami) != "root" ]; then
     exit 1
 fi
 
-#  This script requires yad to run
-if [ $(which yad) = "" ]; then
-	apt-get -y -q install yad
-fi
-
 #GUI MODE
 #inform them what this is and ask if they want to continue
 
@@ -70,7 +65,10 @@ fi
 
 rm /tmp/os-prober.remastersys
 
-TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT$"\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found." Exit $"Exit" $partitiontext`
+SelectPartition=$"\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found."
+Exit=$"Exit"
+
+TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectPartition" Exit "$Exit" "$partitiontext"`
 
 if [ "$?" = "0" ]; then
 	TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
@@ -78,7 +76,7 @@ else
 	exit 1
 fi
 
-if [ "$TARGETPART" = $"Exit" ]; then
+if [ "$TARGETPART" = "$Exit" ]; then
 	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"\n\nQuiting now."
 	exit 1
 elif [ "$TARGETPART" = $"current" ]; then
@@ -86,7 +84,12 @@ elif [ "$TARGETPART" = $"current" ]; then
 fi
 
 #grub location
-GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT$"\nPlease select where to install grub to.\n" mbr $"Master Boot Record of first drive" root $"Root partition of $TARGETPART" rootmbr $"Master Boot Record of the root drive"`
+SelectWhere=$"\nPlease select where to install grub to.\n"
+MBR=$"Master Boot Record of first drive"
+RootPartition=$"Root partition of $TARGETPART"
+MasterBootRecord=$"Master Boot Record of the root drive"
+
+GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectWhere" mbr "$MBR" root "$RootPartition" rootmbr "$MasterBootRecord"`
 
 if [ "$?" = "0" ]; then
 	GRUBLOCTEST=`echo $GRUBLOCTEST | cut -d "|" -f 1`

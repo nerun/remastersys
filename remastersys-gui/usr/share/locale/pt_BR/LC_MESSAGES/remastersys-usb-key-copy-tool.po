@@ -30,21 +30,20 @@ msgstr ""
 "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
 "\"."
 
-#: remastersys-usb-key-copy-tool:41
+#: remastersys-usb-key-copy-tool:36
 msgid ""
 "\\nYou must select a usb key to use. Click OK to return to main menu.\\n"
 msgstr ""
 "\\nVocê deve escolher uma unidade USB para usar. Clique em OK para retornar "
 "ao menu principal.\\n"
 
-#: remastersys-usb-key-copy-tool:46
-msgid ""
-"\\nYou must select a source to use. Click OK to return to main menu.\\n"
+#: remastersys-usb-key-copy-tool:41
+msgid "\\nYou must select a source to use. Click OK to return to main menu.\\n"
 msgstr ""
 "\\nVocê deve escolher uma fonte para usar. Clique em OK para retornar ao "
 "menu principal.\\n"
 
-#: remastersys-usb-key-copy-tool:50
+#: remastersys-usb-key-copy-tool:45
 msgid ""
 "\\nThis will completely replace the contents of your usb drive\\nwith the "
 "Bootable Live System.\\n\\nYou will not be able to undo this operation once "
@@ -54,21 +53,36 @@ msgstr ""
 "o Sistema Live Bootável.\\n\\nVocê não será capaz de desfazer esta operação "
 "uma vez iniciada.\\n\\nDeseja continuar?\\n"
 
-#: remastersys-usb-key-copy-tool:78
+#: remastersys-usb-key-copy-tool:73
 msgid "Copying to USB Key Now. \\n\\nPlease Wait.\\n"
 msgstr "Copiando para a unidade USB agora.\\n\\nPor favor aguarde.\\n"
 
-#: remastersys-usb-key-copy-tool:85
+#: remastersys-usb-key-copy-tool:80
 msgid "\\nCopy to USB key completed.\\nClick OK to return to main menu.\\n"
 msgstr ""
-"\\nCópia para USB completada.\\nClique em OK para retornar ao menu "
-"principal.\\n"
+"\\nCópia para USB completada.\\nClique em OK para retornar ao menu principal."
+"\\n"
 
-#: remastersys-usb-key-copy-tool:99
+#: remastersys-usb-key-copy-tool:94
 msgid ""
 "\\nNo USB Keys found.\\n\\nPlease insert a USB Key and then\\nclick OK to "
 "return to main menu\\nor Cancel to quit.\\n"
 msgstr ""
 "\\nNenhuma unidade USB encontrada.\\n\\nInsira uma unidade USB e então "
-"clique em\\nOK para retornar ao menu principal ou em\\nCancelar para sair."
-"\\n"
+"clique em\\nOK para retornar ao menu principal ou em\\nCancelar para sair.\\n"
+
+#: remastersys-usb-key-copy-tool:103
+msgid "Choose a USB Key:CB"
+msgstr "Escolha uma Unidade USB:CB"
+
+#: remastersys-usb-key-copy-tool:104
+msgid "Choose a Source Image:FL"
+msgstr "Escolha uma Imagem de Origem:FL"
+
+#: remastersys-usb-key-copy-tool:105
+msgid "Quit:2"
+msgstr "Sair:2"
+
+#: remastersys-usb-key-copy-tool:106
+msgid "Copy to USB Key:1"
+msgstr "Copiar para Unidade USB:1"
