@@ -206,7 +206,7 @@ if [ "$GUI" = "" ]; then
 		partdrivemenu="$partdrivemenu $partdrive $partdrivesize"
 	done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectDriveToPartition" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $partdrivemenu 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectDriveToPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $partdrivemenu 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		PARTDRIVE=`cat /tmp/choice.$$`
@@ -233,7 +233,7 @@ if [ "$GUI" = "" ]; then
 		swappartmenu="$swappartmenu $swappart $swappartsize"
 	done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $swappartmenu 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $swappartmenu 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		SWAP=`cat /tmp/choice.$$`
@@ -267,7 +267,7 @@ if [ "$GUI" = "" ]; then
 		partmenu="$partmenu $part $partsize"
 	done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $partmenu 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $partmenu 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		TARGETPART=`cat /tmp/choice.$$`
@@ -288,7 +288,7 @@ if [ "$GUI" = "" ]; then
 	if [ "$?" = "0" ]; then
 		FSTYPE=`cat /tmp/choice.$$`
 	else
-		FSTYPE="ext3"
+		FSTYPE="ext4"
 	fi
 
 	rm /tmp/choice.$$
@@ -318,7 +318,7 @@ if [ "$GUI" = "" ]; then
 		if [ "$?" = "0" ]; then
 			HFSTYPE=`cat /tmp/choice.$$`
 		else
-			HFSTYPE="ext3"
+			HFSTYPE="ext4"
 		fi
 			rm /tmp/choice.$$
 	fi
@@ -490,7 +490,7 @@ if [ "$GUI" = "" ]; then
 
 	rm /tmp/remastersys.zoneinfo
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectTimeZone" $HEIGHT $WIDTH $MENUHEIGHT Exit "$ExitInstaller" $ZONES 2>/tmp/choice.$$
+	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectTimeZone" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $ZONES 2>/tmp/choice.$$
 
 	if [ "$?" = "0" ]; then
 		ZONESINFO=`cat /tmp/choice.$$`
@@ -584,8 +584,13 @@ else
 
     PARTDRIVE=""
     while [ "$PARTDRIVE" = "" ]; do
-        PARTDRIVE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectDriveToPartition" Exit "$ExitInstaller" $partdrivemenu`
+        PARTDRIVE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectDriveToPartition" $EXIT "$ExitInstaller" $partdrivemenu`
     done
+    
+    if [ "$?" != "0" ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
+        exit 1
+    fi
 
     PARTDRIVE=`echo $PARTDRIVE | cut -d "|" -f 1`
 
@@ -607,8 +612,13 @@ else
 
     SWAP=""
     while [ "$SWAP" = "" ]; do
-        SWAP=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" Exit "$ExitInstaller" $swappartmenu`
+        SWAP=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" $EXIT "$ExitInstaller" $swappartmenu`
     done
+    
+    if [ "$?" != "0" ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
+        exit 1
+    fi
 
     SWAP=`echo $SWAP | cut -d "|" -f 1`
 
@@ -636,8 +646,13 @@ else
 
     TARGETPART=""
     while [ "$TARGETPART" = "" ]; do
-        TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" Exit "$ExitInstaller" $partmenu`
+        TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" $EXIT "$ExitInstaller" $partmenu`
     done
+    
+    if [ "$?" != "0" ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
+        exit 1
+    fi
 
     TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
 
@@ -648,8 +663,13 @@ else
 
     FSTYPE=""
     while [ "$FSTYPE" = "" ]; do
-        FSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectRootFileSystem" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
+        FSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
     done
+    
+    if [ "$?" != "0" ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
+        exit 1
+    fi
 
     FSTYPE=`echo $FSTYPE | cut -d "|" -f 1`
 
@@ -662,15 +682,20 @@ else
 
     HOMEPART=""
     while [ "$HOMEPART" = "" ]; do
-        HOMEPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectHomePartition" root "$PutHomeInRootPartition" $homepartmenu`
+        HOMEPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomePartition" root "$PutHomeInRootPartition" $homepartmenu`
     done
+    
+    if [ "$?" != "0" ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
+        exit 1
+    fi
 
     HOMEPART=`echo $HOMEPART | cut -d "|" -f 1`
 
     if [ "$HOMEPART" != "root" ]; then
         HFSTYPE=""
         while [ "$HFSTYPE" = "" ]; do
-            HFSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectHomeFileSystem" noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
+            HFSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
         done
     fi
 
@@ -809,8 +834,13 @@ else
     ZONESINFO=""
 
     while [ "$ZONESINFO" = "" ]; do
-        ZONESINFO=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU  $TEXT"$SelectTimeZone" Exit "$ExitInstaller" $ZONES`
+        ZONESINFO=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectTimeZone" $EXIT "$ExitInstaller" $ZONES`
     done
+    
+    if [ "$?" != "0" ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
+        exit 1
+    fi
 
     ZONESINFO=`echo $ZONESINFO | cut -d "|" -f 1`
 
