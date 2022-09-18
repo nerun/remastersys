@@ -7,16 +7,15 @@
 #    Full copyright notice: /usr/share/doc/remastersys/copyright  #
 ###################################################################
 
-#  This script requires either yad or dialog to run
+# SYSTEM LOCALIZATION
+# Target to file:
+# /usr/share/locale/(language code)/LC_MESSAGES/remastersys-grub-restore.mo
+TEXTDOMAIN=remastersys-grub-restore
 
-# checking to make sure script is running with root privileges
-
-testroot="`whoami`"
-
-if [ "$testroot" != "root" ]; then
-	echo " Deve ser executado como superusuário. Saindo."
-	exit 1
-fi
+Pick=$"Pick"
+Info=$"Info"
+Yes=$"Yes"
+No=$"No"
 
 DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=700 --height=400 --center"
 DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
@@ -24,21 +23,26 @@ TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48
 TEXT="--text="
 ENTRY="--entry "
 ENTRYTEXT="--entry-text "
-MENU="--list --column=Pick --column=Info"
-YESNO=" --button=Yes:0 --button=No:1 "
+MENU="--list --column=$Pick --column=$Info"
+YESNO=" --button=$Yes:0 --button=$No:1 "
 MSGBOX=" --button=Ok:0 "
+TITLETEXT=$"Remastersys Grub Restore"
 
-TITLETEXT="Remastersys - Restaurador do Grub"
+# check if running with root privileges
+if [ $(whoami) != "root" ]; then
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
+    exit 1
+fi
 
-if [ "$DIALOG" = "" ]; then
-	echo "Não foi possível encontrar o dialog ou o yad. Saindo."
-	exit 1
+#  This script requires yad to run
+if [ $(which yad) = "" ]; then
+	apt-get -y -q install yad
 fi
 
 #GUI MODE
 #inform them what this is and ask if they want to continue
 
-$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"\n\nEsta é uma ferramenta para restaurar o GRUB.\n\n\n\nDeseja continuar?"
+$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$"\n\nThis is a GRUB restore utility.\n\n\n\nDo you want to continue?"
 
 if [ $? != 0 ]; then
 	exit 0
@@ -49,7 +53,7 @@ os-prober > /tmp/os-prober.remastersys
 PARTITIONS=`cat /tmp/os-prober.remastersys | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
 
 if [ ! -d /live ]; then
-	partitiontext="current The_Partition_this_install_is_on"
+	partitiontext=$"current The_Partition_this_install_is_on"
 else
 	for i in `echo $PARTITIONS`; do
 		LINE=`cat /tmp/os-prober.remastersys | grep "$i"`
@@ -66,7 +70,7 @@ fi
 
 rm /tmp/os-prober.remastersys
 
-TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nSelecione uma partição na qual instalar ou restaurar o grub. Se a única opção que você vê é Sair, é porque nenhuma partição válida foi encontrada." Exit "Sair" $partitiontext`
+TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT$"\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found." Exit $"Exit" $partitiontext`
 
 if [ "$?" = "0" ]; then
 	TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
@@ -74,15 +78,15 @@ else
 	exit 1
 fi
 
-if [ "$TARGETPART" = "Exit" ]; then
-	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nSaindo agora."
+if [ "$TARGETPART" = $"Exit" ]; then
+	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"\n\nQuiting now."
 	exit 1
-elif [ "$TARGETPART" = "current" ]; then
+elif [ "$TARGETPART" = $"current" ]; then
 	TARGETPART=`mount | grep " / " | awk '{print $1}' | awk -F "/" '{print $3}'`
 fi
 
 #grub location
-GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"\nSelecione onde instalar o GRUB.\n" mbr "Master Boot Record do primeiro disco" root "Partição raiz de $TARGETPART" rootmbr "Master Boot Record do drive raiz"`
+GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT$"\nPlease select where to install grub to.\n" mbr $"Master Boot Record of first drive" root $"Root partition of $TARGETPART" rootmbr $"Master Boot Record of the root drive"`
 
 if [ "$?" = "0" ]; then
 	GRUBLOCTEST=`echo $GRUBLOCTEST | cut -d "|" -f 1`
@@ -91,17 +95,17 @@ else
 fi
 
 if [ "$GRUBLOCTEST" = "root" ]; then
-	GRUBLOCTEXT="partição raiz de $TARGETPART"
+	GRUBLOCTEXT=$"root partition of $TARGETPART"
 	GRUBLOC="root"
 elif [ "$GRUBLOCTEST" = "rootmbr" ]; then
-	GRUBLOCTEXT="mbr da partição raiz de $TARGETPART"
+	GRUBLOCTEXT=$"mbr of root partition of $TARGETPART"
 	GRUBLOC="rootmbr"
 else
 	GRUBLOCTEXT="master boot record"
 	GRUBLOC=""
 fi
 
-tail -f /usr/bin/remastersys-grub-restore |  $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --width 400 --pulsate $TEXT"Instalando o grub agora. Por favor aguarde..." &
+tail -f /usr/bin/remastersys-grub-restore |  $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --width 400 --pulsate $TEXT$"Installing grub now. Please wait..." &
 
 #do the actual grub install/restore
 
@@ -131,7 +135,7 @@ else
 	GRUBDIR="/"
 fi
 
-echo "Instalando e configurando o GRUB."
+echo $"Installing and setting up GRUB."
 
 # Setup grub
 remastersys-grubconfig $GRUBDIR $GRUBLOC
@@ -150,6 +154,6 @@ fi
 killall -KILL tail
 killall -KILL yad
 
-$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"\n\nO GRUB foi instalado/restaurado em $TARGETPART."
+$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"\n\nGRUB has been installed/restored on $TARGETPART."
 
 exit 0

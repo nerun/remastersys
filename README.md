@@ -18,7 +18,7 @@ The program is still **under development, with many bugs**. However, it is alrea
 * Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
 * All scripts have been revised, improving source code formatting and several minor performance improvements.
 * Improved terminal messages, fixed many small errors and added a few visual improvements. Many improvements are being made to the GUI as well.
-* Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7).
+* Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7). Also added Memtest86+ v6.00-beta3 to Live CD.
 * Changed makesquashfs' compression method from gzip to zstd. Zstd generates images up to 10% smaller in almost half the time.
 * Updated icons and images.
 * Improved man pages.

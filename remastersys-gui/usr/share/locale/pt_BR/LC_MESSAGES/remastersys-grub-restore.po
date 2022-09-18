@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.2\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: pt_BR\n"
+
+#: remastersys-grub-restore:15
+msgid "Pick"
+msgstr "Opções"
+
+#: remastersys-grub-restore:16
+msgid "Info"
+msgstr "Informações"
+
+#: remastersys-grub-restore:17
+msgid "Yes"
+msgstr "Sim"
+
+#: remastersys-grub-restore:18
+msgid "No"
+msgstr "Não"
+
+#: remastersys-grub-restore:29
+msgid "Remastersys Grub Restore"
+msgstr "Remastersys - Retaurador do GRUB"
+
+#: remastersys-grub-restore:33
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\\"."
+
+#: remastersys-grub-restore:45
+msgid "\\n\\nThis is a GRUB restore utility.\\n\\n\\n\\nDo you want to continue?"
+msgstr "\\n\\nEssa é uma ferramenta de restauração do GRUB.\\n\\n\\n\\nDeseja prosseguir?"
+
+#: remastersys-grub-restore:56
+msgid "current The_Partition_this_install_is_on"
+msgstr "atual A_partição_em_que_esta_instalação_está"
+
+#: remastersys-grub-restore:81
+msgid "Exit"
+msgstr "Sair"
+
+#: remastersys-grub-restore:82
+msgid "\\n\\nQuiting now."
+msgstr "\\n\\nSaindo agora."
+
+#: remastersys-grub-restore:84
+msgid "current"
+msgstr "atual"
+
+#: remastersys-grub-restore:98
+msgid "root partition of $TARGETPART"
+msgstr "partição raiz de $TARGETPART"
+
+#: remastersys-grub-restore:101
+msgid "mbr of root partition of $TARGETPART"
+msgstr "mbr da partição raiz de $TARGETPART"
+
+#: remastersys-grub-restore:108
+msgid "Installing grub now. Please wait..."
+msgstr "Instalando o GRUB agora. Por favor aguarde..."
+
+#: remastersys-grub-restore:138
+msgid "Installing and setting up GRUB."
+msgstr "Instalando e configurando o GRUB."
+
+#: remastersys-grub-restore:157
+msgid "\\n\\nGRUB has been installed/restored on $TARGETPART."
+msgstr "\\n\\nO GRUB foi instalado (ou restaurado) em $TARGETPART."

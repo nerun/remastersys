@@ -7,15 +7,18 @@
 #    Full copyright notice: /usr/share/doc/remastersys/copyright  #
 ###################################################################
 
-# carrega arquivo de versão
+# SYSTEM LOCALIZATION
+# Target to file:
+# /usr/share/locale/(language code)/LC_MESSAGES/remastersys-gui.mo
+TEXTDOMAIN=remastersys-gui
+
+# Load version file
 . /etc/remastersys/remastersys.version
 
-#  This script requires yad to run
-testyad=`which yad`
-
-if [ "$testyad" = "" ]; then
-	apt-get -y -q install yad
-fi
+Pick=$"Pick"
+Info=$"Info"
+Yes=$"Yes"
+No=$"No"
 
 if [ "$testyad" != "" ]; then
 	DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
@@ -25,17 +28,21 @@ if [ "$testyad" != "" ]; then
 	ENTRY="--entry "
 	ENTRYTEXT="--entry-text "
 	FILESELECTION="--file "
-	MENU="--list --column=Opções --column=Explicações"
-	YESNO=" --button=Sim:0 --button=Não:1 "
+	MENU="--list --column=$Pick --column=$Info"
+	YESNO=" --button=$Yes:0 --button=$No:1 "
 	MSGBOX=" --button=Ok:0 "
 	TITLETEXT="Remastersys"
 fi
 
-testroot="`whoami`"
+# check if running with root privileges
+if [ $(whoami) != "root" ]; then
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
+    exit 1
+fi
 
-if [ "$testroot" != "root" ]; then
-	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Deve ser executado com privilégios de superusuário."
-	exit 1
+#  This script requires yad to run
+if [ $(which yad) = "" ]; then
+	apt-get -y -q install yad
 fi
 
 mainmenu() {

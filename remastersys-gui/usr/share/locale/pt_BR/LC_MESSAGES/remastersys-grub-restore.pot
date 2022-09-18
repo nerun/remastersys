@@ -1,0 +1,48 @@
+#: remastersys-grub-restore:15
+msgid "Pick"
+msgstr ""
+#: remastersys-grub-restore:16
+msgid "Info"
+msgstr ""
+#: remastersys-grub-restore:17
+msgid "Yes"
+msgstr ""
+#: remastersys-grub-restore:18
+msgid "No"
+msgstr ""
+#: remastersys-grub-restore:29
+msgid "Remastersys Grub Restore"
+msgstr ""
+#: remastersys-grub-restore:33
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
+#: remastersys-grub-restore:45
+msgid "\\n\\nThis is a GRUB restore utility.\\n\\n\\n\\nDo you want to continue?"
+msgstr ""
+#: remastersys-grub-restore:56
+msgid "current The_Partition_this_install_is_on"
+msgstr ""
+#: remastersys-grub-restore:81
+msgid "Exit"
+msgstr ""
+#: remastersys-grub-restore:82
+msgid "\\n\\nQuiting now."
+msgstr ""
+#: remastersys-grub-restore:84
+msgid "current"
+msgstr ""
+#: remastersys-grub-restore:98
+msgid "root partition of $TARGETPART"
+msgstr ""
+#: remastersys-grub-restore:101
+msgid "mbr of root partition of $TARGETPART"
+msgstr ""
+#: remastersys-grub-restore:108
+msgid "Installing grub now. Please wait..."
+msgstr ""
+#: remastersys-grub-restore:138
+msgid "Installing and setting up GRUB."
+msgstr ""
+#: remastersys-grub-restore:157
+msgid "\\n\\nGRUB has been installed/restored on $TARGETPART."
+msgstr ""

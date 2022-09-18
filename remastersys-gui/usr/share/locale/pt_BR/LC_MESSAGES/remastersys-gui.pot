@@ -1,0 +1,15 @@
+#: remastersys-gui:18
+msgid "Pick"
+msgstr ""
+#: remastersys-gui:19
+msgid "Info"
+msgstr ""
+#: remastersys-gui:20
+msgid "Yes"
+msgstr ""
+#: remastersys-gui:21
+msgid "No"
+msgstr ""
+#: remastersys-gui:39
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""

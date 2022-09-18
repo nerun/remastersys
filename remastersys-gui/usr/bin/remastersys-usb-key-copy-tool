@@ -7,37 +7,47 @@
 #    Full copyright notice: /usr/share/doc/remastersys/copyright  #
 ###################################################################
 
-# Using yad for gui calls
+# SYSTEM LOCALIZATION
+# Target to file:
+# /usr/share/locale/(language code)/LC_MESSAGES/remastersys-usb-key-copy-tool.mo
+TEXTDOMAIN=remastersys-usb-key-copy-tool
+
+Pick=$"Pick"
+Info=$"Info"
 
 DIALOG="`which yad` --width 400 --fixed"
 TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
-TITLETEXT="Remastersys - Ferramenta de Inicialização por USB"
+TITLETEXT=$"Remastersys USB Startup Disk Tool"
 TEXT="--text="
 ENTRY="--entry "
 ENTRYTEXT="--entry-text "
 FILESELECTION="--file-selection "
-MENU="--list --column=Pick --column=Info"
+MENU="--list --column=$Pick --column=$Info"
 PASSWORD="--entry --hide-text "
 
-testroot="`whoami`"
+# check if running with root privileges
+if [ $(whoami) != "root" ]; then
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
+    exit 1
+fi
 
-if [ "$testroot" != "root" ]; then
-	sudo $0 &
-	exit
+#  This script requires yad to run
+if [ $(which yad) = "" ]; then
+	apt-get -y -q install yad
 fi
 
 copymenu() {
 	if [ "$1" = "(null)" ]; then
-		$DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nVocê deve escolher uma unidade USB para usar.  Clique em OK para retornar ao menu principal.\n"
+		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nYou must select a usb key to use. Click OK to return to main menu.\n"
 		mainmenu
 	fi
 
 	if [ "$2" = "(null)" ]; then
-		$DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nVocê deve escolher uma fonte para usar.  Clique em OK para retornar ao menu principal.\n"
+		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nYou must select a source to use. Click OK to return to main menu.\n"
 		mainmenu
 	fi
 
-	$DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nO conteúdo da unidade USB será completamente apagado e\nsubstituído com o Sistema Live Bootável.\n\nVocê não será capaz de desfazer esta operação uma vez iniciada.\n\nDeseja continuar?\n"
+	$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nThis will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue?\n"
 
 	if [ $? != 0 ]; then
 		mainmenu
@@ -65,14 +75,14 @@ copymenu() {
 		echo $PROGPERCENT
 		echo "#$PROGPERCENT %"
 
-	done | $DIALOG $TITLE"$TITLETEXT" $TEXT"Copiando para a unidade USB agora.\n\nPor favor aguarde.\n" --no-buttons --progress --auto-close --auto-kill
+	done | $DIALOG $TITLE"$TITLETEXT" $TEXT$"Copying to USB Key Now \n\nPlease Wait \n" --no-buttons --progress --auto-close --auto-kill
 
 	rm -f /tmp/remusbprog
 	sync
 
 	#killall -KILL tail
 
-	$DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nCópia para USB completada.\nClique em OK para retornar ao menu principal.\n"
+	$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nCopy to USB key completed. \nClick OK to return to main menu.\n"
 	mainmenu
 }
 
@@ -86,7 +96,7 @@ mainmenu() {
 			USBDRIVES="$USBDRIVES!$i-$USBDRIVESIZE"
 		done
 	else
-		$DIALOG $TITLE"$TITLETEXT" $TEXT"\n\nNenhuma unidade USB encontrada.\n\nInsira uma unidade USB e então\nclique em OK para retornar ao menu principal\nou em Cancelar para sair.\n"
+		$DIALOG $TITLE"$TITLETEXT" $TEXT$"\n\nNo USB Keys found.\n\nPlease insert a USB Key and then\nclick OK to return to main menu\nor Cancel to quit.\n"
 
 		if [ "$?" = "0" ]; then
 			mainmenu
@@ -95,7 +105,7 @@ mainmenu() {
 		fi
 	fi
 
-	CHOICES=`$DIALOG $TITLE"$TITLETEXT" --form --field="Escolha uma unidade USB:CB" $USBDRIVES --field="Escolha uma Imagem Fonte:FL" --button="Sair:2" --button="Copiar para unidade USB:1"`
+	CHOICES=`$DIALOG $TITLE"$TITLETEXT" --form --field=$"Choose a USB Key:CB" $USBDRIVES --field=$"Choose a Source Image:FL" --button=$"Quit:2" --button=$"Copy to USB Key:1"`
 	retval="$?"
 
 	if [ "$retval" = "1" ]; then
