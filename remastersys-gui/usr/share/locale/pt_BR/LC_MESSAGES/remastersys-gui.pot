@@ -10,6 +10,9 @@ msgstr ""
 #: remastersys-gui:21
 msgid "No"
 msgstr ""
-#: remastersys-gui:37
+#: remastersys-gui:22
+msgid "Quit"
+msgstr ""
+#: remastersys-gui:38
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""

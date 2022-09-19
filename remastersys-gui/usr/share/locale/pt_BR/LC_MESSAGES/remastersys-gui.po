@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Daniel Dias Rodrigues <danieldiasr@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,11 @@ msgstr "Sim"
 msgid "No"
 msgstr "Não"
 
-#: remastersys-gui:37
+#: remastersys-gui:22
+msgid "Quit"
+msgstr "Sair"
+
+#: remastersys-gui:38
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
 "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
