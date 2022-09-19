@@ -20,44 +20,47 @@ msgstr ""
 msgid "\\nThis is a GRUB restore utility.\\n\\n\\nDo you want to continue?"
 msgstr ""
 #: remastersys-grub-restore:51
-msgid "current The_Partition_this_install_is_on"
-msgstr ""
-#: remastersys-grub-restore:68
-msgid "\\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found."
-msgstr ""
-#: remastersys-grub-restore:69
-msgid "Exit"
-msgstr ""
-#: remastersys-grub-restore:80
-msgid "\\n\\nQuiting now."
-msgstr ""
-#: remastersys-grub-restore:82
 msgid "current"
 msgstr ""
-#: remastersys-grub-restore:87
+#: remastersys-grub-restore:52
+msgid "The partition this install is on"
+msgstr ""
+#: remastersys-grub-restore:69
+msgid "\\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found."
+msgstr ""
+#: remastersys-grub-restore:70
+msgid "Quit"
+msgstr ""
+#: remastersys-grub-restore:71
+msgid "Quit Remastersys"
+msgstr ""
+#: remastersys-grub-restore:74
+msgid "\\nQuiting now."
+msgstr ""
+#: remastersys-grub-restore:93
 msgid "\\nPlease select where to install grub to.\\n"
 msgstr ""
-#: remastersys-grub-restore:88
+#: remastersys-grub-restore:94
 msgid "Master Boot Record of first drive"
 msgstr ""
-#: remastersys-grub-restore:89
+#: remastersys-grub-restore:95
 msgid "Root partition of $TARGETPART"
 msgstr ""
-#: remastersys-grub-restore:90
+#: remastersys-grub-restore:96
 msgid "Master Boot Record of the root drive"
 msgstr ""
-#: remastersys-grub-restore:101
+#: remastersys-grub-restore:107
 msgid "root partition of $TARGETPART"
 msgstr ""
-#: remastersys-grub-restore:104
+#: remastersys-grub-restore:110
 msgid "mbr of root partition of $TARGETPART"
 msgstr ""
-#: remastersys-grub-restore:111
+#: remastersys-grub-restore:117
 msgid "Installing grub now. Please wait..."
 msgstr ""
-#: remastersys-grub-restore:141
+#: remastersys-grub-restore:147
 msgid "Installing and setting up GRUB."
 msgstr ""
-#: remastersys-grub-restore:160
+#: remastersys-grub-restore:166
 msgid "\\nGRUB has been installed/restored on $TARGETPART."
 msgstr ""

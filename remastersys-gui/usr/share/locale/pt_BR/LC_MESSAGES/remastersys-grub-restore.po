@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Daniel Dias Rodrigues <danieldiasr@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -44,10 +44,14 @@ msgstr ""
 "\\nEssa é uma ferramenta de restauração do GRUB.\\n\\n\\nDeseja prosseguir?"
 
 #: remastersys-grub-restore:51
-msgid "current The_Partition_this_install_is_on"
-msgstr "atual A_partição_em_que_esta_instalação_está"
+msgid "current"
+msgstr "atual"
 
-#: remastersys-grub-restore:68
+#: remastersys-grub-restore:52
+msgid "The partition this install is on"
+msgstr "A partição em que esta instalação está"
+
+#: remastersys-grub-restore:69
 msgid ""
 "\\nPlease select a partition to install or restore grub to. If the only "
 "option you see is to Quit then no valid partitions were found."
@@ -56,50 +60,53 @@ msgstr ""
 "Caso a única opção seja Sair, significa que nenhuma partição válida foi "
 "encontrada."
 
-#: remastersys-grub-restore:69
-msgid "Exit"
+#: remastersys-grub-restore:70
+msgid "Quit"
 msgstr "Sair"
 
-#: remastersys-grub-restore:80
-msgid "\\n\\nQuiting now."
-msgstr "\\n\\nSaindo agora."
+#: remastersys-grub-restore:71
+msgid "Quit Remastersys"
+msgstr "Sair do Remastersys"
 
-#: remastersys-grub-restore:82
-msgid "current"
-msgstr "atual"
+#: remastersys-grub-restore:74
+msgid "\\nQuiting now."
+msgstr "\\nSaindo agora."
 
-#: remastersys-grub-restore:87
+#: remastersys-grub-restore:93
 msgid "\\nPlease select where to install grub to.\\n"
 msgstr "\\nPor favor selecione onde instalar o GRUB.\\n"
 
-#: remastersys-grub-restore:88
+#: remastersys-grub-restore:94
 msgid "Master Boot Record of first drive"
 msgstr "Master Boot Record do primeiro disco"
 
-#: remastersys-grub-restore:89
+#: remastersys-grub-restore:95
 msgid "Root partition of $TARGETPART"
 msgstr "Partição raiz de $TARGETPART"
 
-#: remastersys-grub-restore:90
+#: remastersys-grub-restore:96
 msgid "Master Boot Record of the root drive"
 msgstr "Master Boot Record do disco raiz"
 
-#: remastersys-grub-restore:101
+#: remastersys-grub-restore:107
 msgid "root partition of $TARGETPART"
 msgstr "partição raiz de $TARGETPART"
 
-#: remastersys-grub-restore:104
+#: remastersys-grub-restore:110
 msgid "mbr of root partition of $TARGETPART"
 msgstr "mbr da partição raiz de $TARGETPART"
 
-#: remastersys-grub-restore:111
+#: remastersys-grub-restore:117
 msgid "Installing grub now. Please wait..."
 msgstr "Instalando o GRUB agora. Por favor aguarde..."
 
-#: remastersys-grub-restore:141
+#: remastersys-grub-restore:147
 msgid "Installing and setting up GRUB."
 msgstr "Instalando e configurando o GRUB."
 
-#: remastersys-grub-restore:160
+#: remastersys-grub-restore:166
 msgid "\\nGRUB has been installed/restored on $TARGETPART."
 msgstr "\\nO GRUB foi instalado (ou restaurado) em $TARGETPART."
+
+#~ msgid "Exit"
+#~ msgstr "Sair"
