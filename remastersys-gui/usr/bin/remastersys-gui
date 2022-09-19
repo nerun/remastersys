@@ -19,6 +19,7 @@ Pick=$"Pick"
 Info=$"Info"
 Yes=$"Yes"
 No=$"No"
+Quit=$"Quit"
 
 DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
 DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
@@ -38,8 +39,12 @@ if [ $(whoami) != "root" ]; then
     exit 1
 fi
 
+################################################################################
+# NEED INTERNATIONALIZATION FROM THIS POINT AHEAD ################### ALPHA 12 #
+################################################################################
+
 mainmenu() {
-    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=480 --button=Ok:0 --button=Sair:1 $MENU $TEXT"Escolha o que deseja fazer:" \
+    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=510 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"Escolha o que deseja fazer:" \
     Backup "Cria um backup completo do sistema incluindo arquivos do usuário." \
     Dist "Cria uma 'distribuição' em Live CD/DVD: serão criados o sistema de arquivos (CDFS) e a
 imagem gravável (ISO)." \
