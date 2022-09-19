@@ -39,11 +39,8 @@ if [ $(whoami) != "root" ]; then
     exit 1
 fi
 
-################################################################################
-# NEED INTERNATIONALIZATION FROM THIS POINT AHEAD ################### ALPHA 12 #
-################################################################################
-
 Choose=$"Choose what you want to do:"
+
 BackupString=$"Creates a full system backup including user files."
 DistString=$"Creates a 'distribution' on Live CD/DVD: will be created both file system (CDFS)\nand writable image (ISO)."
 DistCDFSString=$"Creates only the file system (CDFS) of a Live CD/DVD: ideal solution if you want\nto add files to the CD later."
@@ -57,6 +54,11 @@ SettingsString=$"Modify Remastersys settings."
 LogString=$"View the Remastersys log file."
 AboutString=$"Displays information about Remastersys."
 
+ClearSkel=$"ClearSkel"
+Clear=$"Clear"
+Settings=$"Settings"
+About=$"About"
+
 mainmenu() {
     CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=510 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"$Choose" \
     Backup "$BackupString" \
@@ -66,11 +68,11 @@ mainmenu() {
     DistBoot "$DistBootString" \
     DistGrub "$DistGrubString" \
     DistSkel "$DistSkelString" \
-    ClearSkel "$ClearSkelString" \
-    Clear "$ClearString" \
-    Settings "$SettingsString" \
+    "$ClearSkel" "$ClearSkelString" \
+    "$Clear" "$ClearString" \
+    "$Settings" "$SettingsString" \
     Log "$LogString" \
-    About "$AboutString"`
+    "$About" "$AboutString"`
 
     if [ "$?" = "0" ]; then
         CHOICE=$(echo $CHOICES | cut -d "|" -f 1)
@@ -92,13 +94,13 @@ mainmenu() {
         distgrubmenu
     elif [ "$CHOICE" = "DistSkel" ]; then
         distskelmenu
-    elif [ "$CHOICE" = "ClearSkel" ]; then
+    elif [ "$CHOICE" = "$ClearSkel" ]; then
         find /etc/skel/ -type f -exec rm -f '{}' \;
         $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Configuration files in /etc/skel have been deleted."
         mainmenu
-    elif [ "$CHOICE" = "Clear" ]; then
+    elif [ "$CHOICE" = "$Clear" ]; then
         cleanmenu
-    elif [ "$CHOICE" = "Settings" ]; then
+    elif [ "$CHOICE" = "$Settings" ]; then
         modifymenu
     elif [ "$CHOICE" = "Log" ]; then
         . /etc/remastersys.conf
@@ -111,13 +113,17 @@ mainmenu() {
 
         mainmenu
 
-    elif [ "$CHOICE" = "About" ]; then
+    elif [ "$CHOICE" = "$About" ]; then
         $DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT$"Remastersys version $VERSION.\n\nThis is a graphical user interface created in YAD for\nRemastersys: a command-line tool that turns an installed\nDebian system into a distribution on Live CD or DVD. It can\nalso be used as a full backup tool that includes /home\nfolder and all users data.\n\nMaintained by Daniel 'Nerun' Rodrigues.\n\nFork of Tony Brijeski's Remastersys (discontinued).\n\nVisit https://github.com/nerun/remastersys for more\ninformation."
         mainmenu
     else
         exit 0
     fi
 }
+
+################################################################################
+# NEED INTERNATIONALIZATION FROM THIS POINT AHEAD ################### ALPHA 13 #
+################################################################################
 
 backupmenu() {
     $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Você escolheu o Modo de Backup.\n\nNão interrompa este processo.\n\nClique em OK para iniciar o processo de criação do LiveCD/DVD de Backup. "
