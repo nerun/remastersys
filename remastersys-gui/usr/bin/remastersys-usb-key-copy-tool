@@ -62,9 +62,9 @@ copymenu() {
         PROGCNT=`tail -n 1 /tmp/remusbprog | grep "(" | cut -d " " -f 1`
 
         if [ "$PROGCNT" = "" ]; then
-	        PROGPERCENT="1"
+            PROGPERCENT="1"
         else
-	        PROGPERCENT=$((100 * $PROGCNT / $PROGTOT))
+            PROGPERCENT=$((100 * $PROGCNT / $PROGTOT))
         fi
 
         echo $PROGPERCENT

@@ -16,19 +16,19 @@ TEXTDOMAIN=remastersys-installer
 . /usr/lib/remastersys/remastersys.so
 
 usagehelp(){
-	echo " "
-	echo $"USAGE:"
-	echo " "
-	echo $"   remastersys-installer [OPTIONS]"
-	echo $"      (must run as superuser)"
-	echo " "
-	echo $"OPTIONS:"
-	echo " "
-	echo -e $"   -g, --gui      - runs installer with a Graphical User Interface (GUI) using\n\t\t    \"yad\"."
-	echo $"   -h, -?, --help - shows this help."
-	echo -e $"\t\t  - if no option is provided installer will run in a terminal, but\n\t\t    using \"dialog\" instead."
-	echo " "
-	exit 1
+    echo " "
+    echo $"USAGE:"
+    echo " "
+    echo $"   remastersys-installer [OPTIONS]"
+    echo $"      (must run as superuser)"
+    echo " "
+    echo $"OPTIONS:"
+    echo " "
+    echo -e $"   -g, --gui      - runs installer with a Graphical User Interface (GUI) using\n\t\t    \"yad\"."
+    echo $"   -h, -?, --help - shows this help."
+    echo -e $"\t\t  - if no option is provided installer will run in a terminal, but\n\t\t    using \"dialog\" instead."
+    echo " "
+    exit 1
 }
 
 # check if running with root privileges
@@ -63,61 +63,61 @@ PICK=$"Pick"
 INFO=$"Info"
 
 if [[ "$1" == @("-g"|"--gui") ]]; then
-	GUI="$DISPLAY"
+    GUI="$DISPLAY"
 fi
 
 if [ "$GUI" != "" ]; then
-	testyad=`which yad`
-	
-	notfound=$"not found. Will be installed now."
+    testyad=`which yad`
+    
+    notfound=$"not found. Will be installed now."
 
-	if [ "$testyad" = "" ]; then
-		echo "Yad "$notfound
-		apt-get -y -q install yad
-		testyad=`which yad`
-	fi
+    if [ "$testyad" = "" ]; then
+        echo "Yad "$notfound
+        apt-get -y -q install yad
+        testyad=`which yad`
+    fi
 
-	testgparted=`which gparted`
-	if [ "$testgparted" = "" ]; then
-		echo "Gparted "$notfound
-		apt-get -y -q install gparted
-		testgparted=`which gparted`
-	fi
+    testgparted=`which gparted`
+    if [ "$testgparted" = "" ]; then
+        echo "Gparted "$notfound
+        apt-get -y -q install gparted
+        testgparted=`which gparted`
+    fi
 
-	if [ "$testyad" != "" ]; then
-		DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --width=600 --height=400 --center"
-		DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --center --fixed"
-		TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys-installer.png --title="
-		TEXT="--text="
-		ENTRY="--entry "
-		ENTRYTEXT="--entry-text "
-		MENU="--list --column=$PICK --column=$INFO"
-		YESNO=" --button=$YES:0 --button=$NO:1 "
-		MSGBOX=" --button=Ok:0 "
-		PASSWORD="--entry --hide-text "
+    if [ "$testyad" != "" ]; then
+        DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --width=600 --height=400 --center"
+        DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --center --fixed"
+        TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys-installer.png --title="
+        TEXT="--text="
+        ENTRY="--entry "
+        ENTRYTEXT="--entry-text "
+        MENU="--list --column=$PICK --column=$INFO"
+        YESNO=" --button=$YES:0 --button=$NO:1 "
+        MSGBOX=" --button=Ok:0 "
+        PASSWORD="--entry --hide-text "
 
-		if [ "$testgparted" = "" ]; then
-			PARTITIONPROG="xterm -e cfdisk"
-		else
-			PARTITIONPROG="gparted"
-		fi
-	fi
+        if [ "$testgparted" = "" ]; then
+            PARTITIONPROG="xterm -e cfdisk"
+        else
+            PARTITIONPROG="gparted"
+        fi
+    fi
 fi
 
 if [ "$DIALOG" = "" ]; then
-	echo $"Could not find \"dialog\" or \"yad\". Exiting."
-	exit 1
+    echo $"Could not find \"dialog\" or \"yad\". Exiting."
+    exit 1
 fi
 
 progressbar() {
-	tail -f /usr/bin/remastersys-installer | $DIALOG $TITLE"$TITLETEXT" $TEXT"$@" --no-buttons --progress --pulsate --auto-close
+    tail -f /usr/bin/remastersys-installer | $DIALOG $TITLE"$TITLETEXT" $TEXT"$@" --no-buttons --progress --pulsate --auto-close
 }
 
 . /etc/live/config.conf
 . /etc/remastersys.conf
 
 if [ "$LIVECDLABEL" != "" ]; then
-	TITLETEXT=$"$LIVECDLABEL Installer"
+    TITLETEXT=$"$LIVECDLABEL Installer"
 fi
 
 # DIALOGS ######################################################################
@@ -178,340 +178,340 @@ GrubLoc(){
 
 # TEXT MODE START ##############################################################
 if [ "$GUI" = "" ]; then
-	#inform them what this is and ask if they want to continue
+    #inform them what this is and ask if they want to continue
 
-	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ThisIsTheInstaller" $HEIGHT $WIDTH
+    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ThisIsTheInstaller" $HEIGHT $WIDTH
 
-	if [ $? != 0 ]; then
-		exit 0
-	fi
+    if [ $? != 0 ]; then
+        exit 0
+    fi
 
-	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$IdiomKeyboardLayout" $HEIGHT $WIDTH
+    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$IdiomKeyboardLayout" $HEIGHT $WIDTH
 
-	if [ $? = 0 ]; then
-		dpkg-reconfigure locales
-		dpkg-reconfigure console-data
-		#dpkg-reconfigure console-setup
-		dpkg-reconfigure keyboard-configuration
-	fi
+    if [ $? = 0 ]; then
+        dpkg-reconfigure locales
+        dpkg-reconfigure console-data
+        #dpkg-reconfigure console-setup
+        dpkg-reconfigure keyboard-configuration
+    fi
 
-	$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$CreatePartitions" $HEIGHT $WIDTH
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$CreatePartitions" $HEIGHT $WIDTH
 
-	#choose the drive to partition
-	DRIVES=`cat /proc/partitions | grep -v loop | grep -v major | grep -v "^$" | awk '{print $4}' | grep -v "[0-9]"`
+    #choose the drive to partition
+    DRIVES=`cat /proc/partitions | grep -v loop | grep -v major | grep -v "^$" | awk '{print $4}' | grep -v "[0-9]"`
 
-	for i in $DRIVES; do
-		partdrive="$i"
-		partdrivesize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
-		partdrivemenu="$partdrivemenu $partdrive $partdrivesize"
-	done
+    for i in $DRIVES; do
+        partdrive="$i"
+        partdrivesize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
+        partdrivemenu="$partdrivemenu $partdrive $partdrivesize"
+    done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectDriveToPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $partdrivemenu 2>/tmp/choice.$$
+    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectDriveToPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $partdrivemenu 2>/tmp/choice.$$
 
-	if [ "$?" = "0" ]; then
-		PARTDRIVE=`cat /tmp/choice.$$`
-	else
-		PARTDRIVE=$EXIT
-	fi
+    if [ "$?" = "0" ]; then
+        PARTDRIVE=`cat /tmp/choice.$$`
+    else
+        PARTDRIVE=$EXIT
+    fi
 
-	rm /tmp/choice.$$
+    rm /tmp/choice.$$
 
-	if [ "$PARTDRIVE" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
-		exit 1
-	fi
+    if [ "$PARTDRIVE" = $EXIT ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
+        exit 1
+    fi
 
-	$PARTITIONPROG /dev/$PARTDRIVE
+    $PARTITIONPROG /dev/$PARTDRIVE
 
-	#find the swap partition
-	TARGETSWAP=`fdisk -l | grep swap | awk '{print $1}' | cut -d "/" -f3`
-	#TARGETSWAP=`echo $TARGETSWAP | sed -r "s/\/dev\///g"`
+    #find the swap partition
+    TARGETSWAP=`fdisk -l | grep swap | awk '{print $1}' | cut -d "/" -f3`
+    #TARGETSWAP=`echo $TARGETSWAP | sed -r "s/\/dev\///g"`
 
-	for i in $TARGETSWAP; do
-		swappart="$i"
-		swappartsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
-		swappartmenu="$swappartmenu $swappart $swappartsize"
-	done
+    for i in $TARGETSWAP; do
+        swappart="$i"
+        swappartsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
+        swappartmenu="$swappartmenu $swappart $swappartsize"
+    done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $swappartmenu 2>/tmp/choice.$$
+    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectSwapPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $swappartmenu 2>/tmp/choice.$$
 
-	if [ "$?" = "0" ]; then
-		SWAP=`cat /tmp/choice.$$`
-	else
-		SWAP=$EXIT
-	fi
-
-	rm /tmp/choice.$$
+    if [ "$?" = "0" ]; then
+        SWAP=`cat /tmp/choice.$$`
+    else
+        SWAP=$EXIT
+    fi
+
+    rm /tmp/choice.$$
 
-	if [ "$SWAP" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
-		exit 1
-	fi
+    if [ "$SWAP" = $EXIT ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
+        exit 1
+    fi
 
-	#choose the partition to install to
-	PARTITIONS=`cat /proc/partitions | grep -v "loop" | grep -v "sr0" | awk '{print $4}' | grep "[0-9]"`
-	PARTINSTTEMP=`echo $PARTITIONS | sed -r "s/$SWAP//"`
-	PARTINST=`echo $PARTINSTTEMP`
+    #choose the partition to install to
+    PARTITIONS=`cat /proc/partitions | grep -v "loop" | grep -v "sr0" | awk '{print $4}' | grep "[0-9]"`
+    PARTINSTTEMP=`echo $PARTITIONS | sed -r "s/$SWAP//"`
+    PARTINST=`echo $PARTINSTTEMP`
 
-	for i in $PARTINST; do
-		tempsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
+    for i in $PARTINST; do
+        tempsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
 
-		if [ "$tempsize" = "1" ]; then
-			PARTINST=`echo $PARTINST | sed -r "s/$i//"`
-		fi
-	done
+        if [ "$tempsize" = "1" ]; then
+            PARTINST=`echo $PARTINST | sed -r "s/$i//"`
+        fi
+    done
 
-	for i in $PARTINST; do
-		part="$i"
-		partsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
-		partmenu="$partmenu $part $partsize"
-	done
+    for i in $PARTINST; do
+        part="$i"
+        partsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
+        partmenu="$partmenu $part $partsize"
+    done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $partmenu 2>/tmp/choice.$$
+    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectInstallationPartition" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $partmenu 2>/tmp/choice.$$
 
-	if [ "$?" = "0" ]; then
-		TARGETPART=`cat /tmp/choice.$$`
-	else
-		TARGETPART=$EXIT
-	fi
+    if [ "$?" = "0" ]; then
+        TARGETPART=`cat /tmp/choice.$$`
+    else
+        TARGETPART=$EXIT
+    fi
 
-	rm /tmp/choice.$$
+    rm /tmp/choice.$$
 
-	if [ "$TARGETPART" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
-		exit 1
-	fi
+    if [ "$TARGETPART" = $EXIT ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
+        exit 1
+    fi
 
-	#choose filesystem type
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" $HEIGHT $WIDTH $MENUHEIGHT ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
+    #choose filesystem type
+    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" $HEIGHT $WIDTH $MENUHEIGHT ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
 
-	if [ "$?" = "0" ]; then
-		FSTYPE=`cat /tmp/choice.$$`
-	else
-		FSTYPE="ext4"
-	fi
+    if [ "$?" = "0" ]; then
+        FSTYPE=`cat /tmp/choice.$$`
+    else
+        FSTYPE="ext4"
+    fi
 
-	rm /tmp/choice.$$
+    rm /tmp/choice.$$
 
-	HOMEINST=`echo $PARTINST | sed -r "s/$TARGETPART//"`
+    HOMEINST=`echo $PARTINST | sed -r "s/$TARGETPART//"`
 
-	for i in $HOMEINST; do
-		homepart="$i"
-		homepartsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
-		homepartmenu="$homepartmenu $homepart $homepartsize"
-	done
+    for i in $HOMEINST; do
+        homepart="$i"
+        homepartsize=`grep -m 1 "$i" /proc/partitions | awk '{print $3}'`
+        homepartmenu="$homepartmenu $homepart $homepartsize"
+    done
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomePartition" $HEIGHT $WIDTH $MENUHEIGHT root "$PutHomeInRootPartition" $homepartmenu 2>/tmp/choice.$$
+    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomePartition" $HEIGHT $WIDTH $MENUHEIGHT root "$PutHomeInRootPartition" $homepartmenu 2>/tmp/choice.$$
 
-	if [ "$?" = "0" ]; then
-		HOMEPART=`cat /tmp/choice.$$`
-	else
-		HOMEPART="root"
-	fi
+    if [ "$?" = "0" ]; then
+        HOMEPART=`cat /tmp/choice.$$`
+    else
+        HOMEPART="root"
+    fi
 
-	rm /tmp/choice.$$
+    rm /tmp/choice.$$
 
-	if [ "$HOMEPART" != "root" ]; then
-		#choose filesystem type
-		$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" $HEIGHT $WIDTH $MENUHEIGHT noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
+    if [ "$HOMEPART" != "root" ]; then
+        #choose filesystem type
+        $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" $HEIGHT $WIDTH $MENUHEIGHT noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
 
-		if [ "$?" = "0" ]; then
-			HFSTYPE=`cat /tmp/choice.$$`
-		else
-			HFSTYPE="ext4"
-		fi
-			rm /tmp/choice.$$
-	fi
+        if [ "$?" = "0" ]; then
+            HFSTYPE=`cat /tmp/choice.$$`
+        else
+            HFSTYPE="ext4"
+        fi
+            rm /tmp/choice.$$
+    fi
 
-	# "NOCONFIGS=\"user-setup" means it is backup mode
-	# "" means it is dist mode
-	testmode=`grep "NOCONFIGS=\"user-setup" /etc/live/config.conf`
+    # "NOCONFIGS=\"user-setup" means it is backup mode
+    # "" means it is dist mode
+    testmode=`grep "NOCONFIGS=\"user-setup" /etc/live/config.conf`
 
-	if [ "$testmode" = "" ]; then
-		#root password entry section
-		TARGETROOTPASS="1"
-		TARGETROOTPASS2="2"
+    if [ "$testmode" = "" ]; then
+        #root password entry section
+        TARGETROOTPASS="1"
+        TARGETROOTPASS2="2"
 
-		while [ "$TARGETROOTPASS" != "$TARGETROOTPASS2" ]; do
-			$DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Enter the root password." $HEIGHT $WIDTH 2>/tmp/choice.$$
+        while [ "$TARGETROOTPASS" != "$TARGETROOTPASS2" ]; do
+            $DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Enter the root password." $HEIGHT $WIDTH 2>/tmp/choice.$$
 
-			if [ "$?" = "0" ]; then
-				TARGETROOTPASS=`cat /tmp/choice.$$`
-			else
-				exit 1
-			fi
+            if [ "$?" = "0" ]; then
+                TARGETROOTPASS=`cat /tmp/choice.$$`
+            else
+                exit 1
+            fi
 
-			rm /tmp/choice.$$
+            rm /tmp/choice.$$
 
-			$DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Enter the root password again." $HEIGHT $WIDTH 2>/tmp/choice.$$
+            $DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Enter the root password again." $HEIGHT $WIDTH 2>/tmp/choice.$$
 
-			if [ "$?" = "0" ]; then
-				TARGETROOTPASS2=`cat /tmp/choice.$$`
-			else
-				exit 1
-			fi
+            if [ "$?" = "0" ]; then
+                TARGETROOTPASS2=`cat /tmp/choice.$$`
+            else
+                exit 1
+            fi
 
-			rm /tmp/choice.$$
+            rm /tmp/choice.$$
 
-			if [ "$TARGETROOTPASS" != "$TARGETROOTPASS2" ]; then
-				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$PasswordsDontMatch" $HEIGHT $WIDTH
-			fi
-		done
+            if [ "$TARGETROOTPASS" != "$TARGETROOTPASS2" ]; then
+                $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$PasswordsDontMatch" $HEIGHT $WIDTH
+            fi
+        done
 
-		rm /tmp/choice.$$
+        rm /tmp/choice.$$
 
-		#username input secton
+        #username input secton
 
-		$DIALOG $TITLE"$TITLETEXT" $ENTRY $TEXT$"Enter the full name of the new user to be configured on the installed system." $HEIGHT $WIDTH 2>/tmp/choice.$$
+        $DIALOG $TITLE"$TITLETEXT" $ENTRY $TEXT$"Enter the full name of the new user to be configured on the installed system." $HEIGHT $WIDTH 2>/tmp/choice.$$
 
-		if [ "$?" = "0" ]; then
-			TARGETUSERFULLNAME=`cat /tmp/choice.$$`
-		else
-			exit 1
-		fi
+        if [ "$?" = "0" ]; then
+            TARGETUSERFULLNAME=`cat /tmp/choice.$$`
+        else
+            exit 1
+        fi
 
-		rm /tmp/choice.$$
+        rm /tmp/choice.$$
 
-		$DIALOG $TITLE"$TITLETEXT" $ENTRY $TEXT$"Enter the username of the new user to be configured on the installed system.\nLowercase letters only." $HEIGHT $WIDTH 2>/tmp/choice.$$
+        $DIALOG $TITLE"$TITLETEXT" $ENTRY $TEXT$"Enter the username of the new user to be configured on the installed system.\nLowercase letters only." $HEIGHT $WIDTH 2>/tmp/choice.$$
 
-		if [ "$?" = "0" ]; then
-			TARGETUSER=`cat /tmp/choice.$$`
-		else
-			exit 1
-		fi
+        if [ "$?" = "0" ]; then
+            TARGETUSER=`cat /tmp/choice.$$`
+        else
+            exit 1
+        fi
 
-		rm /tmp/choice.$$
+        rm /tmp/choice.$$
 
-		#make sure its all lowercase just in case
-		TARGETUSER="`echo $TARGETUSER | awk '{print tolower ($0)}'`"
+        #make sure its all lowercase just in case
+        TARGETUSER="`echo $TARGETUSER | awk '{print tolower ($0)}'`"
 
-		#password entry section
+        #password entry section
 
-		TARGETPASS="1"
-		TARGETPASS2="2"
+        TARGETPASS="1"
+        TARGETPASS2="2"
 
-		while [ "$TARGETPASS" != "$TARGETPASS2" ]; do
-			$DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Enter a password for $TARGETUSER." $HEIGHT $WIDTH 2>/tmp/choice.$$
+        while [ "$TARGETPASS" != "$TARGETPASS2" ]; do
+            $DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Enter a password for $TARGETUSER." $HEIGHT $WIDTH 2>/tmp/choice.$$
 
-			if [ "$?" = "0" ]; then
-				TARGETPASS=`cat /tmp/choice.$$`
-			else
-				exit 1
-			fi
+            if [ "$?" = "0" ]; then
+                TARGETPASS=`cat /tmp/choice.$$`
+            else
+                exit 1
+            fi
 
-			rm /tmp/choice.$$
+            rm /tmp/choice.$$
 
-			$DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Retype the password of $TARGETUSER." $HEIGHT $WIDTH 2>/tmp/choice.$$
+            $DIALOG $TITLE"$TITLETEXT" $PASSWORD $TEXT$"Retype the password of $TARGETUSER." $HEIGHT $WIDTH 2>/tmp/choice.$$
 
-			if [ "$?" = "0" ]; then
-				TARGETPASS2=`cat /tmp/choice.$$`
-			else
-				exit 1
-			fi
+            if [ "$?" = "0" ]; then
+                TARGETPASS2=`cat /tmp/choice.$$`
+            else
+                exit 1
+            fi
 
-			rm /tmp/choice.$$
+            rm /tmp/choice.$$
 
-			if [ "$TARGETPASS" != "$TARGETPASS2" ]; then
-				$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$PasswordsDontMatch" $HEIGHT $WIDTH
-			fi
-		done
+            if [ "$TARGETPASS" != "$TARGETPASS2" ]; then
+                $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$PasswordsDontMatch" $HEIGHT $WIDTH
+            fi
+        done
 
-		rm /tmp/choice.$$
-	fi
+        rm /tmp/choice.$$
+    fi
 
 
-	#hostname setup
-	$DIALOG $TITLE"$TITLETEXT" $ENTRY $TEXT$"Enter the hostname of the system to be installed" $HEIGHT $WIDTH 2>/tmp/choice.$$
+    #hostname setup
+    $DIALOG $TITLE"$TITLETEXT" $ENTRY $TEXT$"Enter the hostname of the system to be installed" $HEIGHT $WIDTH 2>/tmp/choice.$$
 
-	if [ "$?" = "0" ]; then
-		TARGETHOSTNAME=`cat /tmp/choice.$$`
-	else
-		exit 1
-	fi
+    if [ "$?" = "0" ]; then
+        TARGETHOSTNAME=`cat /tmp/choice.$$`
+    else
+        exit 1
+    fi
 
-	rm /tmp/choice.$$
+    rm /tmp/choice.$$
 
-	#grub location
+    #grub location
 
-	GrubSelectText() {
-		## Blank the array in case this function is being rerun
+    GrubSelectText() {
+        ## Blank the array in case this function is being rerun
 
-		GrubMenu=()
+        GrubMenu=()
 
-		Drives=$(cat /proc/partitions | grep -v loop | grep -v "Extended" | grep -v "extended" | grep -v "swap" | grep -v "Swap" | grep -v "Hidden" | grep -v major | grep -v "^$" | awk '{ print $4}')
+        Drives=$(cat /proc/partitions | grep -v loop | grep -v "Extended" | grep -v "extended" | grep -v "swap" | grep -v "Swap" | grep -v "Hidden" | grep -v major | grep -v "^$" | awk '{ print $4}')
 
-		for i in $Drives; do
-			PartDrive="$i"
+        for i in $Drives; do
+            PartDrive="$i"
 
-			if [ "$(echo "$PartDrive" | grep [0-9] )" = "" ]; then
-				GrubMenu=("${GrubMenu[@]}" "$PartDrive" "$DiskMBR")
-			fi
-		done
+            if [ "$(echo "$PartDrive" | grep [0-9] )" = "" ]; then
+                GrubMenu=("${GrubMenu[@]}" "$PartDrive" "$DiskMBR")
+            fi
+        done
 
-		GrubMenu=( "${GrubMenu[@]}" "root" "$RootPartition" "rootmbr" "$RootMBRPartition" )
+        GrubMenu=( "${GrubMenu[@]}" "root" "$RootPartition" "rootmbr" "$RootMBRPartition" )
 
-		#grub location
-		$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectWhereInstallGrub" $HEIGHT $WIDTH $MENUHEIGHT "${GrubMenu[@]}" 2>/tmp/choice.$$
+        #grub location
+        $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectWhereInstallGrub" $HEIGHT $WIDTH $MENUHEIGHT "${GrubMenu[@]}" 2>/tmp/choice.$$
 
-		if [ "$?" = "0" ]; then
-			GRUBLOCTEST=`cat /tmp/choice.$$`
-		elif [ "$GRUBLOCTEST" = "" ]; then
-			GrubSelectText
-			exit 0
-		fi
+        if [ "$?" = "0" ]; then
+            GRUBLOCTEST=`cat /tmp/choice.$$`
+        elif [ "$GRUBLOCTEST" = "" ]; then
+            GrubSelectText
+            exit 0
+        fi
 
-		rm /tmp/choice.$$
+        rm /tmp/choice.$$
 
         GrubLoc $GRUBLOCTEST $TARGETPART $PARTDRIVE
-	}
+    }
 
-	GrubSelectText # call above function
+    GrubSelectText # call above function
 
-	#dpkg-reconfigure tzdata
-	#Timezone setting
+    #dpkg-reconfigure tzdata
+    #Timezone setting
 
-	$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$SystemClockSetup" $HEIGHT $WIDTH
+    $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$SystemClockSetup" $HEIGHT $WIDTH
 
-	if [ $? = 0 ]; then
-		if [ "$(grep "UTC" /etc/adjtime)" != "" ]; then
-			sed -i -e "s|UTC|LOCALTIME|g" /etc/adjtime
-		fi
-	else
-		if [ "$(grep "LOCALTIME" /etc/adjtime)" != "" ]; then
-			sed -i -e "s|LOCALTIME|UTC|g" /etc/adjtime
-		fi
-	fi
+    if [ $? = 0 ]; then
+        if [ "$(grep "UTC" /etc/adjtime)" != "" ]; then
+            sed -i -e "s|UTC|LOCALTIME|g" /etc/adjtime
+        fi
+    else
+        if [ "$(grep "LOCALTIME" /etc/adjtime)" != "" ]; then
+            sed -i -e "s|LOCALTIME|UTC|g" /etc/adjtime
+        fi
+    fi
 
-	cat /usr/share/zoneinfo/zone.tab | awk '{print $3}' | grep "/" | sort > /tmp/remastersys.zoneinfo
+    cat /usr/share/zoneinfo/zone.tab | awk '{print $3}' | grep "/" | sort > /tmp/remastersys.zoneinfo
 
-	for i in `cat /tmp/remastersys.zoneinfo`; do
-		ZONES="$ZONES $i Timezone"
-	done
+    for i in `cat /tmp/remastersys.zoneinfo`; do
+        ZONES="$ZONES $i Timezone"
+    done
 
-	rm /tmp/remastersys.zoneinfo
+    rm /tmp/remastersys.zoneinfo
 
-	$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectTimeZone" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $ZONES 2>/tmp/choice.$$
+    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectTimeZone" $HEIGHT $WIDTH $MENUHEIGHT $EXIT "$ExitInstaller" $ZONES 2>/tmp/choice.$$
 
-	if [ "$?" = "0" ]; then
-		ZONESINFO=`cat /tmp/choice.$$`
-	else
-		ZONESINFO=$EXIT
-	fi
+    if [ "$?" = "0" ]; then
+        ZONESINFO=`cat /tmp/choice.$$`
+    else
+        ZONESINFO=$EXIT
+    fi
 
-	rm /tmp/choice.$$
+    rm /tmp/choice.$$
 
-	if [ "$ZONESINFO" = $EXIT ]; then
-		$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
-		exit 1
-	fi
+    if [ "$ZONESINFO" = $EXIT ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller" $HEIGHT $WIDTH
+        exit 1
+    fi
 
-	echo "$ZONESINFO" > /etc/timezone
+    echo "$ZONESINFO" > /etc/timezone
 
-	cp /usr/share/zoneinfo/$ZONESINFO /etc/localtime
+    cp /usr/share/zoneinfo/$ZONESINFO /etc/localtime
 
-	#$SETLOCALE
-	#$SETCONSOLEDATA
-	#$SETXSERVER
+    #$SETLOCALE
+    #$SETCONSOLEDATA
+    #$SETXSERVER
 
     HomeText "$HOMEPART" "$HFSTYPE"
     
