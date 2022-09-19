@@ -1,6 +1,6 @@
 # REMASTERSYS
 
-<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0.0 alpha" src="https://img.shields.io/badge/Version-4.0.0%20alpha-orange" /></a>
+<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0 alpha 12" src="https://img.shields.io/badge/Version-4.0%20alpha%2012-red" /></a>
 
 **Remastersys** is a tool that can be used to do two things with an existing Linux Debian installation:
 
@@ -11,7 +11,7 @@ This is a fork of the famous [Remastersys (ver. 3.0.0-1)](https://web.archive.or
 
 Just burn your Distro or Backup image onto a CD/DVD media or a USB stick (with programs like [Balena Etcher](https://www.balena.io/etcher/)), then insert the media/pendrive into the PC and reboot.
 
-## Current state
+## Changelog
 
 The program is still **under development, with many bugs**. However, it is already possible to see many new features compared to the original **remastersys**:
 
@@ -30,3 +30,18 @@ The program is still **under development, with many bugs**. However, it is alrea
   * zstd (included because of makesquashfs’ new compression method).
   * memtest86+ (excluded since it is not used by system, isolinux has its own binary).
   * xresprobe (excluded since is no longer used).
+
+## Current state
+
+This program has 2 packages: **remastersys** (program itself, terminal only) and **remastersys-gui** (graphical interface). In this ALPHA stage, just remastersys seems to work very well. The GUI package still need some work, mainly internationalization, but it's working (in pt_BR).
+
+## Basic usage
+* Create debian packages: `./package-creator`, write version number "4.0a", hit ENTER, then write a short changelog. You can write just "f" in changelog and hit ENTER.
+* Install both packages: `sudo dpkg -i *.deb`
+* Fix dependencies if you need: `sudo apt-get update --fix-missing` and `sudo apt-get install -f`
+* Read instructions:
+  * `man remastersys`
+  * `remastersys --help`
+  * `remastersys-grubconfig --help`
+  * `remastersys-installer --help`
+  * `remastersys-skelcopy --help`

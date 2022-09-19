@@ -145,6 +145,7 @@ SystemClockSetup=$"Is your system clock set to local time?\n\nResponding \"no\" 
 SelectWhereInstallGrub=$"Select where to install grub.\n"
 DiskMBR=$"Master Boot Record (MBR) of the disk"
 SelectTimeZone=$"Select a time zone for your system"
+
 HomeText(){
     # Return global variable HOMETEXT
     HOMEPART="$1"
@@ -158,6 +159,7 @@ HomeText(){
         HOMETEXT=$"$HOMEPART will not be formatted, but will be used as /home"
     fi
 }
+
 GrubLoc(){
     # Return global variables GRUBLOCTEXT and GRUBLOC
     GRUBLOCTEST="$1"
@@ -174,6 +176,12 @@ GrubLoc(){
         GRUBLOCTEXT=$"mbr of $GRUBLOCTEST"
         GRUBLOC="/dev/$GRUBLOCTEST"
     fi
+}
+
+ExitingInstallerNow(){
+    # GUI MODE Quiting
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
+    exit 1
 }
 
 # TEXT MODE START ##############################################################
@@ -588,15 +596,13 @@ else
     done
     
     if [ "$?" != "0" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     PARTDRIVE=`echo $PARTDRIVE | cut -d "|" -f 1`
 
     if [ "$PARTDRIVE" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     $PARTITIONPROG /dev/$PARTDRIVE
@@ -616,15 +622,13 @@ else
     done
     
     if [ "$?" != "0" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     SWAP=`echo $SWAP | cut -d "|" -f 1`
 
     if [ "$SWAP" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     #choose the partition to install to
@@ -650,15 +654,13 @@ else
     done
     
     if [ "$?" != "0" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
 
     if [ "$TARGETPART" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     FSTYPE=""
@@ -667,8 +669,7 @@ else
     done
     
     if [ "$?" != "0" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     FSTYPE=`echo $FSTYPE | cut -d "|" -f 1`
@@ -686,8 +687,7 @@ else
     done
     
     if [ "$?" != "0" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     HOMEPART=`echo $HOMEPART | cut -d "|" -f 1`
@@ -734,8 +734,7 @@ else
                 TARGETPASS2=`echo $CHOICES | cut -d "|" -f 6`
                 TARGETHOSTNAME=`echo $CHOICES | cut -d "|" -f 7`
             else
-                $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-                exit 1
+                ExitingInstallerNow
             fi
 
             [ "$TARGETROOTPASS" != "" ] && \
@@ -838,15 +837,13 @@ else
     done
     
     if [ "$?" != "0" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     ZONESINFO=`echo $ZONESINFO | cut -d "|" -f 1`
 
     if [ "$ZONESINFO" = $EXIT ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-        exit 1
+        ExitingInstallerNow
     fi
 
     echo "$ZONESINFO" > /etc/timezone
@@ -869,15 +866,13 @@ else
         $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$PleaseConfirm""$ConfirmDist""$Proceed"
 
         if [ $? != 0 ]; then
-            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-            exit 1
+            ExitingInstallerNow
         fi
     else
         $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$PleaseConfirm""$ConfirmBackup""$Proceed"
 
         if [ $? != 0 ]; then
-            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$ExitingInstaller"
-            exit 1
+            ExitingInstallerNow
         fi
     fi
 
