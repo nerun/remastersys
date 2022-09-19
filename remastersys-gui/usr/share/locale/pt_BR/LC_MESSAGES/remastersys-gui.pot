@@ -16,3 +16,51 @@ msgstr ""
 #: remastersys-gui:38
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
+#: remastersys-gui:46
+msgid "Choose what you want to do:"
+msgstr ""
+#: remastersys-gui:47
+msgid "Creates a full system backup including user files."
+msgstr ""
+#: remastersys-gui:48
+msgid "Creates a 'distribution' on Live CD/DVD: will be created both file system (CDFS)\\nand writable image (ISO)."
+msgstr ""
+#: remastersys-gui:49
+msgid "Creates only the file system (CDFS) of a Live CD/DVD: ideal solution if you want\\nto add files to the CD later."
+msgstr ""
+#: remastersys-gui:50
+msgid "Creates only the ISO of a Live CD/DVD: the file system (CDFS) must have been\\ncreated previously."
+msgstr ""
+#: remastersys-gui:51
+msgid "Selects a background image for the Live CD/DVD boot menu."
+msgstr ""
+#: remastersys-gui:52
+msgid "Selects a background image for the GRUB bootloader."
+msgstr ""
+#: remastersys-gui:53
+msgid "Makes the current user's custom settings the default Live CD/DVD system settings."
+msgstr ""
+#: remastersys-gui:54
+msgid "Clears /etc/skel settings to remove all customizations."
+msgstr ""
+#: remastersys-gui:55
+msgid "Clears Remastersys working folder."
+msgstr ""
+#: remastersys-gui:56
+msgid "Modify Remastersys settings."
+msgstr ""
+#: remastersys-gui:57
+msgid "View the Remastersys log file."
+msgstr ""
+#: remastersys-gui:58
+msgid "Displays information about Remastersys."
+msgstr ""
+#: remastersys-gui:97
+msgid "Configuration files in /etc/skel have been deleted."
+msgstr ""
+#: remastersys-gui:109
+msgid "The remastersys.log file does not exist."
+msgstr ""
+#: remastersys-gui:115
+msgid "Remastersys version $VERSION.\\n\\nThis is a graphical user interface created in YAD for\\nRemastersys: a command-line tool that turns an installed\\nDebian system into a distribution on Live CD or DVD. It can\\nalso be used as a full backup tool that includes /home\\nfolder and all users data.\\n\\nMaintained by Daniel 'Nerun' Rodrigues.\\n\\nFork of Tony Brijeski's Remastersys (discontinued).\\n\\nVisit https://github.com/nerun/remastersys for more\\ninformation."
+msgstr ""

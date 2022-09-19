@@ -43,24 +43,34 @@ fi
 # NEED INTERNATIONALIZATION FROM THIS POINT AHEAD ################### ALPHA 12 #
 ################################################################################
 
+Choose=$"Choose what you want to do:"
+BackupString=$"Creates a full system backup including user files."
+DistString=$"Creates a 'distribution' on Live CD/DVD: will be created both file system (CDFS)\nand writable image (ISO)."
+DistCDFSString=$"Creates only the file system (CDFS) of a Live CD/DVD: ideal solution if you want\nto add files to the CD later."
+DistISOString=$"Creates only the ISO of a Live CD/DVD: the file system (CDFS) must have been\ncreated previously."
+DistBootString=$"Selects a background image for the Live CD/DVD boot menu."
+DistGrubString=$"Selects a background image for the GRUB bootloader."
+DistSkelString=$"Makes the current user's custom settings the default Live CD/DVD system settings."
+ClearSkelString=$"Clears /etc/skel settings to remove all customizations."
+ClearString=$"Clears Remastersys working folder."
+SettingsString=$"Modify Remastersys settings."
+LogString=$"View the Remastersys log file."
+AboutString=$"Displays information about Remastersys."
+
 mainmenu() {
-    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=510 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"Escolha o que deseja fazer:" \
-    Backup "Cria um backup completo do sistema incluindo arquivos do usuário." \
-    Dist "Cria uma 'distribuição' em Live CD/DVD: serão criados o sistema de arquivos (CDFS) e a
-imagem gravável (ISO)." \
-    DistCDFS "Cria somente o sistema de arquivos (CDFS) de um Live CD/DVD: solução ideal se você
-deseja adicionar arquivos ao CD depois." \
-    DistISO "Cria somente a ISO de um Live CD/DVD: o sistema de arquivos (CDFS) deve ter sido criado
-anteriormente." \
-    DistBoot "Seleciona uma imagem de fundo para o menu de inicialização do Live CD/DVD." \
-    DistGrub "Seleciona uma imagem de fundo para o carregador de inicialização GRUB." \
-    DistSkel "Torna as configurações personalizadas do usuário atual nas configurações padrões do
-sistema do Live CD/DVD." \
-    Configurar "Modificar as configurações do Remastersys." \
-    Limpar "Limpar a pasta de trabalho do Remastersys." \
-    LimparSkel "Limpar as configurações de /etc/skel para remover todas as personalizações." \
-    Log "Visualizar o arquivo de log do Remastersys." \
-    Sobre "Sobre o Remastersys."`
+    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=510 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"$Choose" \
+    Backup "$BackupString" \
+    Dist "$DistString" \
+    DistCDFS "$DistCDFSString" \
+    DistISO "$DistISOString" \
+    DistBoot "$DistBootString" \
+    DistGrub "$DistGrubString" \
+    DistSkel "$DistSkelString" \
+    ClearSkel "$ClearSkelString" \
+    Clear "$ClearString" \
+    Settings "$SettingsString" \
+    Log "$LogString" \
+    About "$AboutString"`
 
     if [ "$?" = "0" ]; then
         CHOICE=$(echo $CHOICES | cut -d "|" -f 1)
@@ -82,27 +92,27 @@ sistema do Live CD/DVD." \
         distgrubmenu
     elif [ "$CHOICE" = "DistSkel" ]; then
         distskelmenu
-    elif [ "$CHOICE" = "Configurar" ]; then
-        modifymenu
-    elif [ "$CHOICE" = "Limpar" ]; then
-        cleanmenu
-    elif [ "$CHOICE" = "LimparSkel" ]; then
+    elif [ "$CHOICE" = "ClearSkel" ]; then
         find /etc/skel/ -type f -exec rm -f '{}' \;
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Os arquivos de configuração em /etc/skel/ foram apagados."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Configuration files in /etc/skel have been deleted."
         mainmenu
+    elif [ "$CHOICE" = "Clear" ]; then
+        cleanmenu
+    elif [ "$CHOICE" = "Settings" ]; then
+        modifymenu
     elif [ "$CHOICE" = "Log" ]; then
         . /etc/remastersys.conf
 
         if [ -f "$WORKDIR/remastersys/remastersys.log" ]; then
             $DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 --text-info --filename="$WORKDIR/remastersys/remastersys.log"
         else
-            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O arquivo remastersys.log não existe. "
+            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"The remastersys.log file does not exist."
         fi
 
         mainmenu
 
-    elif [ "$CHOICE" = "Sobre" ]; then
-        $DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT"O Criador de Remastersys é uma interface visual para o\nremastersys, que é uma ferramenta em linha de comando que\ntransforma um sistema Debian instalado (ou derivado) em\numa distribuição em Live CD ou DVD. Podendo ser usado\ntambém como uma ferramenta de backup completo, incluindo\na pasta /home e todos os dados de usuários.\n\nEsta é a versão $VERSION.\n\nCriador de Remastersys por Daniel 'Nerun' Rodrigues.\n\nFork do Remastersys, de Tony Brijeski (descontinuado).\n\nVisite linuxernoob.blogspot.com.br para obter mais\ninformações."
+    elif [ "$CHOICE" = "About" ]; then
+        $DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT$"Remastersys version $VERSION.\n\nThis is a graphical user interface created in YAD for\nRemastersys: a command-line tool that turns an installed\nDebian system into a distribution on Live CD or DVD. It can\nalso be used as a full backup tool that includes /home\nfolder and all users data.\n\nMaintained by Daniel 'Nerun' Rodrigues.\n\nFork of Tony Brijeski's Remastersys (discontinued).\n\nVisit https://github.com/nerun/remastersys for more\ninformation."
         mainmenu
     else
         exit 0
@@ -115,7 +125,7 @@ backupmenu() {
 
     . /etc/remastersys.conf
 
-    SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+    SQUASHFSSIZE=$(ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
 
     if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
         $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
@@ -132,7 +142,7 @@ distmenu() {
 
     . /etc/remastersys.conf
 
-    SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+    SQUASHFSSIZE=$(ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
 
     if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
         $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
@@ -149,7 +159,7 @@ distcdfsmenu() {
 
     . /etc/remastersys.conf
 
-    SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+    SQUASHFSSIZE=$(ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
 
     if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
         $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
@@ -168,7 +178,7 @@ distisomenu() {
         $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Você escolheu o Modo Dist ISO.\n\nClique em OK para criar o arquivo ISO."
         xterm -fn 9x15 -e "remastersys dist iso"
         . /etc/remastersys.conf
-        SQUASHFSSIZE=`ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+        SQUASHFSSIZE=$(ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
 
         if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
             $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O sistema de arquivos comprimido é maior do \nque permite a especificação iso9660 para um único arquivo.\n\nVocê deve tentar reduzir a quantidade \nde arquivos que você está tentando fazer backup \ne tentar novamente."
@@ -187,7 +197,7 @@ distisomenu() {
 distbootmenu() {
     $DIALOG $TITLE"$TITLETEXT" --width=450 $MSGBOX $TEXT"Isto lhe permitirá escolher sua própria imagem como plano\nde fundo para o menu do Live CD/DVD.\n\nA imagem DEVE ter 640x480 pixels e estar no formato\nPNG.\n\nClique em OK para continuar."
 
-    BOOTPIC=`$DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 $FILESELECTION`
+    BOOTPIC=$($DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 $FILESELECTION)
     
     # BOOTPIC extension
     BOOTPICext="${BOOTPIC: -4}"
@@ -207,7 +217,7 @@ distbootmenu() {
 distgrubmenu() {
     $DIALOG $TITLE"$TITLETEXT" --width=450 $MSGBOX $TEXT"Isto lhe permitirá escolher sua própria imagem como plano\nde fundo para o gerenciador de boot GRUB.\n\nA imagem DEVE ter 640x480 pixels e estar no formato\nPNG.\n\nClique em OK para continuar."
 
-    GRUBPIC=`$DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 $FILESELECTION`
+    GRUBPIC=$($DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 $FILESELECTION)
     
     # GRUBPIC extension
     GRUBPICext="${GRUBPIC: -4}"
@@ -217,7 +227,7 @@ distgrubmenu() {
 
         if [ "$?" = "0" ]; then
             $DIALOG $TITLE"$TITLETEXT" --width=300 --no-buttons --progress --pulsate $TEXT"Atualizando GRUB agora.\nPor favor aguarde." &
-            PICFILE=`echo $GRUBPIC | awk -F"/" '{print $NF}'`
+            PICFILE=$(echo $GRUBPIC | awk -F"/" '{print $NF}')
             cp $GRUBPIC /etc/remastersys/grub.png
             NEWGRUBPIC="/etc/remastersys/grub.png"
 
@@ -247,11 +257,11 @@ distskelmenu() {
     j="0"
     i="1000"
 
-    while [ "`cat /etc/passwd | awk -F ":" '{print $3}' | grep $i`" != "" ]; do
+    while [ "$(cat /etc/passwd | awk -F ":" '{print $3}' | grep $i)" != "" ]; do
         for i in $(seq 1000 1 1010); do
-            if [ "`cat /etc/passwd | awk -F ":" '{print $3}' | grep $i`" != "" ]; then
-                userchoice[$j]="`grep $i /etc/passwd | awk -F ":" '{print $1}'`"
-                j=`expr $j + 1`
+            if [ "$(cat /etc/passwd | awk -F ":" '{print $3}' | grep $i)" != "" ]; then
+                userchoice[$j]="$(grep $i /etc/passwd | awk -F ":" '{print $1}')"
+                j=$(expr $j + 1)
             fi
         done
     done
@@ -268,12 +278,12 @@ distskelmenu() {
     ${userchoice[8]} ${userchoice[8]} \
     ${userchoice[9]} ${userchoice[9]}`
 
-    SKELUSER=`echo $SKELUSER | cut -d "|" -f 1`
+    SKELUSER=$(echo $SKELUSER | cut -d "|" -f 1)
 
     if [ "$SKELUSER" != "" ]; then
-        cd `grep "^$SKELUSER:" /etc/passwd | awk -F ":" '{print $6}'`
-        PWD=`pwd`
-        TESTUSER=`grep "$PWD" /etc/passwd | awk -F ":" '{print $1}'`
+        cd $(grep "^$SKELUSER:" /etc/passwd | awk -F ":" '{print $6}')
+        PWD=$(pwd)
+        TESTUSER=$(grep "$PWD" /etc/passwd | awk -F ":" '{print $1}')
 
         if [ "$TESTUSER" != "$SKELUSER" ]; then
             $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"O usuário escolhido não possui um diretório home.\nClique em OK para retornar ao menu principal."
@@ -306,7 +316,7 @@ modifymenu() {
         SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
     fi
 
-    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=330 --button=Salvar:0 --button=Voltar:1 --form \
+    CHOICES=$($DIALOGMENU $TITLE"$TITLETEXT" --height=330 --button=Salvar:0 --button=Voltar:1 --form \
 --field="Nome de usuário do Live CD/DVD" "$LIVEUSER" \
 --field="Nome do Sistema do Live CD/DVD" "$LIVECDLABEL" \
 --field="Nome da ISO do Live CD/DVD" "$CUSTOMISO" \
@@ -314,17 +324,17 @@ modifymenu() {
 --field="Pasta de trabalho do Remastersys" "$WORKDIR" \
 --field="Opções para mksquashfs" " $SQUASHFSOPTS" \
 --field="Exibir ícone de instalação na área de trabalho" "$SHOWICON" \
---field="Arquivos e pastas não inclusos" " $EXCLUDES"`
+--field="Arquivos e pastas não inclusos" " $EXCLUDES")
 
     if [ "$?" = "0" ]; then
-        LIVEUSER=`echo $CHOICES | cut -d "|" -f 1`
-        LIVECDLABEL=`echo $CHOICES | cut -d "|" -f 2`
-        CUSTOMISO=`echo $CHOICES | cut -d "|" -f 3`
-        ISOBOOT=`echo $CHOICES | cut -d "|" -f 4`
-        WORKDIR=`echo $CHOICES | cut -d "|" -f 5`
-        SQUASHFSOPTS=`echo $CHOICES | cut -d "|" -f 6`
-        SHOWICON=`echo $CHOICES | cut -d "|" -f 7`
-        EXCLUDES=`echo $CHOICES | cut -d "|" -f 8`
+        LIVEUSER=$(echo $CHOICES | cut -d "|" -f 1)
+        LIVECDLABEL=$(echo $CHOICES | cut -d "|" -f 2)
+        CUSTOMISO=$(echo $CHOICES | cut -d "|" -f 3)
+        ISOBOOT=$(echo $CHOICES | cut -d "|" -f 4)
+        WORKDIR=$(echo $CHOICES | cut -d "|" -f 5)
+        SQUASHFSOPTS=$(echo $CHOICES | cut -d "|" -f 6)
+        SHOWICON=$(echo $CHOICES | cut -d "|" -f 7)
+        EXCLUDES=$(echo $CHOICES | cut -d "|" -f 8)
     else
         mainmenu
     fi
@@ -334,7 +344,7 @@ modifymenu() {
     fi
 
     #make sure live user is all lowercase
-    LIVEUSER="`echo $LIVEUSER | awk '{print tolower ($0)}'`"
+    LIVEUSER="$(echo $LIVEUSER | awk '{print tolower ($0)}')"
 
     if [ "$LIVECDLABEL" = "" ]; then
         LIVECDLABEL="Custom Live CD"
@@ -358,7 +368,7 @@ modifymenu() {
         SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M"
     fi
 
-    SHOWICON="`echo $SHOWICON | awk '{print tolower ($0)}'`"
+    SHOWICON="$(echo $SHOWICON | awk '{print tolower ($0)}')"
 
     if [ "$SHOWICON" = "1" ]; then
         SHOWICON="1"
@@ -417,3 +427,4 @@ cleanmenu() {
 }
 
 mainmenu
+
