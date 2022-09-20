@@ -1,6 +1,6 @@
 # REMASTERSYS
 
-<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0 alpha 12" src="https://img.shields.io/badge/Version-4.0%20alpha%2012-red" /></a>
+<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0 alpha 13" src="https://img.shields.io/badge/Version-4.0%20alpha%2013-red" /></a>
 
 **Remastersys** is a tool that can be used to do two things with an existing Linux Debian installation:
 
@@ -16,8 +16,7 @@ Just burn your Distro or Backup image onto a CD/DVD media or a USB stick (with p
 The program is still **under development, with many bugs**. However, it is already possible to see many new features compared to the original **remastersys**:
 
 * Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
-* All scripts have been revised, improving source code formatting and several minor performance improvements.
-* Improved terminal messages, fixed many small errors and added a few visual improvements. Many improvements are being made to the GUI as well.
+* All scripts have been revised, adding several improvements to source code, including more readable formatting, increased performance, various bug fixes, visual improvements of terminal messages and code optimization.
 * Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7). Also added Memtest86+ v6.00-beta3 to Live CD.
 * Changed makesquashfs' compression method from gzip to zstd. Zstd generates images up to 10% smaller in almost half the time.
 * Updated icons and images.
