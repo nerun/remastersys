@@ -5,4 +5,4 @@ KNOWN BUGS:
 - Barra de % não se altera (formatando e copiando).
 
 THINGS TO DO:
-- remastersys-gui - falta internacionalizar apenas o remastersys-gui
+- remastersys-gui - testar, testar, testar...

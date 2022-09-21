@@ -44,9 +44,9 @@ fi
 Choose=$"Choose what you want to do:"
 
 BackupString=$"Creates a full system backup including user files."
-DistString=$"Creates a distribution on Live CD/DVD: will be created both file system (CDFS)\nand writable image (ISO)."
-DistCDFSString=$"Creates only the file system (CDFS) of a Live CD/DVD: ideal solution if you want\nto add files to the CD later."
-DistISOString=$"Creates only the ISO of a Live CD/DVD: the file system (CDFS) must have been\ncreated previously."
+DistString=$"Creates a distribution on Live CD/DVD: creating both file system (CDFS) and image (ISO)."
+DistCDFSString=$"Creates only the file system (CDFS) of a Live CD: designed to add extra files to CD."
+DistISOString=$"Creates only the ISO of a Live CD: designed to be used after using the DistCDFS option."
 DistBootString=$"Selects a background image for the Live CD/DVD boot menu."
 DistGrubString=$"Selects a background image for the GRUB bootloader."
 DistSkelString=$"Makes the current user's custom settings the default Live CD/DVD system settings."
@@ -116,14 +116,14 @@ mainmenu() {
         mainmenu
 
     elif [ "$CHOICE" = "$About" ]; then
-        $DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT$"Remastersys version $VERSION.\n\n\
+        $DIALOG $TITLE"$TITLETEXT" --center $MSGBOX $TEXT$"Remastersys version $VERSION.\n\n\
 This is a graphical user interface created in YAD for Remastersys: a\n\
 command-line tool that turns an installed Debian system into a distribution on\n\
 Live CD or DVD. It can also be used as a full backup tool that includes /home\n\
 folder and all users data.\n\n\
 Maintained by Daniel 'Nerun' Rodrigues.\n\n\
 Fork of Tony Brijeski's Remastersys (discontinued).\n\n\
-Visit https://github.com/nerun/remastersys for more information."
+Visit <a href=\"https://github.com/nerun/remastersys\">https://github.com/nerun/remastersys</a> for more information."
         mainmenu
     else
         exit 0

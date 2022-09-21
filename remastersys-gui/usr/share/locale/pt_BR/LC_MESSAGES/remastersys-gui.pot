@@ -23,13 +23,13 @@ msgstr ""
 msgid "Creates a full system backup including user files."
 msgstr ""
 #: remastersys-gui:47
-msgid "Creates a distribution on Live CD/DVD: will be created both file system (CDFS)\\nand writable image (ISO)."
+msgid "Creates a distribution on Live CD/DVD: creating both file system (CDFS) and image (ISO)."
 msgstr ""
 #: remastersys-gui:48
-msgid "Creates only the file system (CDFS) of a Live CD/DVD: ideal solution if you want\\nto add files to the CD later."
+msgid "Creates only the file system (CDFS) of a Live CD: designed to add extra files to CD."
 msgstr ""
 #: remastersys-gui:49
-msgid "Creates only the ISO of a Live CD/DVD: the file system (CDFS) must have been\\ncreated previously."
+msgid "Creates only the ISO of a Live CD: designed to be used after using the DistCDFS option."
 msgstr ""
 #: remastersys-gui:50
 msgid "Selects a background image for the Live CD/DVD boot menu."
@@ -77,7 +77,7 @@ msgstr ""
 msgid "The remastersys.log file does not exist."
 msgstr ""
 #: remastersys-gui:119
-msgid "Remastersys version $VERSION.\\n\\nThis is a graphical user interface created in YAD for Remastersys: a\\ncommand-line tool that turns an installed Debian system into a distribution on\\nLive CD or DVD. It can also be used as a full backup tool that includes /home\\nfolder and all users data.\\n\\nMaintained by Daniel 'Nerun' Rodrigues.\\n\\nFork of Tony Brijeski's Remastersys (discontinued).\\n\\nVisit https://github.com/nerun/remastersys for more information."
+msgid "Remastersys version $VERSION.\\n\\nThis is a graphical user interface created in YAD for Remastersys: a\\ncommand-line tool that turns an installed Debian system into a distribution on\\nLive CD or DVD. It can also be used as a full backup tool that includes /home\\nfolder and all users data.\\n\\nMaintained by Daniel 'Nerun' Rodrigues.\\n\\nFork of Tony Brijeski's Remastersys (discontinued).\\n\\nVisit <a href=\\\"https://github.com/nerun/remastersys\\\">https://github.com/nerun/remastersys</a> for more information."
 msgstr ""
 #: remastersys-gui:138
 msgid "The compressed file system is larger than the ISO 9660 specification allows for\\na single file.\\n\\nYou must try to reduce the amount of data you are backing up and try again."
