@@ -23,7 +23,7 @@ msgstr ""
 msgid "Creates a full system backup including user files."
 msgstr ""
 #: remastersys-gui:47
-msgid "Creates a 'distribution' on Live CD/DVD: will be created both file system (CDFS)\\nand writable image (ISO)."
+msgid "Creates a distribution on Live CD/DVD: will be created both file system (CDFS)\\nand writable image (ISO)."
 msgstr ""
 #: remastersys-gui:48
 msgid "Creates only the file system (CDFS) of a Live CD/DVD: ideal solution if you want\\nto add files to the CD later."
@@ -83,7 +83,7 @@ msgstr ""
 msgid "The compressed file system is larger than the ISO 9660 specification allows for\\na single file.\\n\\nYou must try to reduce the amount of data you are backing up and try again."
 msgstr ""
 #: remastersys-gui:145
-msgid "Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR/remastersys. It\\nis recommended to test it in a virtual machine or on a rewritable CD/DVD to\\nensure it works as desired.\\n\\nClick on OK to return to the main menu."
+msgid "Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR. It\\nis recommended to test it in a virtual machine or on a rewritable CD/DVD to\\nensure it works as desired.\\n\\nClick on OK to return to the main menu."
 msgstr ""
 #: remastersys-gui:150
 msgid "You have selected Backup Mode.\\n\\nDo not interrupt this process.\\n\\nClick OK to start the Backup Live CD/DVD process."
@@ -95,7 +95,7 @@ msgstr ""
 msgid "You have selected Dist CDFS Mode.\\n\\nClick OK to start the Distributable Live CD/DVD file system build process."
 msgstr ""
 #: remastersys-gui:173
-msgid "Your Live CD File System is ready in $WORKDIR/remastersys. You can now add files\\nto the CD and then run the Dist ISO option when you are done.\\n\\nClick on OK to return to the main menu."
+msgid "Your Live CD File System is ready in $WORKDIR. You can now add files\\nto the CD and then run the Dist ISO option when you are done.\\n\\nClick on OK to return to the main menu."
 msgstr ""
 #: remastersys-gui:180
 msgid "You have selected DistISO Mode.\\n\\nClick OK to create the ISO file."
@@ -116,7 +116,7 @@ msgstr ""
 msgid "$GRUBPIC has been copied to /etc/remastersys/grub.png and is the default\\nbackground for grub.\\n\\nClick OK to update grub with the new settings so you can see your picture on the\\nnext boot."
 msgstr ""
 #: remastersys-gui:229
-msgid "Updating grub now.\\nPlease wait."
+msgid "Updating grub now.\\n\\nPlease wait."
 msgstr ""
 #: remastersys-gui:245
 msgid "GRUB has been updated.\\n\\nClick OK to continue."
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Need to be in the user directory. Exiting."
 msgstr ""
 #: remastersys-gui:301
-msgid "Copying your $SKELUSER user settings to /etc/skel now.\\n\\n\\Please wait."
+msgid "Copying your $SKELUSER user settings to /etc/skel now.\\n\\nPlease wait."
 msgstr ""
 #: remastersys-gui:307
 msgid "The settings for $SKELUSER have been copied to /etc/skel. In order to test it\\nout you need to create a new user and see if your settings have been applied.\\n\\nClick OK to return to the main menu."
@@ -173,10 +173,10 @@ msgstr ""
 msgid "Back"
 msgstr ""
 #: remastersys-gui:431
-msgid "Configuration Saved. Click OK to return to the modify menu."
+msgid "Configuration Saved.\\n\\nClick OK to return to the settings menu."
 msgstr ""
 #: remastersys-gui:433
-msgid "Configuration Save Error. Click OK to return to the modify menu."
+msgid "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
 msgstr ""
 #: remastersys-gui:440
 msgid "This will remove all the files from the temporary directory. Click OK to proceed."

@@ -48,10 +48,10 @@ msgstr "Cria um backup completo do sistema, incluindo arquivos do usuário."
 
 #: remastersys-gui:47
 msgid ""
-"Creates a 'distribution' on Live CD/DVD: will be created both file system "
+"Creates a distribution on Live CD/DVD: will be created both file system "
 "(CDFS)\\nand writable image (ISO)."
 msgstr ""
-"Cria uma 'distribuição' em Live CD/DVD: serão criados tanto o sistema de "
+"Cria uma distribuição em Live CD/DVD: serão criados tanto o sistema de "
 "arquivos (CDFS)\\nquanto a imagem gravável (ISO)."
 
 #: remastersys-gui:48
@@ -165,19 +165,18 @@ msgid ""
 msgstr ""
 "O sistema de arquivos compactado é maior do que a especificação ISO 9660 "
 "permite\\npara um único arquivo.\\n\\nVocê deve tentar reduzir a quantidade "
-"de dados dos quais está fazendo backup e tentar novamente."
+"de dados dos quais está fazendo backup e\\ntentar novamente."
 
 #: remastersys-gui:145
 msgid ""
-"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR/remastersys. "
-"It\\nis recommended to test it in a virtual machine or on a rewritable CD/"
-"DVD to\\nensure it works as desired.\\n\\nClick on OK to return to the main "
-"menu."
+"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR. It\\nis "
+"recommended to test it in a virtual machine or on a rewritable CD/DVD to"
+"\\nensure it works as desired.\\n\\nClick on OK to return to the main menu."
 msgstr ""
-"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos em $WORKDIR/"
-"remastersys.\\nRecomenda-se testá-lo em uma máquina virtual ou em um CD/DVD "
-"regravável para\\ngarantir que funcione como desejado.\\n\\nClique em OK "
-"para retornar ao menu principal."
+"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\\nem $WORKDIR. "
+"Recomenda-se testá-lo em uma máquina virtual ou em um\\nCD/DVD regravável "
+"para garantir que funcione como desejado.\\n\\nClique em OK para retornar ao "
+"menu principal."
 
 #: remastersys-gui:150
 msgid ""
@@ -205,13 +204,13 @@ msgstr ""
 
 #: remastersys-gui:173
 msgid ""
-"Your Live CD File System is ready in $WORKDIR/remastersys. You can now add "
-"files\\nto the CD and then run the Dist ISO option when you are done.\\n"
-"\\nClick on OK to return to the main menu."
+"Your Live CD File System is ready in $WORKDIR. You can now add files\\nto "
+"the CD and then run the Dist ISO option when you are done.\\n\\nClick on OK "
+"to return to the main menu."
 msgstr ""
-"Seu sistema de arquivos do Live CD está pronto em $WORKDIR/remastersys. Agora"
-"\\nvocê pode adicionar arquivos o CD e executar a opção Dist ISO quando "
-"terminar.\\n\\nClique em OK para retornar ao menu principal."
+"Seu sistema de arquivos do Live CD está pronto em $WORKDIR. Agora você"
+"\\npode adicionar arquivos o CD e executar a opção Dist ISO quando terminar."
+"\\n\\nClique em OK para retornar ao menu principal."
 
 #: remastersys-gui:180
 msgid "You have selected DistISO Mode.\\n\\nClick OK to create the ISO file."
@@ -270,7 +269,7 @@ msgstr ""
 "configurações para que você\\npossa ver sua imagem na próxima inicialização."
 
 #: remastersys-gui:229
-msgid "Updating grub now.\\nPlease wait."
+msgid "Updating grub now.\\n\\nPlease wait."
 msgstr "Atualizando o grub agora.\\n\\nPor favor aguarde."
 
 #: remastersys-gui:245
@@ -315,7 +314,7 @@ msgstr "Precisa estar na pasta de usuário. Saindo."
 
 #: remastersys-gui:301
 msgid ""
-"Copying your $SKELUSER user settings to /etc/skel now.\\n\\n\\Please wait."
+"Copying your $SKELUSER user settings to /etc/skel now.\\n\\nPlease wait."
 msgstr ""
 "Copiando as configurações do usuário $SKELUSER para /etc/skel agora.\\n"
 "\\nPor favor aguarde."
@@ -375,14 +374,15 @@ msgid "Back"
 msgstr "Voltar"
 
 #: remastersys-gui:431
-msgid "Configuration Saved. Click OK to return to the modify menu."
-msgstr "Configuração salva. Clique em OK para retornar ao menu de modificação."
+msgid "Configuration Saved.\\n\\nClick OK to return to the settings menu."
+msgstr ""
+"Configuração salva.\\n\\nClique em OK para retornar ao menu de configurações."
 
 #: remastersys-gui:433
-msgid "Configuration Save Error. Click OK to return to the modify menu."
+msgid "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
 msgstr ""
-"Erro ao salvar configuração. Clique em OK para retornar ao menu de "
-"modificação."
+"Erro ao salvar configuração.\\n\\nClique em OK para retornar ao menu de "
+"configurações."
 
 #: remastersys-gui:440
 msgid ""
