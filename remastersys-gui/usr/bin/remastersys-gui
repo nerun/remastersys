@@ -22,6 +22,7 @@ Yes=$"Yes"
 No=$"No"
 Quit=$"Quit"
 
+# NOTE: attribute --fixed do not allows to use --width or --height
 DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
 DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
 TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
@@ -59,6 +60,8 @@ ClearSkel=$"ClearSkel"
 Clear=$"Clear"
 Settings=$"Settings"
 About=$"About"
+
+NoFileSelected=$"You didn't select any file.\n\nClick OK to continue."
 
 mainmenu() {
     CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=510 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"$Choose" \
@@ -113,35 +116,38 @@ mainmenu() {
         mainmenu
 
     elif [ "$CHOICE" = "$About" ]; then
-        $DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT$"Remastersys version $VERSION.\n\nThis is a graphical user interface created in YAD for\nRemastersys: a command-line tool that turns an installed\nDebian system into a distribution on Live CD or DVD. It can\nalso be used as a full backup tool that includes /home\nfolder and all users data.\n\nMaintained by Daniel 'Nerun' Rodrigues.\n\nFork of Tony Brijeski's Remastersys (discontinued).\n\nVisit https://github.com/nerun/remastersys for more\ninformation."
+        $DIALOG $TITLE"$TITLETEXT" --center --width=470 $MSGBOX $TEXT$"Remastersys version $VERSION.\n\n\
+This is a graphical user interface created in YAD for Remastersys: a\n\
+command-line tool that turns an installed Debian system into a distribution on\n\
+Live CD or DVD. It can also be used as a full backup tool that includes /home\n\
+folder and all users data.\n\n\
+Maintained by Daniel 'Nerun' Rodrigues.\n\n\
+Fork of Tony Brijeski's Remastersys (discontinued).\n\n\
+Visit https://github.com/nerun/remastersys for more information."
         mainmenu
     else
         exit 0
     fi
 }
 
-################################################################################
-# NEED INTERNATIONALIZATION FROM THIS POINT AHEAD ################### ALPHA 13 #
-################################################################################
-
 # Common procedure to backupmenu(), distmenu(), distcdfsmenu() e distisomenu().
 SquashfsSizeCheckup(){
     SQUASHFSSIZE=$(ls -s $WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
     
     if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The compressed filesystem is larger than the\niso9660 specification allows for a single file.\n\nYou must try to reduce the amount of data you\nare backing up and try again."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"The compressed file system is larger than the ISO 9660 specification allows for\na single file.\n\nYou must try to reduce the amount of data you are backing up and try again."
         exit 1
     fi
 }
 
 # Common procedure to backupmenu(), distmenu() e distisomenu().
 FilesReady(){
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready \nin $WORKDIR/remastersys.\nIt is recommended to test it in a virtual machine or \non a rewritable cd/dvd to ensure it works as desired.\n\nClick on OK to return to the main menu."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR/remastersys. It\nis recommended to test it in a virtual machine or on a rewritable CD/DVD to\nensure it works as desired.\n\nClick on OK to return to the main menu."
     mainmenu
 }
 
 backupmenu() {
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Backup Mode.\n\nDo not interrupt this process.\n\nClick OK to Start the Backup LiveCD/DVD process."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You have selected Backup Mode.\n\nDo not interrupt this process.\n\nClick OK to start the Backup Live CD/DVD process."
     xterm -fn 9x15 -e "remastersys backup"
 
     SquashfsSizeCheckup
@@ -150,7 +156,7 @@ backupmenu() {
 }
 
 distmenu() {
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Dist Mode.\n\nClick OK to Start the Distributable LiveCD/DVD process."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You have selected Dist Mode.\n\nClick OK to start the Distributable Live CD/DVD process."
     xterm -fn 9x15 -e "remastersys dist"
 
     SquashfsSizeCheckup
@@ -159,39 +165,36 @@ distmenu() {
 }
 
 distcdfsmenu() {
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Dist CDFS Mode.  Click OK to Start the Distributable LiveCD/DVD filesystem build process."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You have selected Dist CDFS Mode.\n\nClick OK to start the Distributable Live CD/DVD file system build process."
     xterm -fn 9x15 -e "remastersys dist cdfs"
 
     SquashfsSizeCheckup
 
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Your livecd filesystem is ready in $WORKDIR/remastersys.\nYou can now add files to the cd and \nthen run the iso only option when you are done.\n\nClick on OK to return to the main menu."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Your Live CD File System is ready in $WORKDIR/remastersys. You can now add files\nto the CD and then run the Dist ISO option when you are done.\n\nClick on OK to return to the main menu."
 
     mainmenu
 }
 
 distisomenu() {
     if [ -f "$WORKDIR/remastersys/ISOTMP/live/filesystem.squashfs" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You have selected Dist ISO Mode.\n\nClick OK to create the iso file."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You have selected DistISO Mode.\n\nClick OK to create the ISO file."
         xterm -fn 9x15 -e "remastersys dist iso"
         
         SquashfsSizeCheckup
 
         FilesReady
     else
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The livecd filesystem does not exist.\n\nClick OK to go back to the main menu and\ntry the normal Dist mode or the Dist CDFS again."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"The Live CD file system does not exist.\n\nClick OK to go back to the main menu and try the normal Dist mode or the Dist\nCDFS again."
         mainmenu
         exit 0
     fi
 }
 
 distbootmenu() {
-    $DIALOG $TITLE"$TITLETEXT" --width=450 $MSGBOX $TEXT"This will allow you to choose \
-your own picture to \nbe the background for the LIVE boot menu. \n\
-Please note that it MUST be a 640x480 pixel png file.  \nYou must create \
-this picture or resize it with a proper \ngraphics editor as this tool does \
-not have the ability to change the size \nor type of picture. \
-\n\
-\n\
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"This will allow you to choose your own picture to be the background for the LIVE\n\
+boot menu. Please note that it MUST be a 640x480 pixel PNG file. You must create\n\
+this picture or resize it with a proper graphics editor as this tool does not\n\
+have the ability to change the size or type of picture.\n\n\
 Click OK to continue."
 
     BOOTPIC=$($DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 $FILESELECTION)
@@ -203,20 +206,16 @@ Click OK to continue."
 
         cp $BOOTPIC /etc/remastersys/isolinux/splash.png
 
-        $DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"$BOOTPIC has been copied \
-to \n/etc/remastersys/isolinux/splash.png becoming \nthe default background \
-for the LIVE menu. \nClick OK to continue."
+        $DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT$"$BOOTPIC has been copied to /etc/remastersys/isolinux/splash.png becoming the\ndefault background for the LIVE menu.\n\nClick OK to continue."
     else
-        $DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"You didn't select any file. \n\nClick OK to continue."
+        $DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"$NoFileSelected"
     fi
 
     mainmenu
 }
 
 distgrubmenu() {
-    $DIALOG $TITLE"$TITLETEXT" --width=450 $MSGBOX $TEXT"This will allow you to choose \
-your own png picture \nto be the background for the GRUB boot loader. \
-Click OK to continue."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"This will allow you to choose your own PNG picture to be the background for the\nGRUB boot loader.\n\nClick OK to continue."
 
     GRUBPIC=$($DIALOG $TITLE"$TITLETEXT" --width=750 --height=400 $FILESELECTION)
     
@@ -224,13 +223,10 @@ Click OK to continue."
     GRUBPICext="${GRUBPIC: -4}"
 
     if [ "${GRUBPICext,,}" == ".png" ]; then # Extension lowercase
-        $DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"$GRUBPIC has been \ncopied \
-to /etc/remastersys/grub.png \nand is the default background for grub. \nClick \
-OK to update grub with the new settings \nso you can see your picture on the next boot."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"$GRUBPIC has been copied to /etc/remastersys/grub.png and is the default\nbackground for grub.\n\nClick OK to update grub with the new settings so you can see your picture on the\nnext boot."
 
         if [ "$?" = "0" ]; then
-            $DIALOG $TITLE"$TITLETEXT" --width=300 --no-buttons --progress --pulsate $TEXT"Updating grub now. \n\
-Please wait." &
+            $DIALOG $TITLE"$TITLETEXT" --width=300 --no-buttons --progress --pulsate $TEXT$"Updating grub now.\n\nPlease wait." &
             PICFILE=$(echo $GRUBPIC | awk -F"/" '{print $NF}')
             cp $GRUBPIC /etc/remastersys/grub.png
             NEWGRUBPIC="/etc/remastersys/grub.png"
@@ -246,23 +242,21 @@ FOO
             update-grub
             killall -KILL yad
 
-            $DIALOG $TITLE"$TITLETEXT" --width=400 $MSGBOX $TEXT"GRUB has been updated. Click OK to continue."
+            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"GRUB has been updated.\n\nClick OK to continue."
         fi
     else
-        $DIALOG $TITLE"$TITLETEXT" --width=430 $MSGBOX $TEXT"You didn't select any file. \n\nClick OK to continue."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"$NoFileSelected"
     fi
 
     mainmenu
 }
 
 distskelmenu() {
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"This will put your user desktop \
-and application settings \nin /etc/skel so they become the default for the live system. \n\
-This includes desktop background and other personalized \napplication settings that \
-aren't hardcoded to the current \nusers home folder. \
-\n\
-Need to compile a list of valid users. \n\
-It may take a few seconds to complete so be patient. \n\
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"This will put your user desktop and application settings in /etc/skel so they\n\
+become the default for the live system. This includes desktop background and\n\
+other personalized application settings that aren't hardcoded to the current\n\
+users home folder. Need to compile a list of valid users. It may take a few\n\
+seconds to complete so be patient.\n\n\
 Click OK to prepare the list."
 
     j="0"
@@ -276,9 +270,10 @@ Click OK to prepare the list."
             fi
         done
     done
+    
+    SelectUser=$"Please select a user whose settings\nyou would like to make the default."
 
-    SKELUSER=`$DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"\nPlease select a user whose \
-settings \nyou would like to make the default." \
+    SKELUSER=$($DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectUser" \
     ${userchoice[0]} ${userchoice[0]} \
     ${userchoice[1]} ${userchoice[1]} \
     ${userchoice[2]} ${userchoice[2]} \
@@ -288,7 +283,7 @@ settings \nyou would like to make the default." \
     ${userchoice[6]} ${userchoice[6]} \
     ${userchoice[7]} ${userchoice[7]} \
     ${userchoice[8]} ${userchoice[8]} \
-    ${userchoice[9]} ${userchoice[9]}`
+    ${userchoice[9]} ${userchoice[9]})
 
     SKELUSER=$(echo $SKELUSER | cut -d "|" -f 1)
 
@@ -298,26 +293,21 @@ settings \nyou would like to make the default." \
         TESTUSER=$(grep "$PWD" /etc/passwd | awk -F ":" '{print $1}')
 
         if [ "$TESTUSER" != "$SKELUSER" ]; then
-            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The user you chose does not have \
-a proper home directory.  \nClick OK to return to the main menu."
-            echo "Need to be in the user directory. Exiting."
+            $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"The user you chose does not have a proper home directory.\n\nClick OK to return to the main menu."
+            echo $"Need to be in the user directory. Exiting."
             mainmenu
         fi
 
-        $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --pulsate $TEXT"Copying your $SKELUSER user settings to /etc/skel now. \n\
-Please wait." &
+        $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --pulsate $TEXT$"Copying your $SKELUSER user settings to /etc/skel now.\n\nPlease wait." &
 
         remastersys-skelcopy $SKELUSER
 
         killall -KILL yad
 
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"The settings for $SKELUSER have \
-been copied to /etc/skel.  \nIn order to test it out you need to create a new user \
-and see \nif your settings have been applied.  \n\
-Click OK to return to the main menu."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"The settings for $SKELUSER have been copied to /etc/skel. In order to test it\nout you need to create a new user and see if your settings have been applied.\n\nClick OK to return to the main menu."
 
     else
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"You didn't select any user. \n\nClick OK to continue."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You didn't select any user.\n\nClick OK to continue."
     fi
 
     mainmenu
@@ -327,16 +317,28 @@ modifymenu() {
     if [ "$SQUASHFSOPTS" = "" ]; then
         SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
     fi
+    
+    LiveUsername=$"Live Username"
+    LiveSystemName=$"Live System Name"
+    LiveISOFilename=$"Live ISO Filename"
+    LiveBoot=$"Live Boot using GRUB or ISOLINUX"
+    WorkingDirectory=$"Working Directory for Remastersys"
+    OptionsMksquashfs=$"Options for mksquashfs"
+    ShowIcon=$"Show install icon on desktop"
+    ExcludedFiles=$"Excluded files and folders"
+    
+    Save=$"Save"
+    Back=$"Back"
 
-    CHOICES=$($DIALOGMENU $TITLE"$TITLETEXT" --height=330 --button=Salvar:0 --button=Voltar:1 --form \
---field="Live Username" "$LIVEUSER" \
---field="Live System Name" "$LIVECDLABEL" \
---field="Live ISO Filename" "$CUSTOMISO" \
---field="Live Boot using GRUB or ISOLINUX" "$ISOBOOT" \
---field="Working Directory for Remastersys" "$WORKDIR" \
---field="Options for mksquashfs" " $SQUASHFSOPTS" \
---field="Show install icon on desktop" "$SHOWICON" \
---field="Excluded files and folders" " $EXCLUDES")
+    CHOICES=$($DIALOGMENU $TITLE"$TITLETEXT" --height=330 --button="$Save":0 --button="$Back":1 --form \
+--field="$LiveUsername" "$LIVEUSER" \
+--field="$LiveSystemName" "$LIVECDLABEL" \
+--field="$LiveISOFilename" "$CUSTOMISO" \
+--field="$LiveBoot" "$ISOBOOT" \
+--field="$WorkingDirectory" "$WORKDIR" \
+--field="$OptionsMksquashfs" " $SQUASHFSOPTS" \
+--field="$ShowIcon" "$SHOWICON" \
+--field="$ExcludedFiles" " $EXCLUDES")
 
     if [ "$?" = "0" ]; then
         LIVEUSER=$(echo $CHOICES | cut -d "|" -f 1)
@@ -359,11 +361,11 @@ modifymenu() {
     LIVEUSER="$(echo $LIVEUSER | awk '{print tolower ($0)}')"
 
     if [ "$LIVECDLABEL" = "" ]; then
-        LIVECDLABEL="Custom Live CD"
+        LIVECDLABEL="Debian Remaster"
     fi
 
     if [ "$CUSTOMISO" = "" ]; then
-        CUSTOMISO="custom-live.iso"
+        CUSTOMISO="remastersys-livecd.iso"
     fi
 
     if [ "$ISOBOOT" = "grub" -o "$ISOBOOT" = "GRUB" ]; then
@@ -373,6 +375,7 @@ modifymenu() {
     fi
 
     if [ "$WORKDIR" = "" ]; then
+        BASEWORKDIR="/home"
         WORKDIR="/home/remastersys"
     fi
 
@@ -393,48 +396,50 @@ modifymenu() {
     fi
 
     cat > /etc/remastersys.conf <<FOO
-#Remastersys Global Configuration File
+# Remastersys Global Configuration File.
 
-# This is the temporary working directory and won't be included on the cd/dvd
+# This is the temporary working directory and won't be included on the CD/DVD.
+BASEWORKDIR="$BASEWORKDIR"
 WORKDIR="$WORKDIR"
 
-# Here you can add any other files or directories to be excluded from the live filesystem
-# Separate each entry with a space
+# Here you can add any other files or directories to be excluded from the live
+# file system. Separate each entry with a space.
 EXCLUDES="$EXCLUDES"
 
-# Here you can change the livecd/dvd username
+# Here you can change the Live CD/DVD username.
 LIVEUSER="$LIVEUSER"
 
-# Here you can change the name of the livecd/dvd label
+# Here you can change the name of the Live CD/DVD label.
 LIVECDLABEL="$LIVECDLABEL"
 
-# Here you can change the name of the ISO file that is created
+# Here you can change the name of the ISO file that is created.
 CUSTOMISO="$CUSTOMISO"
 
-# Here you can change the boot method for the live - GRUB or ISOLINUX
+# Here you can change the boot method for the live - GRUB or ISOLINUX.
 ISOBOOT="$ISOBOOT"
 
-# Options for mksquashfs
-#Default is -no-recovery -always-use-fragments -b 1M -comp zstd
+# Options for mksquashfs.
+# Default is: -no-recovery -always-use-fragments -b 1M -comp zstd
 SQUASHFSOPTS="$SQUASHFSOPTS"
 
-#Option to show install icon on live desktop in dist mode 1=yes or true, 0=no or false
+# Option to show install icon on live desktop in dist mode:
+# 1=yes or true, 0=no or false.
 SHOWICON="$SHOWICON"
 FOO
 
     if [ "$?" = "0" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Configuration Saved. Click OK to return to the modify menu."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Configuration Saved. Click OK to return to the modify menu."
     else
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Configuration Save Error. Click OK to return to the modify menu."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Configuration Save Error. Click OK to return to the modify menu."
     fi
 
     modifymenu
 }
 
 cleanmenu() {
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"This will remove all the files from the temporary directory. Click OK to proceed."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"This will remove all the files from the temporary directory. Click OK to proceed."
     xterm -fn 9x15 -e "remastersys clean"
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT"Completed. Click OK to return to the main menu."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Completed. Click OK to return to the main menu."
     mainmenu
 }
 

@@ -1,78 +1,186 @@
-#: remastersys-gui:18
+#: remastersys-gui:19
 msgid "Pick"
 msgstr ""
-#: remastersys-gui:19
+#: remastersys-gui:20
 msgid "Info"
 msgstr ""
-#: remastersys-gui:20
+#: remastersys-gui:21
 msgid "Yes"
 msgstr ""
-#: remastersys-gui:21
+#: remastersys-gui:22
 msgid "No"
 msgstr ""
-#: remastersys-gui:22
+#: remastersys-gui:23
 msgid "Quit"
 msgstr ""
-#: remastersys-gui:38
+#: remastersys-gui:40
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
-#: remastersys-gui:42
+#: remastersys-gui:44
 msgid "Choose what you want to do:"
 msgstr ""
-#: remastersys-gui:44
+#: remastersys-gui:46
 msgid "Creates a full system backup including user files."
 msgstr ""
-#: remastersys-gui:45
+#: remastersys-gui:47
 msgid "Creates a 'distribution' on Live CD/DVD: will be created both file system (CDFS)\\nand writable image (ISO)."
 msgstr ""
-#: remastersys-gui:46
+#: remastersys-gui:48
 msgid "Creates only the file system (CDFS) of a Live CD/DVD: ideal solution if you want\\nto add files to the CD later."
 msgstr ""
-#: remastersys-gui:47
+#: remastersys-gui:49
 msgid "Creates only the ISO of a Live CD/DVD: the file system (CDFS) must have been\\ncreated previously."
 msgstr ""
-#: remastersys-gui:48
+#: remastersys-gui:50
 msgid "Selects a background image for the Live CD/DVD boot menu."
 msgstr ""
-#: remastersys-gui:49
+#: remastersys-gui:51
 msgid "Selects a background image for the GRUB bootloader."
 msgstr ""
-#: remastersys-gui:50
+#: remastersys-gui:52
 msgid "Makes the current user's custom settings the default Live CD/DVD system settings."
 msgstr ""
-#: remastersys-gui:51
+#: remastersys-gui:53
 msgid "Clears /etc/skel settings to remove all customizations."
 msgstr ""
-#: remastersys-gui:52
+#: remastersys-gui:54
 msgid "Clears Remastersys working folder."
 msgstr ""
-#: remastersys-gui:53
+#: remastersys-gui:55
 msgid "Modify Remastersys settings."
 msgstr ""
-#: remastersys-gui:54
+#: remastersys-gui:56
 msgid "View the Remastersys log file."
 msgstr ""
-#: remastersys-gui:55
+#: remastersys-gui:57
 msgid "Displays information about Remastersys."
 msgstr ""
-#: remastersys-gui:57
+#: remastersys-gui:59
 msgid "ClearSkel"
 msgstr ""
-#: remastersys-gui:58
+#: remastersys-gui:60
 msgid "Clear"
 msgstr ""
-#: remastersys-gui:59
+#: remastersys-gui:61
 msgid "Settings"
 msgstr ""
-#: remastersys-gui:60
+#: remastersys-gui:62
 msgid "About"
 msgstr ""
-#: remastersys-gui:99
+#: remastersys-gui:64
+msgid "You didn't select any file.\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-gui:103
 msgid "Configuration files in /etc/skel have been deleted."
 msgstr ""
-#: remastersys-gui:111
+#: remastersys-gui:113
 msgid "The remastersys.log file does not exist."
 msgstr ""
-#: remastersys-gui:117
-msgid "Remastersys version $VERSION.\\n\\nThis is a graphical user interface created in YAD for\\nRemastersys: a command-line tool that turns an installed\\nDebian system into a distribution on Live CD or DVD. It can\\nalso be used as a full backup tool that includes /home\\nfolder and all users data.\\n\\nMaintained by Daniel 'Nerun' Rodrigues.\\n\\nFork of Tony Brijeski's Remastersys (discontinued).\\n\\nVisit https://github.com/nerun/remastersys for more\\ninformation."
+#: remastersys-gui:119
+msgid "Remastersys version $VERSION.\\n\\nThis is a graphical user interface created in YAD for Remastersys: a\\ncommand-line tool that turns an installed Debian system into a distribution on\\nLive CD or DVD. It can also be used as a full backup tool that includes /home\\nfolder and all users data.\\n\\nMaintained by Daniel 'Nerun' Rodrigues.\\n\\nFork of Tony Brijeski's Remastersys (discontinued).\\n\\nVisit https://github.com/nerun/remastersys for more information."
+msgstr ""
+#: remastersys-gui:138
+msgid "The compressed file system is larger than the ISO 9660 specification allows for\\na single file.\\n\\nYou must try to reduce the amount of data you are backing up and try again."
+msgstr ""
+#: remastersys-gui:145
+msgid "Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR/remastersys. It\\nis recommended to test it in a virtual machine or on a rewritable CD/DVD to\\nensure it works as desired.\\n\\nClick on OK to return to the main menu."
+msgstr ""
+#: remastersys-gui:150
+msgid "You have selected Backup Mode.\\n\\nDo not interrupt this process.\\n\\nClick OK to start the Backup Live CD/DVD process."
+msgstr ""
+#: remastersys-gui:159
+msgid "You have selected Dist Mode.\\n\\nClick OK to start the Distributable Live CD/DVD process."
+msgstr ""
+#: remastersys-gui:168
+msgid "You have selected Dist CDFS Mode.\\n\\nClick OK to start the Distributable Live CD/DVD file system build process."
+msgstr ""
+#: remastersys-gui:173
+msgid "Your Live CD File System is ready in $WORKDIR/remastersys. You can now add files\\nto the CD and then run the Dist ISO option when you are done.\\n\\nClick on OK to return to the main menu."
+msgstr ""
+#: remastersys-gui:180
+msgid "You have selected DistISO Mode.\\n\\nClick OK to create the ISO file."
+msgstr ""
+#: remastersys-gui:187
+msgid "The Live CD file system does not exist.\\n\\nClick OK to go back to the main menu and try the normal Dist mode or the Dist\\nCDFS again."
+msgstr ""
+#: remastersys-gui:194
+msgid "This will allow you to choose your own picture to be the background for the LIVE\\nboot menu. Please note that it MUST be a 640x480 pixel PNG file. You must create\\nthis picture or resize it with a proper graphics editor as this tool does not\\nhave the ability to change the size or type of picture.\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-gui:209
+msgid "$BOOTPIC has been copied to /etc/remastersys/isolinux/splash.png becoming the\\ndefault background for the LIVE menu.\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-gui:218
+msgid "This will allow you to choose your own PNG picture to be the background for the\\nGRUB boot loader.\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-gui:226
+msgid "$GRUBPIC has been copied to /etc/remastersys/grub.png and is the default\\nbackground for grub.\\n\\nClick OK to update grub with the new settings so you can see your picture on the\\nnext boot."
+msgstr ""
+#: remastersys-gui:229
+msgid "Updating grub now.\\nPlease wait."
+msgstr ""
+#: remastersys-gui:245
+msgid "GRUB has been updated.\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-gui:255
+msgid "This will put your user desktop and application settings in /etc/skel so they\\nbecome the default for the live system. This includes desktop background and\\nother personalized application settings that aren't hardcoded to the current\\nusers home folder. Need to compile a list of valid users. It may take a few\\nseconds to complete so be patient.\\n\\nClick OK to prepare the list."
+msgstr ""
+#: remastersys-gui:274
+msgid "Please select a user whose settings\\nyou would like to make the default."
+msgstr ""
+#: remastersys-gui:296
+msgid "The user you chose does not have a proper home directory.\\n\\nClick OK to return to the main menu."
+msgstr ""
+#: remastersys-gui:297
+msgid "Need to be in the user directory. Exiting."
+msgstr ""
+#: remastersys-gui:301
+msgid "Copying your $SKELUSER user settings to /etc/skel now.\\n\\n\\Please wait."
+msgstr ""
+#: remastersys-gui:307
+msgid "The settings for $SKELUSER have been copied to /etc/skel. In order to test it\\nout you need to create a new user and see if your settings have been applied.\\n\\nClick OK to return to the main menu."
+msgstr ""
+#: remastersys-gui:310
+msgid "You didn't select any user.\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-gui:321
+msgid "Live Username"
+msgstr ""
+#: remastersys-gui:322
+msgid "Live System Name"
+msgstr ""
+#: remastersys-gui:323
+msgid "Live ISO Filename"
+msgstr ""
+#: remastersys-gui:324
+msgid "Live Boot using GRUB or ISOLINUX"
+msgstr ""
+#: remastersys-gui:325
+msgid "Working Directory for Remastersys"
+msgstr ""
+#: remastersys-gui:326
+msgid "Options for mksquashfs"
+msgstr ""
+#: remastersys-gui:327
+msgid "Show install icon on desktop"
+msgstr ""
+#: remastersys-gui:328
+msgid "Excluded files and folders"
+msgstr ""
+#: remastersys-gui:330
+msgid "Save"
+msgstr ""
+#: remastersys-gui:331
+msgid "Back"
+msgstr ""
+#: remastersys-gui:431
+msgid "Configuration Saved. Click OK to return to the modify menu."
+msgstr ""
+#: remastersys-gui:433
+msgid "Configuration Save Error. Click OK to return to the modify menu."
+msgstr ""
+#: remastersys-gui:440
+msgid "This will remove all the files from the temporary directory. Click OK to proceed."
+msgstr ""
+#: remastersys-gui:442
+msgid "Completed. Click OK to return to the main menu."
 msgstr ""

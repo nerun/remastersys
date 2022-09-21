@@ -74,11 +74,8 @@ fi
 
 # if remastersys.conf is incorrect or missing, set standards
 if [ "$WORKDIR" = "" ]; then
-    WORKDIR="/home/remastersys"
     BASEWORKDIR="/home"
-else
-    WORKDIR="$WORKDIR/remastersys"
-    BASEWORKDIR="$WORKDIR"
+    WORKDIR="/home/remastersys"
 fi
 
 if [ "$LIVEUSER" = "" ]; then
@@ -86,7 +83,7 @@ if [ "$LIVEUSER" = "" ]; then
 fi
 
 # live username in lowercase
-LIVEUSER="`echo $LIVEUSER | awk '{print tolower ($0)}'`"
+LIVEUSER="$(echo $LIVEUSER | awk '{print tolower ($0)}')"
 
 if [ "$LIVECDLABEL" = "" ]; then
     LIVECDLABEL="Debian Remaster"
@@ -96,7 +93,9 @@ if [ "$CUSTOMISO" = "" ]; then
     CUSTOMISO="remastersys-livecd.iso"
 fi
 
-if [ "$ISOBOOT" != "GRUB" ]; then
+if [ "$ISOBOOT" = "grub" -o "$ISOBOOT" = "GRUB" ]; then
+    ISOBOOT="GRUB"
+else
     ISOBOOT="ISOLINUX"
 fi
 
