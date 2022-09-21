@@ -64,7 +64,7 @@ About=$"About"
 NoFileSelected=$"You didn't select any file.\n\nClick OK to continue."
 
 mainmenu() {
-    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=510 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"$Choose" \
+    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=400 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"$Choose" \
     Backup "$BackupString" \
     Dist "$DistString" \
     DistCDFS "$DistCDFSString" \
