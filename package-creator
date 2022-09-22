@@ -14,6 +14,7 @@ url="https://github.com/nerun/remastersys"
 echo "VERSION=\"$version\"" > ./remastersys/etc/remastersys/remastersys.version
 
 # MANPAGES PREPARATION
+# gzip deletes remastersys.1 file by default, remaining only remastersys.1.gz
 gzip remastersys/usr/share/man/man1/remastersys.1
 
 # CHANGELOG UPDATE
@@ -46,10 +47,9 @@ changelogAsk
 cat changelog.old >> changelog
 rm changelog.old
 
-# Creating changelog.gz and changelog.Debian.gz
-cp changelog changelog.Debian
+# Creating changelog.gz
+# gzip deletes changelog file by default, remaining only changelog.gz
 gzip changelog
-gzip changelog.Debian
 
 # MOVING LOCALES .po AND .POT
 cd ../..
@@ -58,34 +58,20 @@ cd ./locale/pt_BR/LC_MESSAGES
 mv *.po ../../../../../..
 mv *.pot ../../../../../..
 
-# DEBIAN/CONTROL UPDATE
+# /DEBIAN UPDATE
 
 # Move up to ./remastersys
 cd ../../../../..
 
 # md5sum
-find . -type d -name "DEBIAN" -prune -o -type f -printf '%P ' | xargs md5sum > ./DEBIAN/md5sums
+find . -type f | grep -v "DEBIAN" | sort | xargs md5sum | sed 's/ \./ /g' > ./DEBIAN/md5sums
+# conffiles
+find ./etc -type f | sort | sed 's/^.//g' > ./DEBIAN/conffiles
 
-md5run(){
-	md5sum $1 | cut -f 1 -d " "
-}
-
-a=$(md5run ./etc/remastersys.conf)
-b=$(md5run ./etc/remastersys/grub/grub.cfg)
-c=$(md5run ./etc/remastersys/isolinux/chain.c32)
-d=$(md5run ./etc/remastersys/isolinux/isolinux.bin)
-e=$(md5run ./etc/remastersys/isolinux/isolinux.cfg)
-f=$(md5run ./etc/remastersys/isolinux/ldlinux.c32)
-g=$(md5run ./etc/remastersys/isolinux/libcom32.c32)
-h=$(md5run ./etc/remastersys/isolinux/libutil.c32)
-i=$(md5run ./etc/remastersys/isolinux/memtest86.bin)
-j=$(md5run ./etc/remastersys/isolinux/memtest86+x64.bin)
-k=$(md5run ./etc/remastersys/isolinux/splash-default.png)
-l=$(md5run ./etc/remastersys/isolinux/splash.png)
-m=$(md5run ./etc/remastersys/isolinux/vesamenu.c32)
-n=$(md5run ./etc/remastersys/preseed/custom.seed)
-o=$(md5run ./etc/remastersys/remastersys-installer.conf)
-p=$(md5run ./etc/remastersys/remastersys.version)
+# md5sum for conffiles, but words inverted, to be inserted in control file
+while read line; do
+    echo ' '$(tac -s ' ' <<< $(md5sum .$line | sed 's/ .\/etc/\/etc/g')) >> ./DEBIAN/control-conffiles.tmp
+done < ./DEBIAN/conffiles
 
 # Move down to ./remastersys/DEBIAN
 cd DEBIAN
@@ -101,27 +87,15 @@ Maintainer: $author
 Architecture: all
 Version: $version
 Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-sysvinit | live-config-systemd, live-config, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
-Conffiles:
- /etc/remastersys.conf $a
- /etc/remastersys/grub/grub.cfg $b
- /etc/remastersys/isolinux/chain.c32 $c
- /etc/remastersys/isolinux/isolinux.bin $d
- /etc/remastersys/isolinux/isolinux.cfg $e
- /etc/remastersys/isolinux/ldlinux.c32 $f
- /etc/remastersys/isolinux/libcom32.c32 $g
- /etc/remastersys/isolinux/libutil.c32 $h
- /etc/remastersys/isolinux/memtest86.bin $i
- /etc/remastersys/isolinux/memtest86+x64.bin $j
- /etc/remastersys/isolinux/splash.png $k
- /etc/remastersys/isolinux/splash-default.png $l
- /etc/remastersys/isolinux/vesamenu.c32 $m
- /etc/remastersys/preseed/custom.seed $n
- /etc/remastersys/remastersys-installer.conf $o
- /etc/remastersys/remastersys.version $p
-Homepage: $url
+Conffiles:" > control
+
+cat control-conffiles.tmp >> control
+rm control-conffiles.tmp
+
+echo "Homepage: $url
 Description: Remaster and create backups of the Debian system
  Remastersys allows you to create a Live CD/DVD distribution or make a backup
- of the system installed on your machine." > control
+ of the system installed on your machine." >> control
 
 # Get back to Remastersys GitHub root folder
 cd ../..
@@ -134,7 +108,7 @@ cd ../..
 cd remastersys-gui
 
 # md5sum
-find . -type d -name "DEBIAN" -prune -o -type f -printf '%P ' | xargs md5sum > ./DEBIAN/md5sums
+find . -type f | grep -v "DEBIAN" | sort | xargs md5sum | sed 's/ \./ /g' > ./DEBIAN/md5sums
 
 # Move down to ./remastersys-gui/DEBIAN
 cd DEBIAN
@@ -183,7 +157,6 @@ mv $name remastersys
 mv $namegui remastersys-gui
 
 # delete gziped changelogs and restore single textual changelog
-rm ./remastersys/usr/share/doc/remastersys/changelog.Debian.gz
 gzip -d ./remastersys/usr/share/doc/remastersys/changelog.gz
 
 # manpages restoration
@@ -192,3 +165,4 @@ gzip -d ./remastersys/usr/share/man/man1/remastersys.1.gz
 # .po and .pot restoration
 mv *.po ./remastersys/usr/share/locale/pt_BR/LC_MESSAGES
 mv *.pot ./remastersys/usr/share/locale/pt_BR/LC_MESSAGES
+
