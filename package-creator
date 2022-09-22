@@ -71,19 +71,21 @@ md5run(){
 }
 
 a=$(md5run ./etc/remastersys.conf)
-b=$(md5run ./etc/remastersys/isolinux/isolinux.bin)
-c=$(md5run ./etc/remastersys/isolinux/isolinux.cfg)
-d=$(md5run ./etc/remastersys/isolinux/ldlinux.c32)
-e=$(md5run ./etc/remastersys/isolinux/libcom32.c32)
-f=$(md5run ./etc/remastersys/isolinux/libutil.c32)
-g=$(md5run ./etc/remastersys/isolinux/memtest86.bin)
-h=$(md5run ./etc/remastersys/isolinux/splash-default.png)
-i=$(md5run ./etc/remastersys/isolinux/splash.png)
-j=$(md5run ./etc/remastersys/isolinux/vesamenu.c32)
-k=$(md5run ./etc/remastersys/preseed/custom.seed)
-l=$(md5run ./etc/remastersys/remastersys-installer.conf)
-m=$(md5run ./etc/remastersys/remastersys.version)
-
+b=$(md5run ./etc/remastersys/grub/grub.cfg)
+c=$(md5run ./etc/remastersys/isolinux/chain.c32)
+d=$(md5run ./etc/remastersys/isolinux/isolinux.bin)
+e=$(md5run ./etc/remastersys/isolinux/isolinux.cfg)
+f=$(md5run ./etc/remastersys/isolinux/ldlinux.c32)
+g=$(md5run ./etc/remastersys/isolinux/libcom32.c32)
+h=$(md5run ./etc/remastersys/isolinux/libutil.c32)
+i=$(md5run ./etc/remastersys/isolinux/memtest86.bin)
+j=$(md5run ./etc/remastersys/isolinux/memtest86+x64.bin)
+k=$(md5run ./etc/remastersys/isolinux/splash-default.png)
+l=$(md5run ./etc/remastersys/isolinux/splash.png)
+m=$(md5run ./etc/remastersys/isolinux/vesamenu.c32)
+n=$(md5run ./etc/remastersys/preseed/custom.seed)
+o=$(md5run ./etc/remastersys/remastersys-installer.conf)
+p=$(md5run ./etc/remastersys/remastersys.version)
 
 # Move down to ./remastersys/DEBIAN
 cd DEBIAN
@@ -101,18 +103,21 @@ Version: $version
 Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-sysvinit | live-config-systemd, live-config, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
 Conffiles:
  /etc/remastersys.conf $a
- /etc/remastersys/isolinux/isolinux.bin $b
- /etc/remastersys/isolinux/isolinux.cfg $c
- /etc/remastersys/isolinux/ldlinux.c32 $d
- /etc/remastersys/isolinux/libcom32.c32 $e
- /etc/remastersys/isolinux/libutil.c32 $f
- /etc/remastersys/isolinux/memtest86.bin $g
- /etc/remastersys/isolinux/splash.png $h
- /etc/remastersys/isolinux/splash-default.png $i
- /etc/remastersys/isolinux/vesamenu.c32 $j
- /etc/remastersys/preseed/custom.seed $k
- /etc/remastersys/remastersys-installer.conf $l
- /etc/remastersys/remastersys.version $m
+ /etc/remastersys/grub/grub.cfg $b
+ /etc/remastersys/isolinux/chain.c32 $c
+ /etc/remastersys/isolinux/isolinux.bin $d
+ /etc/remastersys/isolinux/isolinux.cfg $e
+ /etc/remastersys/isolinux/ldlinux.c32 $f
+ /etc/remastersys/isolinux/libcom32.c32 $g
+ /etc/remastersys/isolinux/libutil.c32 $h
+ /etc/remastersys/isolinux/memtest86.bin $i
+ /etc/remastersys/isolinux/memtest86+x64.bin $j
+ /etc/remastersys/isolinux/splash.png $k
+ /etc/remastersys/isolinux/splash-default.png $l
+ /etc/remastersys/isolinux/vesamenu.c32 $m
+ /etc/remastersys/preseed/custom.seed $n
+ /etc/remastersys/remastersys-installer.conf $o
+ /etc/remastersys/remastersys.version $p
 Homepage: $url
 Description: Remaster and create backups of the Debian system
  Remastersys allows you to create a Live CD/DVD distribution or make a backup

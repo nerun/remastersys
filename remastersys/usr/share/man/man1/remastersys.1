@@ -1,4 +1,4 @@
-.TH REMASTERSYS 1 "2021-09-04" "4.0" "Remastersys manual pages"
+.TH REMASTERSYS 1 "2022-09-22" "4.0" "Remastersys manual pages"
 
 .SH NAME
 remastersys - script to make a bootable and installable Live CD/DVD
@@ -14,7 +14,7 @@ of it.
 
 .SH OPTIONS
 There are \fIcommands\fP, there are (or not) \fIarguments\fP and there is (or
-not) a \fIfilename\fP.
+not) a \fIfile\fP.
 
 .SS Commands
 Entering one command, and only one, is mandatory:
@@ -34,8 +34,16 @@ Deletes the temporary working directory.
 .br
 Makes a complete system backup \fIbut don't includes\fP the users folders.
 
+.TP
+.B help
+.br
+Does not exist a "help" (or --help) command in the strict sense. However, there
+is a simplified help that appears whenever the user enters any command
+different from the previous ones or even no command at all. So the user can use
+"--help" to maintain the habit.
+
 .SS Arguments
-Arguments are always optional. The CDFS and ISO arguments should only be used if
+Arguments are always \fIoptional\fP. The CDFS and ISO arguments should only be used if
 you want to modify something on the CD before creating the ISO. An example would
 be modifying the isolinux portion of Live CD/DVD. If arguments are omitted, both
 CDFS and ISO will be created.
@@ -50,13 +58,14 @@ Creates the CD File System only. ISO will not be created.
 .br
 Creates an ISO image as long as the CD File System has already been created.
 
-.SS Filename
-This is the output filename for the ISO to be created.
+.SS File
+This is the output filename for the ISO to be created. Also \fIoptional\fP.
 
 .TP
 .I file
 .br
-It must end with the ".iso" extension. If this parameter is not provided, the
+Adding the ".iso" extension to the filename is not necessary as the program
+will add one if it is missing. If the file parameter is not provided, the
 ISO will be saved with the default name "remastersys-livecd.iso".
 
 .SH EXAMPLES
@@ -90,6 +99,10 @@ Creates only the CD File System of yours Live CD/DVD distribution.
 .br
 Creates an ISO of the distribution with the name "custom.iso", as long as the
 CD File System has already been created.
+
+.SH CONFIGURATION
+Default parameters can be changed in Remastersys Global Configuration file,
+located at "/etc/remastersys.conf".
 
 .SH AUTHORS
 Daniel Dias Rodrigues (from 2013 onwards)

@@ -2,11 +2,19 @@ DEVELOPER NOTES means notes to developer!
 =========================================
 
 KNOWN BUGS:
+
 - remastersys-gui >>> remastersys-grub-restore
-    - quando roda a partir do live CD, a linha 89 não pega a informação da partição na
-      qual restaurar o GRUB. Só funciona em sistemas já instalados no HD.
+    - quando roda a partir do live CD, a linha 89 não pega a informação da
+      partição na qual restaurar o GRUB. Só funciona em sistemas já instalados
+      no HD.
 
 THINGS TO DO:
+
 - remastersys >>> remastersys-grubconfig
-    - verificar se tem o mesmo problema ao rodar via Live CD.
-- verificar a possibilidade de integração de ambos os comandos.
+    - verificar se tem o mesmo problema do remastersys-grub-restore ao rodar via
+      Live CD.
+    - verificar a possibilidade de integração de ambos os comandos.
+    
+- manpages
+    - adicionar remastersys-grubconfig, -installer e -skelcopy ao manpages
+    - criar manpages para remastersys-gui
