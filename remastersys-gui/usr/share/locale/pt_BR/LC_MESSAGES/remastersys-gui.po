@@ -297,10 +297,10 @@ msgstr ""
 
 #: remastersys-gui:274
 msgid ""
-"Please select a user whose settings\\nyou would like to make the default."
+"Please select a user whose settings \\nyou would like to make the default. "
 msgstr ""
-"Selecione um usuário cujas configurações\\nvocê gostaria que se tornasse as "
-"padrões."
+"Selecione um usuário cujas configurações \\nvocê gostaria que se tornasse as "
+"padrões. "
 
 #: remastersys-gui:296
 msgid ""
@@ -327,7 +327,7 @@ msgid ""
 "\\nout you need to create a new user and see if your settings have been "
 "applied.\\n\\nClick OK to return to the main menu."
 msgstr ""
-"As configurações para $SKELUSER foram copiadas para /etc/skel. Para testá-las"
+"As configurações de $SKELUSER foram copiadas para /etc/skel. Para testá-las"
 "\\nvocê precisa criar um usuário e ver se suas configurações foram aplicadas."
 "\\n\\nClique em OK para retornar ao menu principal."
 
@@ -388,12 +388,12 @@ msgstr ""
 
 #: remastersys-gui:440
 msgid ""
-"This will remove all the files from the temporary directory. Click OK to "
-"proceed."
+"This will remove all the files from the temporary directory.\\n\\nClick OK "
+"to proceed."
 msgstr ""
-"Isso irá remover todos os arquivos da pasta temporária. Clique em OK para "
-"prosseguir."
+"Isso irá remover todos os arquivos da pasta temporária.\\n\\nClique em OK "
+"para prosseguir."
 
 #: remastersys-gui:442
-msgid "Completed. Click OK to return to the main menu."
-msgstr "Completado. Clique em OK para retornar ao menu principal."
+msgid "Completed.\\n\\nClick OK to return to the main menu."
+msgstr "Completado.\\n\\nClique em OK para retornar ao menu principal."

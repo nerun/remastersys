@@ -125,7 +125,7 @@ msgstr ""
 msgid "This will put your user desktop and application settings in /etc/skel so they\\nbecome the default for the live system. This includes desktop background and\\nother personalized application settings that aren't hardcoded to the current\\nusers home folder. Need to compile a list of valid users. It may take a few\\nseconds to complete so be patient.\\n\\nClick OK to prepare the list."
 msgstr ""
 #: remastersys-gui:274
-msgid "Please select a user whose settings\\nyou would like to make the default."
+msgid "Please select a user whose settings \\nyou would like to make the default. "
 msgstr ""
 #: remastersys-gui:296
 msgid "The user you chose does not have a proper home directory.\\n\\nClick OK to return to the main menu."
@@ -179,8 +179,8 @@ msgstr ""
 msgid "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
 msgstr ""
 #: remastersys-gui:440
-msgid "This will remove all the files from the temporary directory. Click OK to proceed."
+msgid "This will remove all the files from the temporary directory.\\n\\nClick OK to proceed."
 msgstr ""
 #: remastersys-gui:442
-msgid "Completed. Click OK to return to the main menu."
+msgid "Completed.\\n\\nClick OK to return to the main menu."
 msgstr ""

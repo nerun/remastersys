@@ -271,7 +271,7 @@ Click OK to prepare the list."
         done
     done
     
-    SelectUser=$"Please select a user whose settings\nyou would like to make the default."
+    SelectUser=$"Please select a user whose settings \nyou would like to make the default. "
 
     SKELUSER=$($DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectUser" \
     ${userchoice[0]} ${userchoice[0]} \
@@ -437,9 +437,9 @@ FOO
 }
 
 cleanmenu() {
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"This will remove all the files from the temporary directory. Click OK to proceed."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"This will remove all the files from the temporary directory.\n\nClick OK to proceed."
     xterm -fn 9x15 -e "sudo remastersys clean"
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Completed. Click OK to return to the main menu."
+    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Completed.\n\nClick OK to return to the main menu."
     mainmenu
 }
 

@@ -1,6 +1,6 @@
 # REMASTERSYS
 
-<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0 alpha 15" src="https://img.shields.io/badge/Version-4.0%20alpha%2015-red" /></a>
+<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0 alpha 16" src="https://img.shields.io/badge/Version-4.0%20alpha%2016-red" /></a>
 
 **Remastersys** is a tool that can be used to do two things with an existing Linux Debian installation:
 
@@ -31,7 +31,7 @@ The program is still **under development, with many bugs**. However, it is alrea
 This program has 2 packages: **remastersys** (program itself, terminal only) and **remastersys-gui** (graphical interface). In this ALPHA stage, just remastersys seems to work very well. The GUI package still need some work, mainly internationalization, but it's working (in pt_BR).
 
 ## Basic usage
-* Create debian packages: `./package-creator`, write version number "4.0a", hit ENTER, then write a short changelog. You can write just "f" in changelog and hit ENTER.
+* Create debian packages: `./package-creator`, write version number "4.0", hit ENTER, then write a short changelog. You can write just "f" in changelog and hit ENTER.
 * Install both packages: `sudo dpkg -i *.deb`
 * Fix dependencies if you need: `sudo apt-get update --fix-missing` and `sudo apt-get install -f`
 * Read instructions:
