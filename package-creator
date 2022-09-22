@@ -40,7 +40,7 @@ changelogAsk(){
 	changelogRead
 }
 
-echo "remastersys ($version) stable; urgency=low" > changelog
+echo "remastersys ($version) unstable; urgency=low" > changelog
 echo "" >> changelog
 changelogAsk
 cat changelog.old >> changelog
