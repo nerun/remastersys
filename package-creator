@@ -6,6 +6,56 @@ read version
 author="Daniel Dias Rodrigues <danieldiasr@gmail.com>"
 url="https://github.com/nerun/remastersys"
 
+mkdir tmp-locales
+mkdir tmp-locales-gui
+
+# ==============================================================================
+# PROCEDURES ===================================================================
+# ==============================================================================
+
+ChangelogMaker(){
+    # $1 = changelog or changelog.Debian
+    # $2 = remastersys or remastersys-gui
+
+    changelogRead(){
+	    read changes
+	    if [ "$changes" != "end" ]; then
+		    echo "	* "$changes >> $1
+		    echo ""
+		    cat $1
+		    changelogAsk $1
+	    else
+		    echo "" >> $1
+		    echo " -- $author  "$(date -R) >> $1
+		    echo "" >> $1
+	    fi
+    }
+
+    changelogAsk(){
+	    echo ""
+	    echo -e " Write one change per line, and press ENTER. When done, write \"end\"\non one line and press ENTER."
+	    changelogRead $1
+    }
+    
+    echo -e "\n Do you want to update the $2 $1? (y/n)"
+    read update
+    
+    if [ $update = "y" ]; then
+        mv $1 $1'.old'
+        echo "$2 ($version) unstable; urgency=low" > $1
+        echo "" >> $1
+        changelogAsk $1
+        cat $1'.old' >> $1
+        rm $1'.old'
+    else
+        echo -e "\n OK, there's no update to $1.\n"
+    fi
+
+    # Creating changelog.gz / changelog.Debian.gz
+    # gzip deletes changelog file by default, remaining only changelog.gz
+    gzip $1
+}
+
 # ==============================================================================
 # REMASTERSYS ==================================================================
 # ==============================================================================
@@ -19,48 +69,18 @@ gzip remastersys/usr/share/man/man1/remastersys.1
 
 # CHANGELOG UPDATE
 cd remastersys/usr/share/doc/remastersys
-mv changelog changelog.old
-
-changelogRead(){
-	read changes
-	if [ "$changes" != "f" ]; then
-		echo "	* "$changes >> changelog
-		echo ""
-		cat changelog
-		changelogAsk
-	else
-		echo "" >> changelog
-		echo " -- $author  "$(date -R) >> changelog
-		echo "" >> changelog
-	fi
-}
-
-changelogAsk(){
-	echo ""
-	echo " Write changes, then write \"f\" in a new line and press \"ENTER\" when finished."
-	changelogRead
-}
-
-echo "remastersys ($version) unstable; urgency=low" > changelog
-echo "" >> changelog
-changelogAsk
-cat changelog.old >> changelog
-rm changelog.old
-
-# Creating changelog.gz
-# gzip deletes changelog file by default, remaining only changelog.gz
-gzip changelog
+ChangelogMaker "changelog" "remastersys"
+ChangelogMaker "changelog.Debian" "remastersys"
 
 # MOVING LOCALES .po AND .POT
 cd ../..
 cd ./locale/pt_BR/LC_MESSAGES
-# /remastersys/remastersys/usr/share/locale/pt_BR/LC_MESSAGES
-mv *.po ../../../../../..
-mv *.pot ../../../../../..
+# REMASTERSYS-GITHUB-ROOT/remastersys/usr/share/locale/pt_BR/LC_MESSAGES
+mv remastersys*.po* ../../../../../../tmp-locales
 
 # /DEBIAN UPDATE
 
-# Move up to ./remastersys
+# Move up to REMASTERSYS-GITHUB-ROOT/remastersys
 cd ../../../../..
 
 # md5sum
@@ -107,13 +127,33 @@ cd ../..
 # down to GUI
 cd remastersys-gui
 
+# MANPAGES PREPARATION
+# gzip deletes remastersys-gui.1 file by default, remaining only remastersys-gui.1.gz
+if [ -f ./usr/share/man/man1/remastersys-gui.1 ]; then
+    gzip ./usr/share/man/man1/remastersys-gui.1
+fi
+
+# CHANGELOG UPDATE
+cd ./usr/share/doc/remastersys-gui
+ChangelogMaker "changelog" "remastersys-gui"
+ChangelogMaker "changelog.Debian" "remastersys-gui"
+
+# MOVING LOCALES .po AND .POT
+cd ../..
+cd ./locale/pt_BR/LC_MESSAGES
+# REMASTERSYS-GITHUB-ROOT/remastersys-gui/usr/share/locale/pt_BR/LC_MESSAGES
+mv remastersys*.po* ../../../../../../tmp-locales-gui
+
+# Move up to REMASTERSYS-GITHUB-ROOT/remastersys-gui
+cd ../../../../..
+
+# /DEBIAN UPDATE
+
 # md5sum
 find . -type f | grep -v "DEBIAN" | sort | xargs md5sum | sed 's/ \./ /g' > ./DEBIAN/md5sums
 
 # Move down to ./remastersys-gui/DEBIAN
 cd DEBIAN
-
-# DEBIAN/CONTROL
 
 # Calculate folder size
 sizegui=$(du -s ../../remastersys-gui | cut -f 1)
@@ -141,28 +181,45 @@ cd ../..
 name="remastersys_"$version"_all"
 namegui="remastersys-gui_"$version"_all"
 
-mv remastersys $name
-mv remastersys-gui $namegui
+mv remastersys "$name"
+mv remastersys-gui "$namegui"
 
 # Packaging
-dpkg-deb -b --root-owner-group $name
-dpkg-deb -b --root-owner-group $namegui
+dpkg-deb -b --root-owner-group "$name"
+dpkg-deb -b --root-owner-group "$namegui"
 
 # ==============================================================================
 # RESTORATION ==================================================================
 # ==============================================================================
 
-# folders names
-mv $name remastersys
-mv $namegui remastersys-gui
+# REMASTERSYS
+# folder name
+mv "$name" remastersys
 
 # delete gziped changelogs and restore single textual changelog
 gzip -d ./remastersys/usr/share/doc/remastersys/changelog.gz
+gzip -d ./remastersys/usr/share/doc/remastersys/changelog.Debian.gz
 
 # manpages restoration
 gzip -d ./remastersys/usr/share/man/man1/remastersys.1.gz
 
 # .po and .pot restoration
-mv *.po ./remastersys/usr/share/locale/pt_BR/LC_MESSAGES
-mv *.pot ./remastersys/usr/share/locale/pt_BR/LC_MESSAGES
+mv ./tmp-locales/remastersys*.po* ./remastersys/usr/share/locale/pt_BR/LC_MESSAGES
+rm -r tmp-locales
 
+# REMASTERSYS-GUI
+# folder name
+mv "$namegui" remastersys-gui
+
+# delete gziped changelogs and restore single textual changelog
+gzip -d ./remastersys-gui/usr/share/doc/remastersys-gui/changelog.gz
+gzip -d ./remastersys-gui/usr/share/doc/remastersys-gui/changelog.Debian.gz
+
+# manpages restoration
+if [ -f ./remastersys-gui/usr/share/man/man1/remastersys-gui.1.gz ]; then
+    gzip -d ./remastersys-gui/usr/share/man/man1/remastersys-gui.1.gz
+fi
+
+# .po and .pot restoration
+mv ./tmp-locales-gui/remastersys*.po* ./remastersys-gui/usr/share/locale/pt_BR/LC_MESSAGES
+rm -r tmp-locales-gui

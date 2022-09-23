@@ -10,6 +10,10 @@ KNOWN BUGS:
 
 THINGS TO DO:
 
+- package-creator
+    - adicionar changelog.Debian para remastersys
+    - adicionar changelog e changelog.Debian para remastersys-gui
+
 - remastersys >>> remastersys-grubconfig
     - verificar se tem o mesmo problema do remastersys-grub-restore ao rodar via
       Live CD.
@@ -17,4 +21,5 @@ THINGS TO DO:
     
 - manpages
     - adicionar remastersys-grubconfig, -installer e -skelcopy ao manpages
-    - criar manpages para remastersys-gui
+    - criar manpages para remastersys-gui, -grub-restore e -usb-key-copy-tool
+
