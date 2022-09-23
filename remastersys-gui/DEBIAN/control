@@ -1,11 +1,11 @@
-Package: refisefuqui-gui
+Package: remastersys-gui
 Priority: optional
 Section: system
-Installed-Size: 144
-Maintainer: Nerun <nerunblogs@gmail.com>
+Installed-Size: 336
+Maintainer: Daniel Dias Rodrigues <danieldiasr@gmail.com>
 Architecture: all
-Version: 1.24
-Depends: gparted, read-edid, refisefuqui (>= 1.24), xterm, yad
-Description: Remasteriza e cria backups do sistema Debian
- Esta é a interface visual do Refisefuqui.
- Para mais informações visite http://linuxernoob.blogspot.com.br
+Version: 4.0-1
+Depends: gparted, read-edid, remastersys (>= 4.0-1), xterm, yad
+Homepage: https://github.com/nerun/remastersys
+Description: Remaster and create backups of the Debian system
+ This is the visual interface of Remastersys.

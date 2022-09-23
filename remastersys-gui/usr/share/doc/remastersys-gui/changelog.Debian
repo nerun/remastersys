@@ -1,0 +1,8 @@
+remastersys-gui (4.0-1) unstable; urgency=low
+
+	* First release!
+	* Dependencie excluded: xresprobe.
+	* Updated DEBIAN files: control, md5sums etc.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Sep 2022 17:22:20 -0300
+

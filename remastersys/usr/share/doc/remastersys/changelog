@@ -1,3 +1,17 @@
+remastersys (4.0-1) unstable; urgency=low
+
+	* Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
+	* All scripts have been revised, adding several improvements to source code, including more readable formatting, increased performance, various bug fixes, visual improvements of terminal messages and code optimization.
+	* Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7). Also added Memtest86+ v6.00-beta3 to Live CD.
+	* Changed makesquashfs' compression method from gzip to zstd. Zstd generates images up to 10% smaller in almost half the time.
+	* Updated icons and images.
+	* Improved man pages.
+	* Removed plymouth, but can be reinserted it in the future.
+	* Changed gksu/gksudo to sudo.
+	* Dependencies updated.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Sep 2022 17:20:40 -0300
+
 remastersys (3.0.0-1) unstable; urgency=low
 
     * Added remastersys-gtk gui into the main remastersys package - changes and fixes as well

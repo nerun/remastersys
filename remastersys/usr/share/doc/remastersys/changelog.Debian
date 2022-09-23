@@ -1,0 +1,10 @@
+remastersys (4.0-1) unstable; urgency=low
+
+	* First release!
+	* Improved man pages.
+	* Dependencies included: live-config-systemd, syslinux-utils, sudo, zstd.
+	* Dependencie excluded: memtest86+.
+	* Updated DEBIAN files: control, conffiles, md5sums etc.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Sep 2022 17:22:20 -0300
+
