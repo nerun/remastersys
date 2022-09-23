@@ -13,7 +13,7 @@ Just burn your Distro or Backup image onto a CD/DVD media or a USB stick (with p
 
 ## Changelog
 
-The program is still **under development, with many bugs**. However, it is already possible to see many new features compared to the original **remastersys**:
+There are still a few bugs, but there are also many new features compared to the original **remastersys**:
 
 * Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
 * All scripts have been revised, adding several improvements to source code, including more readable formatting, increased performance, various bug fixes, visual improvements of terminal messages and code optimization.
