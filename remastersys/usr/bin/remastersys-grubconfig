@@ -47,26 +47,30 @@ if [ "$1" = "help" -o "$1" = "--help" -o "$1" = "" ]; then
     usagehelp
 fi
 
-ROOTMOUNT="$1"
+# equal to: /mounted/location
+# sed removes "/" at end, if any
+ROOTMOUNT=$(echo "$1" | sed -e 's/\/$//g')
 
 if [ "$ROOTMOUNT" = "" ]; then
     ROOTMOUNT="/"
 fi
 
-ROOTPART=`mount | grep " $ROOTMOUNT " | awk '{print $1}'`
-ROOTMBR=`echo $ROOTPART | sed -e 's/[1-9]//g'`
+# equal to: like /dev/sda1 or /dev/nvme0n1p5
+ROOTPART=$(mount | grep " $ROOTMOUNT " | cut -d" " -f1)
+
+# equal to: /dev/sda or /dev/nvme0n1
+ROOTMBR=$(echo $ROOTPART | sed -e 's/p[1-9]$\|[1-9]$//g')
+
+# equal to: root or rootmbr
 GRUBLOCTEST="$2"
 
 if [ "$GRUBLOCTEST" = "root" ]; then
     GRUBLOC="$ROOTPART"
-    echo $GRUBLOC
-elif [ "$GRUBLOCTEST" = "rootmbr" ]; then
+else # rootmbr
     GRUBLOC="$ROOTMBR"
-    echo $GRUBLOC
-else
-    GRUBLOC="/dev/sda"
-    echo $GRUBLOC
 fi
+
+echo $GRUBLOC
 
 if [ "$ROOTMOUNT" != "/" ]; then
     if [ ! -e $ROOTMOUNT/proc/cpuinfo ]; then

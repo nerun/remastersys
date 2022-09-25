@@ -3,6 +3,8 @@ DEVELOPER NOTES means notes to developer!
 
 KNOWN BUGS:
 
+- Live CD DistISO tá pendindo senha de usuário >> cadê o autologin?
+
 - remastersys-gui >>> remastersys-grub-restore
     - quando roda a partir do live CD, a linha 89 não pega a informação da
       partição na qual restaurar o GRUB. Só funciona em sistemas já instalados

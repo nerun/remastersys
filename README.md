@@ -33,9 +33,7 @@ This program has 2 packages: **remastersys** (program itself, terminal only) and
 ## Basic usage
 * If there are no packaged to download and install, you should create debian packages: `./package-creator`, write version number, hit ENTER, write a short changelog, write "end" and hit ENTER again.
 * Install both packages: `sudo dpkg -i *.deb`
-* Fix dependencies if you need:
- * `sudo apt-get update --fix-missing`
- * `sudo apt-get install -f`
+* Fix dependencies if you need: `sudo apt-get install -f`
 * Read instructions:
   * `man remastersys`
   * `remastersys --help`

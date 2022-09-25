@@ -291,7 +291,7 @@ if [ "$GUI" = "" ]; then
     fi
 
     #choose filesystem type
-    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" $HEIGHT $WIDTH $MENUHEIGHT ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
+    $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" $HEIGHT $WIDTH $MENUHEIGHT ext4 "Ext4" ext3 "Ext3" ext2 "Ext2" 2>/tmp/choice.$$
 
     if [ "$?" = "0" ]; then
         FSTYPE=`cat /tmp/choice.$$`
@@ -321,7 +321,7 @@ if [ "$GUI" = "" ]; then
 
     if [ "$HOMEPART" != "root" ]; then
         #choose filesystem type
-        $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" $HEIGHT $WIDTH $MENUHEIGHT noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4" 2>/tmp/choice.$$
+        $DIALOG $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" $HEIGHT $WIDTH $MENUHEIGHT noformat "$DontFormatHomePartition" ext4 "Ext4" ext3 "Ext3" ext2 "Ext2" 2>/tmp/choice.$$
 
         if [ "$?" = "0" ]; then
             HFSTYPE=`cat /tmp/choice.$$`
@@ -665,7 +665,7 @@ else
 
     FSTYPE=""
     while [ "$FSTYPE" = "" ]; do
-        FSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
+        FSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectRootFileSystem" ext4 "Ext4" ext3 "Ext3" ext2 "Ext2"`
     done
     
     if [ "$?" != "0" ]; then
@@ -695,7 +695,7 @@ else
     if [ "$HOMEPART" != "root" ]; then
         HFSTYPE=""
         while [ "$HFSTYPE" = "" ]; do
-            HFSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" noformat "$DontFormatHomePartition" ext2 "Ext2" ext3 "Ext3" ext4 "Ext4"`
+            HFSTYPE=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectHomeFileSystem" noformat "$DontFormatHomePartition" ext4 "Ext4" ext3 "Ext3" ext2 "Ext2"`
         done
     fi
 
