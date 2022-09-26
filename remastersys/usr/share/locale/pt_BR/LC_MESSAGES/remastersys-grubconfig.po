@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Daniel Dias Rodrigues <danieldiasr@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -25,37 +25,52 @@ msgid "      (must run as superuser)"
 msgstr "      (deve ser executado como superusuário)"
 
 #: remastersys-grubconfig:25
-msgid "   /mounted/location - You must specify the full path"
-msgstr "   /ponto/de/montagem - Você deve especificar o caminho completo"
-
-#: remastersys-grubconfig:26
-msgid "   root              - Install grub to root partition"
-msgstr "   root              - Instala o grub na partição raiz"
+msgid ""
+"   /mounted/location - You must specify the full path. If running the command"
+"\\n                        from a Live CD the partition must have been "
+"mounted\\n                        previously (ex.: sudo mount /dev/sda1 /"
+"mnt)."
+msgstr ""
+"   /ponto/de/montagem - Você deve especificar o caminho completo. Se"
+"\\n                        estiver executando o comando de um Live CD, a"
+"\\n                        partição deve ter sido montada anteriormente"
+"\\n                        (ex.: sudo mount /dev/sda1 /mnt)."
 
 #: remastersys-grubconfig:27
-msgid "   rootmbr           - Default. MBR will be used if no option present"
-msgstr ""
-"   rootmbr           - Padrão. A MBR será usada se nenhuma opção for dada"
+msgid "   root              - Install grub to root partition."
+msgstr "   root               - Instala o grub na partição raiz."
 
-#: remastersys-grubconfig:29
+#: remastersys-grubconfig:28
+msgid "   rootmbr           - Default. MBR will be used if no option present."
+msgstr ""
+"   rootmbr            - Padrão. A MBR será usada se nenhuma opção for dada."
+
+#: remastersys-grubconfig:30
 msgid "EXAMPLES:"
 msgstr "EXEMPLOS:"
 
-#: remastersys-grubconfig:32
+#: remastersys-grubconfig:33
 msgid "      (install to root partition of the current install)"
 msgstr "      (instala na partição raiz da instalação atual)"
 
-#: remastersys-grubconfig:35
+#: remastersys-grubconfig:36
 msgid "      (install to mbr on a mounted drive, if running from Live CD)"
 msgstr ""
 "      (instala na mbr de uma unidade montada, se estiver rodando de um Live "
 "CD)"
 
-#: remastersys-grubconfig:42
+#: remastersys-grubconfig:43
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
 "ERRO: Este script deve ser executado como superusuário. Tente com \\\"sudo\\"
 "\"."
+
+#: remastersys-grubconfig:74
+msgid "Restoring GRUB to $GRUBLOC."
+msgstr "Restaurando o GRUB em $GRUBLOC."
+
+#~ msgid "   /mounted/location - You must specify the full path"
+#~ msgstr "   /ponto/de/montagem - Você deve especificar o caminho completo"
 
 #~ msgid "   remastersys-grubconfig / root"
 #~ msgstr "   remastersys-grubconfig / root"

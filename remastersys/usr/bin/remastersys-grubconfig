@@ -22,16 +22,17 @@ usagehelp(){
     echo $"   remastersys-grubconfig [/mounted/location] [root|rootmbr]"
     echo $"      (must run as superuser)"
     echo " "
-    echo $"   /mounted/location - You must specify the full path"
-    echo $"   root              - Install grub to root partition"
-    echo $"   rootmbr           - Default. MBR will be used if no option present"
+    echo -e $"   /mounted/location - You must specify the full path. If running the command\n                        from a Live CD the partition must have been mounted\n                        previously (ex.: sudo mount /dev/sda1 /mnt)."
+    echo " "
+    echo $"   root              - Install grub to root partition."
+    echo $"   rootmbr           - Default. MBR will be used if no option present."
     echo " "
     echo $"EXAMPLES:"
     echo " "
     echo "   remastersys-grubconfig / root"
     echo $"      (install to root partition of the current install)"
     echo " "
-    echo "   remastersys-grubconfig /mnt/sda1"
+    echo "   remastersys-grubconfig /mnt"
     echo $"      (install to mbr on a mounted drive, if running from Live CD)"
     echo " "
     exit 1
@@ -70,7 +71,7 @@ else # rootmbr
     GRUBLOC="$ROOTMBR"
 fi
 
-echo $GRUBLOC
+echo $"Restoring GRUB to $GRUBLOC."
 
 if [ "$ROOTMOUNT" != "/" ]; then
     if [ ! -e $ROOTMOUNT/proc/cpuinfo ]; then
