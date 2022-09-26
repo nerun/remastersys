@@ -55,7 +55,7 @@ if [ "$ROOTMOUNT" = "" ]; then
     ROOTMOUNT="/"
 fi
 
-# equal to: like /dev/sda1 or /dev/nvme0n1p5
+# equal to: /dev/sda1 or /dev/nvme0n1p5
 ROOTPART=$(mount | grep " $ROOTMOUNT " | cut -d" " -f1)
 
 # equal to: /dev/sda or /dev/nvme0n1

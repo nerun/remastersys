@@ -28,7 +28,9 @@ There are still a few bugs, but there are also many new features compared to the
 
 ## Current state
 
-This program has 2 packages: **remastersys** (program itself, terminal only) and **remastersys-gui** (graphical interface). In this ALPHA stage, just remastersys seems to work very well. The GUI package still need some work, mainly internationalization, but it's working (in pt_BR).
+This program has 2 packages: **remastersys** (program itself, terminal mode) and **remastersys-gui** (graphical interface). Main features seems to work very well.
+
+The BIG issue is **remastersys-grubconfig** (terminal) and **remastersys-grub-restore** (GUI), definitely broken.
 
 ## Basic usage
 * If there are no packaged to download and install, you should create debian packages: `./package-creator`, write version number, hit ENTER, write a short changelog, write "end" and hit ENTER again.
