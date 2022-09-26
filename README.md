@@ -43,7 +43,7 @@ The BIG issue is **remastersys-grubconfig** (terminal) and **remastersys-grub-re
   * `remastersys-installer --help`
   * `remastersys-skelcopy --help`
 * If you have installed the GUI, you should be capable to search for these shortcuts (desktop icons):
- * Remastersys GRUB Restorer
- * Remastersys Creator
- * Remastersys Installer
- * Remastersys USB Startup Disk Tool
+  * Remastersys GRUB Restorer
+  * Remastersys Creator
+  * Remastersys Installer
+  * Remastersys USB Startup Disk Tool
