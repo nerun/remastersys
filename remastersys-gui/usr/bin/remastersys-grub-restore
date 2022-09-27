@@ -57,12 +57,12 @@ fi
 
 # START ########################################################################
 
-PartitionRoot=$(mount | grep " / " | cut -d' ' -f1)
+MyRoot=$(mount | grep " / " | cut -d' ' -f1)
 
-if [ "$PartitionRoot" != "overlay" ]; then
+if [ "$MyRoot" != "overlay" ]; then
     # Running from HD
     partition_info=$"The_partition_this_install_is_on"
-    partitions_list="$PartitionRoot $(sudo fdisk -l | grep "$PartitionRoot" | tr -s " " | cut -d' ' -f5) $partition_info"
+    partitions_list="$MyRoot $(sudo fdisk -l | grep "$MyRoot" | sed 's/\*//' | tr -s " " | cut -d' ' -f5) $partition_info"
 else
     # Running from a LiveCD
     # list mounted partitions
@@ -115,6 +115,10 @@ proceed=$"GRUB will be restored to:\n\n$WHEREGRUBb$Continue"
 
 $DIALOG_BASE --width=400 $TITLE"$TITLETEXT" $YESNO $TEXT"$proceed"
 QuitNow
+
+if [ "$PartitionRoot" = "$MyRoot" ]; then
+    PartitionRoot="/"
+fi
 
 xterm -fn 9x15 -e "sudo remastersys-grubconfig $PartitionRoot $WHEREGRUBa"
 
