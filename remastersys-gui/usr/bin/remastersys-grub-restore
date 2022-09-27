@@ -7,26 +7,40 @@
 #    Full copyright notice: /usr/share/doc/remastersys/copyright  #
 ###################################################################
 
+# The remastersys-grub-restore was completely rewritten in September 2022.
+
 # SYSTEM LOCALIZATION
 # Target to file:
 # /usr/share/locale/(language code)/LC_MESSAGES/remastersys-grub-restore.mo
 TEXTDOMAIN=remastersys-grub-restore
 
-Pick=$"Pick"
+Pick=$"Options"
+Size=$"Size"
 Info=$"Info"
 Yes=$"Yes"
 No=$"No"
+Cancel=$"Cancel"
+Continue=$"\n\nDo you want to continue?"
 
-DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=700 --height=400 --center"
-DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
+DIALOG_BASE="$(which yad) --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center"
+DIALOGMENU="$DIALOG_BASE --width=500 --height=370"
+DIALOG="$DIALOG_BASE --fixed"
 TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
 TEXT="--text="
 ENTRY="--entry "
 ENTRYTEXT="--entry-text "
-MENU="--list --column=$Pick --column=$Info"
+MENU="--list --column=$Pick --column=$Size --column=$Info"
 YESNO=" --button=$Yes:0 --button=$No:1 "
 MSGBOX=" --button=Ok:0 "
+CANCELOK=" --button=$Cancel:1 --button=Ok:0 "
 TITLETEXT=$"Remastersys Grub Restore"
+
+QuitNow(){
+    if [ $? != 0 ]; then
+        $DIALOG_BASE --width=310 $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Quiting now."
+        exit 0
+    fi
+}
 
 # check if running with root privileges
 if [ $(whoami) != "root" ]; then
@@ -34,135 +48,73 @@ if [ $(whoami) != "root" ]; then
     exit 1
 fi
 
-#GUI MODE
-#inform them what this is and ask if they want to continue
-
-$DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$"\nThis is a GRUB restore utility.\n\n\nDo you want to continue?"
+# inform them what this is and ask if they want to continue
+$DIALOG_BASE --width=310 $TITLE"$TITLETEXT" $YESNO $TEXT$"This is a GRUB restore utility.$Continue"
 
 if [ $? != 0 ]; then
     exit 0
 fi
 
-if [ ! -d /live ]; then
-    current=$"current"
-    partitiontext=$"The partition this install is on"
+# START ########################################################################
+
+PartitionRoot=$(mount | grep " / " | cut -d' ' -f1)
+
+if [ "$PartitionRoot" != "overlay" ]; then
+    # Running from HD
+    partition_info=$"The_partition_this_install_is_on"
+    partitions_list="$PartitionRoot $(sudo fdisk -l | grep "$PartitionRoot" | tr -s " " | cut -d' ' -f5) $partition_info"
 else
-    os-prober > /tmp/os-prober.remastersys
+    # Running from a LiveCD
+    # list mounted partitions
+    fdisk -l | grep "^/dev" | tr -s " " | cut -d' ' -f1,5- > tmp.sudo_fdisk
 
-    PARTITIONS=`cat /tmp/os-prober.remastersys | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
-
-    for i in `echo $PARTITIONS`; do
-        LINE=`cat /tmp/os-prober.remastersys | grep "$i"`
-        DEV=`echo $LINE | awk -F ":" '{print $1}' | awk -F "/" '{print $3}'`
-        OSTITLE=`echo $LINE | awk -F ":" '{print $2}'`
-        OSTITLE=`echo $OSTITLE | sed -r "s/ /_/g"`
-        OSTYPE=`echo $LINE | awk -F ":" '{print $4}'`
-
-        if [ "$OSTYPE" = "linux" ]; then
-            partitiontext="$partitiontext $DEV $OSTITLE"
-        fi
-    done
-
-    rm /tmp/os-prober.remastersys
+    while read line; do
+        PART=$(echo $line | cut -d' ' -f1)
+        SIZE=$(echo $line | cut -d' ' -f2)
+        INFO=$(echo $line | cut -d' ' -f3- | sed 's/ /_/g')
+        partitions_list="$partitions_list $PART $SIZE $INFO"
+    done < tmp.sudo_fdisk
+    
+    rm tmp.sudo_fdisk
 fi
 
-SelectPartition=$"\nPlease select a partition to install or restore grub to. If the only option you see is to Quit then no valid partitions were found."
-Exit=$"Quit"
-ExitSys=$"Quit Remastersys"
+# SELECT PARTITION #############################################################
 
-QuitNow(){
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"\nQuiting now."
-    exit 1
-}
+SelectPartition=$"Please select a partition to install or restore grub to.\n\nIf you see no option then no valid partitions were found. If that's the case, first try to mount the partition you want to install or restore GRUB to and then come back here."
 
-TARGETPART=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectPartition" "$Exit" "$ExitSys" "$current" "$partitiontext"`
+TARGETPART=$($DIALOGMENU $TITLE"$TITLETEXT" $CANCELOK $MENU $TEXT"$SelectPartition" $partitions_list)
+QuitNow
 
-if [ "$?" = "0" ]; then
-    TARGETPART=`echo $TARGETPART | cut -d "|" -f 1`
-else
-    QuitNow
-fi
+# equal to: /dev/sda1 or /dev/nvme0n1p5
+PartitionRoot=$(echo $TARGETPART | cut -d"|" -f1)
 
-if [ "$TARGETPART" = "$Exit" ]; then
-    QuitNow
-elif [ "$TARGETPART" = "$current" ]; then
-    TARGETPART=`mount | grep " / " | awk '{print $1}' | awk -F "/" '{print $3}'`
-fi
+# equal to: /dev/sda or /dev/nvme0n1
+PartitionMBR=$(echo $TARGETPART | cut -d"|" -f1 | sed -e 's/p[1-9]$\|[1-9]$//g')
 
-#grub location
-SelectWhere=$"\nPlease select where to install grub to.\n"
-MBR=$"Master Boot Record of first drive"
-RootPartition=$"Root partition of $TARGETPART"
-MasterBootRecord=$"Master Boot Record of the root drive"
+# SELECT ROOT OR ROOTMBR #######################################################
 
-GRUBLOCTEST=`$DIALOGMENU $TITLE"$TITLETEXT" $MENU $TEXT"$SelectWhere" mbr "$MBR" root "$RootPartition" rootmbr "$MasterBootRecord"`
+WhereGrub=$"Where do you want to install GRUB to?"
+root=$"root partition ($PartitionRoot)"
+rootmbr=$"Master Boot Record (MBR) of $PartitionMBR"
 
-if [ "$?" = "0" ]; then
-    GRUBLOCTEST=`echo $GRUBLOCTEST | cut -d "|" -f 1`
-else
-    QuitNow
-fi
+# root|root partition (/dev/sda1)|
+# rootmbr|Master Boot Record (MBR) of /dev/sda|
+WHEREGRUB=$($DIALOG_BASE --width=400 $TITLE"$TITLETEXT" $CANCELOK --list --column=$Pick --column=$Info "rootmbr" "$rootmbr" "root" "$root" $TEXT"$WhereGrub")
+QuitNow
 
-if [ "$GRUBLOCTEST" = "root" ]; then
-    GRUBLOCTEXT=$"root partition of $TARGETPART"
-    GRUBLOC="root"
-elif [ "$GRUBLOCTEST" = "rootmbr" ]; then
-    GRUBLOCTEXT=$"mbr of root partition of $TARGETPART"
-    GRUBLOC="rootmbr"
-else
-    GRUBLOCTEXT="master boot record"
-    GRUBLOC=""
-fi
+# root
+# rootmbr
+WHEREGRUBa=$(echo $WHEREGRUB | cut -d"|" -f1)
+# root partition (/dev/sda1)
+# Master Boot Record (MBR) of /dev/sda
+WHEREGRUBb=$(echo $WHEREGRUB | cut -d"|" -f2)
 
-tail -f /usr/bin/remastersys-grub-restore |  $DIALOG $TITLE"$TITLETEXT" --no-buttons --progress --width 400 --pulsate $TEXT$"Installing grub now. Please wait..." &
+# ADVISE - PROCEED TO INSTALL OR CANCEL ########################################
 
-#do the actual grub install/restore
+proceed=$"GRUB will be restored to:\n\n$WHEREGRUBb$Continue"
 
-GRUBDIR=`mount | grep $TARGETPART | awk '{print$3}'`
+$DIALOG_BASE --width=400 $TITLE"$TITLETEXT" $YESNO $TEXT"$proceed"
+QuitNow
 
-if [ "$GRUBDIR" != "/" ]; then
-    GRUBDIR="/tmp/remmnt/TARGET"
-    #unmount and remount the partition on /tmp/remmnt/TARGET rw
+xterm -fn 9x15 -e "sudo remastersys-grubconfig $PartitionRoot $WHEREGRUBa"
 
-    if [ "`mount | grep $TARGETPART`" ]; then
-        umount /dev/$TARGETPART
-    fi
-
-    sleep 2
-
-    if [ ! -d $GRUBDIR ]; then
-        mkdir -p $GRUBDIR
-    fi
-
-    mount /dev/$TARGETPART $GRUBDIR -o rw
-    sleep 2
-
-    mount -o bind /proc $GRUBDIR/proc
-    mount -o bind /dev $GRUBDIR/dev
-    mount -o bind /sys $GRUBDIR/sys
-else
-    GRUBDIR="/"
-fi
-
-echo $"Installing and setting up GRUB."
-
-# Setup grub
-remastersys-grubconfig $GRUBDIR $GRUBLOC
-
-if [ "$GRUBDIR" != "" ]; then
-    umount $GRUBDIR/proc
-    sleep 1
-    umount $GRUBDIR/dev
-    sleep 1
-    umount $GRUBDIR/sys
-    sleep 1
-    umount $GRUBDIR
-    sleep 1
-fi
-
-killall -KILL tail
-killall -KILL yad
-
-$DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"\nGRUB has been installed/restored on $TARGETPART."
-
-exit 0
