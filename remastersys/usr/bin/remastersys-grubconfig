@@ -19,13 +19,13 @@ usagehelp(){
     echo " "
     echo $"USAGE:"
     echo " "
-    echo $"   remastersys-grubconfig [/mounted/location] [root|rootmbr]"
+    echo $"   remastersys-grubconfig [location] [root|rootmbr]"
     echo $"      (must run as superuser)"
     echo " "
-    echo -e $"   /mounted/location - You must specify the full path. If running the command\n                        from a Live CD the partition must have been mounted\n                        previously (ex.: sudo mount /dev/sda1 /mnt)."
+    echo -e $"   location          - Either the full path of a device or a mounting point.\n                       Partition must have been mounted previously. Example:\n                       if /dev/sda1 is mounted on /mnt, you can specify location\n                       as /mnt or /dev/sda1, both with the same result."
     echo " "
-    echo $"   root              - Install grub to root partition."
-    echo $"   rootmbr           - Default. MBR will be used if no option present."
+    echo $"   root              - Install GRUB to root partition."
+    echo $"   rootmbr           - Install to MBR. Default when option is omitted."
     echo " "
     echo $"EXAMPLES:"
     echo " "
@@ -33,7 +33,8 @@ usagehelp(){
     echo $"      (install to root partition of the current install)"
     echo " "
     echo "   remastersys-grubconfig /mnt"
-    echo $"      (install to mbr on a mounted drive, if running from Live CD)"
+    echo "   remastersys-grubconfig /dev/sda1"
+    echo $"      (both install to MBR on /dev/sda1 mounted on /mnt)"
     echo " "
     exit 1
 }
@@ -59,13 +60,29 @@ fi
 # equal to: /dev/sda1 or /dev/nvme0n1p5
 ROOTPART=$(mount | grep " $ROOTMOUNT " | cut -d" " -f1)
 
+# Check if user is trying to restore GRUB through a Live CD or if he forgot to
+# mount partition first.
+if [ "$ROOTPART" = "overlay" -o "$ROOTPART" = "" ]; then
+    if [ "$ROOTPART" = "overlay" ]; then
+        echo -e $"$fB$fLightRed\nERROR: You cannot install or reinstall GRUB on a Live CD.$fEND"
+    elif [ "$ROOTPART" = "" ]; then
+        if [ "${ROOTMOUNT: 0:4}" = "/dev" ]; then
+            echo -e $"$fB$fLightRed\nERROR: $ROOTMOUNT is not mounted anywhere.$fEND"
+        else
+            echo -e $"$fB$fLightRed\nERROR: There is no partition mounted on $ROOTMOUNT.$fEND"
+        fi
+    fi
+
+    echo -e $"$fB$fLightRed\nTIP: You must first mount the partition on which you want to install GRUB. For\nexample, try \"sudo mount /dev/sda1 /mnt\", then run this tool again either with\n\"sudo remastersys-grubconfig /mnt\" or \"sudo remastersys-grubconfig /dev/sda1\",\nboth with the same result.\n\nQuiting now.\n$fEND"
+
+    exit 1
+fi
+
 # equal to: /dev/sda or /dev/nvme0n1
 ROOTMBR=$(echo $ROOTPART | sed -e 's/p[1-9]$\|[1-9]$//g')
 
 # equal to: root or rootmbr
-GRUBLOCTEST="$2"
-
-if [ "$GRUBLOCTEST" = "root" ]; then
+if [ "$2" = "root" ]; then
     GRUBLOC="$ROOTPART"
 else # rootmbr
     GRUBLOC="$ROOTMBR"
