@@ -17,8 +17,8 @@ msgid "USAGE:"
 msgstr "USO:"
 
 #: remastersys-grubconfig:22
-msgid "   remastersys-grubconfig [/mounted/location] [root|rootmbr]"
-msgstr "   remastersys-grubconfig [/ponto/de/montagem] [root|rootmbr]"
+msgid "   remastersys-grubconfig [location] [root|rootmbr]"
+msgstr "   remastersys-grubconfig [/local] [root|rootmbr]"
 
 #: remastersys-grubconfig:23
 msgid "      (must run as superuser)"
@@ -26,24 +26,27 @@ msgstr "      (deve ser executado como superusuário)"
 
 #: remastersys-grubconfig:25
 msgid ""
-"   /mounted/location - You must specify the full path. If running the command"
-"\\n                        from a Live CD the partition must have been "
-"mounted\\n                        previously (ex.: sudo mount /dev/sda1 /"
-"mnt)."
+"   location          - Either the full path of a device or a mounting point."
+"\\n                       Partition must have been mounted previously. "
+"Example:\\n                       if /dev/sda1 is mounted on /mnt, you can "
+"specify location\\n                       as /mnt or /dev/sda1, both with "
+"the same result."
 msgstr ""
-"   /ponto/de/montagem - Você deve especificar o caminho completo. Se"
-"\\n                        estiver executando o comando de um Live CD, a"
-"\\n                        partição deve ter sido montada anteriormente"
-"\\n                        (ex.: sudo mount /dev/sda1 /mnt)."
+"   local             - O caminho completo de um dispositivo ou um ponto de"
+"\\n                       montagem. A partição deve ter sido montada "
+"anteriormente.\\n                       Exemplo: se /dev/sda1 estiver "
+"montado em /mnt, você pode\\n                       especificar o local "
+"como /mnt ou /dev/sda1, ambos com o\\n                       mesmo resultado."
 
 #: remastersys-grubconfig:27
-msgid "   root              - Install grub to root partition."
-msgstr "   root               - Instala o grub na partição raiz."
+msgid "   root              - Install GRUB to root partition."
+msgstr "   root              - Instala o GRUB na partição raiz."
 
 #: remastersys-grubconfig:28
-msgid "   rootmbr           - Default. MBR will be used if no option present."
+msgid "   rootmbr           - Install to MBR. Default when option is omitted."
 msgstr ""
-"   rootmbr            - Padrão. A MBR será usada se nenhuma opção for dada."
+"   rootmbr           - Instala na MBR. É o padrão quando essa opção é "
+"omitida."
 
 #: remastersys-grubconfig:30
 msgid "EXAMPLES:"
@@ -53,21 +56,66 @@ msgstr "EXEMPLOS:"
 msgid "      (install to root partition of the current install)"
 msgstr "      (instala na partição raiz da instalação atual)"
 
-#: remastersys-grubconfig:36
-msgid "      (install to mbr on a mounted drive, if running from Live CD)"
-msgstr ""
-"      (instala na mbr de uma unidade montada, se estiver rodando de um Live "
-"CD)"
+#: remastersys-grubconfig:37
+msgid "      (both install to MBR on /dev/sda1 mounted on /mnt)"
+msgstr "      (ambos instalam na MBR de /dev/sda1, que está montada em /mnt)"
 
-#: remastersys-grubconfig:43
+#: remastersys-grubconfig:44
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
 "ERRO: Este script deve ser executado como superusuário. Tente com \\\"sudo\\"
 "\"."
 
-#: remastersys-grubconfig:74
+#: remastersys-grubconfig:67
+msgid ""
+"$fB$fLightRed\\nERROR: You cannot install or reinstall GRUB on a Live CD."
+"$fEND"
+msgstr ""
+"$fB$fLightRed\\nERRO: Você não pode (re)instalar o GRUB em um Live CD.$fEND"
+
+#: remastersys-grubconfig:70
+msgid "$fB$fLightRed\\nERROR: $ROOTMOUNT is not mounted anywhere.$fEND"
+msgstr "$fB$fLightRed\\nERRO: $ROOTMOUNT não está montada em lugar algum.$fEND"
+
+#: remastersys-grubconfig:72
+msgid ""
+"$fB$fLightRed\\nERROR: There is no partition mounted on $ROOTMOUNT.$fEND"
+msgstr ""
+"$fB$fLightRed\\nERRO: Não há qualquer partição montada em $ROOTMOUNT.$fEND"
+
+#: remastersys-grubconfig:76
+msgid ""
+"$fB$fLightRed\\nTIP: You must first mount the partition on which you want to "
+"install GRUB. For\\nexample, try \\\"sudo mount /dev/sda1 /mnt\\\", then run "
+"this tool again either with\\n\\\"sudo remastersys-grubconfig /mnt\\\" or \\"
+"\"sudo remastersys-grubconfig /dev/sda1\\\",\\nboth with the same result.\\n"
+"\\nQuiting now.\\n$fEND"
+msgstr ""
+"$fB$fLightRed\\nDICA: Você deve primeiro montar a partição na qual deseja "
+"instalar o GRUB. Por\\nexemplo, tente \\\"sudo mount /dev/sda1 /mnt\\\" e "
+"execute esta ferramenta novamente\\ncom \\\"sudo remastersys-grubconfig /mnt"
+"\\\" ou \\\"sudo remastersys-grubconfig /dev/\\nsda1\\\", ambos terão o "
+"mesmo resultado.\\n\\nSaindo agora.\\n$fEND"
+
+#: remastersys-grubconfig:91
 msgid "Restoring GRUB to $GRUBLOC."
 msgstr "Restaurando o GRUB em $GRUBLOC."
+
+#~ msgid ""
+#~ "   /mounted/location - You must specify the full path. If running the "
+#~ "command\\n                        from a Live CD the partition must have "
+#~ "been mounted\\n                        previously (ex.: sudo mount /dev/"
+#~ "sda1 /mnt)."
+#~ msgstr ""
+#~ "   /ponto/de/montagem - Você deve especificar o caminho completo. Se"
+#~ "\\n                        estiver executando o comando de um Live CD, a"
+#~ "\\n                        partição deve ter sido montada anteriormente"
+#~ "\\n                        (ex.: sudo mount /dev/sda1 /mnt)."
+
+#~ msgid "      (install to mbr on a mounted drive, if running from Live CD)"
+#~ msgstr ""
+#~ "      (instala na mbr de uma unidade montada, se estiver rodando de um "
+#~ "Live CD)"
 
 #~ msgid "   /mounted/location - You must specify the full path"
 #~ msgstr "   /ponto/de/montagem - Você deve especificar o caminho completo"
