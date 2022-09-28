@@ -18,7 +18,7 @@ msgstr "Opções"
 
 #: remastersys-grub-restore:18
 msgid "Size"
-msgstr "Tamanho"
+msgstr "Tam."
 
 #: remastersys-grub-restore:19
 msgid "Info"
