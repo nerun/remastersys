@@ -21,8 +21,8 @@ c0379fc95b350a929b87799af33a66dd  /usr/bin/remastersys-grubconfig
 7b5bf7dc259b325858a9e138a3195733  /usr/bin/remastersys-installer
 b28d4f58015648e5327019fde63ec514  /usr/bin/remastersys-skelcopy
 4e229f957df68857b5c9fb0a4c498747  /usr/lib/remastersys/remastersys.so
-f2730a4cac51435781e116e3768c2cef  /usr/share/doc/remastersys/changelog.Debian.gz
-138e9eae3a0ce33dbab61558005462e4  /usr/share/doc/remastersys/changelog.gz
+6f6972fe263bcd9b16e82279cc5cb23d  /usr/share/doc/remastersys/changelog.Debian.gz
+e019d89478cca7bc62f82b39efc01954  /usr/share/doc/remastersys/changelog.gz
 b099bee6dd21c10be55cb148851bb68b  /usr/share/doc/remastersys/copyright
 4d1b0a419aa8e557d86cd1f50dcbe585  /usr/share/doc/remastersys/README
 2cb7cfed2d9a6405c475436109e2a020  /usr/share/doc/remastersys/README.remastersys-installer
@@ -30,4 +30,4 @@ fb13cfc6180af62273930a805d0649fb  /usr/share/locale/pt_BR/LC_MESSAGES/remastersy
 3ba35984f2ffad5bcdb26ef065b1cd50  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-installer.mo
 5dfdf7bd19f767b242ff4e2f8e7be10b  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys.mo
 d089501b51476383ada29ff70bb1f079  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-skelcopy.mo
-83d37424317abd73940ef357a94e2e33  /usr/share/man/man1/remastersys.1.gz
+b75c81701ab1d5893d54cd4d22418acc  /usr/share/man/man1/remastersys.1.gz
