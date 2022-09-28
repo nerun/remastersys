@@ -51,6 +51,3 @@ msgstr "Copiando arquivos de configuração para /etc/skel."
 #: remastersys-skelcopy:133
 msgid "$1 either not found or doesn't have a proper home folder. Exiting."
 msgstr "$1 não foi encontrado ou não possui uma pasta home. Saindo."
-
-#~ msgid "      (username is a valid user on the system)"
-#~ msgstr "      (nomedeusuario é um usuário válido no sistema)"
