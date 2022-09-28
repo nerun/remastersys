@@ -63,6 +63,10 @@ if [ ${ROOTMOUNT: :4} = "/dev" ]; then
     # device, but ROOTMOUNT (mounted location) should be finded.
     ROOTPART=$ROOTMOUNT
     ROOTMOUNT=$(mount | grep "$ROOTPART" | cut -d" " -f3)
+    if [ "$ROOTMOUNT" = "" ]; then
+        ROOTMOUNT=$ROOTPART
+        ROOTPART=""
+    fi
 else
     # When user enters "/" or "/mnt", need to find the device.
     ROOTPART=$(mount | grep " $ROOTMOUNT " | cut -d" " -f1)

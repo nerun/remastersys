@@ -66,7 +66,7 @@ if [ "$MyRoot" != "overlay" ]; then
 else
     # Running from a LiveCD
     # list mounted partitions
-    fdisk -l | grep "^/dev" | tr -s " " | cut -d' ' -f1,5- > tmp.sudo_fdisk
+    fdisk -l | grep "^/dev" | sed 's/\*//' | tr -s " " | cut -d' ' -f1,5- > tmp.sudo_fdisk
 
     while read line; do
         PART=$(echo $line | cut -d' ' -f1)
