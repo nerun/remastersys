@@ -1,3 +1,10 @@
+remastersys (4.1-1) unstable; urgency=low
+
+	* First release.
+	* Updated DEBIAN files: control, conffiles, md5sums etc.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 13:48:18 -0300
+
 remastersys (4.0-1) unstable; urgency=low
 
 	* First release!

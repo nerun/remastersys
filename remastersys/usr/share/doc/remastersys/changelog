@@ -1,3 +1,10 @@
+remastersys (4.1-1) unstable; urgency=low
+
+	* Installer: ext4 filesystem is now default.
+	* grubconfig: it's now working. Also updated pt_BR translation and help information. Added some error messages with instructions.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 13:48:18 -0300
+
 remastersys (4.0-1) unstable; urgency=low
 
 	* Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.

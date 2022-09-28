@@ -1,3 +1,10 @@
+remastersys-gui (4.1-1) unstable; urgency=low
+
+	* remastersys-gui: ClearSkel backups Debian's /etc/skel.
+	* remastersys-grub-restore: full rework. It's now working.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 13:52:08 -0300
+
 remastersys (4.0-1) unstable; urgency=low
 
 	* Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
