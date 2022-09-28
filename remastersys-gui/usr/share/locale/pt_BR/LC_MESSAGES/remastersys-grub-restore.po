@@ -89,39 +89,3 @@ msgstr "Master Boot Record (MBR) de $PartitionMBR"
 #: remastersys-grub-restore:114
 msgid "GRUB will be restored to:\\n\\n$WHEREGRUBb$Continue"
 msgstr "O GRUB será restaurado em:\\n\\n$WHEREGRUBb$Continue"
-
-#~ msgid "Pick"
-#~ msgstr "Opções"
-
-#~ msgid "current"
-#~ msgstr "atual"
-
-#~ msgid "Quit"
-#~ msgstr "Sair"
-
-#~ msgid "Quit Remastersys"
-#~ msgstr "Sair do Remastersys"
-
-#~ msgid "\\nPlease select where to install grub to.\\n"
-#~ msgstr "\\nPor favor selecione onde instalar o GRUB.\\n"
-
-#~ msgid "Root partition of $TARGETPART"
-#~ msgstr "Partição raiz de $TARGETPART"
-
-#~ msgid "Master Boot Record of the root drive"
-#~ msgstr "Master Boot Record do disco raiz"
-
-#~ msgid "mbr of root partition of $TARGETPART"
-#~ msgstr "mbr da partição raiz de $TARGETPART"
-
-#~ msgid "Installing grub now. Please wait..."
-#~ msgstr "Instalando o GRUB agora. Por favor aguarde..."
-
-#~ msgid "Installing and setting up GRUB."
-#~ msgstr "Instalando e configurando o GRUB."
-
-#~ msgid "\\nGRUB has been installed/restored on $TARGETPART."
-#~ msgstr "\\nO GRUB foi instalado (ou restaurado) em $TARGETPART."
-
-#~ msgid "Exit"
-#~ msgstr "Sair"

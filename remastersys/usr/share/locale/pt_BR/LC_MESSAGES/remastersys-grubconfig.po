@@ -100,28 +100,3 @@ msgstr ""
 #: remastersys-grubconfig:91
 msgid "Restoring GRUB to $GRUBLOC."
 msgstr "Restaurando o GRUB em $GRUBLOC."
-
-#~ msgid ""
-#~ "   /mounted/location - You must specify the full path. If running the "
-#~ "command\\n                        from a Live CD the partition must have "
-#~ "been mounted\\n                        previously (ex.: sudo mount /dev/"
-#~ "sda1 /mnt)."
-#~ msgstr ""
-#~ "   /ponto/de/montagem - Você deve especificar o caminho completo. Se"
-#~ "\\n                        estiver executando o comando de um Live CD, a"
-#~ "\\n                        partição deve ter sido montada anteriormente"
-#~ "\\n                        (ex.: sudo mount /dev/sda1 /mnt)."
-
-#~ msgid "      (install to mbr on a mounted drive, if running from Live CD)"
-#~ msgstr ""
-#~ "      (instala na mbr de uma unidade montada, se estiver rodando de um "
-#~ "Live CD)"
-
-#~ msgid "   /mounted/location - You must specify the full path"
-#~ msgstr "   /ponto/de/montagem - Você deve especificar o caminho completo"
-
-#~ msgid "   remastersys-grubconfig / root"
-#~ msgstr "   remastersys-grubconfig / root"
-
-#~ msgid "   remastersys-grubconfig /mnt/sda1"
-#~ msgstr "   remastersys-grubconfig /mnt/sda1"

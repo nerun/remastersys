@@ -13,4 +13,4 @@ THINGS TO DO:
     - adicionar remastersys-grubconfig, -installer e -skelcopy ao manpages
     - criar manpages para remastersys-gui, -grub-restore e -usb-key-copy-tool
 
-- traduções: adicionar um manula bem básico de tradução.
+- traduções: adicionar um manual bem básico de tradução.
