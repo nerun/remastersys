@@ -99,20 +99,7 @@ mainmenu() {
     elif [ "$CHOICE" = "DistSkel" ]; then
         distskelmenu
     elif [ "$CHOICE" = "$ClearSkel" ]; then
-        # First: make a backup of Debian original files if there is no backup
-        if [ ! -d /etc/remastersys/skel-backup ]; then
-            sudo mkdir /etc/remastersys/skel-backup
-            sudo cp /etc/skel/{\*,.*} /etc/remastersys/skel-backup
-        fi
-        
-        # Second: clear skel
-        sudo rm -rf /etc/skel/{\*,.*}
-        
-        # Third: if there is a backup of Debian original files, restore it
-        if [ -d /etc/remastersys/skel-backup ]; then
-            sudo cp /etc/remastersys/skel-backup/{\*,.*} /etc/skel/
-            sudo rm -rf /etc/remastersys/skel-backup
-        fi
+        sudo remastersys-skelcopy clear
         $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Configuration files in /etc/skel have been deleted."
         mainmenu
     elif [ "$CHOICE" = "$Clear" ]; then
@@ -274,12 +261,6 @@ Click OK to prepare the list."
 
     j="0"
     i="1000"
-    
-    # First: make a backup of Debian original files if there is no backup
-    if [ ! -d /etc/remastersys/skel-backup ]; then
-        sudo mkdir /etc/remastersys/skel-backup
-        sudo cp /etc/skel/{\*,.*} /etc/remastersys/skel-backup
-    fi
     
     while [ "$(cat /etc/passwd | awk -F ":" '{print $3}' | grep $i)" != "" ]; do
         for i in $(seq 1000 1 1010); do

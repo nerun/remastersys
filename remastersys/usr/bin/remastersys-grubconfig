@@ -41,7 +41,7 @@ usagehelp(){
 
 # check if running with root privileges
 if [ $(whoami) != "root" ]; then
-    echo $"ERROR: This script must run as superuser. Try with \"sudo\"."
+    echo -e $"$fB$fLightRed\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
     usagehelp
 fi
 

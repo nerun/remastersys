@@ -61,29 +61,31 @@ msgid "      (both install to MBR on /dev/sda1 mounted on /mnt)"
 msgstr "      (ambos instalam na MBR de /dev/sda1, que está montada em /mnt)"
 
 #: remastersys-grubconfig:44
-msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgid ""
+"$fB$fLightRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\"
+"\".\\n$fEND"
 msgstr ""
-"ERRO: Este script deve ser executado como superusuário. Tente com \\\"sudo\\"
-"\"."
+"$fB$fLightRed\\nERRO: Este script deve ser executado como superusuário. "
+"Tente com \\\"sudo\\\".\\n$fEND"
 
-#: remastersys-grubconfig:67
+#: remastersys-grubconfig:75
 msgid ""
 "$fB$fLightRed\\nERROR: You cannot install or reinstall GRUB on a Live CD."
 "$fEND"
 msgstr ""
 "$fB$fLightRed\\nERRO: Você não pode (re)instalar o GRUB em um Live CD.$fEND"
 
-#: remastersys-grubconfig:70
+#: remastersys-grubconfig:78
 msgid "$fB$fLightRed\\nERROR: $ROOTMOUNT is not mounted anywhere.$fEND"
 msgstr "$fB$fLightRed\\nERRO: $ROOTMOUNT não está montada em lugar algum.$fEND"
 
-#: remastersys-grubconfig:72
+#: remastersys-grubconfig:80
 msgid ""
 "$fB$fLightRed\\nERROR: There is no partition mounted on $ROOTMOUNT.$fEND"
 msgstr ""
 "$fB$fLightRed\\nERRO: Não há qualquer partição montada em $ROOTMOUNT.$fEND"
 
-#: remastersys-grubconfig:76
+#: remastersys-grubconfig:84
 msgid ""
 "$fB$fLightRed\\nTIP: You must first mount the partition on which you want to "
 "install GRUB. For\\nexample, try \\\"sudo mount /dev/sda1 /mnt\\\", then run "
@@ -97,6 +99,6 @@ msgstr ""
 "\\\" ou \\\"sudo remastersys-grubconfig /dev/\\nsda1\\\", ambos terão o "
 "mesmo resultado.\\n\\nSaindo agora.\\n$fEND"
 
-#: remastersys-grubconfig:91
+#: remastersys-grubconfig:100
 msgid "Restoring GRUB to $GRUBLOC."
 msgstr "Restaurando o GRUB em $GRUBLOC."
