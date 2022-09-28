@@ -59,8 +59,12 @@ fi
 
 # equal to: /dev/sda1 or /dev/nvme0n1p5
 if [ ${ROOTMOUNT: :4} = "/dev" ]; then
-    ROOTPART=$(mount | grep "$ROOTMOUNT" | cut -d" " -f1)
+    # When user enters "remastersys-grubconfig /dev/sda1" don't need to find the
+    # device, but ROOTMOUNT (mounted location) should be finded.
+    ROOTPART=$ROOTMOUNT
+    ROOTMOUNT=$(mount | grep "$ROOTPART" | cut -d" " -f3)
 else
+    # When user enters "/" or "/mnt", need to find the device.
     ROOTPART=$(mount | grep " $ROOTMOUNT " | cut -d" " -f1)
 fi
 
@@ -78,7 +82,7 @@ if [ "$ROOTPART" = "overlay" -o "$ROOTPART" = "" ]; then
     fi
 
     echo -e $"$fB$fLightRed\nTIP: You must first mount the partition on which you want to install GRUB. For\nexample, try \"sudo mount /dev/sda1 /mnt\", then run this tool again either with\n\"sudo remastersys-grubconfig /mnt\" or \"sudo remastersys-grubconfig /dev/sda1\",\nboth with the same result.\n\nQuiting now.\n$fEND"
-    read pause
+    sleep 20
 
     exit 1
 fi

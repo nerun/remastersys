@@ -1,15 +1,15 @@
 # REMASTERSYS
 
-<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.0" src="https://img.shields.io/badge/Version-4.0-brightgreen" /></a>
+<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.1" src="https://img.shields.io/badge/Version-4.1-brightgreen" /></a>
 
 **Remastersys** is a tool that can be used to do two things with an existing Linux Debian installation:
 
 * A full system backup, including personal data, to a Live CD/DVD that you can use anywhere and install.
 * A distributable copy you can share with friends. This will not have any of your personal user data in it.
 
-This is a fork of the famous [Remastersys (ver. 3.0.0-1)](https://web.archive.org/web/20130423105647/http://www.remastersys.com/), developed by Tony "Fragadelic" Brijeski and discontinued in April, 2013.
-
 Just burn your Distro or Backup image onto a CD/DVD media or a USB stick (with programs like [Balena Etcher](https://www.balena.io/etcher/)), then insert the media/pendrive into the PC and reboot.
+
+*This is a fork of the famous [Remastersys (ver. 3.0.0-1)](https://web.archive.org/web/20130423105647/http://www.remastersys.com/), developed by Tony "Fragadelic" Brijeski and discontinued in April, 2013.*
 
 ## Changelog
 
@@ -29,8 +29,6 @@ There are still a few bugs, but there are also many new features compared to the
 ## Current state
 
 This program has 2 packages: **remastersys** (program itself, terminal mode) and **remastersys-gui** (graphical interface). Main features seems to work very well.
-
-The BIG issue is **remastersys-grubconfig** (terminal) and **remastersys-grub-restore** (GUI), definitely broken.
 
 ## Basic usage
 * If there are no packaged to download and install, you should create debian packages: `./package-creator`, write version number, hit ENTER, write a short changelog, write "end" and hit ENTER again.
