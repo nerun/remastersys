@@ -3,7 +3,7 @@
 6c0fda9e8f34af2cfcb95d9f73448e32  /etc/remastersys/plymouth/remastersys-theme/remastersys-theme.plymouth
 3a01ea50742021d37256a97649c5358d  /etc/remastersys/plymouth/remastersys-theme/remastersys-theme.script
 4868e327c1a4263b3ca597f7bc1727bc  /usr/bin/remastersys-grub-restore
-8d23da03be12c69222a2e12b82645837  /usr/bin/remastersys-gui
+2bdc490b996f8259738c502373b38902  /usr/bin/remastersys-gui
 02ec01ace36c1e696ff77107482b02e2  /usr/bin/remastersys-usb-key-copy-tool
 380542d563950f3eadae6589c2f59f38  /usr/share/applications/remastersys-grub-restore.desktop
 d7f226c987b8ad7fac7dbe33951af05b  /usr/share/applications/remastersys-grub-restore-kde.desktop
@@ -13,8 +13,8 @@ b90688e81b27ae325eb324eb78abeb1d  /usr/share/applications/remastersys-gui-kde.de
 71621ccbe304d7b8ce8753c44d25a150  /usr/share/applications/remastersys-installer-kde.desktop
 ef19ab7804f7a3c6cb308d3c6be118fb  /usr/share/applications/remastersys-usb-key-copy-tool.desktop
 a79c34dc278a40abdc73b6bfd61f6021  /usr/share/applications/remastersys-usb-key-copy-tool-kde.desktop
-15f2cfb6cf2ad016f5e0fea61ad26852  /usr/share/doc/remastersys-gui/changelog.Debian.gz
-7244dbb8efa7dc0c88d6d4146bcd19e1  /usr/share/doc/remastersys-gui/changelog.gz
+01b7d1c644883f9d247c3ab9115f89d2  /usr/share/doc/remastersys-gui/changelog.Debian.gz
+cc2b1b830cd6e084a96305a7d8232ee2  /usr/share/doc/remastersys-gui/changelog.gz
 7d6e0eef2884c682275a560117758078  /usr/share/doc/remastersys-gui/copyright
 215700598ca9c985864e64af0d56ad0c  /usr/share/doc/remastersys-gui/README
 3b14b06e57498fc2bd9d69f87679d84c  /usr/share/icons/hicolor/128x128/apps/remastersys-installer.png
@@ -23,7 +23,7 @@ df31b521b68a2ba962b226240b801c73  /usr/share/icons/hicolor/128x128/apps/remaster
 5e7a1d4431be164862004319a638e179  /usr/share/icons/hicolor/16x16/apps/remastersys.png
 e531c13713d2b96f8752115b50a3a30f  /usr/share/icons/hicolor/48x48/apps/remastersys-installer.png
 2b65da5f66df4bb334bdae0abfeb9361  /usr/share/icons/hicolor/48x48/apps/remastersys.png
-f0ca68b9a46b8eb2d946d0ef83b5a1ee  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-grub-restore.mo
+e908fc1eec90a0f48a7f9dae17df0f57  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-grub-restore.mo
 d6ddf5ca07e31e5ccce8d4b44b21d88f  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-gui.mo
 efe5dfa0bb4c1c78e1221d6e94d1741f  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-usb-key-copy-tool.mo
 1c99a630770bb8cbcdadd9778936aa7c  /usr/share/menu/remastersys

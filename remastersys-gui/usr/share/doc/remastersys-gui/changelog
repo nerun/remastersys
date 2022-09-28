@@ -1,3 +1,10 @@
+remastersys-gui (4.2-1) unstable; urgency=low
+
+	* Fixed /etc/skel backup.
+	* Moved Clear/DistSkel procedures to remastersys-skelcopy.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 16:24:34 -0300
+
 remastersys-gui (4.1-1) unstable; urgency=low
 
 	* remastersys-gui: ClearSkel backups Debian's /etc/skel.

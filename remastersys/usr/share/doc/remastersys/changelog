@@ -1,3 +1,9 @@
+remastersys (4.2-1) unstable; urgency=low
+
+	* remastersys-skelcopy: fixed /etc/skel backup. Added "clear" option.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 16:24:34 -0300
+
 remastersys (4.1-1) unstable; urgency=low
 
 	* Installer: ext4 filesystem is now default.
