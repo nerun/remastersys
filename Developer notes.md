@@ -12,6 +12,14 @@
 * manpages:
    * add remastersys-grubconfig, -installer and -skelcopy
    * create manpages to remastersys-gui, -grub-restore and -usb-key-copy-tool
+* help text:
+   * unify all the --help text and/or create aliases like:
+      * `remastersys -b` ➟ `remastersys-grubconfig` (b = bootloader)
+      * `remastersys -i` ➟ `remastersys-installer`
+      * `remastersys -s` ➟ `remastersys-skelcopy`
+      * `remastersys -g` ➟ `remastersys-gui`
+      * `remastersys -gs` ➟ `remastersys-usb-key-copy-tool`
+      * `remastersys -gb` ➟ `remastersys-grub-restore`
 * Issues:
-   * [Add EFI / UEFI boot support](#3)
-   * [Remove 4 GB ISO limitation](#2)
+   * [Add EFI / UEFI boot support](https://github.com/nerun/remastersys/issues/3)
+   * [Remove 4 GB ISO limitation](https://github.com/nerun/remastersys/issues/2)
