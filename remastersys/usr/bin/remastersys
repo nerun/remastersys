@@ -263,11 +263,19 @@ cdfs(){
     if [ "$1" = "dist" ]; then
         #fix for buggy debian live setup of gdm and gdm3
         if [ -f $WORKDIR/dummysys/etc/gdm/gdm.conf ]; then
-            sed -i -e '/AutomaticLoginEnable/d' $WORKDIR/dummysys/etc/gdm/gdm.conf
+            sed -i -e '/^AutomaticLogin/d' $WORKDIR/dummysys/etc/gdm/gdm.conf
+            # deleting contiguous empty lines
+            cat -s $WORKDIR/dummysys/etc/gdm/gdm.conf > $WORKDIR/dummysys/etc/gdm/gdm.tmp
+            cat $WORKDIR/dummysys/etc/gdm/gdm.tmp > $WORKDIR/dummysys/etc/gdm/gdm.conf
+            rm -f $WORKDIR/dummysys/etc/gdm/gdm.tmp
         fi
 
         if [ -f $WORKDIR/dummysys/etc/gdm3/daemon.conf ]; then
-            sed -i -e '/AutomaticLoginEnable/d' $WORKDIR/dummysys/etc/gdm3/daemon.conf
+            sed -i -e '/^AutomaticLogin/d' $WORKDIR/dummysys/etc/gdm3/daemon.conf
+            # deleting contiguous empty lines
+            cat -s $WORKDIR/dummysys/etc/gdm3/daemon.conf > $WORKDIR/dummysys/etc/gdm3/daemon.tmp
+            cat $WORKDIR/dummysys/etc/gdm3/daemon.tmp > $WORKDIR/dummysys/etc/gdm3/daemon.conf
+            rm -f $WORKDIR/dummysys/etc/gdm3/daemon.tmp
         fi
 
         if [ -f $WORKDIR/dummysys/etc/gdm/gdm.conf-custom ]; then

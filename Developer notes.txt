@@ -3,7 +3,7 @@ DEVELOPER NOTES means notes to developer!
 
 KNOWN BUGS:
 
-- Live CD DistISO tá pendindo senha de usuário >> cadê o autologin?
+- ...
 
 THINGS TO DO:
 
