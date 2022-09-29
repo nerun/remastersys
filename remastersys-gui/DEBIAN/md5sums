@@ -2,7 +2,7 @@
 46148d042d906d7529ebeac4aed5ccc7  /etc/remastersys/plymouth/remastersys-theme/progress_box.png
 6c0fda9e8f34af2cfcb95d9f73448e32  /etc/remastersys/plymouth/remastersys-theme/remastersys-theme.plymouth
 3a01ea50742021d37256a97649c5358d  /etc/remastersys/plymouth/remastersys-theme/remastersys-theme.script
-4868e327c1a4263b3ca597f7bc1727bc  /usr/bin/remastersys-grub-restore
+8dbcc377a6f8e39d871d78ccef794f8f  /usr/bin/remastersys-grub-restore
 2bdc490b996f8259738c502373b38902  /usr/bin/remastersys-gui
 02ec01ace36c1e696ff77107482b02e2  /usr/bin/remastersys-usb-key-copy-tool
 380542d563950f3eadae6589c2f59f38  /usr/share/applications/remastersys-grub-restore.desktop
@@ -13,8 +13,8 @@ b90688e81b27ae325eb324eb78abeb1d  /usr/share/applications/remastersys-gui-kde.de
 71621ccbe304d7b8ce8753c44d25a150  /usr/share/applications/remastersys-installer-kde.desktop
 ef19ab7804f7a3c6cb308d3c6be118fb  /usr/share/applications/remastersys-usb-key-copy-tool.desktop
 a79c34dc278a40abdc73b6bfd61f6021  /usr/share/applications/remastersys-usb-key-copy-tool-kde.desktop
-01b7d1c644883f9d247c3ab9115f89d2  /usr/share/doc/remastersys-gui/changelog.Debian.gz
-cc2b1b830cd6e084a96305a7d8232ee2  /usr/share/doc/remastersys-gui/changelog.gz
+a4f30f519c4a3873ade3f6727058fc32  /usr/share/doc/remastersys-gui/changelog.Debian.gz
+766b0a70f01eed5d24bc2ebf512d0900  /usr/share/doc/remastersys-gui/changelog.gz
 7d6e0eef2884c682275a560117758078  /usr/share/doc/remastersys-gui/copyright
 215700598ca9c985864e64af0d56ad0c  /usr/share/doc/remastersys-gui/README
 3b14b06e57498fc2bd9d69f87679d84c  /usr/share/icons/hicolor/128x128/apps/remastersys-installer.png

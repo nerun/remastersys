@@ -1,3 +1,9 @@
+remastersys-gui (4.3-1) unstable; urgency=low
+
+	* Fixed grub-restore not displaying partition size correctly when running from Live CD.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 29 Sep 2022 17:50:15 -0300
+
 remastersys-gui (4.2-1) unstable; urgency=low
 
 	* Fixed /etc/skel backup.

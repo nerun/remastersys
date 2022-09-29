@@ -21,13 +21,13 @@ ChangelogMaker(){
     changelogRead(){
 	    read changes
 	    if [ "$changes" != "end" ]; then
-		    echo "	* "$changes >> $1
+		    echo "	* $changes" >> $1
 		    echo ""
 		    cat $1
 		    changelogAsk $1
 	    else
 		    echo "" >> $1
-		    echo " -- $author  "$(date -R) >> $1
+		    echo " -- "$author"  "$(date -R) >> $1
 		    echo "" >> $1
 	    fi
     }

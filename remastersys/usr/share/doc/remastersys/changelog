@@ -1,3 +1,10 @@
+remastersys (4.3-1) unstable; urgency=low
+
+	* More fixes to grubconfig.
+	* Fixed autologin not working on Live CD.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 29 Sep 2022 17:48:14 -0300
+
 remastersys (4.2-1) unstable; urgency=low
 
 	* remastersys-skelcopy: fixed /etc/skel backup. Added "clear" option.
