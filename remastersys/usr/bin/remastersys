@@ -261,7 +261,7 @@ cdfs(){
     ls $WORKDIR/dummysys/var/lib/apt/lists | grep -v ".gpg" | grep -v "lock" | grep -v "partial" | grep -v "auxfiles" | xargs -i rm $WORKDIR/dummysys/var/lib/apt/lists/{} ;
 
     if [ "$1" = "dist" ]; then
-        #fix for buggy debian live setup of gdm and gdm3
+        # fix for autologin not working on Live CD when using gdm and gdm3
         if [ -f $WORKDIR/dummysys/etc/gdm/gdm.conf ]; then
             sed -i -e '/^AutomaticLogin/d' $WORKDIR/dummysys/etc/gdm/gdm.conf
             # deleting contiguous empty lines

@@ -7,7 +7,6 @@
 ### THINGS TO DO
 
 * Needed tests:
-   * remastersys-grubconfig and remastersys-grub-restore
    * remastersys-skelcopy: need to know if the user's personal settings are actually being used.
 * manpages:
    * add remastersys-grubconfig, -installer and -skelcopy

@@ -27,7 +27,7 @@ ChangelogMaker(){
 		    changelogAsk $1
 	    else
 		    echo "" >> $1
-		    echo " -- "$author"  "$(date -R) >> $1
+		    echo " -- $author  $(date -R)" >> $1
 		    echo "" >> $1
 	    fi
     }
