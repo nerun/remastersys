@@ -12,77 +12,62 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: remastersys-usb-key-copy-tool:15
-msgid "Pick"
-msgstr "Opções"
-
-#: remastersys-usb-key-copy-tool:16
-msgid "Info"
-msgstr "Informações"
-
-#: remastersys-usb-key-copy-tool:20
+#: remastersys-usb-key-copy-tool:17
 msgid "Remastersys USB Startup Disk Tool"
 msgstr "Remastersys - Ferramenta de Inicialização por USB"
 
-#: remastersys-usb-key-copy-tool:30
+#: remastersys-usb-key-copy-tool:25
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
 "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
 "\"."
 
+#: remastersys-usb-key-copy-tool:31
+msgid "You must select a usb key to use. $ClickOK"
+msgstr "Você deve escolher uma unidade USB para usar. $ClickOK"
+
 #: remastersys-usb-key-copy-tool:36
-msgid ""
-"\\nYou must select a usb key to use. Click OK to return to main menu.\\n"
-msgstr ""
-"\\nVocê deve escolher uma unidade USB para usar. Clique em OK para retornar "
-"ao menu principal.\\n"
+msgid "You must select a source to use. $ClickOK"
+msgstr "Você deve escolher uma fonte para usar. $ClickOK"
 
-#: remastersys-usb-key-copy-tool:41
-msgid "\\nYou must select a source to use. Click OK to return to main menu.\\n"
-msgstr ""
-"\\nVocê deve escolher uma fonte para usar. Clique em OK para retornar ao "
-"menu principal.\\n"
-
-#: remastersys-usb-key-copy-tool:45
+#: remastersys-usb-key-copy-tool:40
 msgid ""
-"\\nThis will completely replace the contents of your usb drive\\nwith the "
+"This will completely replace the contents of your usb drive\\nwith the "
 "Bootable Live System.\\n\\nYou will not be able to undo this operation once "
-"it starts.\\n\\nClick OK to continue?\\n"
+"it starts.\\n\\nClick OK to continue."
 msgstr ""
-"\\nO conteúdo da unidade USB será completamente apagado e\\nsubstituído com "
-"o Sistema Live Bootável.\\n\\nVocê não será capaz de desfazer esta operação "
-"uma vez iniciada.\\n\\nDeseja continuar?\\n"
+"O conteúdo da unidade USB será completamente apagado e\\nsubstituído com o "
+"Sistema Live Bootável.\\n\\nVocê não será capaz de desfazer esta operação "
+"uma vez iniciada.\\n\\nClique OK para continuar."
+
+#: remastersys-usb-key-copy-tool:68
+msgid "Copying to USB Key Now.\\n\\nPlease Wait."
+msgstr "Copiando para a unidade USB agora.\\n\\nPor favor aguarde."
 
 #: remastersys-usb-key-copy-tool:73
-msgid "Copying to USB Key Now. \\n\\nPlease Wait.\\n"
-msgstr "Copiando para a unidade USB agora.\\n\\nPor favor aguarde.\\n"
+msgid "Copy to USB key completed.\\n\\n$ClickOK"
+msgstr "Cópia para USB completada.\\n\\n$ClickOK"
 
-#: remastersys-usb-key-copy-tool:80
-msgid "\\nCopy to USB key completed.\\nClick OK to return to main menu.\\n"
-msgstr ""
-"\\nCópia para USB completada.\\nClique em OK para retornar ao menu principal."
-"\\n"
-
-#: remastersys-usb-key-copy-tool:94
+#: remastersys-usb-key-copy-tool:95
 msgid ""
-"\\nNo USB Keys found.\\n\\nPlease insert a USB Key and then\\nclick OK to "
-"return to main menu\\nor Cancel to quit.\\n"
+"No USB Keys found.\\n\\nPlease insert a USB Key and then\\nclick OK to "
+"return to main menu\\nor Cancel to quit."
 msgstr ""
-"\\nNenhuma unidade USB encontrada.\\n\\nInsira uma unidade USB e então "
-"clique em\\nOK para retornar ao menu principal ou em\\nCancelar para sair.\\n"
-
-#: remastersys-usb-key-copy-tool:103
-msgid "Choose a USB Key:CB"
-msgstr "Escolha uma Unidade USB:CB"
+"Nenhuma unidade USB encontrada.\\n\\nInsira uma unidade USB e então clique em"
+"\\nOK para retornar ao menu principal ou em\\nCancelar para sair."
 
 #: remastersys-usb-key-copy-tool:104
-msgid "Choose a Source Image:FL"
-msgstr "Escolha uma Imagem de Origem:FL"
+msgid "Choose a USB Key"
+msgstr "Escolha uma Unidade USB"
 
 #: remastersys-usb-key-copy-tool:105
-msgid "Quit:2"
-msgstr "Sair:2"
+msgid "Choose a Source Image"
+msgstr "Escolha uma Imagem"
 
 #: remastersys-usb-key-copy-tool:106
-msgid "Copy to USB Key:1"
-msgstr "Copiar para Unidade USB:1"
+msgid "Quit"
+msgstr "Sair"
+
+#: remastersys-usb-key-copy-tool:107
+msgid "Copy to USB Key"
+msgstr "Copiar para Unidade USB"

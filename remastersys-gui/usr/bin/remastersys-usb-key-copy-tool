@@ -18,6 +18,8 @@ TITLETEXT=$"Remastersys USB Startup Disk Tool"
 TEXT="--text="
 MSGBOX="--button=Ok:0"
 
+ClickOK="Click OK to return to main menu."
+
 # check if running with root privileges
 if [ $(whoami) != "root" ]; then
     $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
@@ -25,17 +27,17 @@ if [ $(whoami) != "root" ]; then
 fi
 
 copymenu() {
-    if [ "$1" = "(null)" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You must select a usb key to use. Click OK to return to main menu."
+    if [ "$1" = "(null)" -o "$1" = "" ]; then
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You must select a usb key to use. $ClickOK"
         mainmenu
     fi
 
     if [ "$2" = "(null)" -o "$2" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You must select a source to use. Click OK to return to main menu."
+        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You must select a source to use. $ClickOK"
         mainmenu
     fi
 
-    $DIALOG $TITLE"$TITLETEXT" $TEXT$"This will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue?"
+    $DIALOG $TITLE"$TITLETEXT" $TEXT$"This will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue."
 
     if [ $? != 0 ]; then
         mainmenu
@@ -68,10 +70,12 @@ copymenu() {
     rm -f /tmp/remusbprog
     sync
 
-    killall -KILL tail
-
-    $DIALOG $TITLE"$TITLETEXT" $TEXT$"Copy to USB key completed.\nClick OK to return to main menu."
-    mainmenu
+    $DIALOG $TITLE"$TITLETEXT" $TEXT$"Copy to USB key completed.\n\n$ClickOK"
+    if [ "$?" = "0" ]; then
+        mainmenu
+    else
+        exit
+    fi
 }
 
 mainmenu() {
