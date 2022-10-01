@@ -30,7 +30,7 @@ The files you will need to use to start a translation have the extension POT, an
 * remastersys-gui/usr/share/locale/pt\_BR/LC\_MESSAGES
    * remastersys-grub-restore.pot
    * remastersys-gui.pot
-   * remastersys-usb-key-copy-tool.pot
+   * remastersys-bootable-usb.pot
    
 ## Creating your workspace
 

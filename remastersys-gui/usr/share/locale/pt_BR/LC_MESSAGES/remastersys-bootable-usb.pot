@@ -1,36 +1,36 @@
-#: remastersys-usb-key-copy-tool:17
-msgid "Remastersys USB Startup Disk Tool"
+#: remastersys-bootable-usb:17
+msgid "Remastersys Bootable USB"
 msgstr ""
-#: remastersys-usb-key-copy-tool:25
+#: remastersys-bootable-usb:25
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
-#: remastersys-usb-key-copy-tool:31
+#: remastersys-bootable-usb:31
 msgid "You must select a usb key to use. $ClickOK"
 msgstr ""
-#: remastersys-usb-key-copy-tool:36
+#: remastersys-bootable-usb:36
 msgid "You must select a source to use. $ClickOK"
 msgstr ""
-#: remastersys-usb-key-copy-tool:40
+#: remastersys-bootable-usb:40
 msgid "This will completely replace the contents of your usb drive\\nwith the Bootable Live System.\\n\\nYou will not be able to undo this operation once it starts.\\n\\nClick OK to continue."
 msgstr ""
-#: remastersys-usb-key-copy-tool:68
+#: remastersys-bootable-usb:68
 msgid "Copying to USB Key Now.\\n\\nPlease Wait."
 msgstr ""
-#: remastersys-usb-key-copy-tool:73
+#: remastersys-bootable-usb:73
 msgid "Copy to USB key completed.\\n\\n$ClickOK"
 msgstr ""
-#: remastersys-usb-key-copy-tool:95
+#: remastersys-bootable-usb:95
 msgid "No USB Keys found.\\n\\nPlease insert a USB Key and then\\nclick OK to return to main menu\\nor Cancel to quit."
 msgstr ""
-#: remastersys-usb-key-copy-tool:104
+#: remastersys-bootable-usb:104
 msgid "Choose a USB Key"
 msgstr ""
-#: remastersys-usb-key-copy-tool:105
+#: remastersys-bootable-usb:105
 msgid "Choose a Source Image"
 msgstr ""
-#: remastersys-usb-key-copy-tool:106
+#: remastersys-bootable-usb:106
 msgid "Quit"
 msgstr ""
-#: remastersys-usb-key-copy-tool:107
+#: remastersys-bootable-usb:107
 msgid "Copy to USB Key"
 msgstr ""

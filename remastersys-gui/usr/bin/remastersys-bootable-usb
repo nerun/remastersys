@@ -9,12 +9,12 @@
 
 # SYSTEM LOCALIZATION
 # Target to file:
-# /usr/share/locale/(language code)/LC_MESSAGES/remastersys-usb-key-copy-tool.mo
-TEXTDOMAIN=remastersys-usb-key-copy-tool
+# /usr/share/locale/(language code)/LC_MESSAGES/remastersys-bootable-usb.mo
+TEXTDOMAIN=remastersys-bootable-usb
 
-DIALOG="$(which yad) --width=400 --center --fixed"
+DIALOG="$(which yad) --center --fixed"
 TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
-TITLETEXT=$"Remastersys USB Startup Disk Tool"
+TITLETEXT=$"Remastersys Bootable USB"
 TEXT="--text="
 MSGBOX="--button=Ok:0"
 

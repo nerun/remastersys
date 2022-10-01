@@ -44,4 +44,4 @@ This program has 2 packages: **remastersys** (program itself, terminal mode) and
   * Remastersys GRUB Restorer
   * Remastersys Creator
   * Remastersys Installer
-  * Remastersys USB Startup Disk Tool
+  * Remastersys Bootable USB

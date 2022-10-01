@@ -1,0 +1,16 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Remastersys Bootable USB
+Name[pt_BR]=Remastersys - USB Bootável
+GenericName=Bootable USB
+GenericName[pt_BR]=USB Bootável
+Comment=Bootable USB Creator Tool
+Comment[pt_BR]=Ferramenta de Criação de USB Bootável
+Exec=sudo /usr/bin/remastersys-bootable-usb
+Icon=/usr/share/icons/hicolor/128x128/apps/remastersys.png
+Terminal=false
+MultipleArgs=false
+Type=Application
+Categories=System
+OnlyShowIn=KDE
+X-KDE-SubstituteUID=true
