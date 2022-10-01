@@ -15,23 +15,7 @@ TEXTDOMAIN=remastersys-skelcopy
 # LIBRARIES
 . /usr/lib/remastersys/remastersys.so
 
-usagehelp(){
-    echo " "
-    echo $"USAGE:"
-    echo " "
-    echo $"   remastersys-skelcopy [username|clear]"
-    echo " "
-    echo -e $"      username   - is a valid user on the system. Copies \"username\" personal\n                   settings to the /etc/skel folder."
-    echo $"      clear      - deletes all contents of /etc/skel."
-    echo " "
-    exit 1
-}
-
-# check if running with root privileges
-if [ $(whoami) != "root" ]; then
-    echo -e $"$fB$fLightRed\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
-    usagehelp
-fi
+IsRoot # remastersys.so
 
 backupSkel(){
     if [ ! -d /etc/remastersys/skel-backup ]; then
@@ -41,7 +25,7 @@ backupSkel(){
 }
 
 if [ "$1" = "help" -o "$1" = "--help" -o "$1" = "" ]; then
-    usagehelp
+    GiveUserHelp # remastersys.so
 elif [ "$1" = "clear" ]; then
     # First: make a backup of Debian original files if there is no backup
     backupSkel

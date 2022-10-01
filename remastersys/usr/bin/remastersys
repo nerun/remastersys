@@ -15,59 +15,7 @@ TEXTDOMAIN=remastersys
 # LIBRARIES
 . /usr/lib/remastersys/remastersys.so
 
-usagehelp(){
-    echo -e $"Remastersys allows you to remaster your system, creating a backup image or a new\ndistribution that can be burned and run as a Live CD/DVD."
-    echo " "
-    echo $"USAGE:"
-    echo " "
-    echo $"   remastersys [MODE] [OPTION] [FILE]"
-    echo $"      (must run as superuser)"
-    echo " "
-    echo $"MODES:"
-    echo " "
-    echo $"   backup - creates a backup of your system in a Live CD/DVD"
-    echo $"   clean  - cleans the temporary files created by remastersys"
-    echo $"   dist   - creates a distribution of your system in a Live CD/DVD"
-    echo " "
-    echo $"OPTIONS:"
-    echo " "
-    echo $"   cdfs   - creates the CD file system only"
-    echo -e $"   iso    - creates an ISO image as long as the file system has already been\n\t    created"
-    echo " "
-    echo $"FILE:"
-    echo " "
-    echo -e $"   Optional. It is the name of the ISO image file to be created. It must end\n   with the \".iso\" extension. If this parameter is not provided, the ISO will be\n   saved with the name \"remastersys-livecd.iso\"."
-    echo " "
-    echo $"EXAMPLES:"
-    echo " "
-    echo "   remastersys backup"
-    echo $"     (creates a Live CD/DVD containing a backup of your system)"
-    echo " "
-    echo "   remastersys backup custom.iso"
-    echo $"     (creates a Live CD/DVD backup, and names the ISO as \"custom.iso\")" 
-    echo " "
-    echo "   remastersys clean"
-    echo $"     (deletes the working folder \"/home/remastersys\")"
-    echo " "
-    echo "   remastersys dist"
-    echo $"     (creates a Live CD/DVD containing a distribution of your system)"
-    echo " "
-    echo "   remastersys dist cdfs"
-    echo $"     (creates only the file system of yours Live CD/DVD distribution)"
-    echo " "
-    echo "   remastersys dist iso custom.iso"
-    echo -e $"     (creates an ISO of the distribution with the name custom.iso, as long\n     as the file system has already been created)"
-    echo " "
-    echo -e $"   The CDFS and ISO options should only be used if you want to modify something\n   on the CD before creating the ISO. An example would be modifying the isolinux\n   portion of Live CD/DVD."
-    echo " "
-    exit 1
-}
-
-# check if running with root privileges
-if [ $(whoami) != "root" ]; then
-    echo -e $"$fB$fLightRed\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
-    usagehelp
-fi
+IsRoot # remastersys.so
 
 # load file
 . /etc/remastersys.conf
@@ -171,7 +119,7 @@ case $1 in
 
     *)
         echo ""
-        usagehelp # call function
+        GiveUserHelp # remastersys.so
     ;;
 
 esac

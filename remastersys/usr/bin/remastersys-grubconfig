@@ -15,38 +15,10 @@ TEXTDOMAIN=remastersys-grubconfig
 # LIBRARIES
 . /usr/lib/remastersys/remastersys.so
 
-usagehelp(){
-    echo " "
-    echo $"USAGE:"
-    echo " "
-    echo $"   remastersys-grubconfig [location] [root|rootmbr]"
-    echo $"      (must run as superuser)"
-    echo " "
-    echo -e $"   location          - Either the full path of a device or a mounting point.\n                       Partition must have been mounted previously. Example:\n                       if /dev/sda1 is mounted on /mnt, you can specify location\n                       as /mnt or /dev/sda1, both with the same result."
-    echo " "
-    echo $"   root              - Install GRUB to root partition."
-    echo $"   rootmbr           - Install to MBR. Default when option is omitted."
-    echo " "
-    echo $"EXAMPLES:"
-    echo " "
-    echo "   remastersys-grubconfig / root"
-    echo $"      (install to root partition of the current install)"
-    echo " "
-    echo "   remastersys-grubconfig /mnt"
-    echo "   remastersys-grubconfig /dev/sda1"
-    echo $"      (both install to MBR on /dev/sda1 mounted on /mnt)"
-    echo " "
-    exit 1
-}
-
-# check if running with root privileges
-if [ $(whoami) != "root" ]; then
-    echo -e $"$fB$fLightRed\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
-    usagehelp
-fi
+IsRoot # remastersys.so
 
 if [ "$1" = "help" -o "$1" = "--help" -o "$1" = "" ]; then
-    usagehelp
+    GiveUserHelp # remastersys.so
 fi
 
 # equal to: /mounted/location

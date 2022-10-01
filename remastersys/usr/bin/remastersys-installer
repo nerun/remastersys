@@ -15,30 +15,10 @@ TEXTDOMAIN=remastersys-installer
 # LIBRARIES
 . /usr/lib/remastersys/remastersys.so
 
-usagehelp(){
-    echo " "
-    echo $"USAGE:"
-    echo " "
-    echo $"   remastersys-installer [OPTIONS]"
-    echo $"      (must run as superuser)"
-    echo " "
-    echo $"OPTIONS:"
-    echo " "
-    echo -e $"   -g, --gui      - runs installer with a Graphical User Interface (GUI) using\n\t\t    \"yad\"."
-    echo $"   -h, -?, --help - shows this help."
-    echo -e $"\t\t  - if no option is provided installer will run in a terminal, but\n\t\t    using \"dialog\" instead."
-    echo " "
-    exit 1
-}
-
-# check if running with root privileges
-if [ $(whoami) != "root" ]; then
-    echo -e $"$fB$fLightRed\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
-    usagehelp
-fi
+IsRoot # remastersys.so
 
 if [[ "$1" == @("-h"|"-?"|"--help") ]]; then
-    usagehelp
+    GiveUserHelp # remastersys.so
 fi
 
 # set options depending on mode - text or gui
