@@ -7,7 +7,7 @@
 * A full system backup, including personal data, to a Live CD/DVD that you can use anywhere and install.
 * A distributable copy you can share with friends. This will not have any of your personal user data in it.
 
-Just burn your Distro or Backup image onto a CD/DVD media or a USB stick (with programs like [Balena Etcher](https://www.balena.io/etcher/)), then insert the media/pendrive into the PC and reboot.
+Just burn your Distro or Backup image onto a CD/DVD media or USB stick (using Remastersys Bootable USB), then insert the media/pendrive into the PC and reboot.
 
 *This is a fork of the famous [Remastersys (ver. 3.0.0-1)](https://web.archive.org/web/20130423105647/http://www.remastersys.com/), developed by Tony "Fragadelic" Brijeski and discontinued in April, 2013.*
 
@@ -31,7 +31,7 @@ There are still a few bugs, but there are also many new features compared to the
 This program has 2 packages: **remastersys** (program itself, terminal mode) and **remastersys-gui** (graphical interface). Main features seems to work very well.
 
 ## Basic usage
-* If there are no packaged to download and install, you should create debian packages: `./package-creator`, write version number, hit ENTER, write a short changelog, write "end" and hit ENTER again.
+* If there are no Debian packages to download and install in [releases](https://github.com/nerun/remastersys/releases) section, you should create debian packages: `./package-creator`, write version number, hit ENTER, write a short changelog, write "end" and hit ENTER again.
 * Install both packages: `sudo dpkg -i *.deb`
 * Fix dependencies if you need: `sudo apt-get install -f`
 * Read instructions:
@@ -41,7 +41,7 @@ This program has 2 packages: **remastersys** (program itself, terminal mode) and
   * `remastersys-installer --help`
   * `remastersys-skelcopy --help`
 * If you have installed the GUI, you should be capable to search for these shortcuts (desktop icons):
-  * Remastersys GRUB Restorer
-  * Remastersys Creator
-  * Remastersys Installer
   * Remastersys Bootable USB
+  * Remastersys Creator
+  * Remastersys GRUB Restorer
+  * Remastersys Installer
