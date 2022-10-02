@@ -18,21 +18,16 @@ TEXTDOMAIN=remastersys-gui
 
 Pick=$"Pick"
 Info=$"Info"
-Yes=$"Yes"
-No=$"No"
 Quit=$"Quit"
 
 # NOTE: attribute --fixed do not allows to use --width or --height
-DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
-DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
+DIALOGMENU="$(which yad) --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --width=750 --center"
+DIALOG="$(which yad) --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --fixed"
 TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
 TEXT="--text="
-ENTRY="--entry "
-ENTRYTEXT="--entry-text "
 FILESELECTION="--file "
 MENU="--list --column=$Pick --column=$Info"
-YESNO=" --button=$Yes:0 --button=$No:1 "
-MSGBOX=" --button=Ok:0 "
+MSGBOX="--button=Ok:0"
 TITLETEXT="Remastersys"
 
 # check if running with root privileges
@@ -64,7 +59,7 @@ About=$"About"
 NoFileSelected=$"You didn't select any file.\n\nClick OK to continue."
 
 mainmenu() {
-    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=400 --button=Ok:0 --button="$Quit":1 $MENU $TEXT"$Choose" \
+    CHOICES=`$DIALOGMENU $TITLE"$TITLETEXT" --height=400 $MSGBOX --button="$Quit":1 $MENU $TEXT"$Choose" \
     Backup "$BackupString" \
     Dist "$DistString" \
     DistCDFS "$DistCDFSString" \
