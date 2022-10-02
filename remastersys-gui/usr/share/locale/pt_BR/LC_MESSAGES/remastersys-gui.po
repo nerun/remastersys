@@ -12,41 +12,15 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: remastersys-gui:19
-msgid "Pick"
-msgstr "Opções"
-
-#: remastersys-gui:20
-msgid "Info"
-msgstr "Informações"
-
-#: remastersys-gui:21
-msgid "Yes"
-msgstr "Sim"
-
-#: remastersys-gui:22
-msgid "No"
-msgstr "Não"
-
-#: remastersys-gui:23
-msgid "Quit"
-msgstr "Sair"
-
-#: remastersys-gui:40
-msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
-msgstr ""
-"ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
-"\"."
-
-#: remastersys-gui:44
+#: remastersys-gui:24
 msgid "Choose what you want to do:"
 msgstr "Escolha o que deseja fazer:"
 
-#: remastersys-gui:46
+#: remastersys-gui:26
 msgid "Creates a full system backup including user files."
 msgstr "Cria um backup completo do sistema, incluindo arquivos do usuário."
 
-#: remastersys-gui:47
+#: remastersys-gui:27
 msgid ""
 "Creates a distribution on Live CD/DVD: creating both file system (CDFS) and "
 "image (ISO)."
@@ -54,7 +28,7 @@ msgstr ""
 "Cria uma distribuição em Live CD/DVD: cria sistema de arquivos (CDFS) e "
 "imagem (ISO)."
 
-#: remastersys-gui:48
+#: remastersys-gui:28
 msgid ""
 "Creates only the file system (CDFS) of a Live CD: designed to add extra "
 "files to CD."
@@ -62,7 +36,7 @@ msgstr ""
 "Cria apenas o sistema de arquivos (CDFS): ideal para adicionar arquivos "
 "extras ao CD."
 
-#: remastersys-gui:49
+#: remastersys-gui:29
 msgid ""
 "Creates only the ISO of a Live CD: designed to be used after using the "
 "DistCDFS option."
@@ -70,19 +44,19 @@ msgstr ""
 "Cria apenas o ISO do Live CD: idealizado para ser usado após o uso da opção "
 "DistCDFS."
 
-#: remastersys-gui:50
+#: remastersys-gui:30
 msgid "Selects a background image for the Live CD/DVD boot menu."
 msgstr ""
 "Seleciona uma imagem de plano de fundo para o menu de inicialização do Live "
 "CD/DVD."
 
-#: remastersys-gui:51
+#: remastersys-gui:31
 msgid "Selects a background image for the GRUB bootloader."
 msgstr ""
 "Seleciona uma imagem de plano de fundo para o carregador de inicialização "
 "GRUB."
 
-#: remastersys-gui:52
+#: remastersys-gui:32
 msgid ""
 "Makes the current user's custom settings the default Live CD/DVD system "
 "settings."
@@ -90,56 +64,56 @@ msgstr ""
 "Torna as configurações do usuário atual nas configurações padrão do sistema "
 "Live CD."
 
-#: remastersys-gui:53
+#: remastersys-gui:33
 msgid "Clears /etc/skel settings to remove all customizations."
 msgstr ""
 "Limpa as configurações do /etc/skel para remover todas as personalizações."
 
-#: remastersys-gui:54
+#: remastersys-gui:34
 msgid "Clears Remastersys working folder."
 msgstr "Limpa a pasta de trabalho Remastersys."
 
-#: remastersys-gui:55
+#: remastersys-gui:35
 msgid "Modify Remastersys settings."
 msgstr "Modifica as configurações do Remastersys."
 
-#: remastersys-gui:56
+#: remastersys-gui:36
 msgid "View the Remastersys log file."
 msgstr "Visualiza o arquivo de log do Remastersys."
 
-#: remastersys-gui:57
+#: remastersys-gui:37
 msgid "Displays information about Remastersys."
 msgstr "Exibe informações sobre Remastersys."
 
-#: remastersys-gui:59
+#: remastersys-gui:39
 msgid "ClearSkel"
 msgstr "LimparSkel"
 
-#: remastersys-gui:60
+#: remastersys-gui:40
 msgid "Clear"
 msgstr "Limpar"
 
-#: remastersys-gui:61
+#: remastersys-gui:41
 msgid "Settings"
 msgstr "Configurações"
 
-#: remastersys-gui:62
+#: remastersys-gui:42
 msgid "About"
 msgstr "Sobre"
 
-#: remastersys-gui:64
-msgid "You didn't select any file.\\n\\nClick OK to continue."
-msgstr "Você não selecionou um arquivo\\n\\nClique OK para continuar."
+#: remastersys-gui:44
+msgid "You didn't select any file.$Continue"
+msgstr "Você não selecionou um arquivo.$Continue"
 
-#: remastersys-gui:103
+#: remastersys-gui:83
 msgid "Configuration files in /etc/skel have been deleted."
 msgstr "Os arquivos de configuração em /etc/skel foram apagados."
 
-#: remastersys-gui:113
+#: remastersys-gui:93
 msgid "The remastersys.log file does not exist."
 msgstr "O arquivo remastersys.log não existe."
 
-#: remastersys-gui:119
+#: remastersys-gui:99
 msgid ""
 "Remastersys version $VERSION.\\n\\nThis is a graphical user interface "
 "created in YAD for Remastersys: a\\ncommand-line tool that turns an "
@@ -159,7 +133,7 @@ msgstr ""
 "\\nVisite <a href=\\\"https://github.com/nerun/remastersys\\\">https://"
 "github.com/nerun/remastersys</a> para obter mais informações."
 
-#: remastersys-gui:138
+#: remastersys-gui:118
 msgid ""
 "The compressed file system is larger than the ISO 9660 specification allows "
 "for\\na single file.\\n\\nYou must try to reduce the amount of data you are "
@@ -169,7 +143,7 @@ msgstr ""
 "permite\\npara um único arquivo.\\n\\nVocê deve tentar reduzir a quantidade "
 "de dados dos quais está fazendo backup e\\ntentar novamente."
 
-#: remastersys-gui:145
+#: remastersys-gui:125
 msgid ""
 "Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR. It\\nis "
 "recommended to test it in a virtual machine or on a rewritable CD/DVD to"
@@ -180,7 +154,7 @@ msgstr ""
 "para garantir que funcione como desejado.\\n\\nClique em OK para retornar ao "
 "menu principal."
 
-#: remastersys-gui:150
+#: remastersys-gui:130
 msgid ""
 "You have selected Backup Mode.\\n\\nDo not interrupt this process.\\n"
 "\\nClick OK to start the Backup Live CD/DVD process."
@@ -188,7 +162,7 @@ msgstr ""
 "Você selecionou o Modo de Backup.\\n\\nNão interrompa este processo.\\n"
 "\\nClique em OK para iniciar o processo de Live CD/DVD de Backup."
 
-#: remastersys-gui:159
+#: remastersys-gui:139
 msgid ""
 "You have selected Dist Mode.\\n\\nClick OK to start the Distributable Live "
 "CD/DVD process."
@@ -196,7 +170,7 @@ msgstr ""
 "Você selecionou o Modo de Distribuição.\\n\\nClique em OK para iniciar o "
 "processo de Live CD/DVD de Distribuição."
 
-#: remastersys-gui:168
+#: remastersys-gui:148
 msgid ""
 "You have selected Dist CDFS Mode.\\n\\nClick OK to start the Distributable "
 "Live CD/DVD file system build process."
@@ -204,7 +178,7 @@ msgstr ""
 "Você selecionou o Modo CDFS de Distribuição.\\n\\nClique em OK para iniciar "
 "o processo de criação do sistema de arquivos do\\nLive CD/DVD."
 
-#: remastersys-gui:173
+#: remastersys-gui:153
 msgid ""
 "Your Live CD File System is ready in $WORKDIR. You can now add files\\nto "
 "the CD and then run the Dist ISO option when you are done.\\n\\nClick on OK "
@@ -214,13 +188,13 @@ msgstr ""
 "\\npode adicionar arquivos o CD e executar a opção Dist ISO quando terminar."
 "\\n\\nClique em OK para retornar ao menu principal."
 
-#: remastersys-gui:180
+#: remastersys-gui:160
 msgid "You have selected DistISO Mode.\\n\\nClick OK to create the ISO file."
 msgstr ""
 "Você selecionou o Modo ISO de Distribuição.\\n\\nClique em OK para criar o "
 "arquivo ISO."
 
-#: remastersys-gui:187
+#: remastersys-gui:167
 msgid ""
 "The Live CD file system does not exist.\\n\\nClick OK to go back to the main "
 "menu and try the normal Dist mode or the Dist\\nCDFS again."
@@ -228,7 +202,7 @@ msgstr ""
 "O sistema de arquivos do Live CD não existe.\\n\\nClique em OK para voltar "
 "ao menu principal e tente o modo Dist ou o Dist CDFS\\nnovamente."
 
-#: remastersys-gui:194
+#: remastersys-gui:174
 msgid ""
 "This will allow you to choose your own picture to be the background for the "
 "LIVE\\nboot menu. Please note that it MUST be a 640x480 pixel PNG file. You "
@@ -242,25 +216,23 @@ msgstr ""
 "editor gráfico\\nadequado, pois esta ferramenta não tem a capacidade de "
 "alterar o tamanho ou o\\ntipo da imagem.\\n\\nClique em OK para continuar."
 
-#: remastersys-gui:209
+#: remastersys-gui:189
 msgid ""
 "$BOOTPIC has been copied to /etc/remastersys/isolinux/splash.png becoming the"
-"\\ndefault background for the LIVE menu.\\n\\nClick OK to continue."
+"\\ndefault background for the LIVE menu.$Continue"
 msgstr ""
 "$BOOTPIC foi copiada para /etc/remastersys/isolinux/splash.png tornando-se o"
-"\\nplano de fundo padrão para o menu do Live CD.\\n\\nClique em OK para "
-"continuar."
+"\\nplano de fundo padrão para o menu do Live CD.$Continue"
 
-#: remastersys-gui:218
+#: remastersys-gui:198
 msgid ""
 "This will allow you to choose your own PNG picture to be the background for "
-"the\\nGRUB boot loader.\\n\\nClick OK to continue."
+"the\\nGRUB boot loader.$Continue"
 msgstr ""
 "Isso permitirá que você escolha sua própria imagem PNG para ser o plano de "
-"fundo\\ndo carregador de inicialização GRUB.\\n\\nClique em OK para "
-"continuar."
+"fundo\\ndo carregador de inicialização GRUB.$Continue"
 
-#: remastersys-gui:226
+#: remastersys-gui:206
 msgid ""
 "$GRUBPIC has been copied to /etc/remastersys/grub.png and is the default"
 "\\nbackground for grub.\\n\\nClick OK to update grub with the new settings "
@@ -270,15 +242,15 @@ msgstr ""
 "fundo\\npadrão do grub.\\n\\nClique em OK para atualizar o grub com as novas "
 "configurações para que você\\npossa ver sua imagem na próxima inicialização."
 
-#: remastersys-gui:229
+#: remastersys-gui:209
 msgid "Updating grub now.\\n\\nPlease wait."
 msgstr "Atualizando o grub agora.\\n\\nPor favor aguarde."
 
-#: remastersys-gui:245
-msgid "GRUB has been updated.\\n\\nClick OK to continue."
-msgstr "O GRUB foi atualizado.\\n\\nClique em OK para continuar."
+#: remastersys-gui:225
+msgid "GRUB has been updated.$Continue"
+msgstr "O GRUB foi atualizado.$Continue"
 
-#: remastersys-gui:255
+#: remastersys-gui:235
 msgid ""
 "This will put your user desktop and application settings in /etc/skel so they"
 "\\nbecome the default for the live system. This includes desktop background "
@@ -295,105 +267,120 @@ msgstr ""
 "para ser concluído, portanto\\nseja paciente.\\n\\nClique em OK para "
 "preparar a lista."
 
-#: remastersys-gui:274
+#: remastersys-gui:254
 msgid ""
 "Please select a user whose settings \\nyou would like to make the default. "
 msgstr ""
 "Selecione um usuário cujas configurações \\nvocê gostaria que se tornasse as "
 "padrões. "
 
-#: remastersys-gui:296
-msgid ""
-"The user you chose does not have a proper home directory.\\n\\nClick OK to "
-"return to the main menu."
-msgstr ""
-"O usuário escolhido não possui uma pasta home.\\n\\nClique em OK para "
-"retornar ao menu principal."
+#: remastersys-gui:276
+msgid "The user you chose does not have a proper home directory.$Return"
+msgstr "O usuário escolhido não possui uma pasta home.$Return"
 
-#: remastersys-gui:297
+#: remastersys-gui:277
 msgid "Need to be in the user directory. Exiting."
 msgstr "Precisa estar na pasta de usuário. Saindo."
 
-#: remastersys-gui:301
+#: remastersys-gui:281
 msgid ""
 "Copying your $SKELUSER user settings to /etc/skel now.\\n\\nPlease wait."
 msgstr ""
 "Copiando as configurações do usuário $SKELUSER para /etc/skel agora.\\n"
 "\\nPor favor aguarde."
 
-#: remastersys-gui:307
+#: remastersys-gui:287
 msgid ""
 "The settings for $SKELUSER have been copied to /etc/skel. In order to test it"
 "\\nout you need to create a new user and see if your settings have been "
-"applied.\\n\\nClick OK to return to the main menu."
+"applied.$Return"
 msgstr ""
 "As configurações de $SKELUSER foram copiadas para /etc/skel. Para testá-las"
 "\\nvocê precisa criar um usuário e ver se suas configurações foram aplicadas."
-"\\n\\nClique em OK para retornar ao menu principal."
+"$Return"
 
-#: remastersys-gui:310
-msgid "You didn't select any user.\\n\\nClick OK to continue."
-msgstr "Você não selecionou um usuário\\n\\nClique em OK para continuar."
+#: remastersys-gui:290
+msgid "You didn't select any user.$Continue"
+msgstr "Você não selecionou um usuário.$Continue"
 
-#: remastersys-gui:321
+#: remastersys-gui:301
 msgid "Live Username"
 msgstr "Nome do Usuário"
 
-#: remastersys-gui:322
+#: remastersys-gui:302
 msgid "Live System Name"
 msgstr "Nome do Sistema"
 
-#: remastersys-gui:323
+#: remastersys-gui:303
 msgid "Live ISO Filename"
 msgstr "Nome do arquivo ISO"
 
-#: remastersys-gui:324
+#: remastersys-gui:304
 msgid "Live Boot using GRUB or ISOLINUX"
 msgstr "Inicializar o Live CD usando GRUB ou ISOLINUX"
 
-#: remastersys-gui:325
+#: remastersys-gui:305
 msgid "Working Directory for Remastersys"
 msgstr "Pasta de Trabalho do Remastersys"
 
-#: remastersys-gui:326
+#: remastersys-gui:306
 msgid "Options for mksquashfs"
 msgstr "Opções para o mksquashfs"
 
-#: remastersys-gui:327
+#: remastersys-gui:307
 msgid "Show install icon on desktop"
 msgstr "Exibir ícone de instalação na área de trabalho"
 
-#: remastersys-gui:328
+#: remastersys-gui:308
 msgid "Excluded files and folders"
 msgstr "Arquivos e pastas excluídos"
 
-#: remastersys-gui:330
+#: remastersys-gui:310
 msgid "Save"
 msgstr "Salvar"
 
-#: remastersys-gui:331
+#: remastersys-gui:311
 msgid "Back"
 msgstr "Voltar"
 
-#: remastersys-gui:431
+#: remastersys-gui:411
 msgid "Configuration Saved.\\n\\nClick OK to return to the settings menu."
 msgstr ""
 "Configuração salva.\\n\\nClique em OK para retornar ao menu de configurações."
 
-#: remastersys-gui:433
+#: remastersys-gui:413
 msgid "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
 msgstr ""
 "Erro ao salvar configuração.\\n\\nClique em OK para retornar ao menu de "
 "configurações."
 
-#: remastersys-gui:440
-msgid ""
-"This will remove all the files from the temporary directory.\\n\\nClick OK "
-"to proceed."
-msgstr ""
-"Isso irá remover todos os arquivos da pasta temporária.\\n\\nClique em OK "
-"para prosseguir."
+#: remastersys-gui:420
+msgid "This will remove all the files from the temporary directory.$Continue"
+msgstr "Isso irá remover todos os arquivos da pasta temporária.$Continue"
 
-#: remastersys-gui:442
-msgid "Completed.\\n\\nClick OK to return to the main menu."
-msgstr "Completado.\\n\\nClique em OK para retornar ao menu principal."
+#: remastersys-gui:422
+msgid "Completed.$Return"
+msgstr "Completado.$Return"
+
+#~ msgid "Pick"
+#~ msgstr "Opções"
+
+#~ msgid "Info"
+#~ msgstr "Informações"
+
+#~ msgid "Yes"
+#~ msgstr "Sim"
+
+#~ msgid "No"
+#~ msgstr "Não"
+
+#~ msgid "Quit"
+#~ msgstr "Sair"
+
+#~ msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+#~ msgstr ""
+#~ "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo"
+#~ "\\\"."
+
+#~ msgid "Completed.\\n\\nClick OK to return to the main menu."
+#~ msgstr "Completado.\\n\\nClique em OK para retornar ao menu principal."

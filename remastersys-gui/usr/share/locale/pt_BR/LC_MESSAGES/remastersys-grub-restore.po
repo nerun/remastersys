@@ -12,57 +12,19 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: remastersys-grub-restore:17
-msgid "Options"
-msgstr "Opções"
-
-#: remastersys-grub-restore:18
-msgid "Size"
-msgstr "Tam."
-
-#: remastersys-grub-restore:19
-msgid "Info"
-msgstr "Informações"
-
-#: remastersys-grub-restore:20
-msgid "Yes"
-msgstr "Sim"
-
-#: remastersys-grub-restore:21
-msgid "No"
-msgstr "Não"
-
 #: remastersys-grub-restore:22
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: remastersys-grub-restore:23
-msgid "\\n\\nDo you want to continue?"
-msgstr "\\n\\nDeseja prosseguir?"
-
-#: remastersys-grub-restore:36
 msgid "Remastersys Grub Restore"
 msgstr "Remastersys - Retaurador do GRUB"
 
-#: remastersys-grub-restore:40
-msgid "Quiting now."
-msgstr "Saindo agora."
-
-#: remastersys-grub-restore:47
-msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
-msgstr ""
-"ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
-"\"."
-
-#: remastersys-grub-restore:52
+#: remastersys-grub-restore:25
 msgid "This is a GRUB restore utility.$Continue"
 msgstr "Essa é uma ferramenta de restauração do GRUB.$Continue"
 
-#: remastersys-grub-restore:64
+#: remastersys-grub-restore:34
 msgid "The_partition_this_install_is_on"
 msgstr "A_partição_em_que_esta_instalação_está"
 
-#: remastersys-grub-restore:83
+#: remastersys-grub-restore:53
 msgid ""
 "Please select a partition to install or restore grub to.\\n\\nIf you see no "
 "option then no valid partitions were found. If that's the case, first try to "
@@ -74,18 +36,47 @@ msgstr ""
 "esse o caso, primeiro tente montar a partição na qual deseja instalar ou "
 "restaurar o GRUB e depois volte aqui."
 
-#: remastersys-grub-restore:96
+#: remastersys-grub-restore:66
 msgid "Where do you want to install GRUB to?"
 msgstr "Onde você deseja instalar o GRUB?"
 
-#: remastersys-grub-restore:97
+#: remastersys-grub-restore:67
 msgid "root partition ($PartitionRoot)"
 msgstr "partição raiz ($PartitionRoot)"
 
-#: remastersys-grub-restore:98
+#: remastersys-grub-restore:68
 msgid "Master Boot Record (MBR) of $PartitionMBR"
 msgstr "Master Boot Record (MBR) de $PartitionMBR"
 
-#: remastersys-grub-restore:114
+#: remastersys-grub-restore:84
 msgid "GRUB will be restored to:\\n\\n$WHEREGRUBb$Continue"
 msgstr "O GRUB será restaurado em:\\n\\n$WHEREGRUBb$Continue"
+
+#~ msgid "Options"
+#~ msgstr "Opções"
+
+#~ msgid "Size"
+#~ msgstr "Tam."
+
+#~ msgid "Info"
+#~ msgstr "Informações"
+
+#~ msgid "Yes"
+#~ msgstr "Sim"
+
+#~ msgid "No"
+#~ msgstr "Não"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancelar"
+
+#~ msgid "\\n\\nDo you want to continue?"
+#~ msgstr "\\n\\nDeseja prosseguir?"
+
+#~ msgid "Quiting now."
+#~ msgstr "Saindo agora."
+
+#~ msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+#~ msgstr ""
+#~ "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo"
+#~ "\\\"."
