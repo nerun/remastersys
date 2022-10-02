@@ -23,6 +23,7 @@ sudo aptitude install gettext poedit unzip
 The files you will need to use to start a translation have the extension POT, and are located in these directories:
 
 * remastersys/usr/share/locale/pt\_BR/LC\_MESSAGES
+   * libremastersys.pot
    * remastersys-grubconfig.pot
    * remastersys-installer.pot
    * remastersys.pot

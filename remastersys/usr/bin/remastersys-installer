@@ -885,9 +885,12 @@ echo $RUNsetupSWAP
 mkswap /dev/$SWAP
 swapon /dev/$SWAP
 
-if [ "$GUI" != "" ]; then
-    killall -KILL tail
-fi
+function killtail(){
+    if [ "$GUI" != "" ]; then
+        killall -KILL tail
+    fi
+}
+killtail
 
 if [ "$GUI" != "" ]; then
     progressbar $RUNformatTARGET &
@@ -919,9 +922,7 @@ echo $"Using tune2fs to prevent forced checks on boot."
 tune2fs -c 0 -i 0 /dev/$TARGETPART
 rm -rf "/TARGET/lost+found"
 
-if [ "$GUI" != "" ]; then
-    killall -KILL tail
-fi
+killtail
 
 if [ "$HOMEPART" != "root" ]; then
     if [ "$HFSTYPE" != "noformat" ]; then
@@ -962,9 +963,7 @@ TARGETCDROM="/dev/cdrom"
 
 sleep 1
 
-if [ "$GUI" != "" ]; then
-    killall -KILL tail
-fi
+killtail
 
 # "NOCONFIGS=\"user-setup" means it is backup mode
 # "" means it is dist mode
@@ -1023,9 +1022,7 @@ fi
 
 echo $"File copy completed."
 
-if [ "$GUI" != "" ]; then
-    killall -KILL tail
-fi
+killtail
 
 if [ "$GUI" != "" ]; then
     progressbar $RUNpostINSTALL &
@@ -1200,13 +1197,13 @@ dpkg-divert --remove --rename --quiet /usr/lib/update-notifier/apt-check
 dpkg-divert --remove --rename --quiet /usr/sbin/update-initramfs
 dpkg-divert --remove --rename --quiet /usr/sbin/anacron
 update-initramfs -t -c -k $(uname -r)
-for i in `ls -d /home/*`; do
 
-if [ /$i/.config/Thunar/volmanrc ]; then
-  sed -i -e 's/FALSE/TRUE/g' /$i/.config/Thunar/volmanrc
-  cp -f /$i/.config/volmanrc /root/.config/Thunar/volmanrc
-fi
-
+# return Thunar volmanrc back to normal
+for i in $(ls -d /home/*); do
+    if [ -f "$i/.config/Thunar/volmanrc" ]; then
+        sed -i -e 's/FALSE/TRUE/g' $i/.config/Thunar/volmanrc
+        cp -f $i/.config/volmanrc /root/.config/Thunar/volmanrc
+    fi
 done
 FOO
 fi
@@ -1217,9 +1214,7 @@ rm /TARGET/bin/tempinstallerscript
 rm -rf /TARGET/lib/live
 rm -rf /TARGET/etc/live
 
-if [ "$GUI" != "" ]; then
-    killall -KILL tail
-fi
+killtail
 
 # Setup grub
 
@@ -1257,9 +1252,7 @@ sleep 1
 umount /TARGET
 sleep 1
 
-if [ "$GUI" != "" ]; then
-    killall -KILL tail
-fi
+killtail
 
 $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT$"Installation is complete.\n\nIf all went well you should have your new system installed and ready to use.\n\nDo you want to reboot now to test the new system?" $HEIGHT $WIDTH
 

@@ -378,7 +378,7 @@ cdfs(){
         LIVEUSER="`grep '^[^:]*:[^:]*:1000:' /etc/passwd | awk -F ":" '{ print $1 }'`"
 
         #fix Thunar volmanrc for live
-        for i in `ls -d /home/*`; do
+        for i in $(ls -d /home/*); do
             if [ -f "$i/.config/Thunar/volmanrc" ]; then
                 sed -i -e 's/TRUE/FALSE/g' $i/.config/Thunar/volmanrc
                 cp -f $i/.config/volmanrc /root/.config/Thunar/volmanrc
@@ -466,7 +466,7 @@ cdfs(){
 
     if [ "$1" = "backup" ]; then
         #return Thunar volmanrc back to normal
-        for i in `ls -d /home/*`; do
+        for i in $(ls -d /home/*); do
             if [ -f "$i/.config/Thunar/volmanrc" ]; then
                 sed -i -e 's/FALSE/TRUE/g' $i/.config/Thunar/volmanrc
                 cp -f $i/.config/volmanrc /root/.config/Thunar/volmanrc
