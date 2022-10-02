@@ -12,10 +12,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: pt_BR\n"
 
-#: remastersys.so:45
+#: libremastersys.sh:50
 msgid ""
-"$fB$fLightRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\"
-"\".\\n$fEND"
+"$fB$fRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+"\\n$fEND"
 msgstr ""
 "$fB$fLightRed\\nERRO: Esse script deve ser executado como superusuário. "
 "Tente com \\\"sudo\\\".\\n$fEND"

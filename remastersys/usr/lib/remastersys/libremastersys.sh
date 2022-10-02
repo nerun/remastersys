@@ -1,7 +1,7 @@
 # SYSTEM LOCALIZATION
 # Target to file:
-# /usr/share/locale/(language code)/LC_MESSAGES/remastersys.so.mo
-TEXTDOMAIN=remastersys.so
+# /usr/share/locale/(language code)/LC_MESSAGES/libremastersys.sh.mo
+TEXTDOMAIN=libremastersys.sh
 
 # VARIABLES ####################################################################
 

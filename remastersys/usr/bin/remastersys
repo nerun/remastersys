@@ -13,12 +13,11 @@
 TEXTDOMAIN=remastersys
 
 # LIBRARIES
-. /usr/lib/remastersys/remastersys.so
-
-IsRoot # remastersys.so
-
-# load file
+. /usr/lib/remastersys/libremastersys.sh
+. /etc/remastersys/remastersys.version
 . /etc/remastersys.conf
+
+IsRoot # libremastersys.sh
 
 # if remastersys.conf is incorrect or missing, set standards
 if [ "$WORKDIR" = "" ]; then
@@ -62,9 +61,6 @@ elif [ "$SHOWICON" = "true" ]; then
 else
     SHOWICON="0"
 fi
-
-# load file
-. /etc/remastersys/remastersys.version
 
 # Remastersys terminal logo
 remastersyslogo(){
@@ -119,7 +115,7 @@ case $1 in
 
     *)
         echo ""
-        GiveUserHelp # remastersys.so
+        GiveUserHelp # libremastersys.sh
     ;;
 
 esac

@@ -1,0 +1,3 @@
+#: libremastersys.sh:50
+msgid "$fB$fRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\\".\\n$fEND"
+msgstr ""

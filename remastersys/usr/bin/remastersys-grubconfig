@@ -13,12 +13,12 @@
 TEXTDOMAIN=remastersys-grubconfig
 
 # LIBRARIES
-. /usr/lib/remastersys/remastersys.so
+. /usr/lib/remastersys/libremastersys.sh
 
-IsRoot # remastersys.so
+IsRoot # libremastersys.sh
 
 if [ "$1" = "help" -o "$1" = "--help" -o "$1" = "" ]; then
-    GiveUserHelp # remastersys.so
+    GiveUserHelp # libremastersys.sh
 fi
 
 # equal to: /mounted/location

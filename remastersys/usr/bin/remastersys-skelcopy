@@ -13,9 +13,9 @@
 TEXTDOMAIN=remastersys-skelcopy
 
 # LIBRARIES
-. /usr/lib/remastersys/remastersys.so
+. /usr/lib/remastersys/libremastersys.sh
 
-IsRoot # remastersys.so
+IsRoot # libremastersys.sh
 
 backupSkel(){
     if [ ! -d /etc/remastersys/skel-backup ]; then
@@ -25,7 +25,7 @@ backupSkel(){
 }
 
 if [ "$1" = "help" -o "$1" = "--help" -o "$1" = "" ]; then
-    GiveUserHelp # remastersys.so
+    GiveUserHelp # libremastersys.sh
 elif [ "$1" = "clear" ]; then
     # First: make a backup of Debian original files if there is no backup
     backupSkel

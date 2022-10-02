@@ -13,12 +13,12 @@
 TEXTDOMAIN=remastersys-installer
 
 # LIBRARIES
-. /usr/lib/remastersys/remastersys.so
+. /usr/lib/remastersys/libremastersys.sh
 
-IsRoot # remastersys.so
+IsRoot # libremastersys.sh
 
 if [[ "$1" == @("-h"|"-?"|"--help") ]]; then
-    GiveUserHelp # remastersys.so
+    GiveUserHelp # libremastersys.sh
 fi
 
 # set options depending on mode - text or gui

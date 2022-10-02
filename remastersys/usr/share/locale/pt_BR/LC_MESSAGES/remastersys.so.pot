@@ -1,3 +1,0 @@
-#: remastersys.so:45
-msgid "$fB$fLightRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\\".\\n$fEND"
-msgstr ""
