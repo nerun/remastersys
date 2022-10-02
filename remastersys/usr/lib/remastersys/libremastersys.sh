@@ -27,6 +27,9 @@ declare -r fI="\e[3m" # italic
 # ENDING: Reset all attributes
 declare -r fEND="\e[0m"
 
+# IsRoot
+Superuser="ERROR: This script must run as superuser. Try with \"sudo\"."
+
 # FUNCTIONS ####################################################################
 
 # help files
@@ -47,7 +50,7 @@ function GiveUserHelp(){
 # check if running with root privileges
 function IsRoot(){
     if [ $(whoami) != "root" ]; then
-        echo -e $"$fB$fRed\nERROR: This script must run as superuser. Try with \"sudo\".\n$fEND"
+        echo -e $"$fB$fRed\n$Superuser\n$fEND"
     fi
     
     exit 1

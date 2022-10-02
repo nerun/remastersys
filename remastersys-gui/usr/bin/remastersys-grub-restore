@@ -14,44 +14,16 @@
 # /usr/share/locale/(language code)/LC_MESSAGES/remastersys-grub-restore.mo
 TEXTDOMAIN=remastersys-grub-restore
 
-Pick=$"Options"
-Size=$"Size"
-Info=$"Info"
-Yes=$"Yes"
-No=$"No"
-Cancel=$"Cancel"
-Continue=$"\n\nDo you want to continue?"
+# LIBRARIES
+. /usr/lib/remastersys/libremastersysgui.sh
 
-DIALOG_BASE="$(which yad) --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center"
-DIALOGMENU="$DIALOG_BASE --width=500 --height=370"
-DIALOG="$DIALOG_BASE --fixed"
-TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
-TEXT="--text="
-MENU="--list --column=$Pick --column=$Size --column=$Info"
-YESNO="--button=$Yes:0 --button=$No:1"
-MSGBOX="--button=Ok:0"
-CANCELOK="--button=$Cancel:1 $MSGBOX"
+IsRootDialog # libremastersysgui.sh
+
 TITLETEXT=$"Remastersys Grub Restore"
 
-QuitNow(){
-    if [ $? != 0 ]; then
-        $DIALOG_BASE --width=310 $TITLE"$TITLETEXT" $MSGBOX $TEXT$"Quiting now."
-        exit 0
-    fi
-}
-
-# check if running with root privileges
-if [ $(whoami) != "root" ]; then
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
-    exit 1
-fi
-
 # inform them what this is and ask if they want to continue
-$DIALOG_BASE --width=310 $TITLE"$TITLETEXT" $YESNO $TEXT$"This is a GRUB restore utility.$Continue"
-
-if [ $? != 0 ]; then
-    exit 0
-fi
+$DIALOG_1_nf$"This is a GRUB restore utility.$Continue" --width=310 --title="$TITLETEXT"
+QuitNow "$TITLETEXT"
 
 # START ########################################################################
 
@@ -80,8 +52,8 @@ fi
 
 SelectPartition=$"Please select a partition to install or restore grub to.\n\nIf you see no option then no valid partitions were found. If that's the case, first try to mount the partition you want to install or restore GRUB to and then come back here."
 
-TARGETPART=$($DIALOGMENU $TITLE"$TITLETEXT" $CANCELOK $MENU $TEXT"$SelectPartition" $partitions_list)
-QuitNow
+TARGETPART=$($DIALOG_1_nf"$SelectPartition" --width=500 --height=370 --title="$TITLETEXT" $MENU_1 $partitions_list)
+QuitNow "$TITLETEXT"
 
 # equal to: /dev/sda1 or /dev/nvme0n1p5
 PartitionRoot=$(echo $TARGETPART | cut -d"|" -f1)
@@ -97,8 +69,8 @@ rootmbr=$"Master Boot Record (MBR) of $PartitionMBR"
 
 # root|root partition (/dev/sda1)|
 # rootmbr|Master Boot Record (MBR) of /dev/sda|
-WHEREGRUB=$($DIALOG_BASE --width=400 $TITLE"$TITLETEXT" $CANCELOK --list --column=$Pick --column=$Info "rootmbr" "$rootmbr" "root" "$root" $TEXT"$WhereGrub")
-QuitNow
+WHEREGRUB=$($DIALOG_1_nf"$WhereGrub" --width=400 --title="$TITLETEXT" $MENU "rootmbr" "$rootmbr" "root" "$root")
+QuitNow "$TITLETEXT"
 
 # root
 # rootmbr
@@ -111,8 +83,8 @@ WHEREGRUBb=$(echo $WHEREGRUB | cut -d"|" -f2)
 
 proceed=$"GRUB will be restored to:\n\n$WHEREGRUBb$Continue"
 
-$DIALOG_BASE --width=400 $TITLE"$TITLETEXT" $YESNO $TEXT"$proceed"
-QuitNow
+$DIALOG_1_nf"$proceed" --width=400 --title="$TITLETEXT"
+QuitNow "$TITLETEXT"
 
 if [ "$PartitionRoot" = "$MyRoot" ]; then
     PartitionRoot="/"

@@ -12,32 +12,25 @@
 # /usr/share/locale/(language code)/LC_MESSAGES/remastersys-bootable-usb.mo
 TEXTDOMAIN=remastersys-bootable-usb
 
-DIALOG="$(which yad) --center --fixed"
-TITLE="--always-print-result --dialog-sep --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png --title="
+# LIBRARIES
+. /usr/lib/remastersys/libremastersysgui.sh
+
+IsRootDialog # libremastersysgui.sh
+
 TITLETEXT=$"Remastersys Bootable USB"
-TEXT="--text="
-MSGBOX="--button=Ok:0"
-
-ClickOK="Click OK to return to main menu."
-
-# check if running with root privileges
-if [ $(whoami) != "root" ]; then
-    $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"ERROR: This script must run as superuser. Try with \"sudo\"."
-    exit 1
-fi
 
 copymenu() {
     if [ "$1" = "(null)" -o "$1" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You must select a usb key to use. $ClickOK"
+        $DIALOG_2$"You must select a usb key to use.$Return" --title="$TITLETEXT"
         mainmenu
     fi
 
     if [ "$2" = "(null)" -o "$2" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $MSGBOX $TEXT$"You must select a source to use. $ClickOK"
+        $DIALOG_2$"You must select a source to use.$Return" --title="$TITLETEXT"
         mainmenu
     fi
 
-    $DIALOG $TITLE"$TITLETEXT" $TEXT$"This will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue."
+    $DIALOG_1$"This will completely replace the contents of your usb drive\nwith the Bootable Live System.\n\nYou will not be able to undo this operation once it starts.\n\nClick OK to continue." --title="$TITLETEXT"
 
     if [ $? != 0 ]; then
         mainmenu
@@ -65,12 +58,12 @@ copymenu() {
         echo $PROGPERCENT
         echo "#$PROGPERCENT %"
 
-    done | $DIALOG $TITLE"$TITLETEXT" $TEXT$"Copying to USB Key Now.\n\nPlease Wait." --no-buttons --progress --auto-close --auto-kill
+    done | $DIALOG_1$"Copying to USB Key Now.\n\nPlease Wait." --title="$TITLETEXT" --no-buttons --progress --auto-close --auto-kill
 
     rm -f /tmp/remusbprog
     sync
 
-    $DIALOG $TITLE"$TITLETEXT" $TEXT$"Copy to USB key completed.\n\n$ClickOK"
+    $DIALOG_1$"Copy to USB key completed.$Return" --title="$TITLETEXT"
     if [ "$?" = "0" ]; then
         mainmenu
     else
@@ -92,7 +85,7 @@ mainmenu() {
     fi
     
     if [ "$DEVS" = "" -o "$USBDRIVES" = "" ]; then
-        $DIALOG $TITLE"$TITLETEXT" $TEXT$"No USB Keys found.\n\nPlease insert a USB Key and then\nclick OK to return to main menu\nor Cancel to quit."
+        $DIALOG_1$"No USB Keys found.\n\nPlease insert a USB Key and then\nclick OK to return to main menu\nor Cancel to quit." --title="$TITLETEXT"
 
         if [ "$?" = "0" ]; then
             mainmenu
@@ -103,13 +96,10 @@ mainmenu() {
 
     ChooseUSB=$"Choose a USB Key"
     ChooseSource=$"Choose a Source Image"
-    Quit=$"Quit"
-    CopyToUSB=$"Copy to USB Key"
 
-    CHOICES=$($DIALOG $TITLE"$TITLETEXT" --form --field="$ChooseUSB":CB ${USBDRIVES#?} --field="$ChooseSource":FL --button="$Quit":2 --button="$CopyToUSB":1)
-    retval="$?"
+    CHOICES=$($DIALOG_0 --title="$TITLETEXT" --form --field="$ChooseUSB":CB ${USBDRIVES#?} --field="$ChooseSource":FL)
 
-    if [ "$retval" = "1" ]; then
+    if [ "$?" = "0" ]; then
         USBDRIVE=$(echo $CHOICES | cut -d "|" -f 1 | cut -d "-" -f 1)
         PICKSOURCE=$(echo $CHOICES | cut -d "|" -f 2)
         copymenu $USBDRIVE $PICKSOURCE
