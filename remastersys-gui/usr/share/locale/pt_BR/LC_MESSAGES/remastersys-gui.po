@@ -358,14 +358,3 @@ msgstr "Isso irá remover todos os arquivos da pasta temporária.$Continue"
 #: remastersys-gui:422
 msgid "Completed.$Return"
 msgstr "Completado.$Return"
-
-#~ msgid "Configuration Saved.\\n\\nClick OK to return to the settings menu."
-#~ msgstr ""
-#~ "Configuração salva.\\n\\nClique em OK para retornar ao menu de "
-#~ "configurações."
-
-#~ msgid ""
-#~ "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
-#~ msgstr ""
-#~ "Erro ao salvar configuração.\\n\\nClique em OK para retornar ao menu de "
-#~ "configurações."
