@@ -528,13 +528,12 @@ else
 
 # GUI MODE START ###############################################################
 
-#inform them what this is and ask if they want to continue
-
     if [ "$testyad" = "" ]; then
         xmessage $"Yad not found. You can still use the installer in text-mode by typing \"sudo remastersys-installer\" in a terminal."
         exit 1
     fi
-
+    
+    #inform them what this is and ask if they want to continue
     $DIALOG $TITLE"$TITLETEXT" $YESNO $TEXT"$ThisIsTheInstaller"
 
     if [ $? != 0 ]; then
@@ -861,13 +860,9 @@ else
 fi
 ################################################################# GUI MODE END #
 
-#
-#
-#
-# INSTALL TO HD SECTION
-#
-#
-#
+########################
+# INSTALL TO HARD DISK #
+########################
 
 UmountingFormatingTARGETPART=$"Unmounting and formatting the partition we are going to use."
 MountingTARGET=$"Mounting the TARGET partition now."

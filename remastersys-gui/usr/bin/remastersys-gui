@@ -131,7 +131,7 @@ SquashfsSizeCheckup(){
 
 # Common procedure to backupmenu(), distmenu() e distisomenu().
 FilesReady(){
-    $DIALOG_2$"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR. It\nis recommended to test it in a virtual machine or on a rewritable CD/DVD to\nensure it works as desired.\n\nClick on OK to return to the main menu." --title="$TITLETEXT"
+    $DIALOG_2$"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in\n$WORKDIR. It is recommended to test it in a virtual machine or on a\nrewritable CD/DVD to ensure it works as desired.\n\nClick on OK to return to the main menu." --title="$TITLETEXT"
     mainmenu
 }
 

@@ -11,11 +11,10 @@
 * needed tests:
    * remastersys-skelcopy: need to know if the user's personal settings are actually being used.
 * remastersys unified help:
-   * help files were unified for remastersys package (/etc/remastersys/remastersys-help-\<locale code\>.txt)
    * need to add aliases for all the scripts, remastersys script will be the main one, aliases will call the others
    * need to revise unified help to certify that aliases are actually listed correctly
 * remastersys-gui unified help
-   * not started
+   * _not started_
 * manpages:
    * add remastersys-grubconfig, -installer and -skelcopy
    * create manpages to remastersys-gui, -grub-restore and -bootable-usb

@@ -89,7 +89,7 @@ msgstr ""
 msgid "The compressed file system is larger than the ISO 9660 specification allows for\\na single file.\\n\\nYou must try to reduce the amount of data you are backing up and try again."
 msgstr ""
 #: remastersys-gui:134
-msgid "Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in $WORKDIR. It\\nis recommended to test it in a virtual machine or on a rewritable CD/DVD to\\nensure it works as desired.\\n\\nClick on OK to return to the main menu."
+msgid "Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in\\n$WORKDIR. It is recommended to test it in a virtual machine or on a\\nrewritable CD/DVD to ensure it works as desired.\\n\\nClick on OK to return to the main menu."
 msgstr ""
 #: remastersys-gui:139
 msgid "You have selected Backup Mode.\\n\\nDo not interrupt this process.\\n\\nClick OK to start the Backup Live CD/DVD process."
