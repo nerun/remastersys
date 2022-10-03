@@ -166,99 +166,23 @@ msgstr ""
 "\\nÉ recomendável executar \\\"sudo remastersys clean\\\" uma vez que você "
 "tenha gravado e testado a imagem $CUSTOMISO.\\n"
 
-#~ msgid ""
-#~ "Remastersys allows you to remaster your system, creating a backup image "
-#~ "or a new\\ndistribution that can be burned and run as a Live CD/DVD."
-#~ msgstr ""
-#~ "Remastersys permite remasterizar o seu sistema, criando uma imagem de "
-#~ "backup\\nou uma nova distribuição que pode ser gravada e rodada em um "
-#~ "Live CD/DVD."
 
-#~ msgid "USAGE:"
-#~ msgstr "USO:"
 
-#~ msgid "   remastersys [MODE] [OPTION] [FILE]"
-#~ msgstr "   remastersys [MODO] [OPÇÃO] [ARQUIVO]"
 
-#~ msgid "      (must run as superuser)"
-#~ msgstr "      (deve ser executado como superusuário)"
 
-#~ msgid "MODES:"
-#~ msgstr "MODOS:"
 
-#~ msgid "   backup - creates a backup of your system in a Live CD/DVD"
-#~ msgstr "   backup - cria um backup de seu sistema em um Live CD/DVD"
 
-#~ msgid "   clean  - cleans the temporary files created by remastersys"
-#~ msgstr "   clean  - limpa os arquivos temporários criados pelo remastersys"
 
-#~ msgid "   dist   - creates a distribution of your system in a Live CD/DVD"
-#~ msgstr "   dist   - cria uma distribuição do seu sistema em um Live CD/DVD"
 
-#~ msgid "OPTIONS:"
-#~ msgstr "OPÇÕES:"
 
-#~ msgid "   cdfs   - creates the CD file system only"
-#~ msgstr "   cdfs   - cria somente o sistema de arquivos do CD"
 
-#~ msgid ""
-#~ "   iso    - creates an ISO image as long as the file system has already "
-#~ "been\\n\\t    created"
-#~ msgstr ""
-#~ "   iso    - cria uma imagem ISO desde que o sistema de arquivos já tenha"
-#~ "\\n\\t    sido criado"
 
-#~ msgid "FILE:"
-#~ msgstr "ARQUIVO:"
 
-#~ msgid ""
-#~ "   Optional. It is the name of the ISO image file to be created. It must "
-#~ "end\\n   with the \\\".iso\\\" extension. If this parameter is not "
-#~ "provided, the ISO will be\\n   saved with the name \\\"remastersys-livecd."
-#~ "iso\\\"."
-#~ msgstr ""
-#~ "   Opcional. É o nome do arquivo da imagem ISO a ser criada. Deve "
-#~ "terminar com\\n   a extensão \\\".iso\\\". Caso esse parâmetro não seja "
-#~ "fornecido, a ISO será salva\\n   com o nome \\\"remastersys-livecd.iso\\"
-#~ "\"."
 
-#~ msgid "EXAMPLES:"
-#~ msgstr "EXEMPLOS:"
 
-#~ msgid "     (creates a Live CD/DVD containing a backup of your system)"
-#~ msgstr "     (cria um Live CD/DVD contendo um backup do seu sistema)"
 
-#~ msgid ""
-#~ "     (creates a Live CD/DVD backup, and names the ISO as \\\"custom.iso\\"
-#~ "\")"
-#~ msgstr ""
-#~ "     (cria um backup em Live CD/DVD, e nomeia o arquivo ISO como \\"
-#~ "\"custom.iso\\\")"
 
-#~ msgid "     (deletes the working folder \\\"/home/remastersys\\\")"
-#~ msgstr "     (apaga a pasta de trabalho \\\"/home/remastersys\\\")"
 
-#~ msgid ""
-#~ "     (creates a Live CD/DVD containing a distribution of your system)"
-#~ msgstr "     (cria um Live CD/DVD contendo uma distribuição do seu sistema)"
 
-#~ msgid ""
-#~ "     (creates only the file system of yours Live CD/DVD distribution)"
-#~ msgstr ""
-#~ "     (cria somente o sistema de arquivos da sua distribuição Live CD/DVD)"
 
-#~ msgid ""
-#~ "     (creates an ISO of the distribution with the name custom.iso, as long"
-#~ "\\n     as the file system has already been created)"
-#~ msgstr ""
-#~ "     (cria uma ISO da distribuição com o nome \\\"custom.iso\\\", desde "
-#~ "que\\n     o sistema de arquivos já tenha sido criado)"
 
-#~ msgid ""
-#~ "   The CDFS and ISO options should only be used if you want to modify "
-#~ "something\\n   on the CD before creating the ISO. An example would be "
-#~ "modifying the isolinux\\n   portion of Live CD/DVD."
-#~ msgstr ""
-#~ "   As opções CDFS e ISO só devem ser usadas se você desejar modificar "
-#~ "alguma\\n   coisa no CD antes de criar a ISO. Um exemplo seria modificar "
-#~ "a seção isolinux\\n   do Live CD/DVD."

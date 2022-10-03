@@ -401,31 +401,9 @@ msgstr ""
 "instalado e pronto para uso.\\n\\nVocê quer reiniciar agora para testar o "
 "novo sistema?"
 
-#~ msgid "USAGE:"
-#~ msgstr "USO:"
 
-#~ msgid "   remastersys-installer [OPTIONS]"
-#~ msgstr "   remastersys-installer [OPÇÕES]"
 
-#~ msgid "      (must run as superuser)"
-#~ msgstr "      (deve ser executado como superusuário)"
 
-#~ msgid "OPTIONS:"
-#~ msgstr "OPÇÕES:"
 
-#~ msgid ""
-#~ "   -g, --gui      - runs installer with a Graphical User Interface (GUI) "
-#~ "using\\n\\t\\t    \\\"yad\\\"."
-#~ msgstr ""
-#~ "   -g, --gui      - executa o instalador com uma Interface Gráfica de\\n"
-#~ "\\t\\t    Usuário (GUI) através do \\\"yad\\\"."
 
-#~ msgid "   -h, -?, --help - shows this help."
-#~ msgstr "   -h, -?, --help - exibe esta ajuda."
 
-#~ msgid ""
-#~ "\\t\\t  - if no option is provided installer will run in a terminal, but"
-#~ "\\n\\t\\t    using \\\"dialog\\\" instead."
-#~ msgstr ""
-#~ "\\t\\t  - se nenhuma opção for fornecida o instalador será executado\\n\\t"
-#~ "\\t    em um terminal, mas através do \\\"dialog\\\"."

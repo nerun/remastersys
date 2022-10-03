@@ -30,18 +30,6 @@ msgstr "Copiando arquivos de configuração para /etc/skel."
 msgid "$1 either not found or doesn't have a proper home folder. Exiting."
 msgstr "$1 não foi encontrado ou não possui uma pasta home. Saindo."
 
-#~ msgid "USAGE:"
-#~ msgstr "USO:"
 
-#~ msgid "   remastersys-skelcopy [username|clear]"
-#~ msgstr "   remastersys-skelcopy [usuario|clear]"
 
-#~ msgid ""
-#~ "      username   - is a valid user on the system. Copies \\\"username\\\" "
-#~ "personal\\n                   settings to the /etc/skel folder."
-#~ msgstr ""
-#~ "      usuario    - é um usuário válido no sistema. Copia as configurações"
-#~ "\\n                   pessoais do \\\"usuario\\\" para a pasta /etc/skel."
 
-#~ msgid "      clear      - deletes all contents of /etc/skel."
-#~ msgstr "      clear      - apaga todo o conteúdo de /etc/skel."
