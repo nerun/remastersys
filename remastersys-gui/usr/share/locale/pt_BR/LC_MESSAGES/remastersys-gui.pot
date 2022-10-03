@@ -59,7 +59,7 @@ msgstr ""
 msgid "The remastersys.log file does not exist."
 msgstr ""
 #: remastersys-gui:99
-msgid "Remastersys version $VERSION.\\n\\nThis is a graphical user interface created in YAD for Remastersys: a\\ncommand-line tool that turns an installed Debian system into a distribution on\\nLive CD or DVD. It can also be used as a full backup tool that includes /home\\nfolder and all users data.\\n\\nMaintained by Daniel 'Nerun' Rodrigues.\\n\\nFork of Tony Brijeski's Remastersys (discontinued).\\n\\nVisit <a href=\\\"https://github.com/nerun/remastersys\\\">https://github.com/nerun/remastersys</a> for more information."
+msgid "Remastersys version $VERSION.\\n\\nThis is a graphical user interface created in YAD for Remastersys: a command\\nline tool that turns an installed Debian system into a distribution on Live CD\\nor DVD. It can also be used as a full backup tool that includes /home folder and\\nall users data.\\n\\nMaintained by Daniel 'Nerun' Rodrigues.\\n\\nFork of Tony Brijeski's Remastersys (discontinued).\\n\\nVisit <a href=\\\"https://github.com/nerun/remastersys\\\">https://github.com/nerun/remastersys</a> for more information."
 msgstr ""
 #: remastersys-gui:118
 msgid "The compressed file system is larger than the ISO 9660 specification allows for\\na single file.\\n\\nYou must try to reduce the amount of data you are backing up and try again."
