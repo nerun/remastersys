@@ -97,10 +97,10 @@ mainmenu() {
 
     elif [ "$CHOICE" = "$About" ]; then
         $DIALOG_2$"Remastersys version $VERSION.\n\n\
-This is a graphical user interface created in YAD for Remastersys: a\n\
-command-line tool that turns an installed Debian system into a distribution on\n\
-Live CD or DVD. It can also be used as a full backup tool that includes /home\n\
-folder and all users data.\n\n\
+This is a graphical user interface created in YAD for Remastersys: a command\n\
+line tool that turns an installed Debian system into a distribution on Live CD\n\
+or DVD. It can also be used as a full backup tool that includes /home folder and\n\
+all users data.\n\n\
 Maintained by Daniel 'Nerun' Rodrigues.\n\n\
 Fork of Tony Brijeski's Remastersys (discontinued).\n\n\
 Visit <a href=\"https://github.com/nerun/remastersys\">https://github.com/nerun/remastersys</a> for more information." --title="$TITLETEXT"

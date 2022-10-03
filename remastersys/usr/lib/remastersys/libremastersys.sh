@@ -53,8 +53,7 @@ function GiveUserHelp(){
 function IsRoot(){
     if [ $(whoami) != "root" ]; then
         echo -e $"$fB$fRed\n$Superuser\n$fEND"
+        exit 1
     fi
-    
-    exit 1
 }
 
