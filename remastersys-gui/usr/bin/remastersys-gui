@@ -408,9 +408,9 @@ SHOWICON="$SHOWICON"
 FOO
 
     if [ "$?" = "0" ]; then
-        $DIALOG_2$"Configuration Saved.\n\nClick OK to return to the settings menu." --title="$TITLETEXT"
+        $DIALOG_2$"Configuration Saved.$Return" --title="$TITLETEXT"
     else
-        $DIALOG_2$"Configuration Save Error.\n\nClick OK to return to the settings menu." --title="$TITLETEXT"
+        $DIALOG_2$"Configuration Save Error.$Return" --title="$TITLETEXT"
     fi
 
     modifymenu

@@ -51,32 +51,3 @@ msgstr "Master Boot Record (MBR) de $PartitionMBR"
 #: remastersys-grub-restore:84
 msgid "GRUB will be restored to:\\n\\n$WHEREGRUBb$Continue"
 msgstr "O GRUB será restaurado em:\\n\\n$WHEREGRUBb$Continue"
-
-#~ msgid "Options"
-#~ msgstr "Opções"
-
-#~ msgid "Size"
-#~ msgstr "Tam."
-
-#~ msgid "Info"
-#~ msgstr "Informações"
-
-#~ msgid "Yes"
-#~ msgstr "Sim"
-
-#~ msgid "No"
-#~ msgstr "Não"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
-
-#~ msgid "\\n\\nDo you want to continue?"
-#~ msgstr "\\n\\nDeseja prosseguir?"
-
-#~ msgid "Quiting now."
-#~ msgstr "Saindo agora."
-
-#~ msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
-#~ msgstr ""
-#~ "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo"
-#~ "\\\"."

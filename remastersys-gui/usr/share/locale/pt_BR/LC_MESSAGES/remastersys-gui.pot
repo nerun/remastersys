@@ -155,10 +155,10 @@ msgstr ""
 msgid "Back"
 msgstr ""
 #: remastersys-gui:411
-msgid "Configuration Saved.\\n\\nClick OK to return to the settings menu."
+msgid "Configuration Saved.$Return"
 msgstr ""
 #: remastersys-gui:413
-msgid "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
+msgid "Configuration Save Error.$Return"
 msgstr ""
 #: remastersys-gui:420
 msgid "This will remove all the files from the temporary directory.$Continue"

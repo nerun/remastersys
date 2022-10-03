@@ -17,5 +17,5 @@ msgstr ""
 msgid "\\n\\nClick OK to continue."
 msgstr ""
 #: libremastersysgui.sh:13
-msgid "\\n\\nClick OK to return to main menu."
+msgid "\\n\\nClick OK to return to previous menu."
 msgstr ""

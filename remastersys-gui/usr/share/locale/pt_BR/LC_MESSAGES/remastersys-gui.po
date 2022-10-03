@@ -344,15 +344,12 @@ msgid "Back"
 msgstr "Voltar"
 
 #: remastersys-gui:411
-msgid "Configuration Saved.\\n\\nClick OK to return to the settings menu."
-msgstr ""
-"Configuração salva.\\n\\nClique em OK para retornar ao menu de configurações."
+msgid "Configuration Saved.$Return"
+msgstr "Configuração salva.$Return"
 
 #: remastersys-gui:413
-msgid "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
-msgstr ""
-"Erro ao salvar configuração.\\n\\nClique em OK para retornar ao menu de "
-"configurações."
+msgid "Configuration Save Error.$Return"
+msgstr "Erro ao salvar configuração.$Return"
 
 #: remastersys-gui:420
 msgid "This will remove all the files from the temporary directory.$Continue"
@@ -362,25 +359,13 @@ msgstr "Isso irá remover todos os arquivos da pasta temporária.$Continue"
 msgid "Completed.$Return"
 msgstr "Completado.$Return"
 
-#~ msgid "Pick"
-#~ msgstr "Opções"
-
-#~ msgid "Info"
-#~ msgstr "Informações"
-
-#~ msgid "Yes"
-#~ msgstr "Sim"
-
-#~ msgid "No"
-#~ msgstr "Não"
-
-#~ msgid "Quit"
-#~ msgstr "Sair"
-
-#~ msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+#~ msgid "Configuration Saved.\\n\\nClick OK to return to the settings menu."
 #~ msgstr ""
-#~ "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo"
-#~ "\\\"."
+#~ "Configuração salva.\\n\\nClique em OK para retornar ao menu de "
+#~ "configurações."
 
-#~ msgid "Completed.\\n\\nClick OK to return to the main menu."
-#~ msgstr "Completado.\\n\\nClique em OK para retornar ao menu principal."
+#~ msgid ""
+#~ "Configuration Save Error.\\n\\nClick OK to return to the settings menu."
+#~ msgstr ""
+#~ "Erro ao salvar configuração.\\n\\nClique em OK para retornar ao menu de "
+#~ "configurações."

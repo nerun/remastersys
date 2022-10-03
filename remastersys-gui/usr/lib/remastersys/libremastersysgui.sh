@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# SYSTEM LOCALIZATION
+# Target to file:
+# /usr/share/locale/(language code)/LC_MESSAGES/libremastersysgui.sh.mo
+TEXTDOMAIN=libremastersysgui.sh
+
 # LIBRARIES
 # loads $Superuser
 . /usr/lib/remastersys/libremastersys.sh
@@ -10,7 +15,7 @@ declare -r Info=$"Info"
 declare -r Cancel=$"Cancel"
 declare -r Quit=$"Quiting now."
 declare -r Continue=$"\n\nClick OK to continue."
-declare -r Return=$"\n\nClick OK to return to main menu."
+declare -r Return=$"\n\nClick OK to return to previous menu."
 
 # NOTE: attribute --fixed do not allows to use --width or --height
 declare -r DIALOG="$(which yad) --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png"

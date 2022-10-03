@@ -57,14 +57,3 @@ msgstr "Escolha uma Unidade USB"
 #: remastersys-bootable-usb:98
 msgid "Choose a Source Image"
 msgstr "Escolha uma Imagem"
-
-#~ msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
-#~ msgstr ""
-#~ "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo"
-#~ "\\\"."
-
-#~ msgid "Quit"
-#~ msgstr "Sair"
-
-#~ msgid "Copy to USB Key"
-#~ msgstr "Copiar para Unidade USB"

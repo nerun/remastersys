@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # SYSTEM LOCALIZATION
 # Target to file:
 # /usr/share/locale/(language code)/LC_MESSAGES/libremastersys.sh.mo
