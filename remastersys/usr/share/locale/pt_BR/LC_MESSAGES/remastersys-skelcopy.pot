@@ -1,24 +1,12 @@
-#: remastersys-skelcopy:20
-msgid "USAGE:"
+#: remastersys-skelcopy:15
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
-#: remastersys-skelcopy:22
-msgid "   remastersys-skelcopy [username|clear]"
-msgstr ""
-#: remastersys-skelcopy:24
-msgid "      username   - is a valid user on the system. Copies \\\"username\\\" personal\\n                   settings to the /etc/skel folder."
-msgstr ""
-#: remastersys-skelcopy:25
-msgid "      clear      - deletes all contents of /etc/skel."
-msgstr ""
-#: remastersys-skelcopy:32
-msgid "$fB$fLightRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\\".\\n$fEND"
-msgstr ""
-#: remastersys-skelcopy:67
+#: remastersys-skelcopy:53
 msgid "Cleaning up /etc/skel of the files we will copy over."
 msgstr ""
-#: remastersys-skelcopy:88
+#: remastersys-skelcopy:74
 msgid "Copying config files to /etc/skel."
 msgstr ""
-#: remastersys-skelcopy:133
+#: remastersys-skelcopy:119
 msgid "$1 either not found or doesn't have a proper home folder. Exiting."
 msgstr ""

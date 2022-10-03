@@ -12,6 +12,15 @@
 # /usr/share/locale/(language code)/LC_MESSAGES/remastersys-gui.mo
 TEXTDOMAIN=remastersys-gui
 
+declare -r Pick=$"Options"
+declare -r Size=$"Size"
+declare -r Info=$"Info"
+declare -r Cancel=$"Cancel"
+declare -r Quit=$"Quiting now."
+declare -r Continue=$"\n\nClick OK to continue."
+declare -r Return=$"\n\nClick OK to return to previous menu."
+declare -r Superuser="ERROR: This script must run as superuser. Try with \"sudo\"."
+
 # LIBRARIES
 . /usr/lib/remastersys/libremastersysgui.sh
 . /etc/remastersys/remastersys.version
@@ -88,7 +97,7 @@ mainmenu() {
         modifymenu
     elif [ "$CHOICE" = "Log" ]; then
         if [ -f "$WORKDIR/remastersys.log" ]; then
-            $DIALOG_0 --title="$TITLETEXT" --text-info --filename="$WORKDIR/remastersys.log"
+            $DIALOG --width=600 --height=480 --title="$TITLETEXT" --text-info --filename="$WORKDIR/remastersys.log"
         else
             $DIALOG_2$"The remastersys.log file does not exist." --title="$TITLETEXT"
         fi
@@ -177,7 +186,7 @@ this picture or resize it with a proper graphics editor as this tool does not\n\
 have the ability to change the size or type of picture.\n\n\
 Click OK to continue." --title="$TITLETEXT"
 
-    BOOTPIC=$($DIALOG_0 --title="$TITLETEXT" --file)
+    BOOTPIC=$($DIALOG_0 --width=600 --height=480 --title="$TITLETEXT" --file)
     
     # BOOTPIC extension
     BOOTPICext="${BOOTPIC: -4}"
@@ -197,7 +206,7 @@ Click OK to continue." --title="$TITLETEXT"
 distgrubmenu() {
     $DIALOG_2$"This will allow you to choose your own PNG picture to be the background for the\nGRUB boot loader.$Continue" --title="$TITLETEXT"
 
-    GRUBPIC=$($DIALOG_0 --title="$TITLETEXT" --file)
+    GRUBPIC=$($DIALOG_0 --width=600 --height=480 --title="$TITLETEXT" --file)
     
     # GRUBPIC extension
     GRUBPICext="${GRUBPIC: -4}"

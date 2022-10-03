@@ -12,80 +12,30 @@ msgstr ""
 "X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: remastersys-grubconfig:20
-msgid "USAGE:"
-msgstr "USO:"
-
-#: remastersys-grubconfig:22
-msgid "   remastersys-grubconfig [location] [root|rootmbr]"
-msgstr "   remastersys-grubconfig [/local] [root|rootmbr]"
-
-#: remastersys-grubconfig:23
-msgid "      (must run as superuser)"
-msgstr "      (deve ser executado como superusuário)"
-
-#: remastersys-grubconfig:25
-msgid ""
-"   location          - Either the full path of a device or a mounting point."
-"\\n                       Partition must have been mounted previously. "
-"Example:\\n                       if /dev/sda1 is mounted on /mnt, you can "
-"specify location\\n                       as /mnt or /dev/sda1, both with "
-"the same result."
+#: remastersys-grubconfig:15
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
-"   local             - O caminho completo de um dispositivo ou um ponto de"
-"\\n                       montagem. A partição deve ter sido montada "
-"anteriormente.\\n                       Exemplo: se /dev/sda1 estiver "
-"montado em /mnt, você pode\\n                       especificar o local "
-"como /mnt ou /dev/sda1, ambos com o\\n                       mesmo resultado."
+"ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
+"\"."
 
-#: remastersys-grubconfig:27
-msgid "   root              - Install GRUB to root partition."
-msgstr "   root              - Instala o GRUB na partição raiz."
-
-#: remastersys-grubconfig:28
-msgid "   rootmbr           - Install to MBR. Default when option is omitted."
-msgstr ""
-"   rootmbr           - Instala na MBR. É o padrão quando essa opção é "
-"omitida."
-
-#: remastersys-grubconfig:30
-msgid "EXAMPLES:"
-msgstr "EXEMPLOS:"
-
-#: remastersys-grubconfig:33
-msgid "      (install to root partition of the current install)"
-msgstr "      (instala na partição raiz da instalação atual)"
-
-#: remastersys-grubconfig:37
-msgid "      (both install to MBR on /dev/sda1 mounted on /mnt)"
-msgstr "      (ambos instalam na MBR de /dev/sda1, que está montada em /mnt)"
-
-#: remastersys-grubconfig:44
-msgid ""
-"$fB$fLightRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\"
-"\".\\n$fEND"
-msgstr ""
-"$fB$fLightRed\\nERRO: Este script deve ser executado como superusuário. "
-"Tente com \\\"sudo\\\".\\n$fEND"
-
-#: remastersys-grubconfig:75
+#: remastersys-grubconfig:53
 msgid ""
 "$fB$fLightRed\\nERROR: You cannot install or reinstall GRUB on a Live CD."
 "$fEND"
 msgstr ""
 "$fB$fLightRed\\nERRO: Você não pode (re)instalar o GRUB em um Live CD.$fEND"
 
-#: remastersys-grubconfig:78
+#: remastersys-grubconfig:56
 msgid "$fB$fLightRed\\nERROR: $ROOTMOUNT is not mounted anywhere.$fEND"
 msgstr "$fB$fLightRed\\nERRO: $ROOTMOUNT não está montada em lugar algum.$fEND"
 
-#: remastersys-grubconfig:80
+#: remastersys-grubconfig:58
 msgid ""
 "$fB$fLightRed\\nERROR: There is no partition mounted on $ROOTMOUNT.$fEND"
 msgstr ""
 "$fB$fLightRed\\nERRO: Não há qualquer partição montada em $ROOTMOUNT.$fEND"
 
-#: remastersys-grubconfig:84
+#: remastersys-grubconfig:62
 msgid ""
 "$fB$fLightRed\\nTIP: You must first mount the partition on which you want to "
 "install GRUB. For\\nexample, try \\\"sudo mount /dev/sda1 /mnt\\\", then run "
@@ -99,6 +49,48 @@ msgstr ""
 "\\\" ou \\\"sudo remastersys-grubconfig /dev/\\nsda1\\\", ambos terão o "
 "mesmo resultado.\\n\\nSaindo agora.\\n$fEND"
 
-#: remastersys-grubconfig:100
+#: remastersys-grubconfig:78
 msgid "Restoring GRUB to $GRUBLOC."
 msgstr "Restaurando o GRUB em $GRUBLOC."
+
+#~ msgid "USAGE:"
+#~ msgstr "USO:"
+
+#~ msgid "   remastersys-grubconfig [location] [root|rootmbr]"
+#~ msgstr "   remastersys-grubconfig [/local] [root|rootmbr]"
+
+#~ msgid "      (must run as superuser)"
+#~ msgstr "      (deve ser executado como superusuário)"
+
+#~ msgid ""
+#~ "   location          - Either the full path of a device or a mounting "
+#~ "point.\\n                       Partition must have been mounted "
+#~ "previously. Example:\\n                       if /dev/sda1 is mounted on /"
+#~ "mnt, you can specify location\\n                       as /mnt or /dev/"
+#~ "sda1, both with the same result."
+#~ msgstr ""
+#~ "   local             - O caminho completo de um dispositivo ou um ponto de"
+#~ "\\n                       montagem. A partição deve ter sido montada "
+#~ "anteriormente.\\n                       Exemplo: se /dev/sda1 estiver "
+#~ "montado em /mnt, você pode\\n                       especificar o local "
+#~ "como /mnt ou /dev/sda1, ambos com o\\n                       mesmo "
+#~ "resultado."
+
+#~ msgid "   root              - Install GRUB to root partition."
+#~ msgstr "   root              - Instala o GRUB na partição raiz."
+
+#~ msgid ""
+#~ "   rootmbr           - Install to MBR. Default when option is omitted."
+#~ msgstr ""
+#~ "   rootmbr           - Instala na MBR. É o padrão quando essa opção é "
+#~ "omitida."
+
+#~ msgid "EXAMPLES:"
+#~ msgstr "EXEMPLOS:"
+
+#~ msgid "      (install to root partition of the current install)"
+#~ msgstr "      (instala na partição raiz da instalação atual)"
+
+#~ msgid "      (both install to MBR on /dev/sda1 mounted on /mnt)"
+#~ msgstr ""
+#~ "      (ambos instalam na MBR de /dev/sda1, que está montada em /mnt)"

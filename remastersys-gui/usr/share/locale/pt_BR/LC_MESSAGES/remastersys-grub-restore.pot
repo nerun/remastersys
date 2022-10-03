@@ -1,24 +1,45 @@
+#: remastersys-grub-restore:17
+msgid "Options"
+msgstr ""
+#: remastersys-grub-restore:18
+msgid "Size"
+msgstr ""
+#: remastersys-grub-restore:19
+msgid "Info"
+msgstr ""
+#: remastersys-grub-restore:20
+msgid "Cancel"
+msgstr ""
+#: remastersys-grub-restore:21
+msgid "Quiting now."
+msgstr ""
 #: remastersys-grub-restore:22
+msgid "\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-grub-restore:23
+msgid "\\n\\nClick OK to return to previous menu."
+msgstr ""
+#: remastersys-grub-restore:31
 msgid "Remastersys Grub Restore"
 msgstr ""
-#: remastersys-grub-restore:25
+#: remastersys-grub-restore:34
 msgid "This is a GRUB restore utility.$Continue"
 msgstr ""
-#: remastersys-grub-restore:34
+#: remastersys-grub-restore:43
 msgid "The_partition_this_install_is_on"
 msgstr ""
-#: remastersys-grub-restore:53
+#: remastersys-grub-restore:62
 msgid "Please select a partition to install or restore grub to.\\n\\nIf you see no option then no valid partitions were found. If that's the case, first try to mount the partition you want to install or restore GRUB to and then come back here."
 msgstr ""
-#: remastersys-grub-restore:66
+#: remastersys-grub-restore:75
 msgid "Where do you want to install GRUB to?"
 msgstr ""
-#: remastersys-grub-restore:67
+#: remastersys-grub-restore:76
 msgid "root partition ($PartitionRoot)"
 msgstr ""
-#: remastersys-grub-restore:68
+#: remastersys-grub-restore:77
 msgid "Master Boot Record (MBR) of $PartitionMBR"
 msgstr ""
-#: remastersys-grub-restore:84
+#: remastersys-grub-restore:93
 msgid "GRUB will be restored to:\\n\\n$WHEREGRUBb$Continue"
 msgstr ""

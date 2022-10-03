@@ -14,6 +14,15 @@
 # /usr/share/locale/(language code)/LC_MESSAGES/remastersys-grub-restore.mo
 TEXTDOMAIN=remastersys-grub-restore
 
+declare -r Pick=$"Options"
+declare -r Size=$"Size"
+declare -r Info=$"Info"
+declare -r Cancel=$"Cancel"
+declare -r Quit=$"Quiting now."
+declare -r Continue=$"\n\nClick OK to continue."
+declare -r Return=$"\n\nClick OK to return to previous menu."
+declare -r Superuser="ERROR: This script must run as superuser. Try with \"sudo\"."
+
 # LIBRARIES
 . /usr/lib/remastersys/libremastersysgui.sh
 

@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# SYSTEM LOCALIZATION
-# Target to file:
-# /usr/share/locale/(language code)/LC_MESSAGES/libremastersys.sh.mo
-TEXTDOMAIN=libremastersys.sh
-
-# VARIABLES ####################################################################
-
 # Color codes, "f" means "font"
 declare -r fLightRed="\e[91m"
 declare -r fLightGreen="\e[92m"
@@ -28,11 +21,6 @@ declare -r fI="\e[3m" # italic
 
 # ENDING: Reset all attributes
 declare -r fEND="\e[0m"
-
-# IsRoot
-Superuser="ERROR: This script must run as superuser. Try with \"sudo\"."
-
-# FUNCTIONS ####################################################################
 
 # help files
 function GiveUserHelp(){

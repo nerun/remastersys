@@ -1,252 +1,231 @@
-#: remastersys-installer:20
-msgid "USAGE:"
+#: remastersys-installer:15
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
-#: remastersys-installer:22
-msgid "   remastersys-installer [OPTIONS]"
-msgstr ""
-#: remastersys-installer:23
-msgid "      (must run as superuser)"
-msgstr ""
-#: remastersys-installer:25
-msgid "OPTIONS:"
-msgstr ""
-#: remastersys-installer:27
-msgid "   -g, --gui      - runs installer with a Graphical User Interface (GUI) using\\n\\t\\t    \\\"yad\\\"."
-msgstr ""
-#: remastersys-installer:28
-msgid "   -h, -?, --help - shows this help."
-msgstr ""
-#: remastersys-installer:29
-msgid "\\t\\t  - if no option is provided installer will run in a terminal, but\\n\\t\\t    using \\\"dialog\\\" instead."
-msgstr ""
-#: remastersys-installer:36
-msgid "$fB$fLightRed\\nERROR: This script must run as superuser. Try with \\\"sudo\\\".\\n$fEND"
-msgstr ""
-#: remastersys-installer:57
+#: remastersys-installer:39
 msgid "Remastersys Installer"
 msgstr ""
-#: remastersys-installer:60
+#: remastersys-installer:42
 msgid "Yes"
 msgstr ""
-#: remastersys-installer:61
+#: remastersys-installer:43
 msgid "No"
 msgstr ""
-#: remastersys-installer:62
+#: remastersys-installer:44
 msgid "Pick"
 msgstr ""
-#: remastersys-installer:63
+#: remastersys-installer:45
 msgid "Info"
 msgstr ""
-#: remastersys-installer:72
+#: remastersys-installer:54
 msgid "not found. Will be installed now."
 msgstr ""
-#: remastersys-installer:108
+#: remastersys-installer:90
 msgid "Could not find \\\"dialog\\\" or \\\"yad\\\". Exiting."
 msgstr ""
-#: remastersys-installer:120
+#: remastersys-installer:102
 msgid "$LIVECDLABEL Installer"
 msgstr ""
-#: remastersys-installer:125
+#: remastersys-installer:107
 msgid "Exit"
 msgstr ""
-#: remastersys-installer:126
+#: remastersys-installer:108
 msgid "Exit Installer"
 msgstr ""
-#: remastersys-installer:127
+#: remastersys-installer:109
 msgid "Exiting installer now."
 msgstr ""
-#: remastersys-installer:128
+#: remastersys-installer:110
 msgid "Select a drive to partition.\\nIf the only option you see is \\\"$ExitInstaller\\\" then no drive was found."
 msgstr ""
-#: remastersys-installer:129
+#: remastersys-installer:111
 msgid "Select a swap partition to use.\\nIf the only option you see is \\\"$ExitInstaller\\\" then no swap partition was found."
 msgstr ""
-#: remastersys-installer:130
+#: remastersys-installer:112
 msgid "Select a partition to install the system on.\\nIf the only option you see is \\\"$ExitInstaller\\\" then no partition was found."
 msgstr ""
-#: remastersys-installer:131
+#: remastersys-installer:113
 msgid "Select the file system type of the root partition."
 msgstr ""
-#: remastersys-installer:132
+#: remastersys-installer:114
 msgid "Passwords do not match. Try again."
 msgstr ""
-#: remastersys-installer:133
+#: remastersys-installer:115
 msgid "The current system language as well as\\nthe current keyboard layout will continue to\\nbe used by the installer until the end.\\nHowever, you can change the language and\\nkeyboard layout that will be installed.\\n\\nDo you want to change?"
 msgstr ""
-#: remastersys-installer:134
+#: remastersys-installer:116
 msgid "This is the Live CD installer.\\n\\nDo you want to continue?"
 msgstr ""
-#: remastersys-installer:135
+#: remastersys-installer:117
 msgid "Select a partition to install the /home folder on.\\nIf the only option you see is the root partition, then no other partitions were found."
 msgstr ""
-#: remastersys-installer:136
+#: remastersys-installer:118
 msgid "put /home on the root partition"
 msgstr ""
-#: remastersys-installer:137
+#: remastersys-installer:119
 msgid "Select the home partition file system type"
 msgstr ""
-#: remastersys-installer:138
+#: remastersys-installer:120
 msgid "Don't format the home partition - not recommended unless you know what you're doing"
 msgstr ""
-#: remastersys-installer:139
+#: remastersys-installer:121
 msgid "We need to prepare the swap and install the partition now.\\n\\n$PARTITIONPROG will allow you to create the new partitions.\\n\\nYou must create or already have at least 1 system partition and 1 swap partition.\\n\\nIf you already have the partitions set up, just exit $PARTITIONPROG and the installation will continue.\\n\\nClick OK to continue."
 msgstr ""
-#: remastersys-installer:140
+#: remastersys-installer:122
 msgid "Please confirm if this information is correct:\\n\\n"
 msgstr ""
-#: remastersys-installer:141
+#: remastersys-installer:123
 msgid "\\n\\nDo you want to proceed?"
 msgstr ""
-#: remastersys-installer:142
+#: remastersys-installer:124
 msgid "Root partition - safe choice if you use a different boot loader"
 msgstr ""
-#: remastersys-installer:143
+#: remastersys-installer:125
 msgid "Root partition MBR - this is what you want for a pendrive/USB installation"
 msgstr ""
-#: remastersys-installer:144
+#: remastersys-installer:126
 msgid "Is your system clock set to local time?\\n\\nResponding \\\"no\\\" will indicate that it is set to UTC."
 msgstr ""
-#: remastersys-installer:145
+#: remastersys-installer:127
 msgid "Select where to install grub.\\n"
 msgstr ""
-#: remastersys-installer:146
+#: remastersys-installer:128
 msgid "Master Boot Record (MBR) of the disk"
 msgstr ""
-#: remastersys-installer:147
+#: remastersys-installer:129
 msgid "Select a time zone for your system"
 msgstr ""
-#: remastersys-installer:155
+#: remastersys-installer:137
 msgid "$HOMEPART will be formatted in $HFSTYPE for use as /home"
 msgstr ""
-#: remastersys-installer:159
+#: remastersys-installer:141
 msgid "$HOMEPART will not be formatted, but will be used as /home"
 msgstr ""
-#: remastersys-installer:170
+#: remastersys-installer:152
 msgid "root partition of $TARGETPART"
 msgstr ""
-#: remastersys-installer:173
+#: remastersys-installer:155
 msgid "root partition mbr of $TARGETPART"
 msgstr ""
-#: remastersys-installer:176
+#: remastersys-installer:158
 msgid "mbr of $GRUBLOCTEST"
 msgstr ""
-#: remastersys-installer:344
+#: remastersys-installer:326
 msgid "Enter the root password."
 msgstr ""
-#: remastersys-installer:354
+#: remastersys-installer:336
 msgid "Enter the root password again."
 msgstr ""
-#: remastersys-installer:373
+#: remastersys-installer:355
 msgid "Enter the full name of the new user to be configured on the installed system."
 msgstr ""
-#: remastersys-installer:383
+#: remastersys-installer:365
 msgid "Enter the username of the new user to be configured on the installed system.\\nLowercase letters only."
 msgstr ""
-#: remastersys-installer:402
+#: remastersys-installer:384
 msgid "Enter a password for $TARGETUSER."
 msgstr ""
-#: remastersys-installer:412
+#: remastersys-installer:394
 msgid "Retype the password of $TARGETUSER."
 msgstr ""
-#: remastersys-installer:432
+#: remastersys-installer:414
 msgid "Enter the hostname of the system to be installed"
 msgstr ""
-#: remastersys-installer:526
+#: remastersys-installer:508
 msgid "New user: $TARGETUSER\\nPartition: $TARGETPART\\nFile System: $FSTYPE\\nSwap Partition: $SWAP\\nInstall GRUB on the: $GRUBLOCTEXT"
 msgstr ""
-#: remastersys-installer:527
+#: remastersys-installer:509
 msgid "Backup Installation Partition: $TARGETPART\\nFile System: $FSTYPE\\nInstall GRUB on the: $GRUBLOCTEXT"
 msgstr ""
-#: remastersys-installer:552
+#: remastersys-installer:534
 msgid "Yad not found. You can still use the installer in text-mode by typing \\\"sudo remastersys-installer\\\" in a terminal."
 msgstr ""
-#: remastersys-installer:711
+#: remastersys-installer:693
 msgid "Password for root"
 msgstr ""
-#: remastersys-installer:712
+#: remastersys-installer:694
 msgid "Password for root (retype)"
 msgstr ""
-#: remastersys-installer:713
+#: remastersys-installer:695
 msgid "New user's full name"
 msgstr ""
-#: remastersys-installer:714
+#: remastersys-installer:696
 msgid "New user's username"
 msgstr ""
-#: remastersys-installer:715
+#: remastersys-installer:697
 msgid "Password for new user"
 msgstr ""
-#: remastersys-installer:716
+#: remastersys-installer:698
 msgid "Password for new user (retype)"
 msgstr ""
-#: remastersys-installer:717
+#: remastersys-installer:699
 msgid "Hostname for the computer"
 msgstr ""
-#: remastersys-installer:751
+#: remastersys-installer:733
 msgid "Root password in blank."
 msgstr ""
-#: remastersys-installer:753
+#: remastersys-installer:735
 msgid "Passwords entered for Root do not match."
 msgstr ""
-#: remastersys-installer:755
+#: remastersys-installer:737
 msgid "User's full name in blank."
 msgstr ""
-#: remastersys-installer:757
+#: remastersys-installer:739
 msgid "Blank username."
 msgstr ""
-#: remastersys-installer:759
+#: remastersys-installer:741
 msgid "Username cannot be the same as the Live CD username."
 msgstr ""
-#: remastersys-installer:761
+#: remastersys-installer:743
 msgid "Blank user password."
 msgstr ""
-#: remastersys-installer:763
+#: remastersys-installer:745
 msgid "Passwords entered for the user do not match."
 msgstr ""
-#: remastersys-installer:765
+#: remastersys-installer:747
 msgid "Root and user passwords are the same.\\n\\nUse different passwords."
 msgstr ""
-#: remastersys-installer:767
+#: remastersys-installer:749
 msgid "Blank hostname."
 msgstr ""
-#: remastersys-installer:862
+#: remastersys-installer:844
 msgid "New user is: $TARGETUSER\\nPartition: $TARGETPART\\nFile System: $FSTYPE\\nSwap Partition: $SWAP\\nInstall GRUB on the: $GRUBLOCTEXT"
 msgstr ""
-#: remastersys-installer:863
+#: remastersys-installer:845
 msgid "Backup Installation Partition: $TARGETPART\\nFile System is: $FSTYPE\\nInstall GRUB on the: $GRUBLOCTEXT"
 msgstr ""
-#: remastersys-installer:890
+#: remastersys-installer:872
 msgid "Unmounting and formatting the partition we are going to use."
 msgstr ""
-#: remastersys-installer:891
+#: remastersys-installer:873
 msgid "Mounting the TARGET partition now."
 msgstr ""
-#: remastersys-installer:892
+#: remastersys-installer:874
 msgid "Configuring SWAP... Please wait.\\n"
 msgstr ""
-#: remastersys-installer:893
+#: remastersys-installer:875
 msgid "Formatting $TARGETPART... Please wait.\\n"
 msgstr ""
-#: remastersys-installer:894
+#: remastersys-installer:876
 msgid "Formatting $HOME... Please wait.\\n"
 msgstr ""
-#: remastersys-installer:895
+#: remastersys-installer:877
 msgid "Copying files to disk... Please wait.\\n"
 msgstr ""
-#: remastersys-installer:896
+#: remastersys-installer:878
 msgid "Performing post-installation steps... Please wait.\\n"
 msgstr ""
-#: remastersys-installer:897
+#: remastersys-installer:879
 msgid "Installing and configuring grub... Please wait.\\n"
 msgstr ""
-#: remastersys-installer:938
+#: remastersys-installer:923
 msgid "Using tune2fs to prevent forced checks on boot."
 msgstr ""
-#: remastersys-installer:1044
+#: remastersys-installer:1025
 msgid "File copy completed."
 msgstr ""
-#: remastersys-installer:1267
+#: remastersys-installer:1244
 msgid "Post-installation steps completed.\\n\\nUnmounting the TARGET partition."
 msgstr ""
-#: remastersys-installer:1284
+#: remastersys-installer:1259
 msgid "Installation is complete.\\n\\nIf all went well you should have your new system installed and ready to use.\\n\\nDo you want to reboot now to test the new system?"
 msgstr ""

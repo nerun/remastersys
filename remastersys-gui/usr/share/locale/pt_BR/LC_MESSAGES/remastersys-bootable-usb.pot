@@ -1,27 +1,48 @@
-#: remastersys-bootable-usb:20
-msgid "Remastersys Bootable USB"
+#: remastersys-bootable-usb:15
+msgid "Options"
 msgstr ""
-#: remastersys-bootable-usb:24
-msgid "You must select a usb key to use.$Return"
+#: remastersys-bootable-usb:16
+msgid "Size"
+msgstr ""
+#: remastersys-bootable-usb:17
+msgid "Info"
+msgstr ""
+#: remastersys-bootable-usb:18
+msgid "Cancel"
+msgstr ""
+#: remastersys-bootable-usb:19
+msgid "Quiting now."
+msgstr ""
+#: remastersys-bootable-usb:20
+msgid "\\n\\nClick OK to continue."
+msgstr ""
+#: remastersys-bootable-usb:21
+msgid "\\n\\nClick OK to return to previous menu."
 msgstr ""
 #: remastersys-bootable-usb:29
-msgid "You must select a source to use.$Return"
+msgid "Remastersys Bootable USB"
 msgstr ""
 #: remastersys-bootable-usb:33
+msgid "You must select a usb key to use.$Return"
+msgstr ""
+#: remastersys-bootable-usb:38
+msgid "You must select a source to use.$Return"
+msgstr ""
+#: remastersys-bootable-usb:42
 msgid "This will completely replace the contents of your usb drive\\nwith the Bootable Live System.\\n\\nYou will not be able to undo this operation once it starts.\\n\\nClick OK to continue."
 msgstr ""
-#: remastersys-bootable-usb:61
+#: remastersys-bootable-usb:70
 msgid "Copying to USB Key Now.\\n\\nPlease Wait."
 msgstr ""
-#: remastersys-bootable-usb:66
+#: remastersys-bootable-usb:75
 msgid "Copy to USB key completed.$Return"
 msgstr ""
-#: remastersys-bootable-usb:88
+#: remastersys-bootable-usb:97
 msgid "No USB Keys found.\\n\\nPlease insert a USB Key and then\\nclick OK to return to main menu\\nor Cancel to quit."
 msgstr ""
-#: remastersys-bootable-usb:97
+#: remastersys-bootable-usb:106
 msgid "Choose a USB Key"
 msgstr ""
-#: remastersys-bootable-usb:98
+#: remastersys-bootable-usb:107
 msgid "Choose a Source Image"
 msgstr ""

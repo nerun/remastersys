@@ -6,7 +6,8 @@
 
 ### THINGS TO DO
 
-* _test new libraries_ (HIGH PRIORITY)
+* new libraries:
+   * add libremastersysgui.sh to remastersys-installer
 * needed tests:
    * remastersys-skelcopy: need to know if the user's personal settings are actually being used.
 * remastersys unified help:
