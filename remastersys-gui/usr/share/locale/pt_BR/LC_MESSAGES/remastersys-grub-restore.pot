@@ -19,6 +19,9 @@ msgstr ""
 #: remastersys-grub-restore:23
 msgid "\\n\\nClick OK to return to previous menu."
 msgstr ""
+#: remastersys-grub-restore:24
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
 #: remastersys-grub-restore:31
 msgid "Remastersys Grub Restore"
 msgstr ""

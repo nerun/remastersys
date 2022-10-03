@@ -40,6 +40,12 @@ msgstr "\\n\\nClique em OK para continuar."
 msgid "\\n\\nClick OK to return to previous menu."
 msgstr "\\n\\nClique em OK para retornar ao menu anterior."
 
+#: remastersys-bootable-usb:22
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
+"ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
+"\"."
+
 #: remastersys-bootable-usb:29
 msgid "Remastersys Bootable USB"
 msgstr "Remastersys - USB Bootável"

@@ -40,6 +40,12 @@ msgstr "\\n\\nClique em OK para continuar."
 msgid "\\n\\nClick OK to return to previous menu."
 msgstr "\\n\\nClique em OK para retornar ao menu anterior."
 
+#: remastersys-grub-restore:24
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
+"ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
+"\"."
+
 #: remastersys-grub-restore:31
 msgid "Remastersys Grub Restore"
 msgstr "Remastersys - Retaurador do GRUB"

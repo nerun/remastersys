@@ -19,6 +19,9 @@ msgstr ""
 #: remastersys-gui:21
 msgid "\\n\\nClick OK to return to previous menu."
 msgstr ""
+#: remastersys-gui:22
+msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
+msgstr ""
 #: remastersys-gui:33
 msgid "Choose what you want to do:"
 msgstr ""
