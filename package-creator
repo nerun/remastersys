@@ -49,7 +49,7 @@ ChangelogMaker(){
         cat $1'.old' >> $1
         rm $1'.old'
     else
-        echo -e "\n OK, there's no update to $1.\n"
+        echo -e " -- OK, no $1 updates.\n"
     fi
 
     # Creating changelog.gz / changelog.Debian.gz
