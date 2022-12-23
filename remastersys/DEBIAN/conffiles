@@ -14,5 +14,7 @@
 /etc/remastersys/isolinux/splash.png
 /etc/remastersys/isolinux/vesamenu.c32
 /etc/remastersys/preseed/custom.seed
+/etc/remastersys/remastersys-help-pt_BR.txt
+/etc/remastersys/remastersys-help.txt
 /etc/remastersys/remastersys-installer.conf
 /etc/remastersys/remastersys.version

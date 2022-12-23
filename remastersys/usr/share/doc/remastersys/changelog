@@ -1,3 +1,11 @@
+remastersys (4.4-1) unstable; urgency=low
+
+	* Added unified help for remastersys package.
+	* Code cleanup and some optimizations.
+	* Fixed LightDM autologin not working in Dist mode.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Dec 2022 16:35:22 -0300
+
 remastersys (4.3-1) unstable; urgency=low
 
 	* More fixes to grubconfig.

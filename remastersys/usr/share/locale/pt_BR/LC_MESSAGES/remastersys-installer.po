@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: remastersys-installer:15
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
@@ -136,15 +136,15 @@ msgstr ""
 
 #: remastersys-installer:121
 msgid ""
-"We need to prepare the swap and install the partition now.\\n\\n"
-"$PARTITIONPROG will allow you to create the new partitions.\\n\\nYou must "
-"create or already have at least 1 system partition and 1 swap partition.\\n"
-"\\nIf you already have the partitions set up, just exit $PARTITIONPROG and "
-"the installation will continue.\\n\\nClick OK to continue."
+"We need to prepare the swap and install the partition now."
+"\\n\\n$PARTITIONPROG will allow you to create the new partitions.\\n\\nYou "
+"must create or already have at least 1 system partition and 1 swap partition."
+"\\n\\nIf you already have the partitions set up, just exit $PARTITIONPROG "
+"and the installation will continue.\\n\\nClick OK to continue."
 msgstr ""
 "Precisamos preparar o swap e instalar a partição agora.\\n\\n$PARTITIONPROG "
 "permitirá que você crie as novas partições.\\n\\nVocê deve criar ou já ter "
-"pelo menos 1 partição de sistema e 1 partição de troca.\\n\\nSe você já tem "
+"pelo menos 1 partição de sistema e 1 partição de swap.\\n\\nSe você já tem "
 "as partições configuradas, apenas saia do $PARTITIONPROG e a instalação "
 "continuará.\\n\\nClique em OK para continuar."
 
@@ -254,8 +254,8 @@ msgid ""
 "Backup Installation Partition: $TARGETPART\\nFile System: $FSTYPE\\nInstall "
 "GRUB on the: $GRUBLOCTEXT"
 msgstr ""
-"Partição de Instalação do Backup: $TARGETPART\\nSistema de Arquivo: $FSTYPE"
-"\\nInstalar GRUB em: $GRUBLOCTEXT"
+"Partição de Instalação do Backup: $TARGETPART\\nSistema de Arquivo: "
+"$FSTYPE\\nInstalar GRUB em: $GRUBLOCTEXT"
 
 #: remastersys-installer:534
 msgid ""
@@ -331,19 +331,19 @@ msgstr "Nome do host em branco."
 
 #: remastersys-installer:844
 msgid ""
-"New user is: $TARGETUSER\\nPartition: $TARGETPART\\nFile System: $FSTYPE"
-"\\nSwap Partition: $SWAP\\nInstall GRUB on the: $GRUBLOCTEXT"
+"New user is: $TARGETUSER\\nPartition: $TARGETPART\\nFile System: "
+"$FSTYPE\\nSwap Partition: $SWAP\\nInstall GRUB on the: $GRUBLOCTEXT"
 msgstr ""
 "Novo Usuário: $TARGETUSER\\nPartição: $TARGETPART\\nSistema de Arquivo: "
 "$FSTYPE\\nPartição Swap: $SWAP\\nInstalar GRUB em: $GRUBLOCTEXT"
 
 #: remastersys-installer:845
 msgid ""
-"Backup Installation Partition: $TARGETPART\\nFile System is: $FSTYPE"
-"\\nInstall GRUB on the: $GRUBLOCTEXT"
+"Backup Installation Partition: $TARGETPART\\nFile System is: "
+"$FSTYPE\\nInstall GRUB on the: $GRUBLOCTEXT"
 msgstr ""
-"Partição de Instalação do Backup: $TARGETPART\\nSistema de Arquivo: $FSTYPE"
-"\\nInstalar GRUB em: $GRUBLOCTEXT"
+"Partição de Instalação do Backup: $TARGETPART\\nSistema de Arquivo: "
+"$FSTYPE\\nInstalar GRUB em: $GRUBLOCTEXT"
 
 #: remastersys-installer:872
 msgid "Unmounting and formatting the partition we are going to use."
@@ -400,10 +400,3 @@ msgstr ""
 "A instalação acabou.\\n\\nSe tudo correu bem, seu novo sistema deve estar "
 "instalado e pronto para uso.\\n\\nVocê quer reiniciar agora para testar o "
 "novo sistema?"
-
-
-
-
-
-
-

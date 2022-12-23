@@ -1,3 +1,9 @@
+remastersys-gui (4.4-1) unstable; urgency=low
+
+	* Updated DEBIAN files: control, md5sums etc.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Dec 2022 16:36:47 -0300
+
 remastersys-gui (4.3-1) unstable; urgency=low
 
 	* Updated DEBIAN files: control, md5sums etc.
