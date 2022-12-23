@@ -2,6 +2,7 @@
 
 ### KNOWN BUGS
 
+* MENU entries: dialog doesn't starts because it uses "sudo", and sudo needs password. Just works if remove password requirement with "sudo visudo".
 * There may be many bugs that I am unaware of...
 
 ### THINGS TO DO

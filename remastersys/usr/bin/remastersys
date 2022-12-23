@@ -224,6 +224,10 @@ cdfs(){
             rm -f $WORKDIR/dummysys/etc/gdm3/daemon.tmp
         fi
 
+        if [ -f $WORKDIR/dummysys/etc/lightdm/lightdm.conf ]; then
+            sed -i -e "s/^autologin-user=.*/autologin-user=$LIVEUSER/g" $WORKDIR/dummysys/etc/lightdm/lightdm.conf
+        fi
+
         if [ -f $WORKDIR/dummysys/etc/gdm/gdm.conf-custom ]; then
             echo "  " > $WORKDIR/dummysys/etc/gdm/gdm.conf-custom
         fi
