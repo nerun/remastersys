@@ -1,3 +1,9 @@
+remastersys-gui (4.5-1) unstable; urgency=low
+
+	* No changes were made to GUI package. Version number updated just for compatibility.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sat, 31 Dec 2022 16:56:21 -0300
+
 remastersys-gui (4.4-1) unstable; urgency=low
 
 	* Renamed remastersys-usb-key-copy-tool to remastersys-bootable-usb.

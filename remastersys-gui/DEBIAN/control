@@ -4,8 +4,8 @@ Section: system
 Installed-Size: 340
 Maintainer: Daniel Dias Rodrigues <danieldiasr@gmail.com>
 Architecture: all
-Version: 4.4-2
-Depends: gparted, read-edid, remastersys (>= 4.4-2), xterm, yad
+Version: 4.5-1
+Depends: gparted, read-edid, remastersys (>= 4.5-1), xterm, yad
 Homepage: https://github.com/nerun/remastersys
 Description: Remaster and create backups of the Debian system
  This is the visual interface of Remastersys.

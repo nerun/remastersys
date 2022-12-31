@@ -1,6 +1,12 @@
+remastersys-gui (4.5-1) unstable; urgency=low
+
+	* Updated DEBIAN files: control, md5sums etc.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sat, 31 Dec 2022 16:56:48 -0300
+
 remastersys-gui (4.4-2) unstable; urgency=low
 
-	* Package created in Debian 11.6, because the previous one (4.4-1) was created in Linux Mint 21.1 and was giving error: "unknown compression for element control.tar.zst".
+	* Package 4.4-1 was created on Linux Mint and could not be installed on Debian and some derived distros giving the error message "unknown compression for element control.tar.zst". Therefore the 4.4-2 package was created on a Debian 11.6 system.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 29 Dec 2022 11:56:38 -0300
 
