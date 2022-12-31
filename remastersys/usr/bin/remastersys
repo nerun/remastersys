@@ -33,6 +33,7 @@ fi
 
 # live username in lowercase
 LIVEUSER="$(echo $LIVEUSER | awk '{print tolower ($0)}')"
+LIVEUSER_FULL_NAME="live session user"
 
 if [ "$LIVECDLABEL" = "" ]; then
     LIVECDLABEL="Debian Remaster"
@@ -52,7 +53,7 @@ if [ "$SQUASHFSOPTS" = "" ]; then
     SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
 fi
 
-SHOWICON="`echo $SHOWICON | awk '{print tolower ($0)}'`"
+SHOWICON="$(echo $SHOWICON | awk '{print tolower ($0)}')"
 
 if [ "$SHOWICON" = "1" ]; then
     SHOWICON="1"
@@ -127,7 +128,7 @@ SpecIso9660=$"The compressed file system is larger than the ISO 9660 specificati
 
 CheckFileSystemSize(){
     #checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file"
-    SQUASHFSSIZE=`ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}'`
+    SQUASHFSSIZE=$(ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
     if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
         echo $SpecIso9660
         echo $SpecIso9660 >> $WORKDIR/remastersys.log
@@ -239,7 +240,7 @@ cdfs(){
                     mkdir -p $WORKDIR/dummysys/etc/skel/Desktop
                 fi
 
-                if [ "`grep kdm /etc/X11/default-display-manager`" = "" ]; then
+                if [ "$(grep kdm /etc/X11/default-display-manager)" = "" ]; then
                     cp /usr/share/applications/remastersys-installer.desktop $WORKDIR/dummysys/etc/skel/Desktop/
                     chmod +x $WORKDIR/dummysys/etc/skel/Desktop/remastersys-installer.desktop
                 else
@@ -381,7 +382,8 @@ cdfs(){
     # STEP 2 - Prepare live.conf depending on whether this is a backup or dist
 
     if [ "$1" = "backup" ]; then
-        LIVEUSER="`grep '^[^:]*:[^:]*:1000:' /etc/passwd | awk -F ":" '{ print $1 }'`"
+        LIVEUSER="$(grep '^[^:]*:[^:]*:1000:' /etc/passwd | awk -F ":" '{ print $1 }')"
+        LIVEUSER_FULL_NAME="$(getent passwd $LIVEUSER | cut -d ':' -f 5 | cut -d ',' -f 1)"
 
         #fix Thunar volmanrc for live
         for i in $(ls -d /home/*); do
@@ -397,7 +399,7 @@ cdfs(){
     fi
 
     echo "export LIVE_USERNAME=\"$LIVEUSER\"" > /etc/live/config.conf
-    echo "export LIVE_USER_FULLNAME=\"live session user\"" >> /etc/live/config.conf
+    echo "export LIVE_USER_FULLNAME=\"$LIVEUSER_FULL_NAME\"" >> /etc/live/config.conf
     echo "export LIVE_HOSTNAME=\"$LIVEUSER\"" >> /etc/live/config.conf
     echo "export LIVE_USER_DEFAULT_GROUPS=\"audio,cdrom,dialout,floppy,video,plugdev,netdev,powerdev,adm,sudo\"" >> /etc/live/config.conf
     lang=$(locale | grep -w 'LANG' | cut -d= -f2) # like "pt_BR.UTF-8"
@@ -442,21 +444,19 @@ cdfs(){
 
     REALFOLDERS=""
 
-    for d in `ls -d $WORKDIR/dummysys/*`; do
+    for d in $(ls -d $WORKDIR/dummysys/*); do
         REALFOLDERS="$REALFOLDERS $d"
     done
-
+    
     if [ "$1" = "backup" ]; then
-
-        for d in `ls / | grep -v etc | grep -v run | grep -v tmp | grep -v sys | grep -v var \
-| grep -v dev | grep -v media | grep -v mnt | grep -v lost+found | grep -v proc`; do
+        for d in $(ls / | grep -v etc | grep -v run | grep -v tmp | grep -v sys | grep -v var \
+| grep -v dev | grep -v media | grep -v mnt | grep -v lost+found | grep -v proc); do
             REALFOLDERS="$REALFOLDERS /$d"
         done
     else
-
-        for d in `ls / | grep -v etc | grep -v run | grep -v tmp | grep -v sys | grep -v var \
+        for d in $(ls / | grep -v etc | grep -v run | grep -v tmp | grep -v sys | grep -v var \
 | grep -v dev | grep -v media | grep -v mnt | grep -v lost+found | grep -v proc \
-| grep -v home`; do
+| grep -v home); do
             REALFOLDERS="$REALFOLDERS /$d"
         done
     fi
@@ -468,7 +468,7 @@ cdfs(){
     root/.lesshst \
     root/.nano_history \
     boot/grub \
-    $BASEWORKDIR $EXCLUDES 2>>$WORKDIR/remastersys.log
+    $WORKDIR $EXCLUDES 2>>$WORKDIR/remastersys.log
 
     if [ "$1" = "backup" ]; then
         #return Thunar volmanrc back to normal
@@ -509,10 +509,10 @@ cdfs(){
 }
 
 iso(){
-    CREATEISO="`which mkisofs`"
+    CREATEISO="$(which mkisofs)"
 
     if [ "$CREATEISO" = "" ]; then
-        CREATEISO="`which genisoimage`"
+        CREATEISO="$(which genisoimage)"
     fi
 
     # check to see if the cd filesystem exists
