@@ -31,16 +31,16 @@ There are still a few bugs, but there are also many new features compared to the
 This program has 2 packages: **remastersys** (program itself, terminal mode) and **remastersys-gui** (graphical interface). Main features seems to work very well.
 
 ## Basic usage
-* If there are no Debian packages to download and install in [releases](https://github.com/nerun/remastersys/releases) section, you should create debian packages: `./package-creator`, write version number, hit ENTER, write a short changelog, write "end" and hit ENTER again.
-* Install both packages: `sudo dpkg -i *.deb`
-* Fix dependencies if you need: `sudo apt-get install -f`
+* If there are no Debian packages to download and install in [releases](https://github.com/nerun/remastersys/releases) section, you should create debian packages:
+  * run: `./package-creator`
+  * write version number, hit ENTER
+  * write a short changelog, hit ENTER
+  * write "end", hit ENTER
+* Install both packages: `sudo apt install ./remastersys*.deb`
 * Read instructions:
   * `man remastersys`
-  * `remastersys --help`
-  * `remastersys-grubconfig --help`
-  * `remastersys-installer --help`
-  * `remastersys-skelcopy --help`
-* If you have installed the GUI, you should be capable to search for these shortcuts (desktop icons):
+  * `sudo remastersys --help`
+* If you have installed the GUI package, you should be capable to search for these shortcuts in the menu:
   * Remastersys Bootable USB
   * Remastersys Creator
   * Remastersys GRUB Restorer
