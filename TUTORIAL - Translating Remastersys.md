@@ -15,7 +15,7 @@ Translators will need the following tools:
 Install:
 
 ```shell
-sudo aptitude install gettext poedit unzip
+sudo apt install gettext poedit unzip
 ```
 
 ## Files
