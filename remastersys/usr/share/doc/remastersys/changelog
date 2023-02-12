@@ -1,3 +1,10 @@
+remastersys (4.6-1) unstable; urgency=low
+
+    * Changed message about image size: CDs/DVDs are no longer used. Images larger than 4GB need to be burned in exFAT USB keys.
+    * Updated translation pt_BR.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sun, 12 Feb 2023 14:19:50 -0300
+
 remastersys (4.5-1) unstable; urgency=low
 
     * Fixed HOME folder was not copied in backup mode.

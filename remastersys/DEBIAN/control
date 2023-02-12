@@ -4,8 +4,8 @@ Section: system
 Installed-Size: 1008
 Maintainer: Daniel Dias Rodrigues <danieldiasr@gmail.com>
 Architecture: all
-Version: 4.5-1
-Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-sysvinit | live-config-systemd, live-config, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
+Version: 4.6-1
+Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-systemd | live-config-sysvinit, live-config, genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
 Conffiles:
  /etc/remastersys.conf d363d29aaaf94673207a7b4ce5c38826
  /etc/remastersys/grub-default.png 5d787a9039d8b73e08ef689515991d25
@@ -26,7 +26,7 @@ Conffiles:
  /etc/remastersys/remastersys-help-pt_BR.txt 130c715497b14ef378960c4a3d20ccf4
  /etc/remastersys/remastersys-help.txt d2c5cbbd1e230c5d23608237266765cf
  /etc/remastersys/remastersys-installer.conf e18fcf1ab280ef648eab2544fdbf1cc6
- /etc/remastersys/remastersys.version 1f2f39e0ea4e27c776d6a492a45d4929
+ /etc/remastersys/remastersys.version 3bcb463ed1d0e8419d64869288abff79
 Homepage: https://github.com/nerun/remastersys
 Description: Remaster and create backups of the Debian system
  Remastersys allows you to create a Live CD/DVD distribution or make a backup

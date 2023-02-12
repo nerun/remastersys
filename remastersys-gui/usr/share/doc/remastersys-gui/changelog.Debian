@@ -1,3 +1,11 @@
+remastersys-gui (4.6-1) unstable; urgency=low
+
+    * Fixed issue with package dependencies causing "systemd" and "gnome" to be uninstalled. The "live-config-sysvinit | live-config-systemd" dependencies have been inverted: "live-config-systemd" is the favorite now.
+    * Updated dependencies: remove mkisofs because actually it's just a link to genisoimage.
+    * Updated DEBIAN files: control, md5sums etc.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sun, 12 Feb 2023 14:23:02 -0300
+
 remastersys-gui (4.5-1) unstable; urgency=low
 
     * Updated DEBIAN files: control, md5sums etc.

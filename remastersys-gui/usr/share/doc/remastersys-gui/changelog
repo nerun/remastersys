@@ -1,3 +1,9 @@
+remastersys-gui (4.6-1) unstable; urgency=low
+
+    * Created "ysudo" application and updated menu entries. Ysudo does the same as gksudo did. This fix issue #7: a bug that caused GUI applications not to start when run from desktop shortcuts or the gnome menu.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sun, 12 Feb 2023 14:21:26 -0300
+
 remastersys-gui (4.5-1) unstable; urgency=low
 
     * No changes were made to GUI package. Version number updated just for compatibility.
