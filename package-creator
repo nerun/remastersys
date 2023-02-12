@@ -1,7 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 . remastersys/usr/lib/remastersys/libremastersys.sh
+. remastersys/etc/remastersys/remastersys.version
 
-printf "\n New version number: "
+SuggestedVersion(){    
+    verA=$(echo $VERSION | cut -d'.' -f1)
+    verB=$(echo $VERSION | cut -d'.' -f2 | cut -d'-' -f1)
+    verBB=$(( verB + 1 ))
+    echo $verA"."$verBB"-1"
+}
+
+newver=$(SuggestedVersion)
+
+echo -e "\n New version number ($newver, maybe?): "
 read version
 
 author="Daniel Dias Rodrigues <danieldiasr@gmail.com>"
@@ -95,7 +105,7 @@ Installed-Size: $size
 Maintainer: $author
 Architecture: all
 Version: $version
-Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-systemd | live-config-sysvinit, live-config, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
+Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-systemd | live-config-sysvinit, live-config, genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
 Conffiles:" > control
 
 cat control-conffiles.tmp >> control
