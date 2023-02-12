@@ -19,12 +19,12 @@ There are still a few bugs, but there are also many new features compared to the
 * All scripts have been revised, adding several improvements to source code, including more readable formatting, increased performance, various bug fixes, visual improvements of terminal messages and code optimization.
 * Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7). Also added Memtest86+ v6.00-beta3 to Live CD.
 * Changed makesquashfs' compression method from gzip to zstd. Zstd generates images up to 10% smaller in almost half the time.
-* Updated icons and images.
-* Improved man pages.
-* Removed plymouth, but can be reinserted it in the future.
-* Changed gksu/gksudo to ysudo (new tool).
 * Dependencies included: live-config-systemd, syslinux-utils, sudo, zstd.
 * Dependencies excluded: memtest86+, mkisofs and xresprobe.
+* Removed plymouth, but can be reinserted it in the future.
+* Changed gksu/gksudo to ysudo (new tool).
+* Updated icons and images.
+* Improved man pages.
 
 ## Current state
 
