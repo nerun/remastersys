@@ -60,6 +60,9 @@ ChangelogMaker(){
 # ==============================================================================
 
 # UPDATE VERSION
+VERSION_OLD=$(echo $VERSION | cut -d'-' -f1)
+VERSION_NEW=$(echo $version | cut -d'-' -f1)
+sed -i "s/$VERSION_OLD/$VERSION_NEW/g" README.md
 echo "VERSION=\"$version\"" > ./remastersys/etc/remastersys/remastersys.version
 
 # MANPAGES PREPARATION
