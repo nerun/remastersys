@@ -1,16 +1,16 @@
 ?package(remastersys):needs="x11" section="Applications/System/Administration" \
 	title="Remastersys Creator" \
 	icon="/usr/share/icons/hicolor/48x48/apps/remastersys.png" \
-	command="sudo /usr/bin/remastersys-gui"
+	command="ysudo /usr/bin/remastersys-gui"
 ?package(remastersys):needs="x11" section="Applications/System/Administration" \
 	title="Remastersys GRUB Restorer" \
 	icon="/usr/share/icons/hicolor/48x48/apps/remastersys.png" \
-	command="sudo /usr/bin/remastersys-grub-restore gui"
+	command="ysudo /usr/bin/remastersys-grub-restore gui"
 ?package(remastersys):needs="x11" section="Applications/System/Administration" \
 	title="Remastersys Installer" \
 	icon="/usr/share/icons/hicolor/48x48/apps/remastersys-installer.png" \
-	command="sudo /usr/bin/remastersys-installer --gui"
+	command="ysudo /usr/bin/remastersys-installer --gui"
 ?package(remastersys):needs="x11" section="Applications/System/Administration" \
 	title="Remastersys Bootable USB" \
 	icon="/usr/share/icons/hicolor/48x48/apps/remastersys.png" \
-	command="sudo /usr/bin/remastersys-bootable-usb"
+	command="ysudo /usr/bin/remastersys-bootable-usb"

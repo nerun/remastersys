@@ -107,7 +107,7 @@ Installed-Size: $size
 Maintainer: $author
 Architecture: all
 Version: $version
-Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-sysvinit | live-config-systemd, live-config, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
+Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-systemd | live-config-sysvinit, live-config, mkisofs | genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
 Conffiles:" > control
 
 cat control-conffiles.tmp >> control
