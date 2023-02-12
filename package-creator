@@ -17,26 +17,6 @@ mkdir tmp-locales-gui
 ChangelogMaker(){
     # $1 = changelog or changelog.Debian
     # $2 = remastersys or remastersys-gui
-
-    changelogRead(){
-	    read changes
-	    if [ "$changes" != "end" ]; then
-		    echo "	* $changes" >> $1
-		    echo ""
-		    cat $1
-		    changelogAsk $1
-	    else
-		    echo "" >> $1
-		    echo " -- $author  $(date -R)" >> $1
-		    echo "" >> $1
-	    fi
-    }
-
-    changelogAsk(){
-	    echo ""
-	    echo -e " Write one change per line, and press ENTER. When done, write \"end\"\non one line and press ENTER."
-	    changelogRead $1
-    }
     
     echo -e "\n Do you want to update the $fB$fLightRed$2 $1$fEND? (y/n)"
     read update
@@ -45,9 +25,17 @@ ChangelogMaker(){
         mv $1 $1'.old'
         echo "$2 ($version) unstable; urgency=low" > $1
         echo "" >> $1
-        changelogAsk $1
+        if [[ "$1" = "changelog.Debian" ]]; then
+            echo "    * Updated DEBIAN files: control, md5sums etc." >> $1
+        else
+            echo "    * Write changes here." >> $1
+        fi
+        echo "" >> $1
+        echo " -- $author  $(date -R)" >> $1
+        echo "" >> $1
         cat $1'.old' >> $1
         rm $1'.old'
+        nano -milqS $1
     else
         echo -e " -- OK, no $1 updates.\n"
     fi

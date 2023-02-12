@@ -1,48 +1,48 @@
 remastersys-gui (4.5-1) unstable; urgency=low
 
-	* No changes were made to GUI package. Version number updated just for compatibility.
+    * No changes were made to GUI package. Version number updated just for compatibility.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sat, 31 Dec 2022 16:56:21 -0300
 
 remastersys-gui (4.4-1) unstable; urgency=low
 
-	* Renamed remastersys-usb-key-copy-tool to remastersys-bootable-usb.
-	* Full revision and improvements to remastersys-bootable-usb.
-	* Code cleanup and some optimizations.
+    * Renamed remastersys-usb-key-copy-tool to remastersys-bootable-usb.
+    * Full revision and improvements to remastersys-bootable-usb.
+    * Code cleanup and some optimizations.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Dec 2022 16:36:28 -0300
 
 remastersys-gui (4.3-1) unstable; urgency=low
 
-	* Fixed grub-restore not displaying partition size correctly when running from Live CD.
+    * Fixed grub-restore not displaying partition size correctly when running from Live CD.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 29 Sep 2022 17:50:15 -0300
 
 remastersys-gui (4.2-1) unstable; urgency=low
 
-	* Fixed /etc/skel backup.
-	* Moved Clear/DistSkel procedures to remastersys-skelcopy.
+    * Fixed /etc/skel backup.
+    * Moved Clear/DistSkel procedures to remastersys-skelcopy.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 16:24:34 -0300
 
 remastersys-gui (4.1-1) unstable; urgency=low
 
-	* remastersys-gui: ClearSkel backups Debian's /etc/skel.
-	* remastersys-grub-restore: full rework. It's now working.
+    * remastersys-gui: ClearSkel backups Debian's /etc/skel.
+    * remastersys-grub-restore: full rework. It's now working.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 13:52:08 -0300
 
 remastersys (4.0-1) unstable; urgency=low
 
-	* Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
-	* All scripts have been revised, adding several improvements to source code, including more readable formatting, increased performance, various bug fixes, visual improvements of terminal messages and code optimization.
-	* Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7). Also added Memtest86+ v6.00-beta3 to Live CD.
-	* Changed makesquashfs' compression method from gzip to zstd. Zstd generates images up to 10% smaller in almost half the time.
-	* Updated icons and images.
-	* Improved man pages.
-	* Removed plymouth, but can be reinserted it in the future.
-	* Changed gksu/gksudo to sudo.
-	* Dependencies updated.
+    * Full internationalization (scripts, menu entries and desktop files). Easy to create locales for other languages with Poedit. Defaults to English, but Brazilian Portuguese is also available.
+    * All scripts have been revised, adding several improvements to source code, including more readable formatting, increased performance, various bug fixes, visual improvements of terminal messages and code optimization.
+    * Updated versions of Isolinux (4.02 > 6.04) and Memtest86 (4.00 > 4.3.7). Also added Memtest86+ v6.00-beta3 to Live CD.
+    * Changed makesquashfs' compression method from gzip to zstd. Zstd generates images up to 10% smaller in almost half the time.
+    * Updated icons and images.
+    * Improved man pages.
+    * Removed plymouth, but can be reinserted it in the future.
+    * Changed gksu/gksudo to sudo.
+    * Dependencies updated.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Sep 2022 17:20:40 -0300
 

@@ -1,46 +1,46 @@
 remastersys (4.5-1) unstable; urgency=low
 
-	* Updated DEBIAN files: control, conffiles, md5sums etc.
+    * Updated DEBIAN files: control, md5sums etc.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sat, 31 Dec 2022 16:55:44 -0300
 
 remastersys (4.4-2) unstable; urgency=low
 
-	* Package 4.4-1 was created on Linux Mint and could not be installed on Debian and some derived distros giving the error message "unknown compression for element control.tar.zst". Therefore the 4.4-2 package was created on a Debian 11.6 system.
+    * Package 4.4-1 was created on Linux Mint and could not be installed on Debian and some derived distros giving the error message "unknown compression for element control.tar.zst". Therefore the 4.4-2 package was created on a Debian 11.6 system.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 29 Dec 2022 11:56:17 -0300
 
 remastersys (4.4-1) unstable; urgency=low
 
-	* Updated DEBIAN files: control, conffiles, md5sums etc.
+    * Updated DEBIAN files: control, md5sums etc.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Dec 2022 16:35:49 -0300
 
 remastersys (4.3-1) unstable; urgency=low
 
-	* Updated DEBIAN files: control, conffiles, md5sums etc.
+    * Updated DEBIAN files: control, md5sums etc.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 29 Sep 2022 17:48:51 -0300
 
 remastersys (4.2-1) unstable; urgency=low
 
-	* Updated DEBIAN files: control, conffiles, md5sums etc.
+    * Updated DEBIAN files: control, md5sums etc.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 16:24:34 -0300
 
 remastersys (4.1-1) unstable; urgency=low
 
-	* Updated DEBIAN files: control, conffiles, md5sums etc.
+    * Updated DEBIAN files: control, md5sums etc.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Wed, 28 Sep 2022 13:48:18 -0300
 
 remastersys (4.0-1) unstable; urgency=low
 
-	* First release!
-	* Improved man pages.
-	* Dependencies included: live-config-systemd, syslinux-utils, sudo, zstd.
-	* Dependencie excluded: memtest86+.
-	* Updated DEBIAN files: control, conffiles, md5sums etc.
+    * First release!
+    * Improved man pages.
+    * Dependencies included: live-config-systemd, syslinux-utils, sudo, zstd.
+    * Dependencie excluded: memtest86+.
+    * Updated DEBIAN files: control, md5sums etc.
 
  -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Fri, 23 Sep 2022 17:22:20 -0300
 
