@@ -558,7 +558,7 @@ iso(){
         -o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
 
         # create hybrid iso so it can be dd installed to a usb flash drive
-        echo -e $"\nMaking the ISO into a hybrid image so it can be imaged to a usb key or burned to optical media."
+        echo -e $"\nMaking the ISO into a hybrid image so it can be imaged to a USB key or burned to optical media."
         isohybrid $WORKDIR/$CUSTOMISO
     fi
 
@@ -573,7 +573,7 @@ iso(){
     sleep 1
 
     echo -e $"\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
-    echo -e $"\nCheck the size and if it is larger than 700MB you will need to burn it to a DVD:"
+    echo -e $"\nCheck the size and if it is larger than 4GB, the USB key must be formatted in exFAT:"
     ls -hs $WORKDIR/$CUSTOMISO
     ls -hs $WORKDIR/$CUSTOMISO >> $WORKDIR/remastersys.log
     echo -e $"\nIt is recommended to run \"sudo remastersys clean\" once you have burned and tested the image $CUSTOMISO.\n"

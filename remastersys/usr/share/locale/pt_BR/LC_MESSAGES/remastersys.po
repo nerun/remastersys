@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: remastersys:15
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
@@ -18,39 +18,39 @@ msgstr ""
 "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
 "\"."
 
-#: remastersys:71
+#: remastersys:72
 msgid "Version"
 msgstr "Versão"
 
-#: remastersys:76
+#: remastersys:77
 msgid " - Creating the CD File System only."
 msgstr " - Criando somente o sistema de arquivos do CD."
 
-#: remastersys:78
+#: remastersys:79
 msgid " - Creating the ISO file only."
 msgstr " - Criando somente o arquivo ISO."
 
-#: remastersys:101
+#: remastersys:102
 msgid "$fB$fOrange\\n>> BACKUP MODE SELECTED$options\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO BACKUP SELECIONADO$options\\n$fEND"
 
-#: remastersys:106
+#: remastersys:107
 msgid "$fB$fOrange\\n>> CLEANING MODE SELECTED\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO CLEAN SELECIONADO\\n$fEND"
 
-#: remastersys:107
+#: remastersys:108
 msgid "Deleting work directory..."
 msgstr "Apagando diretório de trabalho..."
 
-#: remastersys:109
+#: remastersys:110
 msgid "Done. Exiting...\\n"
 msgstr "Feito. Saindo...\\n"
 
-#: remastersys:115
+#: remastersys:116
 msgid "$fB$fOrange\\n>> DIST MODE SELECTED$options\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO DIST SELECIONADO$options\\n$fEND"
 
-#: remastersys:126
+#: remastersys:127
 msgid ""
 "The compressed file system is larger than the ISO 9660 specification for a "
 "single file allows. You should reduce the amount of files you are trying to "
@@ -60,60 +60,60 @@ msgstr ""
 "permite a um único arquivo. Você deve reduzir a quantidade de arquivos que "
 "você está tentando gravar e tentar de novo."
 
-#: remastersys:142
+#: remastersys:143
 msgid "Checking if the $WORKDIR folder has already been created."
 msgstr "Verificando se a pasta $WORKDIR já foi criada."
 
-#: remastersys:162
+#: remastersys:163
 msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
 msgstr ""
 "\\nCopiando /var e /etc para área temporária e deletando arquivos extras."
 
-#: remastersys:233
+#: remastersys:238
 msgid "\\nCopying installation icon to the Live CD user desktop."
 msgstr ""
 "\\nCopiando o ícone de instalação para a Área de Trabalho do usuário do Live "
 "CD."
 
-#: remastersys:353
+#: remastersys:358
 msgid "Press ENTER to choose or TAB to edit a menu entry"
 msgstr "Pressione ENTER para escolher ou TAB para editar uma entrada do menu"
 
-#: remastersys:354
+#: remastersys:359
 msgid "Live CD"
 msgstr "Live CD"
 
-#: remastersys:355
+#: remastersys:360
 msgid "Live CD (fail safe)"
 msgstr "Live CD (modo seguro)"
 
-#: remastersys:356
+#: remastersys:361
 msgid "Chain Bootup on First HDD"
 msgstr "Inicializar pelo HD"
 
-#: remastersys:357
+#: remastersys:362
 msgid "Memory Test (Memtest86)"
 msgstr "Testar RAM (Memtest86)"
 
-#: remastersys:358
+#: remastersys:363
 msgid "Memory Test (Memtest86+)"
 msgstr "Testar RAM (Memtest86+)"
 
-#: remastersys:417
+#: remastersys:423
 msgid "\\nSetting up Live CD options for mode $1."
 msgstr "\\nConfigurando as opções do Live CD para modo $1."
 
-#: remastersys:422
+#: remastersys:428
 msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr "\\nCopiando seu kernel e o initrd para o Live CD."
 
-#: remastersys:437
+#: remastersys:443
 msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
 msgstr ""
 "\\nCriando filesystem.squashfs... Isso pode demorar um pouco, então seja "
 "paciente."
 
-#: remastersys:516
+#: remastersys:520
 msgid ""
 "The CD file system is missing. Either there was a problem creating the "
 "compressed file system, or you are trying to run the command \\\"remastersys "
@@ -123,66 +123,45 @@ msgstr ""
 "um sistema de arquivos compactado, ou você está tentando executar o comando "
 "\\\"remastersys dist iso\\\" antes de \\\"remastersys dist cdfs\\\"."
 
-#: remastersys:529
+#: remastersys:533
 msgid "Creating"
 msgstr "Criando"
 
-#: remastersys:530
+#: remastersys:534
 msgid "in"
 msgstr "em"
 
-#: remastersys:531
+#: remastersys:535
 msgid "using"
 msgstr "usando"
 
-#: remastersys:557
+#: remastersys:561
 msgid ""
-"\\nMaking the ISO into a hybrid image so it can be imaged to a usb key or "
+"\\nMaking the ISO into a hybrid image so it can be imaged to a USB key or "
 "burned to optical media."
 msgstr ""
 "\\nTornando a ISO em uma imagem híbrida de modo a poder ser gravada em um "
 "pendrive ou em uma mídia óptica."
 
-#: remastersys:571
+#: remastersys:575
 msgid ""
 "\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
 msgstr ""
 "\\n$WORKDIR/$CUSTOMISO está pronto para ser gravado ou testado em uma "
 "máquina virtual."
 
-#: remastersys:572
+#: remastersys:576
 msgid ""
-"\\nCheck the size and if it is larger than 700MB you will need to burn it to "
-"a DVD:"
+"\\nCheck the size and if it is larger than 4GB, the USB key must be "
+"formatted in exFAT:"
 msgstr ""
-"\\nVerifique o tamanho, se for maior que 700MB você precisará gravar em um "
-"DVD:"
+"\\nVerifique o tamanho e, se for maior que 4GB, o pendrive precisará ser "
+"formatado em exFAT:"
 
-#: remastersys:575
+#: remastersys:579
 msgid ""
 "\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have "
 "burned and tested the image $CUSTOMISO.\\n"
 msgstr ""
 "\\nÉ recomendável executar \\\"sudo remastersys clean\\\" uma vez que você "
 "tenha gravado e testado a imagem $CUSTOMISO.\\n"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
