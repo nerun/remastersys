@@ -14,6 +14,10 @@ newver=$(SuggestedVersion)
 echo -e "\n New version number ($newver, maybe?): "
 read version
 
+if [[ "$version" = "" ]]; then
+    version="$newver"
+fi
+
 author="Daniel Dias Rodrigues <danieldiasr@gmail.com>"
 url="https://github.com/nerun/remastersys"
 

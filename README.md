@@ -1,10 +1,10 @@
 # REMASTERSYS
 
-<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.6" src="https://img.shields.io/badge/Version-4.6-brightgreen" /></a>
+<a href="https://github.com/nerun/remastersys/blob/master/LICENSE" target="_blank"><img alt="License: GPLv2" src="https://img.shields.io/badge/License-GPLv2-blue" /></a> <a href="https://www.debian.org/" target="_blank"><img alt="System: Debian 11" src="https://img.shields.io/badge/System-Debian%2011-blue" /></a> <a href="https://github.com/nerun/remastersys/releases" target="_blank"><img alt="Version: 4.6" src="https://img.shields.io/badge/Version-4.6%20beta-brightgreen" /></a>
 
 **Remastersys** is a tool that can be used to do two things with an existing Linux Debian installation:
 
-* A full system backup, including personal data, to a Live CD/DVD that you can use anywhere and install.
+* A full system backup, including personal data, to a Live ISO that you can use anywhere and install.
 * A distributable copy you can share with friends. This will not have any of your personal user data in it.
 
 Just burn your Distro or Backup image onto a CD/DVD media or USB stick (using Remastersys Bootable USB), then insert the media/pendrive into the PC and reboot.
@@ -22,20 +22,19 @@ There are still a few bugs, but there are also many new features compared to the
 * Updated icons and images.
 * Improved man pages.
 * Removed plymouth, but can be reinserted it in the future.
-* Changed gksu/gksudo to sudo.
+* Changed gksu/gksudo to ysudo (new tool).
 * Dependencies included: live-config-systemd, syslinux-utils, sudo, zstd.
-* Dependencies excluded: memtest86+ and xresprobe.
+* Dependencies excluded: memtest86+, mkisofs and xresprobe.
 
 ## Current state
 
-This program has 2 packages: **remastersys** (program itself, terminal mode) and **remastersys-gui** (graphical interface). Main features seems to work very well.
+This program has 2 packages: **remastersys** (program itself, terminal mode) and **remastersys-gui** (graphical interface). Main features seems to work, but there are some bugs.
 
 ## Basic usage
 * If there are no Debian packages to download and install in [releases](https://github.com/nerun/remastersys/releases) section, you should create debian packages:
   * run: `./package-creator`
-  * write version number, hit ENTER
-  * write a short changelog, hit ENTER
-  * write "end", hit ENTER
+  * write version number or accept suggested version by hitting ENTER
+  * update changelogs if you wish (in "nano"), answering (y/n) and hit ENTER
 * Install both packages: `sudo apt install ./remastersys*.deb`
 * Read instructions:
   * `man remastersys`
