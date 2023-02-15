@@ -1,7 +1,7 @@
 REMASTERSYS                                                         October 2022
 
 Remastersys allows you to remaster your system, creating a backup image or a new
-distribution that can be burned and run as a Live CD/DVD.
+distribution that can be copied to a USB key and run as a Live CD.
 
 USAGE:
 
@@ -67,8 +67,8 @@ OPTIONS:
         
     grub
     
-        -c, --config    - Installs GRUB bootloader. You must provide both options
-                          bellow.
+        -c, --config    - Installs GRUB bootloader. You must provide both
+                          options bellow.
     
             device
             
@@ -124,14 +124,14 @@ EXAMPLES:
     remastersys skelcopy clear
         (deletes all contents of /etc/skel and restores default Debian's files)
     
-    remastersys grub /dev/sda1
-    remastersys grub /dev/sda1 rootmbr
-    remastersys grub /mnt/sda1
-    remastersys grub /mnt/sda1 rootmbr
+    remastersys grub -c /dev/sda1
+    remastersys grub --config /dev/sda1 rootmbr
+    remastersys grub -c /mnt/sda1
+    remastersys grub --config /mnt/sda1 rootmbr
         (if /dev/sda1 is mounted on /mnt/sda1 all these commands will install
         GRUB to MBR of /dev/sda)
     
-    remastersys grub /dev/sda1 root
+    remastersys grub -c /dev/sda1 root
         (if /dev/sda1 is mounted on /mnt/sda1 this command will install GRUB to
         partition /dev/sda1)
 
