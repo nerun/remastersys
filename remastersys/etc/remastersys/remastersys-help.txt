@@ -67,7 +67,8 @@ OPTIONS:
         
     grub
     
-        You must provide both options bellow.
+        -c, --config    - Installs GRUB bootloader. You must provide both options
+                          bellow.
     
             device
             
@@ -86,6 +87,9 @@ OPTIONS:
                     root    - install GRUB to root partition.
             
                     rootmbr - install to MBR. Default when location is omitted.
+
+        -r, --restore   - Restores GRUB bootloader. Only works if the package
+                          "remastersys-gui" is installed.
 
 EXAMPLES:
 

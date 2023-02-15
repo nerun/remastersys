@@ -22,7 +22,8 @@ IsRoot # libremastersys.sh
 backupSkel(){
     if [ ! -d /etc/remastersys/skel-backup ]; then
         mkdir /etc/remastersys/skel-backup
-        cp /etc/skel/{\*,.*} /etc/remastersys/skel-backup
+        # -T excludes the directory itself, but copy all it's contents
+        cp -rT /etc/skel /etc/remastersys/skel-backup
     fi
 }
 
@@ -33,11 +34,13 @@ elif [ "$1" = "clear" ]; then
     backupSkel
     
     # Second: clear skel
-    rm -rf /etc/skel/{\*,.*}
+    # {*,.[^.]*} means all files and directories, hidden or not
+    # [^.] excludes directories "." and ".."
+    rm -rf /etc/skel/{*,.[^.]*}
     
     # Third: if there is a backup of Debian original files, restore it
     if [ -d /etc/remastersys/skel-backup ]; then
-        cp /etc/remastersys/skel-backup/{\*,.*} /etc/skel/
+        cp -rT /etc/remastersys/skel-backup /etc/skel/
         rm -rf /etc/remastersys/skel-backup
     fi
 else
@@ -72,26 +75,26 @@ else
         rm -rf /etc/skel/.wbar
         rm -rf /etc/skel/.mplayer
         echo $"Copying config files to /etc/skel."
-        rsync -a .bacon /etc/skel/
-        rsync -a .xscreensaver /etc/skel
-        sed -i -e "s/$SKELUSER//g" /etc/skel/.xscreensaver
-        rsync -a .gconf /etc/skel/
-        rsync -a .bashrc /etc/skel/
-        rsync -a .profile /etc/skel/
-        rsync -a .gnome2 /etc/skel/
-        rsync -a .config /etc/skel/
-        rsync -a .local /etc/skel/
-        rsync -a .icewm* /etc/skel/
-        rsync -a .fvwm* /etc/skel/
-        rsync -a .afterstep* /etc/skel/
-        rsync -a .mate* /etc/skel/
-        rsync -a .gtkrc* /etc/skel/
-        rsync -a .qt* /etc/skel/
-        rsync -a .kde* /etc/skel/
-        rsync -a .pekwm /etc/skel/
-        rsync -a .razor /etc/skel/
-        rsync -a .wbar /etc/skel/
-        rsync -a .mplayer /etc/skel/
+        rsync -a --ignore-missing-args .bacon /etc/skel/
+        rsync -a --ignore-missing-args .xscreensaver /etc/skel
+        [ -f /etc/skel/.xscreensaver ] && sed -i -e "s/$SKELUSER//g" /etc/skel/.xscreensaver
+        rsync -a --ignore-missing-args .gconf /etc/skel/
+        rsync -a --ignore-missing-args .bashrc /etc/skel/
+        rsync -a --ignore-missing-args .profile /etc/skel/
+        rsync -a --ignore-missing-args .gnome2 /etc/skel/
+        rsync -a --ignore-missing-args .config /etc/skel/
+        rsync -a --ignore-missing-args .local /etc/skel/
+        rsync -a --ignore-missing-args .icewm* /etc/skel/
+        rsync -a --ignore-missing-args .fvwm* /etc/skel/
+        rsync -a --ignore-missing-args .afterstep* /etc/skel/
+        rsync -a --ignore-missing-args .mate* /etc/skel/
+        rsync -a --ignore-missing-args .gtkrc* /etc/skel/
+        rsync -a --ignore-missing-args .qt* /etc/skel/
+        rsync -a --ignore-missing-args .kde* /etc/skel/
+        rsync -a --ignore-missing-args .pekwm /etc/skel/
+        rsync -a --ignore-missing-args .razor /etc/skel/
+        rsync -a --ignore-missing-args .wbar /etc/skel/
+        rsync -a --ignore-missing-args .mplayer /etc/skel/
         rm -rf /etc/skel/.config/chromium
         rm -rf /etc/skel/.config/midori/cookies.*
         rm -rf /etc/skel/.config/midori/history.*
@@ -109,7 +112,7 @@ else
         rm -rf /etc/skel/.kde/share/apps/klipper
         rm -rf /etc/skel/.kde/share/apps/nepomuk
         rm -rf /etc/skel/.kde/share/apps/RecentDocuments/*
-        for i in /etc/skel/.gnome2/keyrings/*; do rm $i; done
+        rm -rf /etc/skel/.gnome2/keyrings/*
         find /etc/skel/ | grep "$SKELUSER" | xargs rm -rf '{}'
         find /etc/skel/ -name "*socket*" | xargs rm -rf '{}'
         find /etc/skel/ -name "*cache*" | xargs rm -rf '{}'

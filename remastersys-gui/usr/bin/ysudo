@@ -5,8 +5,8 @@ if [[ "$USER" = "$LIVEUSER" ]]; then
     echo "$LIVEUSER"
 else
     yad \
-        --title="Authentication required" \
-        --text="The application \"$1\" lets\nyou modify essential parts of your system." \
+        --title=$"Authentication required" \
+        --text=$"The application \"$1\" lets\nyou modify essential parts of your system." \
         --image="dialog-password" \
         --entry --hide-text --borders=10 --fixed --timeout=10 2>/dev/null | sudo -S $*
 fi

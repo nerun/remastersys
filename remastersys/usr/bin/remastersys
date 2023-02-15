@@ -116,6 +116,24 @@ case $1 in
         echo -e $"$fB$fOrange\n>> DIST MODE SELECTED$options\n$fEND"
     ;;
 
+    install)
+        exec remastersys-installer "$2"
+    ;;
+
+    skelcopy)
+        exec sudo remastersys-skelcopy "$2"
+    ;;
+
+    grub)
+        if [[ "$2" == @("-c"|"--config") ]]; then
+            exec remastersys-grubconfig "$3" "$4"
+        elif [[ "$2" == @("-r"|"--restore") ]]; then
+            exec remastersys-grub-restore
+        else
+            echo -e $"$fB$fRed\nERROR: no such option \"$2\" for command \"grub\".\n$fEND"
+        fi
+    ;;
+
     *)
         echo ""
         GiveUserHelp # libremastersys.sh

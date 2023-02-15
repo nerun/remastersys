@@ -68,7 +68,8 @@ OPÇÕES:
         
     grub
     
-        Você deve fornecer as duas opções abaixo.
+        -c, --config    - Instala o gerenciador de boot GRUB. Você deve fornecer
+                          as duas opções abaixo.
     
             dispositivo
             
@@ -87,6 +88,9 @@ OPÇÕES:
                     root    - instala o GRUB na partição root.
             
                     rootmbr - instala no MBR. Padrão quando o local é omitido.
+
+        -r, --restore   - Restaura o gerenciador de boot GRUB. Só funciona se o
+                          pacote "remastersys-gui" estiver instalado.
 
 EXEMPLOS:
 

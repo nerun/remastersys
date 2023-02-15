@@ -1,0 +1,6 @@
+#: ysudo:8
+msgid "Authentication required"
+msgstr ""
+#: ysudo:9
+msgid "The application \\\"$1\\\" lets\\nyou modify essential parts of your system."
+msgstr ""
