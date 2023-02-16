@@ -1,3 +1,9 @@
+remastersys (4.7-1) unstable; urgency=low
+
+    * Updated DEBIAN files: control, md5sums etc.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 16 Feb 2023 14:25:50 -0300
+
 remastersys (4.6-1) unstable; urgency=low
 
     * Updated DEBIAN files: control, md5sums etc.

@@ -1,3 +1,11 @@
+remastersys (4.7-1) unstable; urgency=low
+
+    * Fixed aliases to "install", "grub" and "skelcopy" not working in terminal. Actually I included the aliases in the help file but I forgot to insert them in the program.
+    * Fixed a few error messages in "remastersys-skelcopy" (missing files). They are now ignored.
+    * Help files rewritten and simplified. All complexity has been moved to manual pages. Manual pages was also rewritten and translated to pt_BR.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Thu, 16 Feb 2023 14:25:04 -0300
+
 remastersys (4.6-1) unstable; urgency=low
 
     * Changed message about image size: CDs/DVDs are no longer used. Images larger than 4GB need to be burned in exFAT USB keys.
