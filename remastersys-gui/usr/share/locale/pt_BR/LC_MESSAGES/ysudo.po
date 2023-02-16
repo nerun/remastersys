@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Daniel Dias Rodrigues <danieldiasr@gmail.com>\n"
 "Language-Team: \n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -12,10 +12,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 3.0.1\n"
 
-#: ysudo:8
-msgid "Authentication required"
-msgstr "Autentificação requerida"
-
 #: ysudo:9
+msgid "Authentication required"
+msgstr "Autenticação necessária"
+
+#: ysudo:10
 msgid "The application \\\"$1\\\" lets\\nyou modify essential parts of your system."
 msgstr "O aplicativo \\\"$1\\\" permite\\nmodificar partes essenciais do seu sistema."

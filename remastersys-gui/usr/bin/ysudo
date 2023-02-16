@@ -1,12 +1,20 @@
-#!/usr/bin/env bash
+#!/bin/bash
 . /etc/remastersys.conf
+
+# SYSTEM LOCALIZATION
+# Target to file:
+# /usr/share/locale/(language code)/LC_MESSAGES/ysudo.mo
+TEXTDOMAIN=ysudo
+
+auth=$"Authentication required"
+app=$"The application \"$1\" lets\nyou modify essential parts of your system."
 
 if [[ "$USER" = "$LIVEUSER" ]]; then
     echo "$LIVEUSER"
 else
     yad \
-        --title=$"Authentication required" \
-        --text=$"The application \"$1\" lets\nyou modify essential parts of your system." \
+        --title="$auth" \
+        --text="$app" \
         --image="dialog-password" \
         --entry --hide-text --borders=10 --fixed --timeout=10 2>/dev/null | sudo -S $*
 fi
