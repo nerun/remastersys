@@ -72,6 +72,7 @@ echo "VERSION=\"$version\"" > ./remastersys/etc/remastersys/remastersys.version
 # MANPAGES PREPARATION
 # gzip deletes remastersys.1 file by default, remaining only remastersys.1.gz
 gzip remastersys/usr/share/man/man1/remastersys.1
+gzip remastersys/usr/share/man/pt_BR/man1/remastersys.1
 
 # CHANGELOG UPDATE
 cd remastersys/usr/share/doc/remastersys
@@ -208,6 +209,7 @@ gzip -d ./remastersys/usr/share/doc/remastersys/changelog.Debian.gz
 
 # manpages restoration
 gzip -d ./remastersys/usr/share/man/man1/remastersys.1.gz
+gzip -d ./remastersys/usr/share/man/pt_BR/man1/remastersys.1.gz
 
 # .po and .pot restoration
 mv ./tmp-locales/*.po* ./remastersys/usr/share/locale/pt_BR/LC_MESSAGES

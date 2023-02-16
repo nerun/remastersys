@@ -1,144 +1,25 @@
-REMASTERSYS                                                      Outubro de 2022
-
 Remastersys permite remasterizar seu sistema, criando uma imagem de backup ou
-uma nova distribuição que pode ser gravada em um pendrive e executada como um
+uma nova distribuição que pode ser copiada para um pendrive e executada como um
 Live CD.
 
-USO:
+Uso:
+  remastersys COMANDO [OPÇÕES]
+      (deve ser executado como superusuário)
 
-    remastersys [COMANDO] [OPÇÕES]
-        (deve ser executado como superusuário)
+  remastersys backup [cdfs|iso] [arquivo.iso]
 
-COMANDO:
+  remastersys dist [cdfs|iso] [arquivo.iso]
 
-    backup   - cria um backup do seu sistema em um Live CD/DVD.
-    
-    dist     - cria uma distribuição do seu sistema em um Live CD/DVD.
-    
-    clean    - limpa os arquivos temporários criados pelo remastersys.
-    
-    install  - instala o Live CD/DVD no disco rígido.
-    
-    skelcopy - copia as configurações pessoais de um usuário para a pasta
-               /etc/skel.
-    
-    grub     - instala ou restaura o carregador de inicialização GRUB.
+  remastersys clean
 
-OPÇÕES:
+  remastersys install [-g, --gui]
 
-    backup
-    dist
-    
-        Essas opções são de fato opcionais.
-    
-            cdfs        - Cria apenas o sistema de arquivos do CD. Esta opção é
-                          projetada para ser usada se você quiser modificar algo
-                          no CD antes de criar a ISO. Um exemplo seria modificar
-                          a parte isolinux do Live CD/DVD.
-            
-            iso         - Cria uma imagem ISO desde que o sistema de arquivos do
-                          CD já tenha sido criada.
-            
-            arquivo     - Nome do arquivo de imagem a ser criado. Se o nome
-                          fornecido para o arquivo não tiver a extensão ".iso",
-                          então será adicionada automaticamente. Se este
-                          parâmetro não for fornecido, a ISO será salva como
-                          "remastersys-livecd.iso".
-    
-    clean
-    
-        Não tem opções.
-        
-    install
-    
-        Se nenhuma opção for fornecida, o instalador será executado em um
-        terminal usando o "dialog" como interface do usuário.
-    
-            -g, --gui   - executa o instalador com uma interface gráfica de
-                          usuário (GUI) criada em "yad".
-        
-    skelcopy
-    
-        Você deve usar qualquer uma das opções, mas deve usar pelo menos uma.
-    
-            usuário     - é um usuário válido no sistema. Copia as configurações
-                          pessoais do "usuário" para a pasta /etc/skel.
-        
-            clear       - exclui todo o conteúdo de /etc/skel e restaura os
-                          arquivos de configuração padrões do Debian.
-        
-    grub
-    
-        -c, --config    - Instala o gerenciador de boot GRUB. Você deve fornecer
-                          as duas opções abaixo.
-    
-            dispositivo
-            
-                É ou o caminho completo de um dispositivo ou seu ponto de
-                montagem. A partição deve ter sido montada anteriormente.
-                
-                    /dev/dispositivo   - Ex.: /dev/sda1.
-                    
-                    /ponto/de/montagem - Ex.: /mnt/sda1, se /dev/sda1 estiver
-                                         montado lá.
-        
-            local
-            
-                Onde instalar o GRUB. Você tem duas opções:
-        
-                    root    - instala o GRUB na partição root.
-            
-                    rootmbr - instala no MBR. Padrão quando o local é omitido.
+  remastersys skelcopy usuário
+                       clear
 
-        -r, --restore   - Restaura o gerenciador de boot GRUB. Só funciona se o
-                          pacote "remastersys-gui" estiver instalado.
+  remastersys grub [-c, --config] /dev/dispositivo [root|rootmbr]
+                                  /ponto/de/montagem [root|rootmbr]
+                   [-r, --restore]
 
-EXEMPLOS:
-
-    remastersys backup
-        (cria um Live CD/DVD contendo um backup do seu sistema)
-
-    remastersys backup custom
-        (cria um backup em Live CD/DVD e nomeia o ISO como "custom.iso")
-
-    remastersys dist
-        (cria um Live CD/DVD contendo uma distribuição do seu sistema)
-
-    remastersys dist cdfs
-        (cria apenas o sistema de arquivos da sua distribuição Live CD/DVD)
-
-    remastersys dist iso custom.iso
-        (cria uma ISO da distribuição com o nome custom.iso, desde que o sistema
-        de arquivos já tenha sido criado)
-
-    remastersys clean
-        (exclui a pasta de trabalho "/home/remastersys")
-    
-    remastersys install
-        (instala o Live CD/DVD no disco rígido usando o dialog como interface do
-        usuário)
-    
-    remastersys install -g
-        (instala o Live CD/DVD no disco rígido usando uma GUI)
-    
-    remastersys skelcopy daniel
-        (copia as configurações pessoais do usuário "daniel" para a pasta
-        /etc/skel)
-    
-    remastersys skelcopy clear
-        (exclui todo o conteúdo de /etc/skel e restaura os arquivos de
-        configuração padrões do Debian)
-    
-    remastersys grub -c /dev/sda1
-    remastersys grub --config /dev/sda1 rootmbr
-    remastersys grub -c /mnt/sda1
-    remastersys grub --config /mnt/sda1 rootmbr
-        (se /dev/sda1 estiver montado em /mnt/sda1 todos estes comandos farão
-        com que o GRUB seja instalado no MBR de /dev/sda)
-    
-    remastersys grub -c /dev/sda1 root
-        (se /dev/sda1 estiver montado em /mnt/sda1 este comando instalará o GRUB
-        na partição /dev/sda1)
-
-Pressione "Q" para sair.
-
+Páginas de manual:
+  Digite "man remastersys" para uma ajuda mais aprofundada.

@@ -1,139 +1,24 @@
-REMASTERSYS                                                         October 2022
-
-Remastersys allows you to remaster your system, creating a backup image or a new
+Remastersys allows to remaster your system, creating a backup image or a new
 distribution that can be copied to a USB key and run as a Live CD.
 
-USAGE:
+Usage:
+  remastersys COMMAND [OPTIONS]
+      (must run as superuser)
 
-    remastersys [COMMAND] [OPTIONS]
-        (must run as superuser)
+  remastersys backup [cdfs|iso] [filename.iso]
 
-COMMAND:
+  remastersys dist [cdfs|iso] [filename.iso]
 
-    backup   - creates a backup of your system in a Live CD/DVD.
-    
-    dist     - creates a distribution of your system in a Live CD/DVD.
-    
-    clean    - cleans the temporary files created by remastersys.
-    
-    install  - installs Live CD/DVD to hard disk.
-    
-    skelcopy - copies an user personal settings to the /etc/skel folder.
-    
-    grub     - installs or restores GRUB bootloader.
+  remastersys clean
 
-OPTIONS:
+  remastersys install [-g, --gui]
 
-    backup
-    dist
-    
-        These options are really optional.
-    
-            cdfs        - Creates the CD file system only. This option is
-                          designed to be used if you want to modify something on
-                          the CD before creating the ISO. An example would be
-                          modifying the isolinux portion of Live CD/DVD.
-            
-            iso         - Creates an ISO image as long as the CD file system has
-                          already been created.
-            
-            filename    - Name of the image file to be created. If the given
-                          file name has no ".iso" extension, then it will be
-                          added automatically. If this parameter is not
-                          provided, the ISO will be saved as
-                          "remastersys-livecd.iso".
-    
-    clean
-    
-        Has no options.
-        
-    install
-    
-        If no option is provided installer will run in a terminal using "dialog"
-        as user interface.
-    
-            -g, --gui   - runs installer with a Graphical User Interface (GUI)
-                          created in "yad".
-        
-    skelcopy
-    
-        You must use either option, but you must use at least one.
-    
-            username    - is a valid user on the system. Copies "username"
-                          personal settings to the /etc/skel folder.
-        
-            clear       - deletes all contents of /etc/skel and restores default
-                          Debian's files.
-        
-    grub
-    
-        -c, --config    - Installs GRUB bootloader. You must provide both
-                          options bellow.
-    
-            device
-            
-                Either the full path of a device or it's mounting point.
-                Partition must have been mounted previously.
-                
-                    /dev/device      - Ex.: /dev/sda1.
-                    
-                    /mounting/point  - Ex.: /mnt/sda1, if /dev/sda1 is mounted
-                                       there.
-        
-            location
-            
-                Where to install GRUB. You have two choices:
-        
-                    root    - install GRUB to root partition.
-            
-                    rootmbr - install to MBR. Default when location is omitted.
+  remastersys skelcopy username
+                       clear
 
-        -r, --restore   - Restores GRUB bootloader. Only works if the package
-                          "remastersys-gui" is installed.
+  remastersys grub [-c, --config] /device [root|rootmbr]
+                                  /mounting/point [root|rootmbr]
+                   [-r, --restore]
 
-EXAMPLES:
-
-    remastersys backup
-        (creates a Live CD/DVD containing a backup of your system)
-
-    remastersys backup custom
-        (creates a Live CD/DVD backup, and names the ISO as "custom.iso")
-
-    remastersys dist
-        (creates a Live CD/DVD containing a distribution of your system)
-
-    remastersys dist cdfs
-        (creates only the file system of yours Live CD/DVD distribution)
-
-    remastersys dist iso custom.iso
-        (creates an ISO of the distribution with the name custom.iso, as long as
-        the file system has already been created)
-
-    remastersys clean
-        (deletes the working folder "/home/remastersys")
-    
-    remastersys install
-        (installs Live CD/DVD to hard disk using dialog as user interface)
-    
-    remastersys install -g
-        (installs Live CD/DVD to hard disk using a GUI)
-    
-    remastersys skelcopy daniel
-        (copies user "daniel" personal settings to the /etc/skel folder)
-    
-    remastersys skelcopy clear
-        (deletes all contents of /etc/skel and restores default Debian's files)
-    
-    remastersys grub -c /dev/sda1
-    remastersys grub --config /dev/sda1 rootmbr
-    remastersys grub -c /mnt/sda1
-    remastersys grub --config /mnt/sda1 rootmbr
-        (if /dev/sda1 is mounted on /mnt/sda1 all these commands will install
-        GRUB to MBR of /dev/sda)
-    
-    remastersys grub -c /dev/sda1 root
-        (if /dev/sda1 is mounted on /mnt/sda1 this command will install GRUB to
-        partition /dev/sda1)
-
-Press "Q" to quit.
-
+Manual pages:
+  Type "man remastersys" for a more in-depth help.

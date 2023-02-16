@@ -32,7 +32,7 @@ function GiveUserHelp(){
         local help_file="/etc/remastersys/remastersys-help.txt"
     fi
 
-    less -FX "$help_file"
+    cat "$help_file"
 
     exit 0
 }
