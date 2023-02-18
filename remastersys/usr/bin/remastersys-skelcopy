@@ -3,7 +3,7 @@
 #  REMASTERSYS                                                    #
 #    Under the GNU GPL2 License                                   #
 #    Copyright (C) 2013-2022 Daniel "Nerun" Rodrigues             #
-#    Copyright (C) 2007-2012 Tony "Fragadelic" Brijeski           #
+#    Copyright (C) 2007-2013 Tony "Fragadelic" Brijeski           #
 #    Full copyright notice: /usr/share/doc/remastersys/copyright  #
 ###################################################################
 
@@ -96,6 +96,8 @@ else
         rsync -a --ignore-missing-args .wbar /etc/skel/
         rsync -a --ignore-missing-args .mplayer /etc/skel/
         rm -rf /etc/skel/.config/chromium
+        rm -rf /etc/skel/.config/gcalendar
+        rm -rf /etc/skel/.config/google-chrome
         rm -rf /etc/skel/.config/midori/cookies.*
         rm -rf /etc/skel/.config/midori/history.*
         rm -rf /etc/skel/.config/midori/tabtrash.*
@@ -112,7 +114,10 @@ else
         rm -rf /etc/skel/.kde/share/apps/klipper
         rm -rf /etc/skel/.kde/share/apps/nepomuk
         rm -rf /etc/skel/.kde/share/apps/RecentDocuments/*
-        rm -rf /etc/skel/.gnome2/keyrings/*
+        # Gnome 2 keyrings
+        rm -rf /etc/skel/.gnome2/keyrings/{*,.[^.]*}
+        # Gnome 3 keyrings
+        rm -rf /etc/skel/.local/share/keyrings/{*,.[^.]*}
         find /etc/skel/ | grep "$SKELUSER" | xargs rm -rf '{}'
         find /etc/skel/ -name "*socket*" | xargs rm -rf '{}'
         find /etc/skel/ -name "*cache*" | xargs rm -rf '{}'

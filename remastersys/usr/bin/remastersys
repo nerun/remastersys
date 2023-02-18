@@ -3,7 +3,7 @@
 #  REMASTERSYS                                                    #
 #    Under the GNU GPL2 License                                   #
 #    Copyright (C) 2013-2022 Daniel "Nerun" Rodrigues             #
-#    Copyright (C) 2007-2012 Tony "Fragadelic" Brijeski           #
+#    Copyright (C) 2007-2013 Tony "Fragadelic" Brijeski           #
 #    Full copyright notice: /usr/share/doc/remastersys/copyright  #
 ###################################################################
 
@@ -144,12 +144,19 @@ esac
 # Used inside both cdfs() and iso(), around lines 550-570
 SpecIso9660=$"The compressed file system is larger than the ISO 9660 specification for a single file allows. You should reduce the amount of files you are trying to backup and try again."
 
+# Function log_msg extracted from PinguyBuilder v5.2 with a few changes.
+# https://sourceforge.net/projects/pinguy-os/files/ISO_Builder/
+# Added log_msg to reduce size. Code provided by Ivailo (a.k.a. SmiL3y)
+log_msg() {
+    echo -e "$1" >> $WORKDIR/remastersys.log
+}
+
 CheckFileSystemSize(){
     #checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file"
     SQUASHFSSIZE=$(ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
     if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
         echo $SpecIso9660
-        echo $SpecIso9660 >> $WORKDIR/remastersys.log
+        log_msg $SpecIso9660
         exit 1
     fi
 }
@@ -502,24 +509,24 @@ cdfs(){
 
     #add some stuff to the log in case of problems so I can troubleshoot it easier
     stripe="------------------------------------------------------"
-    echo -e "$stripe\nMount information:" >>$WORKDIR/remastersys.log
-    mount >>$WORKDIR/remastersys.log
-    echo -e "$stripe\ndf information:" >>$WORKDIR/remastersys.log
-    df -h 2>&1 | grep -v "df:" >>$WORKDIR/remastersys.log
-    echo -e "$stripe\n/etc/remastersys.conf info:" >>$WORKDIR/remastersys.log
-    cat /etc/remastersys.conf >>$WORKDIR/remastersys.log
-    echo -e "$stripe\n/etc/live/config.conf info:" >>$WORKDIR/remastersys.log
-    cat /etc/live/config.conf >>$WORKDIR/remastersys.log
-    echo -e "$stripe\n/etc/passwd info:" >>$WORKDIR/remastersys.log
-    cat $WORKDIR/dummysys/etc/passwd >>$WORKDIR/remastersys.log
-    echo -e "$stripe\n/etc/group info:" >>$WORKDIR/remastersys.log
-    cat $WORKDIR/dummysys/etc/group >>$WORKDIR/remastersys.log
-    echo -e "$stripe\n/etc/skel info:" >>$WORKDIR/remastersys.log
-    find /etc/skel/ >>$WORKDIR/remastersys.log
-    echo -e "$stripe\n/etc/X11/default-display-manager info:" >>$WORKDIR/remastersys.log
-    cat /etc/X11/default-display-manager >>$WORKDIR/remastersys.log
-    echo -e "$stripe\nVersion info: $VERSION" >>$WORKDIR/remastersys.log
-    echo -e "$stripe\nCommand-line options: $@\n$stripe" >>$WORKDIR/remastersys.log
+    log_msg "$stripe\nMount information:"
+    mount >> $WORKDIR/remastersys.log
+    log_msg "$stripe\ndf information:"
+    df -h 2>&1 | grep -v "df:" >> $WORKDIR/remastersys.log
+    log_msg "$stripe\n/etc/remastersys.conf info:"
+    cat /etc/remastersys.conf >> $WORKDIR/remastersys.log
+    log_msg "$stripe\n/etc/live/config.conf info:"
+    cat /etc/live/config.conf >> $WORKDIR/remastersys.log
+    log_msg "$stripe\n/etc/passwd info:"
+    cat $WORKDIR/dummysys/etc/passwd >> $WORKDIR/remastersys.log
+    log_msg "$stripe\n/etc/group info:"
+    cat $WORKDIR/dummysys/etc/group >> $WORKDIR/remastersys.log
+    log_msg "$stripe\n/etc/skel info:"
+    find /etc/skel/ >> $WORKDIR/remastersys.log
+    log_msg "$stripe\n/etc/X11/default-display-manager info:"
+    cat /etc/X11/default-display-manager >> $WORKDIR/remastersys.log
+    log_msg "$stripe\nVersion info: $VERSION"
+    log_msg "$stripe\nCommand-line options: $@\n$stripe"
 
     sleep 1
 
@@ -555,12 +562,12 @@ iso(){
     if [ "$ISOBOOT" = "GRUB" ]; then
         phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
         echo -e "$phrase1"
-        echo "$phrase1" >>$WORKDIR/remastersys.log
+        log_msg "$phrase1"
         grub-mkrescue -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
         echo -e "$phrase2"
-        echo "$phrase2" >>$WORKDIR/remastersys.log
+        log_msg "$phrase2"
         $CREATEISO \
         -quiet \
         -r \
@@ -583,7 +590,7 @@ iso(){
     # create the md5 sum file, so the iso can later be tested to ensure it hasn't become corrupted
     phrase3="$Creating $CUSTOMISO.md5 $In $WORKDIR."
     echo -e "\n$phrase3"
-    echo "$phrase3" >>$WORKDIR/remastersys.log
+    log_msg "$phrase3"
 
     cd $WORKDIR
     md5sum $CUSTOMISO > $CUSTOMISO.md5
@@ -597,15 +604,18 @@ iso(){
     echo -e $"\nIt is recommended to run \"sudo remastersys clean\" once you have burned and tested the image $CUSTOMISO.\n"
 }
 
-# check to see if either iso or cdfs options have been invoked and proceed accordingly
-
-if [ "$2" = "iso" ]; then
-    iso $@
-elif [ "$2" = "cdfs" ]; then
-    cdfs $@
-else
-    cdfs $@
-    iso $@
-fi
+# Check to see if either iso or cdfs options have been invoked and proceed accordingly
+case $2 in
+    iso)
+        iso $@
+        ;;
+    cdfs)
+        cdfs $@
+        ;;
+    *)
+        cdfs $@
+        iso $@
+        ;;
+esac
 
 exit 0
