@@ -2,8 +2,8 @@
 
 ## THINGS TO DO
 
-* copyright:
-   * version 4 has been released in `Sep 23, 2022`. I should update copyright to 2022 probably.
+* ~~copyright:~~
+   * ~~version 4 has been released in `Sep 23, 2022`. I should update copyright to 2022 probably.~~
 * move from genisoimage/mkisofs to xorriso?
 * deal with:
    * /etc/remastersys/grub.png

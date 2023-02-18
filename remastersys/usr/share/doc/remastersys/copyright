@@ -2,15 +2,21 @@ REMASTERSYS
 
     Is a tool to remaster your system. It can make a full system backup or a
     distributable copy.
+
+HISTORY:
+
+    Originally created by Tony "Fragadelic" Brijeski on February 12, 2007.
+    Last version released was 3.0.0 on January 11, 2013.
     
-    Originally created by Tony "Fragadelic" Brijeski on February 12th, 2007.
-    Last version released was 3.0.0 on January 11th, 2013.
-    
-    Forked by Daniel "Nerun" Rodrigues on October 9th, 2013.
+    Forked by Daniel Dias Rodrigues (aka "Nerun") on September 8, 2021. But I've
+    been working on Remastersys since October 9, 2013, when I created my first
+    fork, called "ReFiSeFuQui" (acronym for something like "remasters made over
+    the weekend in a garage"). Much of that code has been reused in this new
+    fork.
 
 COPYRIGHT:
 
-    Copyright (C) 2013-2022 Daniel Dias Rodrigues <danieldiasr@gmail.com>
+    Copyright (C) 2021-2023 Daniel Dias Rodrigues <danieldiasr@gmail.com>
     Copyright (C) 2007-2013 Tony Brijeski <tb6517@yahoo.com>
 
 LICENSE:
