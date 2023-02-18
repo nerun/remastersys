@@ -1,4 +1,10 @@
 #!/bin/bash
+###################################################################
+#  YSUDO                                                          #
+#    Under the GNU GPL2 License                                   #
+#    Copyright (C) 2023 Daniel "Nerun" Rodrigues                  #
+###################################################################
+
 . /etc/remastersys.conf
 
 # SYSTEM LOCALIZATION
