@@ -19,9 +19,9 @@ if [[ "$USER" = "$LIVEUSER" ]]; then
     echo "$LIVEUSER"
 else
     yad \
-        --title="$auth" \
-        --text="$app" \
+        --title="$auth" --text="$app" \
         --image="dialog-password" \
-        --entry --hide-text --borders=10 --fixed --timeout=10 2>/dev/null | sudo -S $*
+        --entry --hide-text --borders=10 --fixed --center \
+        --timeout-indicator=left --timeout=10 2>/dev/null | sudo -S $*
 fi
 
