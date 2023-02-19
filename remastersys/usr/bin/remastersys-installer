@@ -24,7 +24,7 @@ if [[ "$1" == @("-h"|"-?"|"--help") ]]; then
 fi
 
 # set options depending on mode - text or gui
-DIALOG="`which dialog`"
+DIALOG="`find_bin dialog`"
 HEIGHT="17"
 WIDTH="50"
 MENUHEIGHT="12"
@@ -49,26 +49,25 @@ if [[ "$1" == @("-g"|"--gui") ]]; then
 fi
 
 if [ "$GUI" != "" ]; then
-    testyad=`which yad`
-    
     notfound=$"not found. Will be installed now."
 
+    testyad=`find_bin yad`
     if [ "$testyad" = "" ]; then
         echo "Yad "$notfound
-        apt-get -y -q install yad
-        testyad=`which yad`
+        apt -y -q install yad
+        testyad=`find_bin yad`
     fi
 
-    testgparted=`which gparted`
+    testgparted=`find_bin gparted`
     if [ "$testgparted" = "" ]; then
         echo "Gparted "$notfound
-        apt-get -y -q install gparted
-        testgparted=`which gparted`
+        apt -y -q install gparted
+        testgparted=`find_bin gparted`
     fi
 
     if [ "$testyad" != "" ]; then
-        DIALOGMENU="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --width=600 --height=400 --center"
-        DIALOG="`which yad` --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --center --fixed"
+        DIALOGMENU="$testyad --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --width=600 --height=400 --center"
+        DIALOG="$testyad --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys-installer.png --center --fixed"
         TITLE="--always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys-installer.png --title="
         TEXT="--text="
         ENTRY="--entry "

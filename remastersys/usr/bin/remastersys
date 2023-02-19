@@ -534,10 +534,15 @@ cdfs(){
 }
 
 iso(){
-    CREATEISO="$(which mkisofs)"
+    # 'xorrisofs' is an alias for 'xorriso -as mkisofs'
+    # Also, 'genisoimage' is no longer updated, and 'xorriso' is the current and
+    # modern replacement.
+    # cdrtools/mkisofs is not an option: it's not availabe by default in Debian
+    # or Ubuntu repositories.
+    CREATEISO="$(find_bin 'xorrisofs')"
 
     if [ "$CREATEISO" = "" ]; then
-        CREATEISO="$(which genisoimage)"
+        CREATEISO="$(find_bin 'genisoimage')"
     fi
 
     # check to see if the cd filesystem exists
@@ -575,6 +580,7 @@ iso(){
         -cache-inodes \
         -J \
         -l \
+        -iso-level 3 \
         -b isolinux/isolinux.bin \
         -c isolinux/boot.cat \
         -no-emul-boot \

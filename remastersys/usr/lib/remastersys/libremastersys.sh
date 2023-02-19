@@ -45,3 +45,8 @@ function IsRoot(){
     fi
 }
 
+# Replacement for "which XX" that gives answer 'XX not found'
+function find_bin(){
+    find /usr/bin /usr/sbin -name "$1"
+}
+
