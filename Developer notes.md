@@ -17,5 +17,8 @@
    * create manpages: remastersys-gui, -grub-restore and -bootable-usb.
 * [Issue #3](https://github.com/nerun/remastersys/issues/3): Add EFI / UEFI boot support.
 * ~~[Issue #8](https://github.com/nerun/remastersys/issues/8): ISO images larger than 4 GiB. I should try `-iso-level 3`.~~
-* need to test:
+* TESTS NEEDED:
    * remastersys-skelcopy: need to know if the user's personal settings are actually being used.
+* ISOLINUX / GRUB:
+   * update grub options to become equal to isolinux.
+   * changed default settings from isolinux to grub.

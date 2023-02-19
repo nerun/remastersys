@@ -16,7 +16,7 @@ auth=$"Authentication required"
 app=$"The application \"$1\" lets\nyou modify essential parts of your system."
 
 if [[ "$USER" = "$LIVEUSER" ]]; then
-    echo "$LIVEUSER"
+    echo "$LIVEUSER" | sudo -S $*
 else
     yad \
         --title="$auth" --text="$app" \
