@@ -167,28 +167,19 @@ msgstr ""
 "\\n\\nVisite <a href=\\\"https://github.com/nerun/remastersys\\\">https://"
 "github.com/nerun/remastersys</a> para obter mais informações."
 
-#: remastersys-gui:127
+#: remastersys-gui:124
 msgid ""
-"The compressed file system is larger than the ISO 9660 specification allows "
-"for\\na single file.\\n\\nYou must try to reduce the amount of data you are "
-"backing up and try again."
+"Your files are ready:\\n   - $WORKDIR/$CUSTOMISO\\n   - $WORKDIR/$CUSTOMISO."
+"md5\\n\\nIt is recommended to test it in a virtual machine or on "
+"a\\nrewritable CD/DVD to ensure it works as desired.\\n\\nClick on OK to "
+"return to the main menu."
 msgstr ""
-"O sistema de arquivos compactado é maior do que a especificação ISO 9660 "
-"permite\\npara um único arquivo.\\n\\nVocê deve tentar reduzir a quantidade "
-"de dados dos quais está fazendo backup e\\ntentar novamente."
+"Seus arquivos estão prontos:\\n   - $WORKDIR/$CUSTOMISO\\n   - $WORKDIR/"
+"$CUSTOMISO.md5\\n\\nRecomenda-se testá-lo em uma máquina virtual ou em "
+"um\\nCD/DVD regravável para garantir que funcione como desejado.\\n\\nClique "
+"em OK para retornar ao menu principal."
 
-#: remastersys-gui:134
-msgid ""
-"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in\\n$WORKDIR. It is "
-"recommended to test it in a virtual machine or on a\\nrewritable CD/DVD to "
-"ensure it works as desired.\\n\\nClick on OK to return to the main menu."
-msgstr ""
-"Seus arquivos $CUSTOMISO e $CUSTOMISO.md5 estão prontos\\nem $WORKDIR. "
-"Recomenda-se testá-lo em uma máquina virtual ou em um\\nCD/DVD regravável "
-"para garantir que funcione como desejado.\\n\\nClique em OK para retornar ao "
-"menu principal."
-
-#: remastersys-gui:139
+#: remastersys-gui:129
 msgid ""
 "You have selected Backup Mode.\\n\\nDo not interrupt this process."
 "\\n\\nClick OK to start the Backup Live CD/DVD process."
@@ -196,7 +187,7 @@ msgstr ""
 "Você selecionou o Modo de Backup.\\n\\nNão interrompa este processo."
 "\\n\\nClique em OK para iniciar o processo de Live CD/DVD de Backup."
 
-#: remastersys-gui:148
+#: remastersys-gui:135
 msgid ""
 "You have selected Dist Mode.\\n\\nClick OK to start the Distributable Live "
 "CD/DVD process."
@@ -204,7 +195,7 @@ msgstr ""
 "Você selecionou o Modo de Distribuição.\\n\\nClique em OK para iniciar o "
 "processo de Live CD/DVD de Distribuição."
 
-#: remastersys-gui:157
+#: remastersys-gui:141
 msgid ""
 "You have selected Dist CDFS Mode.\\n\\nClick OK to start the Distributable "
 "Live CD/DVD file system build process."
@@ -212,7 +203,7 @@ msgstr ""
 "Você selecionou o Modo CDFS de Distribuição.\\n\\nClique em OK para iniciar "
 "o processo de criação do sistema de arquivos do\\nLive CD/DVD."
 
-#: remastersys-gui:162
+#: remastersys-gui:144
 msgid ""
 "Your Live CD File System is ready in $WORKDIR. You can now add files\\nto "
 "the CD and then run the Dist ISO option when you are done.\\n\\nClick on OK "
@@ -222,13 +213,13 @@ msgstr ""
 "você\\npode adicionar arquivos o CD e executar a opção Dist ISO quando "
 "terminar.\\n\\nClique em OK para retornar ao menu principal."
 
-#: remastersys-gui:169
+#: remastersys-gui:151
 msgid "You have selected DistISO Mode.\\n\\nClick OK to create the ISO file."
 msgstr ""
 "Você selecionou o Modo ISO de Distribuição.\\n\\nClique em OK para criar o "
 "arquivo ISO."
 
-#: remastersys-gui:176
+#: remastersys-gui:155
 msgid ""
 "The Live CD file system does not exist.\\n\\nClick OK to go back to the main "
 "menu and try the normal Dist mode or the Dist\\nCDFS again."
@@ -236,7 +227,7 @@ msgstr ""
 "O sistema de arquivos do Live CD não existe.\\n\\nClique em OK para voltar "
 "ao menu principal e tente o modo Dist ou o Dist CDFS\\nnovamente."
 
-#: remastersys-gui:183
+#: remastersys-gui:162
 msgid ""
 "This will allow you to choose your own picture to be the background for the "
 "LIVE\\nboot menu. Please note that it MUST be a 640x480 pixel PNG file. You "
@@ -250,7 +241,7 @@ msgstr ""
 "editor gráfico\\nadequado, pois esta ferramenta não tem a capacidade de "
 "alterar o tamanho ou o\\ntipo da imagem.\\n\\nClique em OK para continuar."
 
-#: remastersys-gui:198
+#: remastersys-gui:177
 msgid ""
 "$BOOTPIC has been copied to /etc/remastersys/splash.png becoming the "
 "default\\nbackground for the LIVE menu.$Continue"
@@ -258,7 +249,7 @@ msgstr ""
 "$BOOTPIC foi copiada para /etc/remastersys/splash.png tornando-se o plano "
 "de\\nfundo padrão para o menu do Live CD.$Continue"
 
-#: remastersys-gui:207
+#: remastersys-gui:186
 msgid ""
 "This will allow you to choose your own PNG picture to be the background for "
 "the\\nGRUB boot loader.$Continue"
@@ -266,7 +257,7 @@ msgstr ""
 "Isso permitirá que você escolha sua própria imagem PNG para ser o plano de "
 "fundo\\ndo carregador de inicialização GRUB.$Continue"
 
-#: remastersys-gui:215
+#: remastersys-gui:194
 msgid ""
 "$GRUBPIC has been copied to /etc/remastersys/splash.png and is the "
 "default\\nbackground for grub.\\n\\nClick OK to update grub with the new "
@@ -277,15 +268,15 @@ msgstr ""
 "novas configurações para que você\\npossa ver sua imagem na próxima "
 "inicialização."
 
-#: remastersys-gui:218
+#: remastersys-gui:197
 msgid "Updating grub now.\\n\\nPlease wait."
 msgstr "Atualizando o grub agora.\\n\\nPor favor aguarde."
 
-#: remastersys-gui:234
+#: remastersys-gui:213
 msgid "GRUB has been updated.$Continue"
 msgstr "O GRUB foi atualizado.$Continue"
 
-#: remastersys-gui:244
+#: remastersys-gui:223
 msgid ""
 "This will put your user desktop and application settings in /etc/skel so "
 "they\\nbecome the default for the live system. This includes desktop "
@@ -302,29 +293,29 @@ msgstr ""
 "para ser concluído, portanto\\nseja paciente.\\n\\nClique em OK para "
 "preparar a lista."
 
-#: remastersys-gui:263
+#: remastersys-gui:242
 msgid ""
 "Please select a user whose settings \\nyou would like to make the default. "
 msgstr ""
 "Selecione um usuário cujas configurações \\nvocê gostaria que se tornasse as "
 "padrões. "
 
-#: remastersys-gui:285
+#: remastersys-gui:264
 msgid "The user you chose does not have a proper home directory.$Return"
 msgstr "O usuário escolhido não possui uma pasta home.$Return"
 
-#: remastersys-gui:286
+#: remastersys-gui:265
 msgid "Need to be in the user directory. Exiting."
 msgstr "Precisa estar na pasta de usuário. Saindo."
 
-#: remastersys-gui:290
+#: remastersys-gui:269
 msgid ""
 "Copying your $SKELUSER user settings to /etc/skel now.\\n\\nPlease wait."
 msgstr ""
 "Copiando as configurações do usuário $SKELUSER para /etc/skel agora."
 "\\n\\nPor favor aguarde."
 
-#: remastersys-gui:296
+#: remastersys-gui:275
 msgid ""
 "The settings for $SKELUSER have been copied to /etc/skel. In order to test "
 "it\\nout you need to create a new user and see if your settings have been "
@@ -334,62 +325,71 @@ msgstr ""
 "las\\nvocê precisa criar um usuário e ver se suas configurações foram "
 "aplicadas.$Return"
 
-#: remastersys-gui:299
+#: remastersys-gui:278
 msgid "You didn't select any user.$Continue"
 msgstr "Você não selecionou um usuário.$Continue"
 
-#: remastersys-gui:310
+#: remastersys-gui:289
 msgid "Live Username"
 msgstr "Nome do Usuário"
 
-#: remastersys-gui:311
+#: remastersys-gui:290
 msgid "Live System Name"
 msgstr "Nome do Sistema"
 
-#: remastersys-gui:312
+#: remastersys-gui:291
 msgid "Live ISO Filename"
 msgstr "Nome do arquivo ISO"
 
-#: remastersys-gui:313
+#: remastersys-gui:292
 msgid "Live Boot using GRUB or ISOLINUX"
 msgstr "Inicializar o Live CD usando GRUB ou ISOLINUX"
 
-#: remastersys-gui:314
+#: remastersys-gui:293
 msgid "Working Directory for Remastersys"
 msgstr "Pasta de Trabalho do Remastersys"
 
-#: remastersys-gui:315
+#: remastersys-gui:294
 msgid "Options for mksquashfs"
 msgstr "Opções para o mksquashfs"
 
-#: remastersys-gui:316
+#: remastersys-gui:295
 msgid "Show install icon on desktop"
 msgstr "Exibir ícone de instalação na área de trabalho"
 
-#: remastersys-gui:317
+#: remastersys-gui:296
 msgid "Excluded files and folders"
 msgstr "Arquivos e pastas excluídos"
 
-#: remastersys-gui:319
+#: remastersys-gui:298
 msgid "Save"
 msgstr "Salvar"
 
-#: remastersys-gui:320
+#: remastersys-gui:299
 msgid "Back"
 msgstr "Voltar"
 
-#: remastersys-gui:420
+#: remastersys-gui:399
 msgid "Configuration Saved.$Return"
 msgstr "Configuração salva.$Return"
 
-#: remastersys-gui:422
+#: remastersys-gui:401
 msgid "Configuration Save Error.$Return"
 msgstr "Erro ao salvar configuração.$Return"
 
-#: remastersys-gui:429
+#: remastersys-gui:408
 msgid "This will remove all the files from the temporary directory.$Continue"
 msgstr "Isso irá remover todos os arquivos da pasta temporária.$Continue"
 
-#: remastersys-gui:431
+#: remastersys-gui:410
 msgid "Completed.$Return"
 msgstr "Completado.$Return"
+
+#~ msgid ""
+#~ "The compressed file system is larger than the ISO 9660 specification "
+#~ "allows for\\na single file.\\n\\nYou must try to reduce the amount of "
+#~ "data you are backing up and try again."
+#~ msgstr ""
+#~ "O sistema de arquivos compactado é maior do que a especificação ISO 9660 "
+#~ "permite\\npara um único arquivo.\\n\\nVocê deve tentar reduzir a "
+#~ "quantidade de dados dos quais está fazendo backup e\\ntentar novamente."

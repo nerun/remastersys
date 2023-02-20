@@ -57,70 +57,60 @@ msgstr ""
 "$fB$fRed\\nERRO: a opção \\\"$2\\\" não existe para o comando \\\"grub\\\"."
 "\\n$fEND"
 
-#: remastersys:145
-msgid ""
-"The compressed file system is larger than the ISO 9660 specification for a "
-"single file allows. You should reduce the amount of files you are trying to "
-"backup and try again."
-msgstr ""
-"O sistema de arquivos compactado é maior do que a especificação ISO 9660 "
-"permite a um único arquivo. Você deve reduzir a quantidade de arquivos que "
-"você está tentando gravar e tentar de novo."
-
-#: remastersys:168
+#: remastersys:155
 msgid "Checking if the $WORKDIR folder has already been created."
 msgstr "Verificando se a pasta $WORKDIR já foi criada."
 
-#: remastersys:188
+#: remastersys:175
 msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
 msgstr ""
 "\\nCopiando /var e /etc para área temporária e deletando arquivos extras."
 
-#: remastersys:263
+#: remastersys:250
 msgid "\\nCopying installation icon to the Live CD user desktop."
 msgstr ""
 "\\nCopiando o ícone de instalação para a Área de Trabalho do usuário do Live "
 "CD."
 
-#: remastersys:360
+#: remastersys:347
 msgid "Press ENTER to choose or TAB to edit a menu entry"
 msgstr "Pressione ENTER para escolher ou TAB para editar uma entrada do menu"
 
-#: remastersys:361
+#: remastersys:348
 msgid "Live CD"
 msgstr "Live CD"
 
-#: remastersys:362
+#: remastersys:349
 msgid "(fail safe)"
 msgstr "(modo seguro)"
 
-#: remastersys:363
+#: remastersys:350
 msgid "Boot from the first hard disk"
 msgstr "Inicializar pelo primeiro disco rígido"
 
-#: remastersys:364
+#: remastersys:351
 msgid "Memory Test (Memtest86)"
 msgstr "Testar RAM (Memtest86)"
 
-#: remastersys:365
+#: remastersys:352
 msgid "Memory Test (Memtest86+)"
 msgstr "Testar RAM (Memtest86+)"
 
-#: remastersys:456
+#: remastersys:443
 msgid "\\nSetting up Live CD options for mode $1."
 msgstr "\\nConfigurando as opções do Live CD para modo $1."
 
-#: remastersys:461
+#: remastersys:448
 msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr "\\nCopiando seu kernel e o initrd para o Live CD."
 
-#: remastersys:476
+#: remastersys:463
 msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
 msgstr ""
 "\\nCriando filesystem.squashfs... Isso pode demorar um pouco, então seja "
 "paciente."
 
-#: remastersys:558
+#: remastersys:543
 msgid ""
 "The CD file system is missing. Either there was a problem creating the "
 "compressed file system, or you are trying to run the command \\\"remastersys "
@@ -130,19 +120,19 @@ msgstr ""
 "um sistema de arquivos compactado, ou você está tentando executar o comando "
 "\\\"remastersys dist iso\\\" antes de \\\"remastersys dist cdfs\\\"."
 
-#: remastersys:571
+#: remastersys:554
 msgid "Creating"
 msgstr "Criando"
 
-#: remastersys:572
+#: remastersys:555
 msgid "in"
 msgstr "em"
 
-#: remastersys:573
+#: remastersys:556
 msgid "using"
 msgstr "usando"
 
-#: remastersys:600
+#: remastersys:584
 msgid ""
 "\\nMaking the ISO into a hybrid image so it can be imaged to a USB key or "
 "burned to optical media."
@@ -150,14 +140,14 @@ msgstr ""
 "\\nTornando a ISO em uma imagem híbrida de modo a poder ser gravada em um "
 "pendrive ou em uma mídia óptica."
 
-#: remastersys:614
+#: remastersys:598
 msgid ""
 "\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
 msgstr ""
 "\\n$WORKDIR/$CUSTOMISO está pronto para ser gravado ou testado em uma "
 "máquina virtual."
 
-#: remastersys:615
+#: remastersys:599
 msgid ""
 "\\nCheck the size and if it is larger than 4GB, the USB key must be "
 "formatted in exFAT:"
@@ -165,13 +155,22 @@ msgstr ""
 "\\nVerifique o tamanho e, se for maior que 4GB, o pendrive precisará ser "
 "formatado em exFAT:"
 
-#: remastersys:618
+#: remastersys:602
 msgid ""
 "\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have "
 "burned and tested the image $CUSTOMISO.\\n"
 msgstr ""
 "\\nÉ recomendável executar \\\"sudo remastersys clean\\\" uma vez que você "
 "tenha gravado e testado a imagem $CUSTOMISO.\\n"
+
+#~ msgid ""
+#~ "The compressed file system is larger than the ISO 9660 specification for "
+#~ "a single file allows. You should reduce the amount of files you are "
+#~ "trying to backup and try again."
+#~ msgstr ""
+#~ "O sistema de arquivos compactado é maior do que a especificação ISO 9660 "
+#~ "permite a um único arquivo. Você deve reduzir a quantidade de arquivos "
+#~ "que você está tentando gravar e tentar de novo."
 
 #~ msgid "Chain Bootup on First HDD"
 #~ msgstr "Inicializar pelo HD"
