@@ -2,7 +2,7 @@
 
 # NOTE: attribute --fixed do not allows to use --width or --height
 # actually it works, but not with --text weird...
-declare -r DIALOG="$(which yad) --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png"
+declare -r DIALOG="$(which yad) --window-icon=/usr/share/icons/hicolor/16x16/apps/remastersys.png --center --borders=10 --always-print-result --dialog-sep --image=/usr/share/icons/hicolor/48x48/apps/remastersys.png"
 # Cancel / Ok buttons are the default when --button is not provided
 declare -r MSGBOX="--button=Ok:0"
 declare -r MENU="--list --column=$Pick --column=$Info"

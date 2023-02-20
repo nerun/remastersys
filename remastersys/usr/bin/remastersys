@@ -141,24 +141,11 @@ case $1 in
 
 esac
 
-# Used inside both cdfs() and iso(), around lines 550-570
-SpecIso9660=$"The compressed file system is larger than the ISO 9660 specification for a single file allows. You should reduce the amount of files you are trying to backup and try again."
-
 # Function log_msg extracted from PinguyBuilder v5.2 with a few changes.
 # https://sourceforge.net/projects/pinguy-os/files/ISO_Builder/
 # Added log_msg to reduce size. Code provided by Ivailo (a.k.a. SmiL3y)
 log_msg() {
     echo -e "$1" >> $WORKDIR/remastersys.log
-}
-
-CheckFileSystemSize(){
-    #checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file"
-    SQUASHFSSIZE=$(ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
-    if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
-        echo $SpecIso9660
-        log_msg $SpecIso9660
-        exit 1
-    fi
 }
 
 cdfs(){
@@ -537,8 +524,6 @@ cdfs(){
     log_msg "$stripe\nCommand-line options: $@\n$stripe"
 
     sleep 1
-
-    CheckFileSystemSize # call function at line 180
 }
 
 iso(){
@@ -559,8 +544,6 @@ iso(){
         exit 1
     fi
 
-    CheckFileSystemSize # call function at line 180
-
     #isolinux mode
 
     sleep 1
@@ -576,7 +559,8 @@ iso(){
         phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
         echo -e "$phrase1"
         log_msg "$phrase1"
-        grub-mkrescue -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        grub-mkrescue -iso-level 4 \
+        -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
         echo -e "$phrase2"

@@ -53,7 +53,7 @@ About=$"About"
 NoFileSelected=$"You didn't select any file.$Continue"
 
 mainmenu() {
-    CHOICES=`$DIALOG_1_nf"$Choose" --title="$TITLETEXT" --width=750 --height=400 $MENU \
+    CHOICES=`$DIALOG_1_nf"$Choose" --title="$TITLETEXT" --width=765 --height=415 $MENU \
     Backup "$BackupString" \
     Dist "$DistString" \
     DistCDFS "$DistCDFSString" \
@@ -119,45 +119,27 @@ Visit <a href=\"https://github.com/nerun/remastersys\">https://github.com/nerun/
     fi
 }
 
-# Common procedure to backupmenu(), distmenu(), distcdfsmenu() e distisomenu().
-SquashfsSizeCheckup(){
-    SQUASHFSSIZE=$(ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
-    
-    if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
-        $DIALOG_2$"The compressed file system is larger than the ISO 9660 specification allows for\na single file.\n\nYou must try to reduce the amount of data you are backing up and try again." --title="$TITLETEXT"
-        exit 1
-    fi
-}
-
 # Common procedure to backupmenu(), distmenu() e distisomenu().
 FilesReady(){
-    $DIALOG_2$"Your $CUSTOMISO and $CUSTOMISO.md5 files are ready in\n$WORKDIR. It is recommended to test it in a virtual machine or on a\nrewritable CD/DVD to ensure it works as desired.\n\nClick on OK to return to the main menu." --title="$TITLETEXT"
+    $DIALOG_2$"Your files are ready:\n   - $WORKDIR/$CUSTOMISO\n   - $WORKDIR/$CUSTOMISO.md5\n\nIt is recommended to test it in a virtual machine or on a\nrewritable CD/DVD to ensure it works as desired.\n\nClick on OK to return to the main menu." --title="$TITLETEXT"
     mainmenu
 }
 
 backupmenu() {
     $DIALOG_2$"You have selected Backup Mode.\n\nDo not interrupt this process.\n\nClick OK to start the Backup Live CD/DVD process." --title="$TITLETEXT"
     xterm -fn 9x15 -e "sudo remastersys backup"
-
-    SquashfsSizeCheckup
-
     FilesReady
 }
 
 distmenu() {
     $DIALOG_2$"You have selected Dist Mode.\n\nClick OK to start the Distributable Live CD/DVD process." --title="$TITLETEXT"
     xterm -fn 9x15 -e "sudo remastersys dist"
-
-    SquashfsSizeCheckup
-
     FilesReady
 }
 
 distcdfsmenu() {
     $DIALOG_2$"You have selected Dist CDFS Mode.\n\nClick OK to start the Distributable Live CD/DVD file system build process." --title="$TITLETEXT"
     xterm -fn 9x15 -e "sudo remastersys dist cdfs"
-
-    SquashfsSizeCheckup
 
     $DIALOG_2$"Your Live CD File System is ready in $WORKDIR. You can now add files\nto the CD and then run the Dist ISO option when you are done.\n\nClick on OK to return to the main menu." --title="$TITLETEXT"
 
@@ -168,9 +150,6 @@ distisomenu() {
     if [ -f "$WORKDIR/ISOTMP/live/filesystem.squashfs" ]; then
         $DIALOG_2$"You have selected DistISO Mode.\n\nClick OK to create the ISO file." --title="$TITLETEXT"
         xterm -fn 9x15 -e "sudo remastersys dist iso"
-        
-        SquashfsSizeCheckup
-
         FilesReady
     else
         $DIALOG_2$"The Live CD file system does not exist.\n\nClick OK to go back to the main menu and try the normal Dist mode or the Dist\nCDFS again." --title="$TITLETEXT"
