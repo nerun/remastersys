@@ -384,12 +384,3 @@ msgstr "Isso irá remover todos os arquivos da pasta temporária.$Continue"
 #: remastersys-gui:410
 msgid "Completed.$Return"
 msgstr "Completado.$Return"
-
-#~ msgid ""
-#~ "The compressed file system is larger than the ISO 9660 specification "
-#~ "allows for\\na single file.\\n\\nYou must try to reduce the amount of "
-#~ "data you are backing up and try again."
-#~ msgstr ""
-#~ "O sistema de arquivos compactado é maior do que a especificação ISO 9660 "
-#~ "permite\\npara um único arquivo.\\n\\nVocê deve tentar reduzir a "
-#~ "quantidade de dados dos quais está fazendo backup e\\ntentar novamente."
