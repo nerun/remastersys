@@ -353,7 +353,8 @@ cdfs(){
 
     #BOOT Type selected is GRUB
     if [ "$ISOBOOT" = "GRUB" ]; then
-        cp /etc/remastersys/isolinux/memtest86.bin $WORKDIR/ISOTMP/memtest86.bin
+        cp /etc/remastersys/isolinux/memtest86.bin $WORKDIR/ISOTMP/
+        cp /etc/remastersys/isolinux/memtest86+x64.bin $WORKDIR/ISOTMP/
         mkdir -p $WORKDIR/ISOTMP/boot/grub
         mkdir -p $WORKDIR/ISOTMP/usr/share/grub
         cp -a /boot/grub/* $WORKDIR/ISOTMP/boot/grub/
