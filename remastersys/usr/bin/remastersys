@@ -141,24 +141,11 @@ case $1 in
 
 esac
 
-# Used inside both cdfs() and iso(), around lines 550-570
-SpecIso9660=$"The compressed file system is larger than the ISO 9660 specification for a single file allows. You should reduce the amount of files you are trying to backup and try again."
-
 # Function log_msg extracted from PinguyBuilder v5.2 with a few changes.
 # https://sourceforge.net/projects/pinguy-os/files/ISO_Builder/
 # Added log_msg to reduce size. Code provided by Ivailo (a.k.a. SmiL3y)
 log_msg() {
     echo -e "$1" >> $WORKDIR/remastersys.log
-}
-
-CheckFileSystemSize(){
-    #checking the size of the compressed filesystem to ensure it meets the iso9660 spec for a single file"
-    SQUASHFSSIZE=$(ls -s $WORKDIR/ISOTMP/live/filesystem.squashfs | awk -F " " '{print $1}')
-    if [ "$SQUASHFSSIZE" -gt "3999999" ]; then
-        echo $SpecIso9660
-        log_msg $SpecIso9660
-        exit 1
-    fi
 }
 
 cdfs(){
@@ -356,49 +343,58 @@ cdfs(){
         cp /etc/remastersys/preseed/* $WORKDIR/ISOTMP/preseed/
     fi
 
+    # bootloader localization
+    local EnterOrTab=$"Press ENTER to choose or TAB to edit a menu entry"
+    local LiveCD=$"Live CD"
+    local LiveCDFailSafe=$"(fail safe)"
+    local ChainBoot=$"Boot from the first hard disk"
+    local MemTest=$"Memory Test (Memtest86)"
+    local MemTestPlus=$"Memory Test (Memtest86+)"
+
     #BOOT Type selected is GRUB
     if [ "$ISOBOOT" = "GRUB" ]; then
-        cp /etc/remastersys/isolinux/memtest86.bin $WORKDIR/ISOTMP/memtest86.bin
+        cp /etc/remastersys/isolinux/memtest86.bin $WORKDIR/ISOTMP/
+        cp /etc/remastersys/isolinux/memtest86+x64.bin $WORKDIR/ISOTMP/
         mkdir -p $WORKDIR/ISOTMP/boot/grub
         mkdir -p $WORKDIR/ISOTMP/usr/share/grub
         cp -a /boot/grub/* $WORKDIR/ISOTMP/boot/grub/
         cp -a /usr/share/grub/* $WORKDIR/ISOTMP/usr/share/grub/
         cp /etc/remastersys/grub/grub.cfg $WORKDIR/ISOTMP/boot/grub/grub.cfg
-        cp /etc/remastersys/grub.png $WORKDIR/ISOTMP/boot/grub/grub.png
-        sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/boot/grub/grub.cfg
-
+        cp /etc/remastersys/splash.png $WORKDIR/ISOTMP/boot/grub/grub.png
+        
+        grubcfg="$WORKDIR/ISOTMP/boot/grub/grub.cfg"
+        langshort=$(locale | grep -w 'LANG' | cut -d= -f2 | cut -d. -f1) # pt_BR not pt_BR.UTF-8
+        
+        # grub.cfg translation
+        sed -i -e 's/__LANGUAGE__/'"$langshort"'/g' "$grubcfg"
+        sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' "$grubcfg"
+        sed -i -e 's/__LIVECDFAILSAFE__/'"$LIVECDLABEL $LiveCDFailSafe"'/g' "$grubcfg"
+        sed -i -e 's/__CHAINBOOT__/'"$ChainBoot"'/g' "$grubcfg"
+        sed -i -e 's/__MEMTEST__/'"$MemTest"'/g' "$grubcfg"
+        sed -i -e 's/__MEMTESTPLUS__/'"$MemTestPlus"'/g' "$grubcfg"
+        
         if [ ! -d /etc/plymouth ]; then
             sed -i -e 's/splash//g' $WORKDIR/ISOTMP/boot/grub/grub.cfg
         fi
     #BOOT Type selected is ISOLINUX
     else
         mkdir -p $WORKDIR/ISOTMP/isolinux
+        cp /etc/remastersys/splash.png $WORKDIR/ISOTMP/isolinux/
+        cp /etc/remastersys/isolinux/* $WORKDIR/ISOTMP/isolinux/
+        
+        isolinuxcfg="$WORKDIR/ISOTMP/isolinux/isolinux.cfg"
 
-        if [ -d "/etc/remastersys/customisolinux" ]; then
-            cp /etc/remastersys/customisolinux/* $WORKDIR/ISOTMP/isolinux/
-        else
-            cp /etc/remastersys/isolinux/* $WORKDIR/ISOTMP/isolinux/
+        # isolinux.cfg translation
+        sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' "$isolinuxcfg"
+        sed -i -e 's/__ENTERORTAB__/'"$EnterOrTab"'/g' "$isolinuxcfg"
+        sed -i -e 's/__LIVECD__/'"$LiveCD"'/g' "$isolinuxcfg"
+        sed -i -e 's/__LIVECDFAILSAFE__/'"$LIVECDLABEL $LiveCDFailSafe"'/g' "$isolinuxcfg"
+        sed -i -e 's/__CHAINBOOT__/'"$ChainBoot"'/g' "$isolinuxcfg"
+        sed -i -e 's/__MEMTEST__/'"$MemTest"'/g' "$isolinuxcfg"
+        sed -i -e 's/__MEMTESTPLUS__/'"$MemTestPlus"'/g' "$isolinuxcfg"
 
-            # isolinux.cfg localization
-            local EnterOrTab=$"Press ENTER to choose or TAB to edit a menu entry"
-            local LiveCD=$"Live CD"
-            local LiveCDFailSafe=$"Live CD (fail safe)"
-            local ChainBoot=$"Chain Bootup on First HDD"
-            local MemTest=$"Memory Test (Memtest86)"
-            local MemTestPlus=$"Memory Test (Memtest86+)"
-
-            # isolinux.cfg translation
-            sed -i -e 's/__LIVECDLABEL__/'"$LIVECDLABEL"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg        
-            sed -i -e 's/__ENTERORTAB__/'"$EnterOrTab"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
-            sed -i -e 's/__LIVECD__/'"$LiveCD"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
-            sed -i -e 's/__LIVECDFAILSAFE__/'"$LiveCDFailSafe"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
-            sed -i -e 's/__CHAINBOOT__/'"$ChainBoot"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
-            sed -i -e 's/__MEMTEST__/'"$MemTest"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
-            sed -i -e 's/__MEMTESTPLUS__/'"$MemTestPlus"'/g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
-
-            if [ ! -d /etc/plymouth ]; then
-                sed -i -e 's/splash//g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
-            fi
+        if [ ! -d /etc/plymouth ]; then
+            sed -i -e 's/splash//g' $WORKDIR/ISOTMP/isolinux/isolinux.cfg
         fi
     fi
 
@@ -529,8 +525,6 @@ cdfs(){
     log_msg "$stripe\nCommand-line options: $@\n$stripe"
 
     sleep 1
-
-    CheckFileSystemSize # call function at line 180
 }
 
 iso(){
@@ -551,8 +545,6 @@ iso(){
         exit 1
     fi
 
-    CheckFileSystemSize # call function at line 180
-
     #isolinux mode
 
     sleep 1
@@ -568,7 +560,8 @@ iso(){
         phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
         echo -e "$phrase1"
         log_msg "$phrase1"
-        grub-mkrescue -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        grub-mkrescue -iso-level 4 \
+        -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
         echo -e "$phrase2"
