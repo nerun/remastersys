@@ -193,9 +193,9 @@ Click OK to continue." --title="$TITLETEXT"
 
     if [ "${BOOTPICext,,}" == ".png" ]; then # Extension lowercase
 
-        sudo cp $BOOTPIC /etc/remastersys/isolinux/splash.png
+        sudo cp $BOOTPIC /etc/remastersys/splash.png
 
-        $DIALOG_2$"$BOOTPIC has been copied to /etc/remastersys/isolinux/splash.png becoming the\ndefault background for the LIVE menu.$Continue" --title="$TITLETEXT"
+        $DIALOG_2$"$BOOTPIC has been copied to /etc/remastersys/splash.png becoming the default\nbackground for the LIVE menu.$Continue" --title="$TITLETEXT"
     else
         $DIALOG_2"$NoFileSelected" --title="$TITLETEXT"
     fi
@@ -212,13 +212,13 @@ distgrubmenu() {
     GRUBPICext="${GRUBPIC: -4}"
 
     if [ "${GRUBPICext,,}" == ".png" ]; then # Extension lowercase
-        $DIALOG_2$"$GRUBPIC has been copied to /etc/remastersys/grub.png and is the default\nbackground for grub.\n\nClick OK to update grub with the new settings so you can see your picture on the\nnext boot." --title="$TITLETEXT"
+        $DIALOG_2$"$GRUBPIC has been copied to /etc/remastersys/splash.png and is the default\nbackground for grub.\n\nClick OK to update grub with the new settings so you can see your picture on the\nnext boot." --title="$TITLETEXT"
 
         if [ "$?" = "0" ]; then
             $DIALOG_1$"Updating grub now.\n\nPlease wait." --title="$TITLETEXT" --no-buttons --progress --pulsate &
             PICFILE=$(echo $GRUBPIC | awk -F"/" '{print $NF}')
-            sudo cp $GRUBPIC /etc/remastersys/grub.png
-            NEWGRUBPIC="/etc/remastersys/grub.png"
+            sudo cp $GRUBPIC /etc/remastersys/splash.png
+            NEWGRUBPIC="/etc/remastersys/splash.png"
 
             sudo sed -i -e "/#Grub Background/d" /etc/default/grub
             sudo sed -i -e "/GRUB_BACKGROUND/d" /etc/default/grub

@@ -107,7 +107,7 @@ cd DEBIAN
 size=$(du -s ../../remastersys | cut -f 1)
 
 echo "Package: remastersys
-Priority: optional
+Priority: extra
 Section: system
 Installed-Size: $size
 Maintainer: $author
@@ -166,7 +166,7 @@ cd DEBIAN
 sizegui=$(du -s ../../remastersys-gui | cut -f 1)
 
 echo "Package: remastersys-gui
-Priority: optional
+Priority: extra
 Section: system
 Installed-Size: $sizegui
 Maintainer: $author

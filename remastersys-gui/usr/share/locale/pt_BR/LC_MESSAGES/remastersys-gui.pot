@@ -113,13 +113,13 @@ msgstr ""
 msgid "This will allow you to choose your own picture to be the background for the LIVE\\nboot menu. Please note that it MUST be a 640x480 pixel PNG file. You must create\\nthis picture or resize it with a proper graphics editor as this tool does not\\nhave the ability to change the size or type of picture.\\n\\nClick OK to continue."
 msgstr ""
 #: remastersys-gui:198
-msgid "$BOOTPIC has been copied to /etc/remastersys/isolinux/splash.png becoming the\\ndefault background for the LIVE menu.$Continue"
+msgid "$BOOTPIC has been copied to /etc/remastersys/splash.png becoming the default\\nbackground for the LIVE menu.$Continue"
 msgstr ""
 #: remastersys-gui:207
 msgid "This will allow you to choose your own PNG picture to be the background for the\\nGRUB boot loader.$Continue"
 msgstr ""
 #: remastersys-gui:215
-msgid "$GRUBPIC has been copied to /etc/remastersys/grub.png and is the default\\nbackground for grub.\\n\\nClick OK to update grub with the new settings so you can see your picture on the\\nnext boot."
+msgid "$GRUBPIC has been copied to /etc/remastersys/splash.png and is the default\\nbackground for grub.\\n\\nClick OK to update grub with the new settings so you can see your picture on the\\nnext boot."
 msgstr ""
 #: remastersys-gui:218
 msgid "Updating grub now.\\n\\nPlease wait."

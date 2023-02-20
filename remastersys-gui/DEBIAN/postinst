@@ -5,12 +5,6 @@
 
 set -e
 
-if [ -f /etc/remastersys/isolinux/splash.png.saved ]; then
-    mv /etc/remastersys/isolinux/splash.png.saved /etc/remastersys/isolinux/splash.png
-fi
-
-if [ -f /etc/remastersys.conf.old ]; then
-    mv /etc/remastersys.conf.old /etc/remastersys.conf
-fi
+# do nothing for now
 
 exit 0
