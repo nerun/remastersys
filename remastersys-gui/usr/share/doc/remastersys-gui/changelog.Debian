@@ -1,3 +1,10 @@
+remastersys-gui (4.8-1) unstable; urgency=low
+
+    * HEAVY revision of DEBIAN files: control, md5sums, prerm, postrm, preinst and postinst.
+    * Package priority changed from "optional" to "extra".
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Tue, 21 Feb 2023 22:35:42 -0300
+
 remastersys-gui (4.7-1) unstable; urgency=low
 
     * Updated DEBIAN files: control, md5sums etc.

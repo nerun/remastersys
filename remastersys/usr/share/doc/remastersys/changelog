@@ -1,3 +1,23 @@
+remastersys (4.8-1) unstable; urgency=low
+
+    * Small improvements to remastersys taken from PinguyBuilder. Also fixed error message "unary operator expected".
+    * Updated remastersys-skelcopy to exclude Gnome3 keyring folder location, google-chrome and gcalendar from config files.
+    * Updated copyright notice in all scripts.
+    * Updated dependencies:
+        * xorriso is preferable to genisoimage;
+        * remove live-config-sysvinit (just used by Devuan);
+        * added syslinux-common and syslinux-efi;
+    * ISO9660 version 2 support (option "-iso-level 4"; images > 4 GiB).
+    * xorrisofs is now the first option to create image, then script looks for genisoimage.
+    * Updated functions in remastersys-installer and libremastersys.
+    * Romoved duplicate bootloader images, updating all script files and translations as needed.
+    * Updated configuration: GRUB is preferable to ISOLINUX.
+    * Fixed memtest86+ not working when Live CD is created using GRUB instead of ISOLINUX.
+    * Updated and revised GRUB menu entries and options, added internationalization.
+    * KNOWN BUGS: "fail safe" is not working.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Tue, 21 Feb 2023 22:02:05 -0300
+
 remastersys (4.7-1) unstable; urgency=low
 
     * Fixed aliases to "install", "grub" and "skelcopy" not working in terminal. Actually I included the aliases in the help file but I forgot to insert them in the program.

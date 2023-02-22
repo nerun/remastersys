@@ -2,11 +2,11 @@
 46148d042d906d7529ebeac4aed5ccc7  /etc/remastersys/plymouth/remastersys-theme/progress_box.png
 6c0fda9e8f34af2cfcb95d9f73448e32  /etc/remastersys/plymouth/remastersys-theme/remastersys-theme.plymouth
 3a01ea50742021d37256a97649c5358d  /etc/remastersys/plymouth/remastersys-theme/remastersys-theme.script
-1a7d79347450362a31ec3645dffef0dd  /usr/bin/remastersys-bootable-usb
-6b847f75abeb68f260de77d84e85d823  /usr/bin/remastersys-grub-restore
-84861988d4a6cd7c9f632a71ad6be93a  /usr/bin/remastersys-gui
-848d8c7fbbff008d6f390c5bcf006f5d  /usr/bin/ysudo
-e305d0daac3e860ea741416eecb05f8e  /usr/lib/remastersys/libremastersysgui.sh
+8769e6f55ee24395c06c5f82b9a3b849  /usr/bin/remastersys-bootable-usb
+e848046fcc483c4970e39937b8c81189  /usr/bin/remastersys-grub-restore
+04340e3f2c498930faaa2db7ffeb1c76  /usr/bin/remastersys-gui
+6a208ec16f35aba44b4c6caf0f882f15  /usr/bin/ysudo
+3f17a27f314828a3ded2444356d82964  /usr/lib/remastersys/libremastersysgui.sh
 2a7b26f85221492281169e7e6b6a5dc5  /usr/share/applications/remastersys-bootable-usb.desktop
 9d1cf3595dd33a7660d804b0b0b88831  /usr/share/applications/remastersys-bootable-usb-kde.desktop
 d57af3fb08b65823043a5f56f9a1d61b  /usr/share/applications/remastersys-grub-restore.desktop
@@ -15,9 +15,9 @@ c057650f3a6801685fc31e51b7667b2e  /usr/share/applications/remastersys-gui.deskto
 1faee9783a792fe725a4aa39cf9fbf37  /usr/share/applications/remastersys-gui-kde.desktop
 443dc9bf996aab4b979556d4b07f1194  /usr/share/applications/remastersys-installer.desktop
 6fc555f24f82156d00d9049f8f06ec1e  /usr/share/applications/remastersys-installer-kde.desktop
-e870523e67968d855a4a79d015a12236  /usr/share/doc/remastersys-gui/changelog.Debian.gz
-46b3ca827ec263be94803e86145f17c9  /usr/share/doc/remastersys-gui/changelog.gz
-7d6e0eef2884c682275a560117758078  /usr/share/doc/remastersys-gui/copyright
+0608da5e7b977aec1446cc4d5e80bb83  /usr/share/doc/remastersys-gui/changelog.Debian.gz
+ecd1e6bef8f108dec9ca787c616ac328  /usr/share/doc/remastersys-gui/changelog.gz
+46dc2224ea4810f18e1309fc9fd55cf5  /usr/share/doc/remastersys-gui/copyright
 215700598ca9c985864e64af0d56ad0c  /usr/share/doc/remastersys-gui/README
 3b14b06e57498fc2bd9d69f87679d84c  /usr/share/icons/hicolor/128x128/apps/remastersys-installer.png
 df31b521b68a2ba962b226240b801c73  /usr/share/icons/hicolor/128x128/apps/remastersys.png
@@ -27,6 +27,6 @@ e531c13713d2b96f8752115b50a3a30f  /usr/share/icons/hicolor/48x48/apps/remastersy
 2b65da5f66df4bb334bdae0abfeb9361  /usr/share/icons/hicolor/48x48/apps/remastersys.png
 d884c5b8987f7cf719ef508a265d9a04  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-bootable-usb.mo
 4d2af2f4d059235d8e1b73026d522a32  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-grub-restore.mo
-926350bc697544224e8230e1cb68d46b  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-gui.mo
+c344baf72525c2ae5d9edd470f703cde  /usr/share/locale/pt_BR/LC_MESSAGES/remastersys-gui.mo
 eb6daee9e6184751bc971f838772865f  /usr/share/locale/pt_BR/LC_MESSAGES/ysudo.mo
 685a8a7b21a3980c82a23c8f17fa7687  /usr/share/menu/remastersys

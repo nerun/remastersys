@@ -1,32 +1,30 @@
 Package: remastersys
-Priority: optional
+Priority: extra
 Section: system
-Installed-Size: 1012
+Installed-Size: 972
 Maintainer: Daniel Dias Rodrigues <danieldiasr@gmail.com>
 Architecture: all
-Version: 4.7-1
-Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot-initramfs-tools, live-boot, live-config-systemd | live-config-sysvinit, live-config, genisoimage, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux | xorriso, syslinux-utils, util-linux, zstd
+Version: 4.8-1
+Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot, live-boot-initramfs-tools, live-config, live-config-systemd, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux, syslinux-common, syslinux-efi, syslinux-utils, util-linux, xorriso | genisoimage, zstd
 Conffiles:
- /etc/remastersys.conf d363d29aaaf94673207a7b4ce5c38826
- /etc/remastersys/grub-default.png 5d787a9039d8b73e08ef689515991d25
- /etc/remastersys/grub/grub.cfg 656c21b3ba5a3e7beb79056627a0fd1d
- /etc/remastersys/grub.png 5d787a9039d8b73e08ef689515991d25
+ /etc/remastersys.conf 7e51fdbed3e34f683b943651a4614b92
+ /etc/remastersys/grub/grub.cfg 9395ce2314dc756e70a983096403c560
  /etc/remastersys/isolinux/chain.c32 a73329fdb71b3aa15f55b8aff9e871cf
  /etc/remastersys/isolinux/isolinux.bin c3387bb5f62c3df90e50915b1b4495b2
- /etc/remastersys/isolinux/isolinux.cfg 8d4b0b2f38b3bb437fb56f0b6602bc07
+ /etc/remastersys/isolinux/isolinux.cfg 1836977fbe7a3f4be8987ae8194c18ec
  /etc/remastersys/isolinux/ldlinux.c32 ce9ab0d48373fa1f338e0ba33b7ac66f
  /etc/remastersys/isolinux/libcom32.c32 2aa8d5c9aa7405f08b7ef018cea7c173
  /etc/remastersys/isolinux/libutil.c32 1ace412384574cba48d0cfb22e6e46d1
  /etc/remastersys/isolinux/memtest86.bin d3edddb4522e7d05138b247329a40329
  /etc/remastersys/isolinux/memtest86+x64.bin b092761b60c508b68add5a2e9ddc3a0b
- /etc/remastersys/isolinux/splash-default.png 5d787a9039d8b73e08ef689515991d25
- /etc/remastersys/isolinux/splash.png 5d787a9039d8b73e08ef689515991d25
  /etc/remastersys/isolinux/vesamenu.c32 773634730ae6b4ebcd8508effe871bff
  /etc/remastersys/preseed/custom.seed 7e3aa6d1958baf72d369392fdb175486
  /etc/remastersys/remastersys-help-pt_BR.txt e87ae435e7ddbd1f7d2c89854a830b34
  /etc/remastersys/remastersys-help.txt 89c69b7b5b2603606338e3d53ebfe953
  /etc/remastersys/remastersys-installer.conf e18fcf1ab280ef648eab2544fdbf1cc6
- /etc/remastersys/remastersys.version c0c848c9bf6bbb186bb54af330576529
+ /etc/remastersys/remastersys.version 5e1dae025c6e0354aad531e178903fce
+ /etc/remastersys/splash-default.png 2e2ae0d3744ed08a426320c60a0ebe08
+ /etc/remastersys/splash.png 2e2ae0d3744ed08a426320c60a0ebe08
 Homepage: https://github.com/nerun/remastersys
 Description: Remaster and create backups of the Debian system
  Remastersys allows you to create a Live CD/DVD distribution or make a backup
