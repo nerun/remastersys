@@ -57,42 +57,42 @@ msgstr ""
 "$fB$fRed\\nERRO: a opção \\\"$2\\\" não existe para o comando \\\"grub\\\"."
 "\\n$fEND"
 
-#: remastersys:155
+#: remastersys:154
 msgid "Checking if the $WORKDIR folder has already been created."
 msgstr "Verificando se a pasta $WORKDIR já foi criada."
 
-#: remastersys:175
+#: remastersys:174
 msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
 msgstr ""
 "\\nCopiando /var e /etc para área temporária e deletando arquivos extras."
 
-#: remastersys:250
+#: remastersys:249
 msgid "\\nCopying installation icon to the Live CD user desktop."
 msgstr ""
 "\\nCopiando o ícone de instalação para a Área de Trabalho do usuário do Live "
 "CD."
 
-#: remastersys:347
+#: remastersys:346
 msgid "Press ENTER to choose or TAB to edit a menu entry"
 msgstr "Pressione ENTER para escolher ou TAB para editar uma entrada do menu"
 
-#: remastersys:348
+#: remastersys:347
 msgid "Live CD"
 msgstr "Live CD"
 
-#: remastersys:349
+#: remastersys:348
 msgid "(fail safe)"
 msgstr "(modo seguro)"
 
-#: remastersys:350
+#: remastersys:349
 msgid "Boot from the first hard disk"
 msgstr "Inicializar pelo primeiro disco rígido"
 
-#: remastersys:351
+#: remastersys:350
 msgid "Memory Test (Memtest86)"
 msgstr "Testar RAM (Memtest86)"
 
-#: remastersys:352
+#: remastersys:351
 msgid "Memory Test (Memtest86+)"
 msgstr "Testar RAM (Memtest86+)"
 
@@ -105,10 +105,11 @@ msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr "\\nCopiando seu kernel e o initrd para o Live CD."
 
 #: remastersys:463
-msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
+msgid ""
+"\\nCreating filesystem.squashfs. It will take a while, so be patient...\\n"
 msgstr ""
-"\\nCriando filesystem.squashfs... Isso pode demorar um pouco, então seja "
-"paciente."
+"\\nCriando filesystem.squashfs. Isso pode demorar um pouco, então seja "
+"paciente...\\n"
 
 #: remastersys:543
 msgid ""

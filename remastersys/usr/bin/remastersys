@@ -135,7 +135,6 @@ case $1 in
     ;;
 
     *)
-        echo ""
         GiveUserHelp # libremastersys.sh
     ;;
 
@@ -461,7 +460,7 @@ cdfs(){
         rm -f $WORKDIR/ISOTMP/live/filesystem.squashfs
     fi
 
-    echo -e $"\nCreating filesystem.squashfs... It will take a while, so be patient."
+    echo -e $"\nCreating filesystem.squashfs. It will take a while, so be patient...\n"
 
     REALFOLDERS=""
 
@@ -558,13 +557,13 @@ iso(){
 
     if [ "$ISOBOOT" = "GRUB" ]; then
         phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
-        echo -e "$phrase1"
+        echo -e "\n$phrase1"
         log_msg "$phrase1"
         grub-mkrescue -iso-level 4 \
         -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
-        echo -e "$phrase2"
+        echo -e "\n$phrase2"
         log_msg "$phrase2"
         $CREATEISO \
         -quiet \

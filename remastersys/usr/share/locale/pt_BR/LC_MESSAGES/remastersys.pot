@@ -28,31 +28,31 @@ msgstr ""
 #: remastersys:133
 msgid "$fB$fRed\\nERROR: no such option \\\"$2\\\" for command \\\"grub\\\".\\n$fEND"
 msgstr ""
-#: remastersys:155
+#: remastersys:154
 msgid "Checking if the $WORKDIR folder has already been created."
 msgstr ""
-#: remastersys:175
+#: remastersys:174
 msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
 msgstr ""
-#: remastersys:250
+#: remastersys:249
 msgid "\\nCopying installation icon to the Live CD user desktop."
 msgstr ""
-#: remastersys:347
+#: remastersys:346
 msgid "Press ENTER to choose or TAB to edit a menu entry"
 msgstr ""
-#: remastersys:348
+#: remastersys:347
 msgid "Live CD"
 msgstr ""
-#: remastersys:349
+#: remastersys:348
 msgid "(fail safe)"
 msgstr ""
-#: remastersys:350
+#: remastersys:349
 msgid "Boot from the first hard disk"
 msgstr ""
-#: remastersys:351
+#: remastersys:350
 msgid "Memory Test (Memtest86)"
 msgstr ""
-#: remastersys:352
+#: remastersys:351
 msgid "Memory Test (Memtest86+)"
 msgstr ""
 #: remastersys:443
@@ -62,7 +62,7 @@ msgstr ""
 msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr ""
 #: remastersys:463
-msgid "\\nCreating filesystem.squashfs... It will take a while, so be patient."
+msgid "\\nCreating filesystem.squashfs. It will take a while, so be patient...\\n"
 msgstr ""
 #: remastersys:543
 msgid "The CD file system is missing. Either there was a problem creating the compressed file system, or you are trying to run the command \\\"remastersys dist iso\\\" before \\\"remastersys dist cdfs\\\"."
