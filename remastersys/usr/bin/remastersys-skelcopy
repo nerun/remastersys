@@ -22,7 +22,7 @@ IsRoot # libremastersys.sh
 backupSkel(){
     if [ ! -d /etc/remastersys/skel-backup ]; then
         mkdir /etc/remastersys/skel-backup
-        # -T excludes the directory itself, but copy all it's contents
+        # -T do not includes the directory itself, but copy all it's contents
         cp -rT /etc/skel /etc/remastersys/skel-backup
     fi
 }

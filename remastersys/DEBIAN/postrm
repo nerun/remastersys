@@ -5,6 +5,8 @@
 
 set -e
 
-#do nothing for now
+if [ -d /home/remastersys ]; then
+    rmdir --ignore-fail-on-non-empty /home/remastersys
+fi
 
 exit 0

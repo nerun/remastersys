@@ -5,6 +5,14 @@
 
 set -e
 
-#do nothing for now
+if [ -d /etc/remastersys/skel-backup ]; then
+    rmdir --ignore-fail-on-non-empty /etc/remastersys/skel-backup
+fi
+
+if [ -d /etc/remastersys/skel-backup ]; then
+    rm -rf /etc/skel/{*,.[^.]*}
+    cp -rT /etc/remastersys/skel-backup /etc/skel/
+    rm -rf /etc/remastersys/skel-backup
+fi
 
 exit 0
