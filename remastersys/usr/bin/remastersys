@@ -562,7 +562,7 @@ iso(){
         
         grub-mkrescue -iso-level 4 \
         -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ \
-        -- -file_size_limit off 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        -- -file_size_limit off -- 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
         echo -e "\n$phrase2"
@@ -585,22 +585,21 @@ iso(){
             -o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
         elif [[ $CREATEISO =~ "xorriso" ]]; then
             $CREATEISO \
-            -x
+            -x \
             -rockridge on \
-            -find / -exec mkisofs_r \
+            -find / -exec mkisofs_r -- \
             -volid "$LIVECDLABEL" \
             -for_backup \
             -joliet on \
             -compliance "iso_9660_level=3:deep_paths:long_paths:long_names" \
-            -file_size_limit off \
-            -boot_image isolinux \
-            bin_path=$WORKDIR/ISOTMP/isolinux/isolinux.bin \
-            cat_path=$WORKDIR/ISOTMP/isolinux/boot.cat \
-            emul_type=no_emulation \
-            load_size=2048 \
-            boot_info_table=on \
-            -outdev /path/output.iso -blank as_needed \
-            -indev $WORKDIR/ISOTMP 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+            -file_size_limit off --
+            -boot_image isolinux bin_path=/isolinux/isolinux.bin \
+            -boot_image isolinux cat_path=/isolinux/boot.cat \
+            -boot_image isolinux emul_type=no_emulation \
+            -boot_image isolinux load_size=2048 \
+            -boot_image isolinux boot_info_table=on \
+            -outdev $WORKDIR/$CUSTOMISO -blank as_needed \
+            -map $WORKDIR/ISOTMP / 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
         else
             echo -e $"$fB$fRed\nERROR: Nor xorriso nor genisoimage were found.\n$fEND"
         fi
