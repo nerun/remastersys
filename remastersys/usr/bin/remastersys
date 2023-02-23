@@ -534,7 +534,7 @@ iso(){
     # or Ubuntu repositories.
     CREATEISO="$(find_bin 'xorrisofs')"
 
-    if [ "$CREATEISO" = "" ]; then
+    if [ -z $CREATEISO ]; then
         CREATEISO="$(find_bin 'genisoimage')"
     fi
 
@@ -559,7 +559,7 @@ iso(){
         phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
         echo -e "\n$phrase1"
         log_msg "$phrase1"
-        grub-mkrescue -iso-level 4 \
+        grub-mkrescue -iso-level 4 -allow-limited-size \
         -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
@@ -572,7 +572,7 @@ iso(){
         -cache-inodes \
         -J \
         -l \
-        -iso-level 4 \
+        -iso-level 4 -allow-limited-size \
         -b isolinux/isolinux.bin \
         -c isolinux/boot.cat \
         -no-emul-boot \
