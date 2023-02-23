@@ -559,7 +559,8 @@ iso(){
         phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
         echo -e "\n$phrase1"
         log_msg "$phrase1"
-        grub-mkrescue -iso-level 4 -allow-limited-size \
+        grub-mkrescue \
+        -iso-level 4 -allow-limited-size \
         -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
@@ -580,26 +581,33 @@ iso(){
         -boot-info-table \
         -o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
 
-        # create hybrid iso so it can be dd installed to a usb flash drive
-        echo -e $"\nMaking the ISO into a hybrid image so it can be imaged to a USB key or burned to optical media."
-        isohybrid $WORKDIR/$CUSTOMISO
+        if [ -e $WORKDIR/$CUSTOMISO ]; then
+            # create hybrid iso so it can be dd installed to a usb flash drive
+            echo -e $"\nMaking the ISO into a hybrid image so it can be imaged to a USB key or burned to optical media."
+            isohybrid $WORKDIR/$CUSTOMISO
+        fi
     fi
 
-    # create the md5 sum file, so the iso can later be tested to ensure it hasn't become corrupted
-    phrase3="$Creating $CUSTOMISO.md5 $In $WORKDIR."
-    echo -e "\n$phrase3"
-    log_msg "$phrase3"
+    if [ -e $WORKDIR/$CUSTOMISO ]; then
+        cd $WORKDIR
+        
+        # create the md5 sum file, so the iso can later be tested to ensure it hasn't become corrupted
+        phrase3="$Creating $CUSTOMISO.md5 $In $WORKDIR."
+        echo -e "\n$phrase3"
+        log_msg "$phrase3"
 
-    cd $WORKDIR
-    md5sum $CUSTOMISO > $CUSTOMISO.md5
+        md5sum $CUSTOMISO > $CUSTOMISO.md5
+    
+        sleep 1
 
-    sleep 1
-
-    echo -e $"\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
-    echo -e $"\nCheck the size and if it is larger than 4GB, the USB key must be formatted in exFAT:"
-    ls -hs $WORKDIR/$CUSTOMISO
-    ls -hs $WORKDIR/$CUSTOMISO >> $WORKDIR/remastersys.log
-    echo -e $"\nIt is recommended to run \"sudo remastersys clean\" once you have burned and tested the image $CUSTOMISO.\n"
+        echo -e $"\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
+        echo -e $"\nCheck the size and if it is larger than 4GB, the USB key must be formatted in exFAT:"
+        ls -hs $WORKDIR/$CUSTOMISO
+        ls -hs $WORKDIR/$CUSTOMISO >> $WORKDIR/remastersys.log
+        echo -e $"\nIt is recommended to run \"sudo remastersys clean\" once you have burned and tested the image $CUSTOMISO.\n"
+    else
+        echo -e $"$fB$fRed\nERROR: $CUSTOMISO was not created. Read remastersys.log for more information.\n$fEND"
+    fi
 }
 
 # Check to see if either iso or cdfs options have been invoked and proceed accordingly
