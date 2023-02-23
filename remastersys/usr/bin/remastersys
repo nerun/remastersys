@@ -532,7 +532,7 @@ iso(){
     # modern replacement.
     # cdrtools/mkisofs is not an option: it's not availabe by default in Debian
     # or Ubuntu repositories.
-    CREATEISO="$(find_bin 'xorrisofs')"
+    CREATEISO="$(find_bin 'xorriso')"
 
     if [ -z $CREATEISO ]; then
         CREATEISO="$(find_bin 'genisoimage')"
@@ -559,27 +559,51 @@ iso(){
         phrase1="$Creating $CUSTOMISO $In $WORKDIR $Using grub-mkrescue."
         echo -e "\n$phrase1"
         log_msg "$phrase1"
-        grub-mkrescue \
-        -iso-level 4 -allow-limited-size \
-        -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        
+        grub-mkrescue -iso-level 4 \
+        -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ \
+        -- -file_size_limit off 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
         echo -e "\n$phrase2"
         log_msg "$phrase2"
-        $CREATEISO \
-        -quiet \
-        -r \
-        -V "$LIVECDLABEL" \
-        -cache-inodes \
-        -J \
-        -l \
-        -iso-level 4 -allow-limited-size \
-        -b isolinux/isolinux.bin \
-        -c isolinux/boot.cat \
-        -no-emul-boot \
-        -boot-load-size 4 \
-        -boot-info-table \
-        -o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        
+        if [[ $CREATEISO =~ "genisoimage" ]]; then
+            $CREATEISO \
+            -quiet \
+            -r \
+            -V "$LIVECDLABEL" \
+            -cache-inodes \
+            -J \
+            -l \
+            -iso-level 4 -allow-limited-size \
+            -b isolinux/isolinux.bin \
+            -c isolinux/boot.cat \
+            -no-emul-boot \
+            -boot-load-size 4 \
+            -boot-info-table \
+            -o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        elif [[ $CREATEISO =~ "xorriso" ]]; then
+            $CREATEISO \
+            -x
+            -rockridge on \
+            -find / -exec mkisofs_r \
+            -volid "$LIVECDLABEL" \
+            -for_backup \
+            -joliet on \
+            -compliance "iso_9660_level=3:deep_paths:long_paths:long_names" \
+            -file_size_limit off \
+            -boot_image isolinux \
+            bin_path=$WORKDIR/ISOTMP/isolinux/isolinux.bin \
+            cat_path=$WORKDIR/ISOTMP/isolinux/boot.cat \
+            emul_type=no_emulation \
+            load_size=2048 \
+            boot_info_table=on \
+            -outdev /path/output.iso -blank as_needed \
+            -indev $WORKDIR/ISOTMP 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        else
+            echo -e $"$fB$fRed\nERROR: Nor xorriso nor genisoimage were found.\n$fEND"
+        fi
 
         if [ -e $WORKDIR/$CUSTOMISO ]; then
             # create hybrid iso so it can be dd installed to a usb flash drive
