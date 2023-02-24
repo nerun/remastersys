@@ -560,9 +560,17 @@ iso(){
         echo -e "\n$phrase1"
         log_msg "$phrase1"
         
-        grub-mkrescue -iso-level 4 \
-        -o $WORKDIR/$CUSTOMISO $WORKDIR/ISOTMP/ \
-        -- -file_size_limit off -- 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
+        grub-mkrescue \
+        -o $WORKDIR/$CUSTOMISO "$WORKDIR/ISOTMP" \
+        -- \
+        -x -rockridge on -find / -exec mkisofs_r -- \
+        -volid "$LIVECDLABEL" \
+        -for_backup \
+        -joliet on \
+        -compliance "iso_9660_level=3:deep_paths:long_paths:long_names" \
+        -file_size_limit off -- \
+        -outdev $WORKDIR/$CUSTOMISO -blank as_needed \
+        -map $WORKDIR/ISOTMP / 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
     else
         phrase2="$Creating $CUSTOMISO $In $WORKDIR $Using $CREATEISO."
         echo -e "\n$phrase2"
@@ -586,13 +594,12 @@ iso(){
         elif [[ $CREATEISO =~ "xorriso" ]]; then
             $CREATEISO \
             -x \
-            -rockridge on \
-            -find / -exec mkisofs_r -- \
+            -rockridge on -find / -exec mkisofs_r -- \
             -volid "$LIVECDLABEL" \
             -for_backup \
             -joliet on \
             -compliance "iso_9660_level=3:deep_paths:long_paths:long_names" \
-            -file_size_limit off --
+            -file_size_limit off -- \
             -boot_image isolinux bin_path=/isolinux/isolinux.bin \
             -boot_image isolinux cat_path=/isolinux/boot.cat \
             -boot_image isolinux emul_type=no_emulation \
@@ -604,14 +611,14 @@ iso(){
             echo -e $"$fB$fRed\nERROR: Nor xorriso nor genisoimage were found.\n$fEND"
         fi
 
-        if [ -e $WORKDIR/$CUSTOMISO ]; then
+        if [ -f $WORKDIR/$CUSTOMISO ]; then
             # create hybrid iso so it can be dd installed to a usb flash drive
             echo -e $"\nMaking the ISO into a hybrid image so it can be imaged to a USB key or burned to optical media."
             isohybrid $WORKDIR/$CUSTOMISO
         fi
     fi
 
-    if [ -e $WORKDIR/$CUSTOMISO ]; then
+    if [ -f $WORKDIR/$CUSTOMISO ]; then
         cd $WORKDIR
         
         # create the md5 sum file, so the iso can later be tested to ensure it hasn't become corrupted
