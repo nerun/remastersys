@@ -608,7 +608,7 @@ iso(){
             -outdev $WORKDIR/$CUSTOMISO -blank as_needed \
             -map $WORKDIR/ISOTMP / 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
         else
-            echo -e $"$fB$fRed\nERROR: Nor xorriso nor genisoimage were found.\n$fEND"
+            echo -e $"$fB$fRed\nERROR: nor \"xorriso\" nor \"genisoimage\" were found.\n$fEND"
         fi
 
         if [ -f $WORKDIR/$CUSTOMISO ]; then
@@ -636,7 +636,7 @@ iso(){
         ls -hs $WORKDIR/$CUSTOMISO >> $WORKDIR/remastersys.log
         echo -e $"\nIt is recommended to run \"sudo remastersys clean\" once you have burned and tested the image $CUSTOMISO.\n"
     else
-        echo -e $"$fB$fRed\nERROR: $CUSTOMISO was not created. Read remastersys.log for more information.\n$fEND"
+        echo -e $"$fB$fRed\nERROR: $CUSTOMISO was not created. Read $WORKDIR/remastersys.log for more information.\n$fEND"
     fi
 }
 

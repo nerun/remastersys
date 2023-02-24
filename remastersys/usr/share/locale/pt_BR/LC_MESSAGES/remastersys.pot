@@ -76,15 +76,21 @@ msgstr ""
 #: remastersys:556
 msgid "using"
 msgstr ""
-#: remastersys:584
+#: remastersys:611
+msgid "$fB$fRed\\nERROR: nor \\\"xorriso\\\" nor \\\"genisoimage\\\" were found.\\n$fEND"
+msgstr ""
+#: remastersys:616
 msgid "\\nMaking the ISO into a hybrid image so it can be imaged to a USB key or burned to optical media."
 msgstr ""
-#: remastersys:598
+#: remastersys:633
 msgid "\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
 msgstr ""
-#: remastersys:599
+#: remastersys:634
 msgid "\\nCheck the size and if it is larger than 4GB, the USB key must be formatted in exFAT:"
 msgstr ""
-#: remastersys:602
+#: remastersys:637
 msgid "\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have burned and tested the image $CUSTOMISO.\\n"
+msgstr ""
+#: remastersys:639
+msgid "$fB$fRed\\nERROR: $CUSTOMISO was not created. Read $WORKDIR/remastersys.log for more information.\\n$fEND"
 msgstr ""

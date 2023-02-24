@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Remastersys 4.0.0\n"
+"Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: Daniel Dias Rodrigues <danieldiasr@gmail.com>\n"
@@ -133,7 +133,15 @@ msgstr "em"
 msgid "using"
 msgstr "usando"
 
-#: remastersys:584
+#: remastersys:611
+msgid ""
+"$fB$fRed\\nERROR: nor \\\"xorriso\\\" nor \\\"genisoimage\\\" were found."
+"\\n$fEND"
+msgstr ""
+"$fB$fRed\\nERRO: não foram encontrados nem o \\\"xorriso\\\" nem o \\"
+"\"genisoimage\\\".\\n$fEND"
+
+#: remastersys:616
 msgid ""
 "\\nMaking the ISO into a hybrid image so it can be imaged to a USB key or "
 "burned to optical media."
@@ -141,14 +149,14 @@ msgstr ""
 "\\nTornando a ISO em uma imagem híbrida de modo a poder ser gravada em um "
 "pendrive ou em uma mídia óptica."
 
-#: remastersys:598
+#: remastersys:633
 msgid ""
 "\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
 msgstr ""
 "\\n$WORKDIR/$CUSTOMISO está pronto para ser gravado ou testado em uma "
 "máquina virtual."
 
-#: remastersys:599
+#: remastersys:634
 msgid ""
 "\\nCheck the size and if it is larger than 4GB, the USB key must be "
 "formatted in exFAT:"
@@ -156,10 +164,18 @@ msgstr ""
 "\\nVerifique o tamanho e, se for maior que 4GB, o pendrive precisará ser "
 "formatado em exFAT:"
 
-#: remastersys:602
+#: remastersys:637
 msgid ""
 "\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have "
 "burned and tested the image $CUSTOMISO.\\n"
 msgstr ""
 "\\nÉ recomendável executar \\\"sudo remastersys clean\\\" uma vez que você "
 "tenha gravado e testado a imagem $CUSTOMISO.\\n"
+
+#: remastersys:639
+msgid ""
+"$fB$fRed\\nERROR: $CUSTOMISO was not created. Read $WORKDIR/remastersys.log "
+"for more information.\\n$fEND"
+msgstr ""
+"$fB$fRed\\nERRO: $CUSTOMISO não foi criada. Leia o $WORKDIR/remastersys.log "
+"para mais informações.\\n$fEND"
