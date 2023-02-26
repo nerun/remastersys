@@ -18,100 +18,100 @@ msgstr ""
 "ERRO: Esse script deve ser executado como superusuário. Tente com \\\"sudo\\"
 "\"."
 
-#: remastersys:72
+#: remastersys:30
 msgid "Version"
 msgstr "Versão"
 
-#: remastersys:77
+#: remastersys:35
 msgid " - Creating the CD File System only."
 msgstr " - Criando somente o sistema de arquivos do CD."
 
-#: remastersys:79
+#: remastersys:37
 msgid " - Creating the ISO file only."
 msgstr " - Criando somente o arquivo ISO."
 
-#: remastersys:102
+#: remastersys:60
 msgid "$fB$fOrange\\n>> BACKUP MODE SELECTED$options\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO BACKUP SELECIONADO$options\\n$fEND"
 
-#: remastersys:107
+#: remastersys:65
 msgid "$fB$fOrange\\n>> CLEANING MODE SELECTED\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO CLEAN SELECIONADO\\n$fEND"
 
-#: remastersys:108
+#: remastersys:66
 msgid "Deleting work directory..."
 msgstr "Apagando diretório de trabalho..."
 
-#: remastersys:110
+#: remastersys:68
 msgid "Done. Exiting...\\n"
 msgstr "Feito. Saindo...\\n"
 
-#: remastersys:116
+#: remastersys:74
 msgid "$fB$fOrange\\n>> DIST MODE SELECTED$options\\n$fEND"
 msgstr "$fB$fOrange\\n>> MODO DIST SELECIONADO$options\\n$fEND"
 
-#: remastersys:133
+#: remastersys:91
 msgid ""
 "$fB$fRed\\nERROR: no such option \\\"$2\\\" for command \\\"grub\\\".\\n$fEND"
 msgstr ""
 "$fB$fRed\\nERRO: a opção \\\"$2\\\" não existe para o comando \\\"grub\\\"."
 "\\n$fEND"
 
-#: remastersys:154
+#: remastersys:112
 msgid "Checking if the $WORKDIR folder has already been created."
 msgstr "Verificando se a pasta $WORKDIR já foi criada."
 
-#: remastersys:174
+#: remastersys:132
 msgid "\\nCopying /var and /etc to temporary area and deleting extra files."
 msgstr ""
 "\\nCopiando /var e /etc para área temporária e deletando arquivos extras."
 
-#: remastersys:249
+#: remastersys:207
 msgid "\\nCopying installation icon to the Live CD user desktop."
 msgstr ""
 "\\nCopiando o ícone de instalação para a Área de Trabalho do usuário do Live "
 "CD."
 
-#: remastersys:346
+#: remastersys:304
 msgid "Press ENTER to choose or TAB to edit a menu entry"
 msgstr "Pressione ENTER para escolher ou TAB para editar uma entrada do menu"
 
-#: remastersys:347
+#: remastersys:305
 msgid "Live CD"
 msgstr "Live CD"
 
-#: remastersys:348
+#: remastersys:306
 msgid "(fail safe)"
 msgstr "(modo seguro)"
 
-#: remastersys:349
-msgid "Boot from the first hard disk"
-msgstr "Inicializar pelo primeiro disco rígido"
+#: remastersys:307
+msgid "Boot from hard disk"
+msgstr "Inicializar pelo disco rígido"
 
-#: remastersys:350
+#: remastersys:308
 msgid "Memory Test (Memtest86)"
 msgstr "Testar RAM (Memtest86)"
 
-#: remastersys:351
+#: remastersys:309
 msgid "Memory Test (Memtest86+)"
 msgstr "Testar RAM (Memtest86+)"
 
-#: remastersys:443
+#: remastersys:401
 msgid "\\nSetting up Live CD options for mode $1."
 msgstr "\\nConfigurando as opções do Live CD para modo $1."
 
-#: remastersys:448
+#: remastersys:406
 msgid "\\nCopying your kernel and initrd to the Live CD."
 msgstr "\\nCopiando seu kernel e o initrd para o Live CD."
 
-#: remastersys:463
+#: remastersys:421
 msgid ""
 "\\nCreating filesystem.squashfs. It will take a while, so be patient...\\n"
 msgstr ""
 "\\nCriando filesystem.squashfs. Isso pode demorar um pouco, então seja "
 "paciente...\\n"
 
-#: remastersys:543
+#: remastersys:501
 msgid ""
 "The CD file system is missing. Either there was a problem creating the "
 "compressed file system, or you are trying to run the command \\\"remastersys "
@@ -121,19 +121,19 @@ msgstr ""
 "um sistema de arquivos compactado, ou você está tentando executar o comando "
 "\\\"remastersys dist iso\\\" antes de \\\"remastersys dist cdfs\\\"."
 
-#: remastersys:554
+#: remastersys:512
 msgid "Creating"
 msgstr "Criando"
 
-#: remastersys:555
+#: remastersys:513
 msgid "in"
 msgstr "em"
 
-#: remastersys:556
+#: remastersys:514
 msgid "using"
 msgstr "usando"
 
-#: remastersys:611
+#: remastersys:569
 msgid ""
 "$fB$fRed\\nERROR: nor \\\"xorriso\\\" nor \\\"genisoimage\\\" were found."
 "\\n$fEND"
@@ -141,7 +141,7 @@ msgstr ""
 "$fB$fRed\\nERRO: não foram encontrados nem o \\\"xorriso\\\" nem o \\"
 "\"genisoimage\\\".\\n$fEND"
 
-#: remastersys:616
+#: remastersys:574
 msgid ""
 "\\nMaking the ISO into a hybrid image so it can be imaged to a USB key or "
 "burned to optical media."
@@ -149,14 +149,14 @@ msgstr ""
 "\\nTornando a ISO em uma imagem híbrida de modo a poder ser gravada em um "
 "pendrive ou em uma mídia óptica."
 
-#: remastersys:633
+#: remastersys:591
 msgid ""
 "\\n$WORKDIR/$CUSTOMISO is ready to be burned or tested in a virtual machine."
 msgstr ""
 "\\n$WORKDIR/$CUSTOMISO está pronto para ser gravado ou testado em uma "
 "máquina virtual."
 
-#: remastersys:634
+#: remastersys:592
 msgid ""
 "\\nCheck the size and if it is larger than 4GB, the USB key must be "
 "formatted in exFAT:"
@@ -164,7 +164,7 @@ msgstr ""
 "\\nVerifique o tamanho e, se for maior que 4GB, o pendrive precisará ser "
 "formatado em exFAT:"
 
-#: remastersys:637
+#: remastersys:595
 msgid ""
 "\\nIt is recommended to run \\\"sudo remastersys clean\\\" once you have "
 "burned and tested the image $CUSTOMISO.\\n"
@@ -172,7 +172,7 @@ msgstr ""
 "\\nÉ recomendável executar \\\"sudo remastersys clean\\\" uma vez que você "
 "tenha gravado e testado a imagem $CUSTOMISO.\\n"
 
-#: remastersys:639
+#: remastersys:597
 msgid ""
 "$fB$fRed\\nERROR: $CUSTOMISO was not created. Read $WORKDIR/remastersys.log "
 "for more information.\\n$fEND"

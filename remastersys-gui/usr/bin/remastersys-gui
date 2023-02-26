@@ -22,6 +22,7 @@ declare -r Return=$"\n\nClick OK to return to previous menu."
 declare -r Superuser=$"ERROR: This script must run as superuser. Try with \"sudo\"."
 
 # LIBRARIES
+. /usr/lib/remastersys/libremastersys.sh
 . /usr/lib/remastersys/libremastersysgui.sh
 . /etc/remastersys/remastersys.version
 . /etc/remastersys.conf
@@ -282,9 +283,7 @@ Click OK to prepare the list." --title="$TITLETEXT"
 }
 
 modifymenu() {
-    if [ "$SQUASHFSOPTS" = "" ]; then
-        SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
-    fi
+    SettingsIntegrityCheck # libremastersys.sh
     
     LiveUsername=$"Live Username"
     LiveSystemName=$"Live System Name"
@@ -319,48 +318,6 @@ modifymenu() {
         EXCLUDES=$(echo $CHOICES | cut -d "|" -f 8)
     else
         mainmenu
-    fi
-
-    if [ "$LIVEUSER" = "" ]; then
-        LIVEUSER="live"
-    fi
-
-    #make sure live user is all lowercase
-    LIVEUSER="$(echo $LIVEUSER | awk '{print tolower ($0)}')"
-
-    if [ "$LIVECDLABEL" = "" ]; then
-        LIVECDLABEL="Debian Remaster"
-    fi
-
-    if [ "$CUSTOMISO" = "" ]; then
-        CUSTOMISO="remastersys-livecd.iso"
-    fi
-
-    if [ "$ISOBOOT" = "grub" -o "$ISOBOOT" = "GRUB" ]; then
-        ISOBOOT="GRUB"
-    else
-        ISOBOOT="ISOLINUX"
-    fi
-
-    if [ "$WORKDIR" = "" ]; then
-        BASEWORKDIR="/home"
-        WORKDIR="/home/remastersys"
-    fi
-
-    if [ "$SQUASHFSOPTS" = "" ]; then
-        SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
-    fi
-
-    SHOWICON="$(echo $SHOWICON | awk '{print tolower ($0)}')"
-
-    if [ "$SHOWICON" = "1" ]; then
-        SHOWICON="1"
-    elif [ "$SHOWICON" = "yes" ]; then
-        SHOWICON="1"
-    elif [ "$SHOWICON" = "true" ]; then
-        SHOWICON="1"
-    else
-        SHOWICON="0"
     fi
 
     sudo cat > /etc/remastersys.conf <<FOO

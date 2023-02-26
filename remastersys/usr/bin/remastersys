@@ -21,49 +21,7 @@ Superuser=$"ERROR: This script must run as superuser. Try with \"sudo\"."
 
 IsRoot # libremastersys.sh
 
-# if remastersys.conf is incorrect or missing, set standards
-if [ "$WORKDIR" = "" ]; then
-    BASEWORKDIR="/home"
-    WORKDIR="/home/remastersys"
-fi
-
-if [ "$LIVEUSER" = "" ]; then
-    LIVEUSER="live"
-fi
-
-# live username in lowercase
-LIVEUSER="$(echo $LIVEUSER | awk '{print tolower ($0)}')"
-LIVEUSER_FULL_NAME="live session user"
-
-if [ "$LIVECDLABEL" = "" ]; then
-    LIVECDLABEL="Debian Remaster"
-fi
-
-if [ "$CUSTOMISO" = "" ]; then
-    CUSTOMISO="remastersys-livecd.iso"
-fi
-
-if [ "$ISOBOOT" = "grub" -o "$ISOBOOT" = "GRUB" ]; then
-    ISOBOOT="GRUB"
-else
-    ISOBOOT="ISOLINUX"
-fi
-
-if [ "$SQUASHFSOPTS" = "" ]; then
-    SQUASHFSOPTS="-no-recovery -always-use-fragments -b 1M -comp zstd"
-fi
-
-SHOWICON="$(echo $SHOWICON | awk '{print tolower ($0)}')"
-
-if [ "$SHOWICON" = "1" ]; then
-    SHOWICON="1"
-elif [ "$SHOWICON" = "yes" ]; then
-    SHOWICON="1"
-elif [ "$SHOWICON" = "true" ]; then
-    SHOWICON="1"
-else
-    SHOWICON="0"
-fi
+SettingsIntegrityCheck # libremastersys.sh
 
 # Remastersys terminal logo
 remastersyslogo(){
@@ -346,7 +304,7 @@ cdfs(){
     local EnterOrTab=$"Press ENTER to choose or TAB to edit a menu entry"
     local LiveCD=$"Live CD"
     local LiveCDFailSafe=$"(fail safe)"
-    local ChainBoot=$"Boot from the first hard disk"
+    local ChainBoot=$"Boot from hard disk"
     local MemTest=$"Memory Test (Memtest86)"
     local MemTestPlus=$"Memory Test (Memtest86+)"
 
