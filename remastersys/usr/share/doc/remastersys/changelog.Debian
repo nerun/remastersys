@@ -1,3 +1,12 @@
+remastersys (4.9-1) unstable; urgency=low
+
+    * Updated DEBIAN files: control, md5sums etc.
+    * Revised postrm and prerm to deal with '/etc/remastersys/skel-backup' and '/home/remastersys' after package uninstall.
+    * Added missing dependency: grub-common.
+    * Revised changelogs.
+
+ -- Daniel Dias Rodrigues <danieldiasr@gmail.com>  Sun, 26 Feb 2023 12:43:13 -0300
+
 remastersys (4.8-1) unstable; urgency=low
 
     * HEAVY revision of DEBIAN files: control, md5sums, prerm, postrm, preinst and postinst.

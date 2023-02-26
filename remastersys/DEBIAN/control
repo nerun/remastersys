@@ -1,13 +1,13 @@
 Package: remastersys
 Priority: extra
 Section: system
-Installed-Size: 972
+Installed-Size: 976
 Maintainer: Daniel Dias Rodrigues <danieldiasr@gmail.com>
 Architecture: all
-Version: 4.8-1
-Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-pc, hwdata, laptop-detect, live-boot, live-boot-initramfs-tools, live-config, live-config-systemd, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux, syslinux-common, syslinux-efi, syslinux-utils, util-linux, xorriso | genisoimage, zstd
+Version: 4.9-1
+Depends: awk, bash, coreutils, dialog, fdisk, findutils, grub-common, grub-pc, hwdata, laptop-detect, live-boot, live-boot-initramfs-tools, live-config, live-config-systemd, mount, os-prober, passwd, rsync, sed, squashfs-tools, sudo, syslinux, syslinux-common, syslinux-efi, syslinux-utils, util-linux, xorriso | genisoimage, zstd
 Conffiles:
- /etc/remastersys.conf 7e51fdbed3e34f683b943651a4614b92
+ /etc/remastersys.conf c9f40520e99b59e94e8118fe79ca4173
  /etc/remastersys/grub/grub.cfg 9395ce2314dc756e70a983096403c560
  /etc/remastersys/isolinux/chain.c32 a73329fdb71b3aa15f55b8aff9e871cf
  /etc/remastersys/isolinux/isolinux.bin c3387bb5f62c3df90e50915b1b4495b2
@@ -22,7 +22,7 @@ Conffiles:
  /etc/remastersys/remastersys-help-pt_BR.txt e87ae435e7ddbd1f7d2c89854a830b34
  /etc/remastersys/remastersys-help.txt 89c69b7b5b2603606338e3d53ebfe953
  /etc/remastersys/remastersys-installer.conf e18fcf1ab280ef648eab2544fdbf1cc6
- /etc/remastersys/remastersys.version 5e1dae025c6e0354aad531e178903fce
+ /etc/remastersys/remastersys.version a8eed2238f3da6b81163af1a05df1169
  /etc/remastersys/splash-default.png 2e2ae0d3744ed08a426320c60a0ebe08
  /etc/remastersys/splash.png 2e2ae0d3744ed08a426320c60a0ebe08
 Homepage: https://github.com/nerun/remastersys
