@@ -2,12 +2,12 @@ remastersys (4.8-1) unstable; urgency=low
 
     * Small improvements to remastersys taken from PinguyBuilder. Also fixed error message "unary operator expected".
     * Updated remastersys-skelcopy to exclude Gnome3 keyring folder location, google-chrome and gcalendar from config files.
-    * Updated copyright notice in all scripts.
+    * Updated copyright in all scripts.
     * Updated dependencies:
         * xorriso is preferable to genisoimage;
         * remove live-config-sysvinit (just used by Devuan);
         * added syslinux-common and syslinux-efi;
-    * ISO9660 version 2 support (option "-iso-level 4"; images > 4 GiB).
+    * ISO9660 version 2 support (images > 4 GiB).
     * xorrisofs is now the first option to create image, then script looks for genisoimage.
     * Updated functions in remastersys-installer and libremastersys.
     * Romoved duplicate bootloader images, updating all script files and translations as needed.

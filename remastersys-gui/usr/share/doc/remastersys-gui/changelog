@@ -2,7 +2,7 @@ remastersys-gui (4.8-1) unstable; urgency=low
 
     * Removed duplicate bootloader images, updating all script files and translations as needed.
     * Updated copyright in all scripts.
-    * Fixed "ysudo" not working in Live CD (BUT "authentication required" still pops up).
+    * Fixed "ysudo" not working in Live CD.
     * ISO9660 version 2 support included (images > 4 GiB).
     * Little changes to GUI.
 
