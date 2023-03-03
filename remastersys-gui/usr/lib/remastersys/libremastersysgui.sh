@@ -16,14 +16,14 @@ declare -r DIALOG_2="$DIALOG --fixed $MSGBOX --text="
 declare -r DIALOG_2_nf="$DIALOG $MSGBOX --text="
 
 # check if running with root privileges
-function IsRootDialog(){
+IsRootDialog(){
     if [ $(whoami) != "root" ]; then
         $DIALOG_1"$Supersuser"
         exit 1
     fi
 }
 
-function QuitNow(){
+QuitNow(){
     if [ $? != 0 ]; then
         # $1 = $TITLETEXT
         $DIALOG_2_nf"$Quit" --width=310 --title="$1"

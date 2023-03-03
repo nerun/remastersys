@@ -23,7 +23,7 @@ declare -r fI="\e[3m" # italic
 declare -r fEND="\e[0m"
 
 # help files
-function GiveUserHelp(){
+GiveUserHelp(){
     local locale_code=$(locale -a | tail -1 | cut -d'.' -f1)
 
     if [ -f /etc/remastersys/remastersys-help-"$locale_code".txt ]; then
@@ -38,7 +38,7 @@ function GiveUserHelp(){
 }
 
 # check if running with root privileges
-function IsRoot(){
+IsRoot(){
     if [ $(whoami) != "root" ]; then
         echo -e $"$fB$fRed\n$Superuser\n$fEND"
         exit 1
@@ -46,12 +46,12 @@ function IsRoot(){
 }
 
 # Replacement for "which XX" that gives answer 'XX not found'
-function find_bin(){
+find_bin(){
     find /usr/bin /usr/sbin -name "$1"
 }
 
 # If remastersys.conf is incorrect or missing, set standards
-function SettingsIntegrityCheck(){
+SettingsIntegrityCheck(){
     if [ -f /etc/remastersys.conf ]; then
         if [ "$BASEWORKDIR" = "" ]; then
             BASEWORKDIR="/home"

@@ -881,7 +881,7 @@ echo $RUNsetupSWAP
 mkswap /dev/$SWAP
 swapon /dev/$SWAP
 
-function killtail(){
+killtail(){
     if [ "$GUI" != "" ]; then
         killall -KILL tail
     fi
