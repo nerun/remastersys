@@ -20,8 +20,12 @@ Superuser=$"ERROR: This script must run as superuser. Try with \"sudo\"."
 IsRoot # libremastersys.sh
 
 backupSkel(){
+    # delete skel-backup folder if empty
+    rmdir --ignore-fail-on-non-empty /etc/remastersys/skel-backup
+    # if fail to delete, it's not empty and there's already a backup
+    
     if [ ! -d /etc/remastersys/skel-backup ]; then
-        mkdir /etc/remastersys/skel-backup
+        mkdir -p /etc/remastersys/skel-backup
         # -T do not includes the directory itself, but copy all it's contents
         cp -rT /etc/skel /etc/remastersys/skel-backup
     fi
@@ -44,36 +48,16 @@ elif [ "$1" = "clear" ]; then
         rm -rf /etc/remastersys/skel-backup
     fi
 else
-    # First: make a backup of Debian original files if there is no backup
-    backupSkel
-    
     SKELUSER="$1"
 
     SKELFOLDER=$(grep "^$SKELUSER:" /etc/passwd | awk -F ":" '{print $6}')
 
     if [ -d "$SKELFOLDER" ]; then
+        echo $"Creating a backup of the standard system files in the /etc/skel directory."
+        backupSkel
+        echo $"Cleaning up /etc/skel."
+        rm -rf /etc/skel/{*,.[^.]*}
         cd $SKELFOLDER
-        echo $"Cleaning up /etc/skel of the files we will copy over."
-        rm -rf /etc/skel/.bacon
-        rm -rf /etc/skel/.xscreensaver
-        rm -rf /etc/skel/.gconf
-        rm -rf /etc/skel/.bashrc
-        rm -rf /etc/skel/.profile
-        rm -rf /etc/skel/.gconf
-        rm -rf /etc/skel/.gnome2
-        rm -rf /etc/skel/.config
-        rm -rf /etc/skel/.local
-        rm -rf /etc/skel/.icewm*
-        rm -rf /etc/skel/.fvwm*
-        rm -rf /etc/skel/.afterstep*
-        rm -rf /etc/skel/.gtkrc*
-        rm -rf /etc/skel/.mate*
-        rm -rf /etc/skel/.qt*
-        rm -rf /etc/skel/.kde*
-        rm -rf /etc/skel/.pekwm
-        rm -rf /etc/skel/.razor
-        rm -rf /etc/skel/.wbar
-        rm -rf /etc/skel/.mplayer
         echo $"Copying config files to /etc/skel."
         rsync -a --ignore-missing-args .bacon /etc/skel/
         rsync -a --ignore-missing-args .xscreensaver /etc/skel
@@ -95,6 +79,7 @@ else
         rsync -a --ignore-missing-args .razor /etc/skel/
         rsync -a --ignore-missing-args .wbar /etc/skel/
         rsync -a --ignore-missing-args .mplayer /etc/skel/
+        echo $"Deleting unwanted files in /etc/skel."
         rm -rf /etc/skel/.config/chromium
         rm -rf /etc/skel/.config/gcalendar
         rm -rf /etc/skel/.config/google-chrome
@@ -122,6 +107,7 @@ else
         find /etc/skel/ -name "*socket*" | xargs rm -rf '{}'
         find /etc/skel/ -name "*cache*" | xargs rm -rf '{}'
         grep -Rl "$SKELUSER" /etc/skel | xargs rm -rf '{}'
+        echo $"Setting ownership of files in /etc/skel to root."
         chown -R root:root /etc/skel
     else
         echo $"$1 either not found or doesn't have a proper home folder. Exiting."
