@@ -59,54 +59,26 @@ else
         rm -rf /etc/skel/{*,.[^.]*}
         cd $SKELFOLDER
         echo $"Copying config files to /etc/skel."
-        rsync -a --ignore-missing-args .bacon /etc/skel/
-        rsync -a --ignore-missing-args .xscreensaver /etc/skel
-        [ -f /etc/skel/.xscreensaver ] && sed -i -e "s/$SKELUSER//g" /etc/skel/.xscreensaver
-        rsync -a --ignore-missing-args .gconf /etc/skel/
-        rsync -a --ignore-missing-args .bashrc /etc/skel/
-        rsync -a --ignore-missing-args .profile /etc/skel/
-        rsync -a --ignore-missing-args .gnome2 /etc/skel/
-        rsync -a --ignore-missing-args .config /etc/skel/
-        rsync -a --ignore-missing-args .local /etc/skel/
-        rsync -a --ignore-missing-args .icewm* /etc/skel/
-        rsync -a --ignore-missing-args .fvwm* /etc/skel/
-        rsync -a --ignore-missing-args .afterstep* /etc/skel/
-        rsync -a --ignore-missing-args .mate* /etc/skel/
-        rsync -a --ignore-missing-args .gtkrc* /etc/skel/
-        rsync -a --ignore-missing-args .qt* /etc/skel/
-        rsync -a --ignore-missing-args .kde* /etc/skel/
-        rsync -a --ignore-missing-args .pekwm /etc/skel/
-        rsync -a --ignore-missing-args .razor /etc/skel/
-        rsync -a --ignore-missing-args .wbar /etc/skel/
-        rsync -a --ignore-missing-args .mplayer /etc/skel/
+        rsync -a \
+            --exclude={'.cache','.steam','.wine'} \
+            --ignore-missing-args \
+            .* /etc/skel/
         echo $"Deleting unwanted files in /etc/skel."
-        rm -rf /etc/skel/.config/chromium
-        rm -rf /etc/skel/.config/gcalendar
-        rm -rf /etc/skel/.config/google-chrome
-        rm -rf /etc/skel/.config/midori/cookies.*
-        rm -rf /etc/skel/.config/midori/history.*
-        rm -rf /etc/skel/.config/midori/tabtrash.*
-        rm -rf /etc/skel/.config/midori/running*
-        rm -rf /etc/skel/.config/midori/bookmarks.*
-        rm -rf /etc/skel/.config/user-dirs.*
-        rm -rf /etc/skel/.gconf/system/networking
-        rm -rf /etc/skel/.local/gvfs-metadata
-        rm -rf /etc/skel/.local/share/gvfs-metadata
-        rm -rf /etc/skel/.local/share/applications/wine-*
-        rm -rf /etc/skel/.local/share/Trash
-        rm -rf /etc/skel/.local/share/akonadi
-        rm -rf /etc/skel/.local/share/webkit
-        rm -rf /etc/skel/.kde/share/apps/klipper
-        rm -rf /etc/skel/.kde/share/apps/nepomuk
-        rm -rf /etc/skel/.kde/share/apps/RecentDocuments/*
-        # Gnome 2 keyrings
-        rm -rf /etc/skel/.gnome2/keyrings/{*,.[^.]*}
-        # Gnome 3 keyrings
-        rm -rf /etc/skel/.local/share/keyrings/{*,.[^.]*}
+        [ -f /etc/skel/.xscreensaver ] && sed -i -e "s/$SKELUSER//g" /etc/skel/.xscreensaver
+        [ -f /etc/skel/.config/libreoffice/4/user/registrymodifications.xcu ] && sed -i -e 's/<item.*HistoryInfo.*item>//g' /etc/skel/.config/libreoffice/4/user/registrymodifications.xcu
         find /etc/skel/ | grep "$SKELUSER" | xargs rm -rf '{}'
-        find /etc/skel/ -name "*socket*" | xargs rm -rf '{}'
         find /etc/skel/ -name "*cache*" | xargs rm -rf '{}'
+        find /etc/skel/ -name "*socket*" | xargs rm -rf '{}'
+        find /etc/skel/ -type d -name "keyrings" | xargs rm -rf '{}'
+        find /etc/skel/ -type f -maxdepth 1 -name "*history*"
+        find /etc/skel/ -type f -name "*.log"
         grep -Rl "$SKELUSER" /etc/skel | xargs rm -rf '{}'
+        rm -rf /etc/skel/.config/gcalendar        
+        rm -rf /etc/skel/.local/share/applications/wine-*
+        rm -rf /etc/skel/.local/share/RecentDocuments/*
+        rm -rf /etc/skel/.local/share/recently-used.xbel
+        rm -rf /etc/skel/.local/share/Trash
+        rm -rf /etc/skel/.xsession-errors*
         echo $"Setting ownership of files in /etc/skel to root."
         chown -R root:root /etc/skel
     else
