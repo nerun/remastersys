@@ -1,12 +1,21 @@
 #: remastersys-skelcopy:15
 msgid "ERROR: This script must run as superuser. Try with \\\"sudo\\\"."
 msgstr ""
-#: remastersys-skelcopy:53
-msgid "Cleaning up /etc/skel of the files we will copy over."
+#: remastersys-skelcopy:56
+msgid "Creating a backup of the standard system files in the /etc/skel directory."
 msgstr ""
-#: remastersys-skelcopy:74
+#: remastersys-skelcopy:58
+msgid "Cleaning up /etc/skel."
+msgstr ""
+#: remastersys-skelcopy:61
 msgid "Copying config files to /etc/skel."
 msgstr ""
-#: remastersys-skelcopy:119
+#: remastersys-skelcopy:66
+msgid "Deleting unwanted files in /etc/skel."
+msgstr ""
+#: remastersys-skelcopy:82
+msgid "Setting ownership of files in /etc/skel to root."
+msgstr ""
+#: remastersys-skelcopy:85
 msgid "$1 either not found or doesn't have a proper home folder. Exiting."
 msgstr ""
