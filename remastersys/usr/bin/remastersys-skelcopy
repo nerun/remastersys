@@ -64,8 +64,8 @@ else
             --ignore-missing-args \
             .* /etc/skel/
         echo $"Deleting unwanted files in /etc/skel."
-        [ -f /etc/skel/.xscreensaver ] && sed -i -e "s/$SKELUSER//g" /etc/skel/.xscreensaver
         [ -f /etc/skel/.config/libreoffice/4/user/registrymodifications.xcu ] && sed -i -e 's/<item.*HistoryInfo.*item>//g' /etc/skel/.config/libreoffice/4/user/registrymodifications.xcu
+        [ -f /etc/skel/.xscreensaver ] && sed -i -e "s/$SKELUSER//g" /etc/skel/.xscreensaver
         find /etc/skel/ | grep "$SKELUSER" | xargs rm -rf '{}'
         find /etc/skel/ -name "*cache*" | xargs rm -rf '{}'
         find /etc/skel/ -name "*socket*" | xargs rm -rf '{}'
@@ -73,12 +73,13 @@ else
         find /etc/skel/ -type f -maxdepth 1 -name "*history*"
         find /etc/skel/ -type f -name "*.log"
         grep -Rl "$SKELUSER" /etc/skel | xargs rm -rf '{}'
+        rm -f /etc/skel/.git*
+        rm -f /etc/skel/.local/share/applications/wine-*
+        rm -f /etc/skel/.local/share/recently-used.xbel
+        rm -f /etc/skel/.xsession-errors*
         rm -rf /etc/skel/.config/gcalendar        
-        rm -rf /etc/skel/.local/share/applications/wine-*
         rm -rf /etc/skel/.local/share/RecentDocuments/*
-        rm -rf /etc/skel/.local/share/recently-used.xbel
         rm -rf /etc/skel/.local/share/Trash
-        rm -rf /etc/skel/.xsession-errors*
         echo $"Setting ownership of files in /etc/skel to root."
         chown -R root:root /etc/skel
     else
