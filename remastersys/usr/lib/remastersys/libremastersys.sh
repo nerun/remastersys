@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# https://www.shellhacks.com/bash-colors/
+
 # Color codes, "f" means "font"
 declare -r fLightRed="\e[91m"
 declare -r fLightGreen="\e[92m"
