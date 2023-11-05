@@ -525,7 +525,7 @@ iso(){
         -volid "$LIVECDLABEL" \
         -for_backup \
         -joliet on \
-        -compliance "iso_9660_level=3:deep_paths:long_paths:long_names" \
+        -compliance "clear:iso_9660_level=3:only_iso_version:deep_paths:long_paths:long_names:no_j_force_dots:always_gmt:rec_mtime:old_rr:max_ce_entries=31:max_ce_drop=xattr_acl" \
         -file_size_limit off -- \
         -outdev $WORKDIR/$CUSTOMISO -blank as_needed \
         -map $WORKDIR/ISOTMP / 2>>$WORKDIR/remastersys.log 1>>$WORKDIR/remastersys.log
@@ -556,7 +556,7 @@ iso(){
             -volid "$LIVECDLABEL" \
             -for_backup \
             -joliet on \
-            -compliance "iso_9660_level=3:deep_paths:long_paths:long_names" \
+            -compliance "clear:iso_9660_level=3:only_iso_version:deep_paths:long_paths:long_names:no_j_force_dots:always_gmt:rec_mtime:old_rr:max_ce_entries=31:max_ce_drop=xattr_acl" \
             -file_size_limit off -- \
             -boot_image isolinux bin_path=/isolinux/isolinux.bin \
             -boot_image isolinux cat_path=/isolinux/boot.cat \
